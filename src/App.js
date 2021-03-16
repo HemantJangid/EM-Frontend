@@ -1,11 +1,13 @@
 import React from "react";
 import Footer from "./components/Footer";
-import Blog from "./screens/Blog";
+import BlogPost from "./screens/BlogPost";
+// import Blog from "./screens/Blog";
+// import Contact from "./screens/Contact";
 
 function App() {
   return (
     <div>
-      <Product />
+      <BlogPost />
       <Footer />
     </div>
   );
