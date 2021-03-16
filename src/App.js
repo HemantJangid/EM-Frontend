@@ -5,7 +5,7 @@ import Blog from "./screens/Blog";
 function App() {
   return (
     <div>
-      <Blog />
+      <Product />
       <Footer />
     </div>
   );
