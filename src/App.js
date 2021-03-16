@@ -1,17 +1,11 @@
 import React from "react";
-import Home from "./screens/Home";
-import About from "./screens/About";
-import Contact from "./screens/Contact";
 import Footer from "./components/Footer";
-import Partner from "./screens/Partner";
+import Blog from "./screens/Blog";
 
 function App() {
   return (
     <div>
-      {/* <Home /> */}
-      {/* <About /> */}
-      {/* <Contact /> */}
-      <Partner />
+      <Blog />
       <Footer />
     </div>
   );
