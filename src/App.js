@@ -3,11 +3,12 @@ import React from 'react'
 import About from './screens/About'
 import Contact from './screens/Contact'
 import Footer from './components/Footer'
+import Product from './screens/Product'
 
 function App() {
     return (
         <div>
-            <About />
+            <Product />
             <Footer />
         </div>
     )

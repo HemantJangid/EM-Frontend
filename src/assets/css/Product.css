@@ -1,0 +1,76 @@
+#hero {
+  height: 70vh;
+  padding: 100px 0;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#hero h1 {
+  font-size: 14rem;
+}
+
+#hero .buttons {
+  display: inline-flex;
+  justify-content: center;
+}
+
+#img-banner {
+  height: 100vh;
+  background-image: url("../img/backgrounds/trex.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#info {
+  background: #000;
+}
+
+#info h2 {
+  text-align: left;
+}
+
+#info p {
+  text-align: left;
+}
+
+td {
+  text-align: left;
+  font-family: var(--sen);
+  color: var(--white);
+  min-width: 90px;
+}
+
+#info .content-2 h1 {
+  font-size: 12rem;
+  display: inline-block;
+}
+
+#info .content-2 p {
+  text-align: center;
+  display: inline-block;
+}
+
+#done {
+  padding: 100px;
+  background: var(--white);
+}
+
+#done h2 {
+  color: #000;
+}
+
+#done .done-box {
+  text-align: center;
+}
+
+#done .done-box img {
+  margin-bottom: 30px;
+  max-width: 80px;
+}
+
+#done .done-box h4 {
+  color: #000;
+}
