@@ -6,15 +6,16 @@ import rect from "../assets/img/backgrounds/rect.jpg";
 import man from "../assets/img/backgrounds/man.jpg";
 import common from "../assets/img/backgrounds/common.png";
 
-import "../assets/css/Contact.css";
+import "../assets/css/Partner.css";
+import styled from "styled-components";
 
-function Contact() {
+function Partner() {
   return (
     <div>
       <section id="hero">
         <div className="container">
-          <h3 className="pri">Reach us out at</h3>
-          <h1>info @ emotorad.com</h1>
+          <h3 className="pri">Partner with us</h3>
+          <h1>Become our partner</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
           <Button text="View products" />
         </div>
@@ -27,24 +28,24 @@ function Contact() {
           </div>
           <div className="col-lg-6 align-content-center">
             <form action="">
-              <h3 className="mb-5">Ask any query!</h3>
+              <h3 className="mb-5">Fill the form!</h3>
               <div className="form-row form-group">
                 <div className="col-lg-6">
                   <input
                     className="mb-4"
                     type="text"
-                    name="fname"
-                    id="fname"
-                    placeholder="First Name"
+                    name="name"
+                    id="name"
+                    placeholder="Name"
                   />
                 </div>
                 <div className="col-lg-6">
                   <input
                     className="mb-4"
                     type="text"
-                    name="lname"
-                    id="lname"
-                    placeholder="Last Name"
+                    name="organisation_name"
+                    id="organisation_name"
+                    placeholder="Organisation Name"
                   />
                 </div>
               </div>
@@ -77,13 +78,14 @@ function Contact() {
                   />
                 </div>
               </div>
-              <div className="form-group">
-                <textarea
-                  name="query"
-                  id="query"
-                  rows="7"
-                  placeholder="Query"
-                ></textarea>
+              <div className="form-group mb-5">
+                <label for="cars">Choose a car:</label>
+                <select id="cars" name="cars">
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="fiat">Fiat</option>
+                  <option value="audi">Audi</option>
+                </select>
               </div>
               <Button text="Enquire" color="black" />
             </form>
@@ -94,4 +96,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default Partner;
