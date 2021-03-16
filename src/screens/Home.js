@@ -1,13 +1,18 @@
 import React from 'react'
 import Button from '../components/Button'
+import { Carousel } from 'react-responsive-carousel';
 import { Parallax } from 'react-parallax';
 
 import "../assets/css/Home.css"
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 import electric from "../assets/img/design/electric.svg"
 import dots from "../assets/img/design/dots.svg"
 import lines from "../assets/img/design/lines.svg"
 import play from "../assets/img/design/play.svg"
 import numbers from "../assets/img/backgrounds/numbers.jpg"
+
+import arvind from "../assets/img/testimonials/arvind.jpg"
 
 function Home() {
     return (
@@ -39,7 +44,7 @@ function Home() {
                 </div>
             </section>
 
-            <Parallax bgImage={numbers} bgImageAlt="the cat" strength={200}>
+            <Parallax bgImage={numbers} bgImageAlt="the cat" strength={100}>
                 <section id="numbers">
                     <div className="container">
                         <div className="row justify-content-center">
@@ -117,6 +122,35 @@ function Home() {
             <section id="feature">
                 <h3>Featured In</h3>
                 <marquee behavior="scroll" direction="right">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia iure neque voluptatibus placeat voluptatum omnis distinctio impedit repellendus earum sunt alias, veritatis laudantium molestias ut sed ducimus enim a porro repellat suscipit numquam cumque accusantium labore cupiditate. Alias laudantium non harum animi voluptatem tempora accusamus quibusdam culpa quis enim ratione possimus fugiat, minus, quisquam debitis beatae repellat consectetur eaque, delectus assumenda laborum itaque sit necessitatibus laboriosam. Voluptas, repellendus at? Tempore quam corporis perspiciatis quia non explicabo aut mollitia suscipit quis! Ex necessitatibus aliquam cumque aperiam accusamus voluptatum ad, reprehenderit consectetur optio fugit? Modi eveniet esse molestiae. Similique pariatur amet facilis.</marquee>
+            </section>
+
+
+            <section id="testimonial">
+                <div className="container">
+                    <Carousel>
+                        <div className="testimonial-box">
+                            <div className="text">
+                                <p>Very excited to see the E-bike. The best part is it comes very sturdy. The material quality speaks for itself. Thank for the affordable ride EM.</p>
+                                <h4>Arvind, Bangalore</h4>
+                            </div>
+                            <img src={arvind} alt="Arvind" className="img-fluid" />
+                        </div>
+                        <div className="testimonial-box">
+                            <div className="text">
+                                <p>Very excited to see the E-bike. The best part is it comes very sturdy. The material quality speaks for itself. Thank for the affordable ride EM.</p>
+                                <h4>Arvind, Bangalore</h4>
+                            </div>
+                            <img src={arvind} alt="Arvind" className="img-fluid" />
+                        </div>
+                        <div className="testimonial-box">
+                            <div className="text">
+                                <p>Very excited to see the E-bike. The best part is it comes very sturdy. The material quality speaks for itself. Thank for the affordable ride EM.</p>
+                                <h4>Arvind, Bangalore</h4>
+                            </div>
+                            <img src={arvind} alt="Arvind" className="img-fluid" />
+                        </div>
+                    </Carousel>
+                </div>
             </section>
         </div>
     )

@@ -4,6 +4,7 @@
 :root {
   --white: #fff;
   --pri: #68db85;
+  --para: #f0ede9;
   --opensans: "Open Sans", sans-serif;
   --sen: "Sen", sans-serif;
 }
@@ -21,12 +22,12 @@ h1 {
 
 h2 {
   font-weight: 700;
-  font-size: 2.3rem;
+  font-size: 1.875rem;
 }
 
 h3 {
   font-weight: 400;
-  font-size: 2.3rem;
+  font-size: 1.875rem;
 }
 
 h4 {
@@ -37,20 +38,85 @@ h4 {
   letter-spacing: 0.1rem;
 }
 
+h5 {
+  font-family: var(--sen);
+  color: var(--pri);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
 p {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
+  line-height: 1.5rem;
   color: var(--white);
   opacity: 0.8;
 }
 
+.pri {
+  color: var(--pri);
+}
+
+/* BUTTON */
 .em-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
 }
 
+.em-btn .hex-box {
+  position: relative;
+}
+
+.em-btn .hex-box .arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.em-btn h4 {
+  margin-bottom: 0;
+  font-size: 0.875rem;
+}
+
 /* DESIGN */
 .dots {
   width: 280px;
+}
+
+/* CONTACT */
+#footer {
+  background: #000;
+  padding: 100px;
+}
+
+#footer p {
+  margin-bottom: 0;
+}
+
+#footer a {
+  color: var(--white);
+}
+
+#footer .footer-logo-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+#footer .footer-logo-box .vertical-rule {
+  height: 100%;
+  background: var(--white);
+  width: 1px;
+}
+
+#footer .copyright {
+  text-align: center;
+  color: #fff;
+  opacity: 0.5;
+  margin-top: 5rem;
+  margin-bottom: -3rem;
+  font-size: 0.8rem;
 }

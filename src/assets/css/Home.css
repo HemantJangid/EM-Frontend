@@ -179,3 +179,29 @@
 #feature h3 {
   color: #000;
 }
+
+/* TESTIMONIALS */
+#testimonial {
+  padding: 100px 0;
+  background: url("../img/backgrounds/testimonials.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#testimonial .testimonial-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 4rem;
+  border-radius: 20px !important;
+}
+
+#testimonial .testimonial-box .text {
+  text-align: left;
+  padding: 2rem;
+}
+
+#testimonial .testimonial-box img {
+  width: 200px;
+  border-radius: 20px;
+}
