@@ -7,7 +7,6 @@ import man from "../assets/img/backgrounds/man.jpg";
 import common from "../assets/img/backgrounds/common.png";
 
 import "../assets/css/Partner.css";
-import styled from "styled-components";
 
 function Partner() {
   return (
