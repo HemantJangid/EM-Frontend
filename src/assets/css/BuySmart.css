@@ -1,0 +1,89 @@
+#hero {
+  background: url("../img/backgrounds/contact.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+#hero h1 {
+  font-weight: 400;
+  font-size: 5rem;
+  text-transform: uppercase;
+  margin-top: -10px;
+  /* margin-bottom: -10px; */
+  margin-left: -8px;
+}
+
+#hero h3 {
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+/* Savings Calculator */
+#savings-calculator {
+  background: url("../img/backgrounds/Frame_2.png");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  padding-top: 4rem;
+}
+
+#savings-calculator .card-savings {
+  height: 350px;
+  width: 350px;
+  background-color: white;
+  box-shadow: 10 10 10 rgba(0, 0, 0, 0.3);
+}
+
+/* FORM */
+form {
+  padding: 1rem 0rem;
+}
+
+.form-img {
+  overflow: hidden;
+}
+
+.form-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+form h3 {
+  color: #000;
+  text-align: center;
+}
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+select {
+  width: 50%;
+  background-color: transparent;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+select {
+  border: none;
+  border-bottom: 1px solid #000;
+  padding-bottom: 10px;
+  outline: none;
+}
+
+textarea {
+  border: 1px solid #000;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="number"]::placeholder {
+  font-size: 0.875rem;
+  margin-bottom: 100px;
+}

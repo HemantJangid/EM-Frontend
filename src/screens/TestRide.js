@@ -5,26 +5,32 @@ import Button from "../components/Button";
 import rect from "../assets/img/backgrounds/rect.jpg";
 import man from "../assets/img/backgrounds/man.jpg";
 import common from "../assets/img/backgrounds/common.png";
-
-import "../assets/css/Contact.css";
+import moment from "moment";
 import { useFormik } from "formik";
 import axios from "axios";
 
-function Contact() {
+import "../assets/css/TestRide.css";
+
+function TestRide() {
+  const todays_date_obj = new Date();
+  const todays_date = moment(todays_date_obj).format("YYYY-MM-DD");
+
   const formik = useFormik({
     initialValues: {
-      first_name: "",
-      last_name: "",
-      address: "",
+      name: "",
+      organisation_name: "",
+      city: "",
       email: "",
-      phone: "",
-      query: "",
-      meta: {},
+      phone_number: "",
+      preferred_date: "",
+      preferred_time: "",
+      bike_name: "",
+      dealer_id: 35,
     },
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
       axios
-        .post("http://localhost:8000/v1/user/lead", values)
+        .post("http://localhost:8000/v1/test-ride", values)
         .then((res) => {
           console.log(res);
         })
@@ -38,8 +44,8 @@ function Contact() {
     <div>
       <section id="hero">
         <div className="container">
-          <h3 className="pri">Reach us out at</h3>
-          <h1>info @ emotorad.com</h1>
+          <h3 className="pri">Book a test ride</h3>
+          <h1>Experience unparallel</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
           <Button text="View products" />
         </div>
@@ -52,28 +58,28 @@ function Contact() {
           </div>
           <div className="col-lg-6 align-content-center">
             <form onSubmit={formik.handleSubmit}>
-              <h3 className="mb-5">Ask any query!</h3>
+              <h3 className="mb-5">Book a test ride!</h3>
               <div className="form-row form-group">
                 <div className="col-lg-6">
                   <input
                     className="mb-4"
                     type="text"
-                    name="first_name"
-                    id="first_name"
-                    placeholder="First Name"
+                    name="name"
+                    id="name"
+                    placeholder="Name"
                     onChange={formik.handleChange}
-                    value={formik.values.first_name}
+                    value={formik.values.name}
                   />
                 </div>
                 <div className="col-lg-6">
                   <input
                     className="mb-4"
                     type="text"
-                    name="last_name"
-                    id="last_name"
-                    placeholder="Last Name"
+                    name="organisation_name"
+                    id="organisation_name"
+                    placeholder="Organisation Name"
                     onChange={formik.handleChange}
-                    value={formik.values.last_name}
+                    value={formik.values.organisation_name}
                   />
                 </div>
               </div>
@@ -81,11 +87,11 @@ function Contact() {
                 <input
                   className="mb-4"
                   type="text"
-                  name="address"
-                  id="address"
-                  placeholder="Address"
+                  name="city"
+                  id="city"
+                  placeholder="City"
                   onChange={formik.handleChange}
-                  value={formik.values.address}
+                  value={formik.values.city}
                 />
               </div>
               <div className="form-row form-group">
@@ -104,23 +110,52 @@ function Contact() {
                   <input
                     className="mb-4"
                     type="text"
-                    name="phone"
-                    id="phone"
+                    name="phone_number"
+                    id="phone_number"
                     placeholder="Contact Number"
                     onChange={formik.handleChange}
-                    value={formik.values.phone}
+                    value={formik.values.phone_number}
                   />
                 </div>
               </div>
-              <div className="form-group">
-                <textarea
-                  name="query"
-                  id="query"
-                  rows="7"
-                  placeholder="Query"
+              <div className="form-row form-group">
+                <div className="col-lg-6">
+                  <label for="preferred_date">Date:</label>
+                  <input
+                    className="mb-4"
+                    type="date"
+                    name="preferred_date"
+                    id="preferred_date"
+                    style={{ textTransform: "uppercase" }}
+                    min={todays_date}
+                    onChange={formik.handleChange}
+                    value={formik.values.preferred_date}
+                  />
+                </div>
+                <div className="col-lg-6">
+                  <label for="preferred_time">Time:</label>
+                  <input
+                    className="mb-4"
+                    type="time"
+                    name="preferred_time"
+                    id="preferred_time"
+                    onChange={formik.handleChange}
+                    value={formik.values.preferred_time}
+                  />
+                </div>
+              </div>
+              <div className="form-group mb-5">
+                <label for="bike_name">Choose your bike:</label>
+                <select
+                  id="bike_name"
+                  name="bike_name"
                   onChange={formik.handleChange}
-                  value={formik.values.query}
-                ></textarea>
+                  value={formik.values.bike_name}
+                >
+                  <option value="t_rex">T-Rex</option>
+                  <option value="emx">EMX</option>
+                  <option value="doodle">Doodle</option>
+                </select>
               </div>
               <button
                 type="submit"
@@ -136,4 +171,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default TestRide;
