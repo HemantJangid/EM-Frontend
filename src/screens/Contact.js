@@ -7,8 +7,33 @@ import man from "../assets/img/backgrounds/man.jpg";
 import common from "../assets/img/backgrounds/common.png";
 
 import "../assets/css/Contact.css";
+import { useFormik } from "formik";
+import axios from "axios";
 
 function Contact() {
+  const formik = useFormik({
+    initialValues: {
+      first_name: "",
+      last_name: "",
+      address: "",
+      email: "",
+      phone: "",
+      query: "",
+      meta: {},
+    },
+    onSubmit: (values) => {
+      // alert(JSON.stringify(values, null, 2));
+      axios
+        .post("http://localhost:8000/v1/user/lead", values)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  });
+
   return (
     <div>
       <section id="hero">
@@ -26,25 +51,29 @@ function Contact() {
             <img src={common} alt="Cycle" />
           </div>
           <div className="col-lg-6 align-content-center">
-            <form action="">
+            <form onSubmit={formik.handleSubmit}>
               <h3 className="mb-5">Ask any query!</h3>
               <div className="form-row form-group">
                 <div className="col-lg-6">
                   <input
                     className="mb-4"
                     type="text"
-                    name="fname"
-                    id="fname"
+                    name="first_name"
+                    id="first_name"
                     placeholder="First Name"
+                    onChange={formik.handleChange}
+                    value={formik.values.first_name}
                   />
                 </div>
                 <div className="col-lg-6">
                   <input
                     className="mb-4"
                     type="text"
-                    name="lname"
-                    id="lname"
+                    name="last_name"
+                    id="last_name"
                     placeholder="Last Name"
+                    onChange={formik.handleChange}
+                    value={formik.values.last_name}
                   />
                 </div>
               </div>
@@ -55,6 +84,8 @@ function Contact() {
                   name="address"
                   id="address"
                   placeholder="Address"
+                  onChange={formik.handleChange}
+                  value={formik.values.address}
                 />
               </div>
               <div className="form-row form-group">
@@ -65,15 +96,19 @@ function Contact() {
                     name="email"
                     id="email"
                     placeholder="Email"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
                   />
                 </div>
                 <div className="col-lg-6">
                   <input
                     className="mb-4"
                     type="text"
-                    name="number"
-                    id="number"
+                    name="phone"
+                    id="phone"
                     placeholder="Contact Number"
+                    onChange={formik.handleChange}
+                    value={formik.values.phone}
                   />
                 </div>
               </div>
@@ -83,9 +118,16 @@ function Contact() {
                   id="query"
                   rows="7"
                   placeholder="Query"
+                  onChange={formik.handleChange}
+                  value={formik.values.query}
                 ></textarea>
               </div>
-              <Button text="Enquire" color="black" />
+              <button
+                type="submit"
+                style={{ backgroundColor: "transparent", border: "none" }}
+              >
+                <Button text="Enquire" color="black" />
+              </button>
             </form>
           </div>
         </div>

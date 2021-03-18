@@ -43,6 +43,7 @@ form h3 {
 input[type="text"],
 input[type="email"],
 input[type="date"],
+input[type="time"],
 select {
   width: 100%;
 }
@@ -50,6 +51,7 @@ select {
 input[type="text"],
 input[type="email"],
 input[type="date"],
+input[type="time"],
 select {
   border: none;
   border-bottom: 1px solid #000;
