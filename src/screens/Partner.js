@@ -7,8 +7,31 @@ import man from "../assets/img/backgrounds/man.jpg";
 import common from "../assets/img/backgrounds/common.png";
 
 import "../assets/css/Partner.css";
+import { useFormik } from "formik";
+import axios from "axios";
 
 function Partner() {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      organisation_name: "",
+      address: "",
+      email: "",
+      phone: "",
+      interested_in: "showroom",
+    },
+    onSubmit: (values) => {
+      // alert(JSON.stringify(values, null, 2));
+      axios
+        .post("http://localhost:8000/v1/user/partner", values)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  });
   return (
     <div>
       <section id="hero">
@@ -26,7 +49,7 @@ function Partner() {
             <img src={common} alt="Cycle" />
           </div>
           <div className="col-lg-6 align-content-center">
-            <form action="">
+            <form onSubmit={formik.handleSubmit}>
               <h3 className="mb-5">Fill the form!</h3>
               <div className="form-row form-group">
                 <div className="col-lg-6">
@@ -36,6 +59,8 @@ function Partner() {
                     name="name"
                     id="name"
                     placeholder="Name"
+                    onChange={formik.handleChange}
+                    value={formik.values.name}
                   />
                 </div>
                 <div className="col-lg-6">
@@ -45,6 +70,8 @@ function Partner() {
                     name="organisation_name"
                     id="organisation_name"
                     placeholder="Organisation Name"
+                    onChange={formik.handleChange}
+                    value={formik.values.organisation_name}
                   />
                 </div>
               </div>
@@ -55,6 +82,8 @@ function Partner() {
                   name="address"
                   id="address"
                   placeholder="Address"
+                  onChange={formik.handleChange}
+                  value={formik.values.address}
                 />
               </div>
               <div className="form-row form-group">
@@ -65,28 +94,41 @@ function Partner() {
                     name="email"
                     id="email"
                     placeholder="Email"
+                    onChange={formik.handleChange}
+                    value={formik.values.email}
                   />
                 </div>
                 <div className="col-lg-6">
                   <input
                     className="mb-4"
                     type="text"
-                    name="number"
-                    id="number"
+                    name="phone"
+                    id="phone"
                     placeholder="Contact Number"
+                    onChange={formik.handleChange}
+                    value={formik.values.phone}
                   />
                 </div>
               </div>
               <div className="form-group mb-5">
-                <label for="cars">Choose a car:</label>
-                <select id="cars" name="cars">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="fiat">Fiat</option>
-                  <option value="audi">Audi</option>
+                <label for="cars">Interested in:</label>
+                <select
+                  id="interested_in"
+                  name="interested_in"
+                  onChange={formik.handleChange}
+                  value={formik.values.interested_in}
+                >
+                  <option value="showroom">Exclusive Showroom</option>
+                  <option value="dealership">Dealership</option>
+                  <option value="distributorship">Distributorship</option>
                 </select>
               </div>
-              <Button text="Enquire" color="black" />
+              <button
+                type="submit"
+                style={{ backgroundColor: "transparent", border: "none" }}
+              >
+                <Button text="Enquire" color="black" />
+              </button>
             </form>
           </div>
         </div>

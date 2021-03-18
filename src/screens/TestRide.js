@@ -6,11 +6,10 @@ import rect from "../assets/img/backgrounds/rect.jpg";
 import man from "../assets/img/backgrounds/man.jpg";
 import common from "../assets/img/backgrounds/common.png";
 import moment from "moment";
-import { useFormik, Field, Form } from "formik";
+import { useFormik } from "formik";
+import axios from "axios";
 
 import "../assets/css/TestRide.css";
-import { styled } from "styled-components";
-import { nodeName } from "jquery";
 
 function TestRide() {
   const todays_date_obj = new Date();
@@ -20,15 +19,24 @@ function TestRide() {
     initialValues: {
       name: "",
       organisation_name: "",
-      address: "",
+      city: "",
       email: "",
-      number: "",
-      date: "",
-      time_slot: "",
+      phone_number: "",
+      preferred_date: "",
+      preferred_time: "",
       bike_name: "",
+      dealer_id: 35,
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      axios
+        .post("http://localhost:8000/v1/test-ride", values)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   });
 
@@ -79,11 +87,11 @@ function TestRide() {
                 <input
                   className="mb-4"
                   type="text"
-                  name="address"
-                  id="address"
-                  placeholder="Address"
+                  name="city"
+                  id="city"
+                  placeholder="City"
                   onChange={formik.handleChange}
-                  value={formik.values.address}
+                  value={formik.values.city}
                 />
               </div>
               <div className="form-row form-group">
@@ -102,41 +110,38 @@ function TestRide() {
                   <input
                     className="mb-4"
                     type="text"
-                    name="number"
-                    id="number"
+                    name="phone_number"
+                    id="phone_number"
                     placeholder="Contact Number"
                     onChange={formik.handleChange}
-                    value={formik.values.number}
+                    value={formik.values.phone_number}
                   />
                 </div>
               </div>
               <div className="form-row form-group">
                 <div className="col-lg-6">
-                  <label for="date">Date:</label>
+                  <label for="preferred_date">Date:</label>
                   <input
                     className="mb-4"
                     type="date"
-                    name="date"
-                    id="date"
+                    name="preferred_date"
+                    id="preferred_date"
                     style={{ textTransform: "uppercase" }}
                     min={todays_date}
                     onChange={formik.handleChange}
-                    value={formik.values.date}
+                    value={formik.values.preferred_date}
                   />
                 </div>
-                <div className="col-lg-6 pt-1">
-                  <label for="time_slot">Choose your time slot:</label>
-                  <select
-                    id="time_slot"
-                    name="time_slot"
+                <div className="col-lg-6">
+                  <label for="preferred_time">Time:</label>
+                  <input
+                    className="mb-4"
+                    type="time"
+                    name="preferred_time"
+                    id="preferred_time"
                     onChange={formik.handleChange}
-                    value={formik.values.time_slot}
-                  >
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
+                    value={formik.values.preferred_time}
+                  />
                 </div>
               </div>
               <div className="form-group mb-5">
