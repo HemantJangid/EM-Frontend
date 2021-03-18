@@ -74,6 +74,51 @@ label:focus,
   color: var(--pri);
 }
 
+/* HEADER */
+/* NAVBAR */
+#navbar {
+  top: 0;
+  background: rgba(255, 255, 255, 0);
+  transition: top 0.3s, background 0.3s;
+  z-index: 1000;
+}
+
+.navbar {
+  font-family: var(--sen);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* color: #000; */
+}
+
+.navbar .nav-item .nav-link {
+  color: #fff;
+  padding: 0;
+  transition: all 0.1s linear;
+}
+
+.navbar .nav-item .nav-link:hover {
+  color: #fff;
+  opacity: 0.6;
+}
+
+.navbar-brand {
+  color: #fc8804 !important;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: rgba(0, 0, 0, 0);
+}
+
+.custom-toggler.navbar-toggler:focus {
+  border-color: rgba(0, 0, 0, 0);
+}
+
 /* BUTTON */
 .em-btn {
   display: inline-flex;

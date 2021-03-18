@@ -9,6 +9,8 @@ import common from "../assets/img/backgrounds/common.png";
 import "../assets/css/Contact.css";
 import { useFormik } from "formik";
 import axios from "axios";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function Contact() {
   const formik = useFormik({
@@ -36,6 +38,7 @@ function Contact() {
 
   return (
     <div>
+      <Header />
       <section id="hero">
         <div className="container">
           <h3 className="pri">Reach us out at</h3>
@@ -132,6 +135,7 @@ function Contact() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
