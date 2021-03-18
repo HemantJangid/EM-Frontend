@@ -12,7 +12,7 @@ function Product() {
     return (
         <div>
             <Header />
-            <section id="hero">
+            <section id="product-hero">
                 <div className="container">
                     <h1>T-REX</h1>
                     <div className="buttons">
@@ -28,7 +28,7 @@ function Product() {
 
             <section id="img-banner"></section>
 
-            <section id="info">
+            <section id="product-info">
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-lg-5">

@@ -13,7 +13,7 @@ function About() {
     return (
         <div>
             <Header />
-            <section id="hero">
+            <section id="about-hero">
                 <div className="container">
                     <h3>About</h3>
                     <h1>
@@ -24,7 +24,7 @@ function About() {
                 </div>
             </section>
 
-            <section id="info">
+            <section id="about-info">
                 <h3>A Company with Million Dreams!</h3>
             </section>
 

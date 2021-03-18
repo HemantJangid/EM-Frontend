@@ -1,4 +1,4 @@
-#hero {
+#product-hero {
   height: 70vh;
   padding: 100px 0;
   background: #000;
@@ -8,11 +8,11 @@
   text-align: center;
 }
 
-#hero h1 {
+#product-hero h1 {
   font-size: 14rem;
 }
 
-#hero .buttons {
+#product-hero .buttons {
   display: inline-flex;
   justify-content: center;
 }
@@ -24,15 +24,16 @@
   background-size: cover;
 }
 
-#info {
+#product-info {
   background: #000;
+  padding: 100px 0;
 }
 
-#info h2 {
+#product-info h2 {
   text-align: left;
 }
 
-#info p {
+#product-info p {
   text-align: left;
 }
 
@@ -43,12 +44,16 @@ td {
   min-width: 90px;
 }
 
-#info .content-2 h1 {
+#product-info .content-2 {
+  text-align: center;
+}
+
+#product-info .content-2 h1 {
   font-size: 12rem;
   display: inline-block;
 }
 
-#info .content-2 p {
+#product-info .content-2 p {
   text-align: center;
   display: inline-block;
 }
