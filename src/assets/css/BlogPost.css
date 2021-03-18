@@ -1,0 +1,10 @@
+#post {
+  min-height: 100vh;
+  padding: 100px 0;
+}
+
+#post h2,
+#post p,
+#post h4 {
+  color: #000;
+}
