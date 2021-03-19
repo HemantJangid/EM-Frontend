@@ -54,8 +54,8 @@ function Cart() {
                                         <table className="table">
                                             <thead>
                                                 <tr>
-                                                    <td>Image</td>
-                                                    <td>Product Name</td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td>Color</td>
                                                     <td>Quantity</td>
                                                     <td>Unit Price</td>
@@ -73,20 +73,29 @@ function Cart() {
                                                         <p>Model No. 10343</p>
                                                     </td>
                                                     <td>
-                                                        <select name="">
-                                                            <option value="" selected="selected">Red</option>
-                                                            <option value="">Blue</option>
-                                                        </select>
+                                                        <div className="d-block">
+                                                            <label className="switch">
+                                                                <input type="checkbox" />
+                                                                <span className="slider"></span>
+                                                            </label>
+                                                            <br />
+                                                            <label className="switch">
+                                                                <input type="checkbox" />
+                                                                <span className="slider green"></span>
+                                                            </label>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        + 1 -
+                                                        <div className="d-flex alig-items-center">
+                                                            <button className="mr-2 plusminus">-</button><p className="mb-0">1</p><button className="ml-2 plusminus">+</button>
+                                                        </div>
                                                     </td>
                                                     <td>10000</td>
                                                     <td>$122.21</td>
                                                 </tr>
                                                 <tr>
                                                     <td colSpan="3">
-                                                        <div className="d-flex align-items-center">
+                                                        <div className="d-flex align-items-center promo-code">
                                                             <p className="mr-3 mb-0 text-nowrap">Apply Promo Code</p>
                                                             <input className="form-control" type="text" name="promo" id="promo" />
                                                         </div>
