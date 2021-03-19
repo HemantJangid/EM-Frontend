@@ -11,7 +11,7 @@ import { useFormik } from "formik";
 import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { constants } from "./../constants/RequestUrls";
+import constants from "../constant/RequestUrls";
 
 function Contact() {
   const formik = useFormik({

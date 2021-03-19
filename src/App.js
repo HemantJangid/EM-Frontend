@@ -9,13 +9,14 @@ import Contact from "./screens/Contact";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
+import Cart from './screens/Cart'
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Cart} />
           <Route path="/products" component={Products} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
