@@ -11,6 +11,7 @@ import { useFormik } from "formik";
 import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { constants } from "./../constants/RequestUrls";
 
 function Contact() {
   const formik = useFormik({
@@ -26,7 +27,7 @@ function Contact() {
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
       axios
-        .post("http://localhost:8000/v1/user/lead", values)
+        .post(`${constants.base_url}${constants.contact}`, values)
         .then((res) => {
           console.log(res);
         })

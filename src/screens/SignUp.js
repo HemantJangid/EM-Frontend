@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
 import "../assets/css/Sign.css";
 import { useFormik } from "formik";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+import { constants } from "./../constants/RequestUrls";
 
 function SignUp() {
-  const { signup } = useAuth();
+  const [loading, setLoading] = useState(false);
+  const { signup, currentUser } = useAuth();
   const history = useHistory();
   const formik = useFormik({
     initialValues: {
@@ -18,12 +21,19 @@ function SignUp() {
     },
     onSubmit: async (values) => {
       try {
+        setLoading(true);
         await signup(values.email, values.password);
-        console.log("account created successfully");
-        history.push("/");
+        axios
+          .post(`${constants.base_url}${constants.sign_up}`, {
+            firebase_token: currentUser.getIdToken(),
+          })
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
       } catch {
         console.log("failed to create an account");
       }
+
+      setLoading(false);
     },
   });
   return (
@@ -98,6 +108,7 @@ function SignUp() {
                   </div>
                   <div className="form-group">
                     <input
+                      disabled={loading}
                       className="form-control"
                       type="Submit"
                       value="Create Account"

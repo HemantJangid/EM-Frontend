@@ -1,23 +1,30 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./screens/Home"
-import Products from "./screens/Products"
-import About from "./screens/About"
+import Home from "./screens/Home";
+import Products from "./screens/Products";
+import About from "./screens/About";
 import Contact from "./screens/Contact";
 // import Blog from "./screens/Blog";
 // import Contact from "./screens/Contact";
+import SignIn from "./screens/SignIn";
+import SignUp from "./screens/SignUp";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/products" component={Products} />
-        <Route path="/about" component={About} />
-        <Route path="/contact" component={Contact} />
-        <Route component={Error} />
-      </Switch>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/products" component={Products} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/sign-in" component={SignIn} />
+          <Route path="/sign-up" component={SignUp} />
+          <Route component={Error} />
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
 

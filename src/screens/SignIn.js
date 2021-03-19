@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 import "../assets/css/Sign.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useFormik } from "formik";
 
 function SignIn() {
+  const [loading, setLoading] = useState(false);
+  const { login, currentUser } = useAuth();
+  const history = useHistory();
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: async (values) => {
+      try {
+        setLoading(true);
+        await login(values.email, values.password);
+        console.log("account logged in successfully");
+        // history.push("/");
+      } catch {
+        console.log("failed to create an account");
+      }
+
+      setLoading(false);
+    },
+  });
   return (
     <div>
       <section id="sign">
@@ -22,6 +45,8 @@ function SignIn() {
                       id="email"
                       placeholder="Enter your Email"
                       className="form-control"
+                      onChange={formik.handleChange}
+                      value={formik.values.email}
                     />
                   </div>
                   <div className="form-group">
@@ -31,6 +56,8 @@ function SignIn() {
                       id="password"
                       placeholder="Enter your Password"
                       className="form-control"
+                      onChange={formik.handleChange}
+                      value={formik.values.password}
                     />
                   </div>
                   <div className="form-group">

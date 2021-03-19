@@ -1,5 +1,4 @@
 import React from "react";
-
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
 import rect from "../assets/img/backgrounds/rect.jpg";
@@ -8,8 +7,8 @@ import common from "../assets/img/backgrounds/common.png";
 import moment from "moment";
 import { useFormik } from "formik";
 import axios from "axios";
-
 import "../assets/css/TestRide.css";
+import { constants } from "./../constants/RequestUrls";
 
 function TestRide() {
   const todays_date_obj = new Date();
@@ -30,7 +29,7 @@ function TestRide() {
     onSubmit: (values) => {
       // alert(JSON.stringify(values, null, 2));
       axios
-        .post("http://localhost:8000/v1/test-ride", values)
+        .post(`${constants.base_url}${constants.test_ride}`, values)
         .then((res) => {
           console.log(res);
         })
