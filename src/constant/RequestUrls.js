@@ -5,6 +5,9 @@ const RequestUrls = {
   sign_up: "user/signup",
   test_ride: "test-ride",
   contact: "user/lead",
+  profile: "user/profile",
+  all_vehicles: "product/vehicle/list",
+  product: "product",
 };
 
 export default RequestUrls;

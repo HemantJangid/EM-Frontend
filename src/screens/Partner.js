@@ -9,6 +9,8 @@ import common from "../assets/img/backgrounds/common.png";
 import "../assets/css/Partner.css";
 import { useFormik } from "formik";
 import axios from "axios";
+import Header from "./../components/Header";
+import Footer from "../components/Footer";
 
 function Partner() {
   const formik = useFormik({
@@ -34,6 +36,8 @@ function Partner() {
   });
   return (
     <div>
+      <Header />
+
       <section id="hero">
         <div className="container">
           <h3 className="pri">Partner with us</h3>
@@ -133,6 +137,7 @@ function Partner() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

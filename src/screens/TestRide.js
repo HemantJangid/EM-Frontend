@@ -8,7 +8,9 @@ import moment from "moment";
 import { useFormik } from "formik";
 import axios from "axios";
 import "../assets/css/TestRide.css";
-import { constants } from "./../constants/RequestUrls";
+import constants from "../constant/RequestUrls";
+import Header from "./../components/Header";
+import Footer from "../components/Footer";
 
 function TestRide() {
   const todays_date_obj = new Date();
@@ -41,6 +43,7 @@ function TestRide() {
 
   return (
     <div>
+      <Header />
       <section id="hero">
         <div className="container">
           <h3 className="pri">Book a test ride</h3>
@@ -166,6 +169,7 @@ function TestRide() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

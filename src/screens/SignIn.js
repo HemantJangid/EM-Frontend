@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import "../assets/css/Sign.css";
 import { Link, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
+import { auth } from "./../firebase";
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -27,6 +28,7 @@ function SignIn() {
       setLoading(false);
     },
   });
+  // console.log(currentUser.getIdToken());
   return (
     <div>
       <section id="sign">
@@ -64,7 +66,7 @@ function SignIn() {
                     <input
                       className="form-control"
                       type="Submit"
-                      value="Sign In"
+                      defaultValue="Sign In"
                       name="submit"
                     />
                   </div>
