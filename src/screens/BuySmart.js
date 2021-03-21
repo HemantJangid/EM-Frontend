@@ -9,6 +9,8 @@ import moment from "moment";
 import { useFormik, Field, Form } from "formik";
 
 import "../assets/css/BuySmart.css";
+import Header from "./../components/Header";
+import Footer from "../components/Footer";
 
 function BuySmart() {
   const todays_date_obj = new Date();
@@ -32,6 +34,8 @@ function BuySmart() {
 
   return (
     <div>
+      <Header />
+
       <section id="hero">
         <div className="container">
           <h3 className="pri">Book a test ride</h3>
@@ -119,6 +123,7 @@ function BuySmart() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

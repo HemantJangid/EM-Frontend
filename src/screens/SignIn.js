@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
-  const { login, currentUser } = useAuth();
+  const { login } = useAuth();
   const history = useHistory();
   const formik = useFormik({
     initialValues: {
@@ -18,15 +18,16 @@ function SignIn() {
       try {
         setLoading(true);
         await login(values.email, values.password);
-        console.log("account logged in successfully");
-        // history.push("/");
+        console.log("logged in successfully");
+        history.push("/products");
       } catch {
-        console.log("failed to create an account");
+        console.log("failed to login to the account");
       }
 
       setLoading(false);
     },
   });
+  // console.log(currentUser.getIdToken());
   return (
     <div>
       <section id="sign">
@@ -34,7 +35,7 @@ function SignIn() {
           <div className="row justify-content-center">
             <div className="col-lg-6">
               <div className="form-box">
-                <form action="">
+                <form onSubmit={formik.handleSubmit}>
                   <h2 className="mb-4">
                     Sign <span className="pri">In</span>
                   </h2>
@@ -62,9 +63,10 @@ function SignIn() {
                   </div>
                   <div className="form-group">
                     <input
+                      disabled={loading}
                       className="form-control"
                       type="Submit"
-                      value="Sign In"
+                      defaultValue="Sign In"
                       name="submit"
                     />
                   </div>
@@ -73,7 +75,7 @@ function SignIn() {
                     <b>Forgot Password?</b>
                   </p>
                   <p>
-                    Don't have an account? <Link to="/sign-up">Sign Up</Link>
+                    Don't have an account? <Link to="/signup">Sign Up</Link>
                   </p>
                   <hr />
                   {/* <p>
