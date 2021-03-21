@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/Header'
 import '../assets/css/Cart.css'
 import dots from '../assets/img/design/dots.svg'
@@ -7,6 +7,16 @@ import Footer from '../components/Footer'
 import camera from '../assets/img/design/camera.svg'
 
 function Cart() {
+    const [qty, setQty] = useState(1);
+
+    const handleIncrement = () => {
+        setQty(prevQty => prevQty + 1);
+    };
+
+    const handleDecrement = () => {
+        if (qty > 1) setQty(prevQty => prevQty - 1);
+    };
+
     return (
         <div>
             <Header />
@@ -54,8 +64,7 @@ function Cart() {
                                         <table className="table">
                                             <thead>
                                                 <tr>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td colSpan="2"></td>
                                                     <td>Color</td>
                                                     <td>Quantity</td>
                                                     <td>Unit Price</td>
@@ -74,20 +83,15 @@ function Cart() {
                                                     </td>
                                                     <td>
                                                         <div className="d-block">
-                                                            <label className="switch">
-                                                                <input type="checkbox" />
-                                                                <span className="slider"></span>
-                                                            </label>
-                                                            <br />
-                                                            <label className="switch">
-                                                                <input type="checkbox" />
-                                                                <span className="slider green"></span>
-                                                            </label>
+                                                            <div id="radio-color">
+                                                                <label class="red"><input type="radio" name="toggle" /><span></span></label>
+                                                                <label class="green"><input type="radio" name="toggle" /><span></span></label>
+                                                            </div>
                                                         </div>
                                                     </td>
                                                     <td>
                                                         <div className="d-flex alig-items-center">
-                                                            <button className="mr-2 plusminus">-</button><p className="mb-0">1</p><button className="ml-2 plusminus">+</button>
+                                                            <button onClick={handleDecrement} className="mr-2 plusminus">-</button><p className="mb-0">{qty}</p><button onClick={handleIncrement} className="ml-2 plusminus">+</button>
                                                         </div>
                                                     </td>
                                                     <td>10000</td>
@@ -97,7 +101,8 @@ function Cart() {
                                                     <td colSpan="3">
                                                         <div className="d-flex align-items-center promo-code">
                                                             <p className="mr-3 mb-0 text-nowrap">Apply Promo Code</p>
-                                                            <input className="form-control" type="text" name="promo" id="promo" />
+                                                            <input className="form-control mr-3" type="text" name="promo" id="promo" />
+                                                            <input type="submit" value="Apply" name="submit" className="form-control" />
                                                         </div>
                                                     </td>
                                                     <td></td>
@@ -107,6 +112,12 @@ function Cart() {
                                                 </tr>
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div className="d-flex my-4">
+                                        <a href="" className="mr-4">Credit/Debit Card</a>
+                                        <a href="" className="mr-4">UPI</a>
+                                        <a href="" className="mr-4">Cash on Delivery</a>
+                                        <a href="" className="mr-4">Get on EMI*</a>
                                     </div>
                                     <center>
                                         <Button text="Proceed to checkout" />
