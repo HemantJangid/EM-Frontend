@@ -5,7 +5,6 @@ import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import { useAuth } from "../contexts/AuthContext";
-import camera from "../assets/img/design/camera.svg";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "./../redux/actions/cart";
@@ -14,6 +13,16 @@ import constants from "../constant/RequestUrls";
 import axios from "axios";
 
 function Cart() {
+  const [qty, setQty] = useState(1);
+
+  const handleIncrement = () => {
+    setQty((prevQty) => prevQty + 1);
+  };
+
+  const handleDecrement = () => {
+    if (qty > 1) setQty((prevQty) => prevQty - 1);
+  };
+
   const [reRender, setReRender] = useState(true);
   const { logout } = useAuth();
   const history = useHistory();
@@ -53,37 +62,32 @@ function Cart() {
         "Content-Type": "application/json",
         Authorization: idToken,
       };
-      items.length > 0 &&
-        axios
-          .post(
-            `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
-            { quantity: 1 },
-            { headers }
-          )
-          .then((res) => console.log(res))
-          .catch((err) => console.log(err));
+      axios
+        .post(
+          `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
+          { quantity: 1 },
+          { headers }
+        )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
     });
   }
 
   function removeItemFromCart(i) {
+    changeQuantity(i, "decrease");
+    dispatch(addItem(items));
     auth.currentUser.getIdToken(true).then((idToken) => {
       const headers = {
         "Content-Type": "application/json",
         Authorization: idToken,
       };
-      items.length > 0 &&
-        axios
-          .delete(
-            `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
-            { headers }
-          )
-          .then((res) => {
-            {
-              changeQuantity(i, "decrease");
-              dispatch(addItem(items));
-            }
-          })
-          .catch((err) => console.log(err));
+      axios
+        .delete(
+          `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
+          { headers }
+        )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
     });
   }
 
@@ -101,27 +105,6 @@ function Cart() {
       if (items[i].quantity === 1) items.splice(i, 1);
       else items[i].quantity -= 1;
     }
-  }
-
-  function handleCheckout() {
-    auth.currentUser.getIdToken(true).then((idToken) => {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: idToken,
-      };
-      axios
-        .post(
-          `${constants.base_url}${constants.order}`,
-          { user_address_uuid: "e3eeef77-c213-4748-a5a9-af6ba2b81373" },
-          {
-            headers,
-          }
-        )
-        .then((res) => {
-          history.push("/");
-        })
-        .catch((err) => console.log(err));
-    });
   }
 
   return (
@@ -188,8 +171,7 @@ function Cart() {
                     <table className="table">
                       <thead>
                         <tr>
-                          <td></td>
-                          <td></td>
+                          <td colSpan="2"></td>
                           <td>Color</td>
                           <td>Quantity</td>
                           <td>Unit Price</td>
@@ -216,42 +198,56 @@ function Cart() {
                               </td>
                               <td>
                                 <div className="d-block">
-                                  <label className="switch">
-                                    <input type="checkbox" />
-                                    <span className="slider"></span>
-                                  </label>
-                                  <br />
-                                  <label className="switch">
-                                    <input type="checkbox" />
-                                    <span className="slider green"></span>
-                                  </label>
+                                  <div id="donate">
+                                    <label class="red">
+                                      <input type="radio" name="toggle" />
+                                      <span></span>
+                                    </label>
+                                    <label class="green">
+                                      <input type="radio" name="toggle" />
+                                      <span></span>
+                                    </label>
+                                  </div>
                                 </div>
                               </td>
                               <td>
-                                <div className="d-flex alig-items-center">
+                                {/* <div className="d-flex alig-items-center">
                                   <button
+                                    onClick={handleDecrement}
                                     className="mr-2 plusminus"
-                                    onClick={() => {
-                                      // console.log("decrease quantity");
-                                      removeItemFromCart(index);
-                                      setReRender(!reRender);
-                                    }}
                                   >
                                     -
                                   </button>
-                                  <p className="mb-0">{item.quantity}</p>
+                                  <p className="mb-0">{qty}</p>
                                   <button
+                                    onClick={handleIncrement}
                                     className="ml-2 plusminus"
-                                    onClick={() => {
-                                      // console.log("increase quantity");
-                                      addItemToCart(index);
-                                      setReRender(!reRender);
-                                      // console.log(items);
-                                    }}
                                   >
                                     +
                                   </button>
-                                </div>
+                                </div> */}
+                                <button
+                                  className="mr-2 plusminus"
+                                  onClick={() => {
+                                    // console.log("decrease quantity");
+                                    removeItemFromCart(index);
+                                    setReRender(!reRender);
+                                  }}
+                                >
+                                  -
+                                </button>
+                                <p className="mb-0">{item.quantity}</p>
+                                <button
+                                  className="ml-2 plusminus"
+                                  onClick={() => {
+                                    // console.log("increase quantity");
+                                    addItemToCart(index);
+                                    setReRender(!reRender);
+                                    // console.log(items);
+                                  }}
+                                >
+                                  +
+                                </button>
                               </td>
                               <td>{item.product.selling_price}</td>
                               <td>
@@ -262,17 +258,23 @@ function Cart() {
                         })}
                         <tr>
                           <td colSpan="3">
-                            {/* <div className="d-flex align-items-center promo-code">
+                            <div className="d-flex align-items-center promo-code">
                               <p className="mr-3 mb-0 text-nowrap">
                                 Apply Promo Code
                               </p>
                               <input
-                                className="form-control"
+                                className="form-control mr-3"
                                 type="text"
                                 name="promo"
                                 id="promo"
                               />
-                            </div> */}
+                              <input
+                                type="submit"
+                                value="Apply"
+                                name="submit"
+                                className="form-control"
+                              />
+                            </div>
                           </td>
                           <td></td>
                           <td colSpan="1">Total</td>
@@ -283,14 +285,14 @@ function Cart() {
                       </tbody>
                     </table>
                   </div>
+                  <div className="d-flex">
+                    <a href="">Debit Card</a>
+                    <a href="">UPI</a>
+                    <a href="">Cash on delivery</a>
+                    <a href="">EMI*</a>
+                  </div>
                   <center>
-                    <button
-                      disabled={!(items.length > 0)}
-                      onClick={() => handleCheckout()}
-                      style={{ backgroundColor: "transparent", border: "none" }}
-                    >
-                      <Button text="Proceed to checkout" />
-                    </button>
+                    <Button text="Proceed to checkout" />
                   </center>
                 </div>
               </div>
