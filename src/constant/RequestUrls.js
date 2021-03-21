@@ -7,6 +7,7 @@ const RequestUrls = {
   all_vehicles: "product/vehicle/list",
   product: "product",
   cart: "cart",
+  order: "order",
 };
 
 export default RequestUrls;

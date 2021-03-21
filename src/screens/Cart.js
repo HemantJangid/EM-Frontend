@@ -53,32 +53,37 @@ function Cart() {
         "Content-Type": "application/json",
         Authorization: idToken,
       };
-      axios
-        .post(
-          `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
-          { quantity: 1 },
-          { headers }
-        )
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+      items.length > 0 &&
+        axios
+          .post(
+            `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
+            { quantity: 1 },
+            { headers }
+          )
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
     });
   }
 
   function removeItemFromCart(i) {
-    changeQuantity(i, "decrease");
-    dispatch(addItem(items));
     auth.currentUser.getIdToken(true).then((idToken) => {
       const headers = {
         "Content-Type": "application/json",
         Authorization: idToken,
       };
-      axios
-        .delete(
-          `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
-          { headers }
-        )
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+      items.length > 0 &&
+        axios
+          .delete(
+            `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
+            { headers }
+          )
+          .then((res) => {
+            {
+              changeQuantity(i, "decrease");
+              dispatch(addItem(items));
+            }
+          })
+          .catch((err) => console.log(err));
     });
   }
 
@@ -96,6 +101,27 @@ function Cart() {
       if (items[i].quantity === 1) items.splice(i, 1);
       else items[i].quantity -= 1;
     }
+  }
+
+  function handleCheckout() {
+    auth.currentUser.getIdToken(true).then((idToken) => {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: idToken,
+      };
+      axios
+        .post(
+          `${constants.base_url}${constants.order}`,
+          { user_address_uuid: "e3eeef77-c213-4748-a5a9-af6ba2b81373" },
+          {
+            headers,
+          }
+        )
+        .then((res) => {
+          history.push("/");
+        })
+        .catch((err) => console.log(err));
+    });
   }
 
   return (
@@ -258,7 +284,13 @@ function Cart() {
                     </table>
                   </div>
                   <center>
-                    <Button text="Proceed to checkout" />
+                    <button
+                      disabled={!(items.length > 0)}
+                      onClick={() => handleCheckout()}
+                      style={{ backgroundColor: "transparent", border: "none" }}
+                    >
+                      <Button text="Proceed to checkout" />
+                    </button>
                   </center>
                 </div>
               </div>

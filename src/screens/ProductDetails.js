@@ -17,6 +17,7 @@ import { auth } from "./../firebase";
 function ProductDetails(props) {
   const [productContent, setProductContent] = useState();
   const history = useHistory();
+  const [reRender, setReRender] = useState(true);
   const location = useLocation();
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function ProductDetails(props) {
         if (res.status === 200) {
           setProductContent(res.data.payload);
           setLoading(false);
+          setReRender(!reRender);
         }
       })
       .catch((err) => {
@@ -70,14 +72,15 @@ function ProductDetails(props) {
                               "Content-Type": "application/json",
                               Authorization: idToken,
                             };
-                            axios
-                              .post(
-                                `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
-                                { quantity: 1 },
-                                { headers }
-                              )
-                              .then((res) => history.push("/cart"))
-                              .catch((err) => console.log(err));
+                            props.location.state &&
+                              axios
+                                .post(
+                                  `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
+                                  { quantity: 1 },
+                                  { headers }
+                                )
+                                .then((res) => history.push("/cart"))
+                                .catch((err) => console.log(err));
                           })
                         : history.push("/cart");
                     }}

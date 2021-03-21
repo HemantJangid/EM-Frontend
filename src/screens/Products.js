@@ -13,6 +13,7 @@ import ProductDetails from "./ProductDetails";
 
 function AllProducts({ match }) {
   const [products, setProducts] = useState();
+  const [reRender, setReRender] = useState(true);
 
   useEffect(() => {
     axios
@@ -20,6 +21,7 @@ function AllProducts({ match }) {
       .then((res) => {
         if (res.status === 200) {
           setProducts(res.data.payload.products);
+          setReRender(!reRender);
         }
       })
       .catch((err) => {
