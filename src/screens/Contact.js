@@ -40,10 +40,10 @@ function Contact() {
   return (
     <div>
       <Header />
-      <section id="hero">
+      <section id="contact-hero">
         <div className="container">
           <h3 className="pri">Reach us out at</h3>
-          <h1>info @ emotorad.com</h1>
+          <h1>info @ emotorad . com</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
           <Button text="View products" />
         </div>
