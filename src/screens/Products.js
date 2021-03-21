@@ -43,7 +43,10 @@ function AllProducts({ match }) {
               <Button text="download brochure" />
               <Link
                 key={product.slug}
-                to={`/${product.slug}`}
+                to={{
+                  pathname: `/${product.slug}`,
+                  state: { product: product },
+                }}
                 style={{
                   textDecoration: "none",
                 }}

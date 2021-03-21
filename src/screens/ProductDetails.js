@@ -9,22 +9,31 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
 import constants from "../constant/RequestUrls";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addItem } from "./../redux/actions/cart";
+import { auth } from "./../firebase";
 
 function ProductDetails(props) {
-  // console.log(props);
   const [productContent, setProductContent] = useState();
   const history = useHistory();
+  const location = useLocation();
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.cartReducer);
+  console.log(items);
 
   useEffect(() => {
+    console.log("use effect is running");
     axios
       .get(
         `${constants.base_url}${constants.product}/${props.match.params.productSlug}/detail`
       )
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         if (res.status === 200) {
           setProductContent(res.data.payload);
+          setLoading(false);
         }
       })
       .catch((err) => {
@@ -54,9 +63,26 @@ function ProductDetails(props) {
                 <div className="mx-3">
                   <button
                     style={{ backgroundColor: "transparent", border: "none" }}
-                    onClick={() => history.push("/cart")}
+                    onClick={() => {
+                      auth.currentUser
+                        ? auth.currentUser.getIdToken(true).then((idToken) => {
+                            const headers = {
+                              "Content-Type": "application/json",
+                              Authorization: idToken,
+                            };
+                            axios
+                              .post(
+                                `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
+                                { quantity: 1 },
+                                { headers }
+                              )
+                              .then((res) => history.push("/cart"))
+                              .catch((err) => console.log(err));
+                          })
+                        : history.push("/cart");
+                    }}
                   >
-                    <Button text="Buy now" />
+                    <Button text="Add to cart" />
                   </button>
                 </div>
               </div>

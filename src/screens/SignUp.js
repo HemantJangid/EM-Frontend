@@ -145,7 +145,7 @@ function SignUp() {
                   </div>
                   <hr />
                   <p>
-                    Already have an account? <Link to="/sign-in">Sign In</Link>
+                    Already have an account? <Link to="/signin">Sign In</Link>
                   </p>
                   <hr />
                   {/* <p>Or Sign up with <a href="">Facebook</a> or <a href="">Google</a></p> */}

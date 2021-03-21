@@ -12,24 +12,32 @@ import SignUp from "./screens/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
 import Cart from "./screens/Cart";
 import TestRide from "./screens/TestRide";
+import PrivateRoute from "./components/PrivateRoute";
+import { Provider } from "react-redux";
+import { store, persistor } from "./redux/store/index";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/sign-in" component={SignIn} />
-          <Route path="/sign-up" component={SignUp} />
-          <Route path="/cart" component={Cart} />
-          <Route path="/testride" component={TestRide} />
-          {/* <Route component={Error} /> */}
-          <Route path="/products" component={AllProducts} />
-          <Route path="/:productSlug" component={ProductDetails} />
-        </Switch>
-      </Router>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/signin" component={SignIn} />
+              <Route path="/signup" component={SignUp} />
+              <PrivateRoute path="/cart" component={Cart} />
+              <Route path="/testride" component={TestRide} />
+              {/* <Route component={Error} /> */}
+              <Route path="/products" component={AllProducts} />
+              <Route path="/:productSlug" component={ProductDetails} />
+            </Switch>
+          </Router>
+        </PersistGate>
+      </Provider>
     </AuthProvider>
   );
 }

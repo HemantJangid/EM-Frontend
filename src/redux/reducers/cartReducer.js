@@ -1,13 +1,13 @@
 import { ADD_ITEM } from "./../actions/types";
 
 const initialState = {
-  cartDetails: "",
+  items: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_ITEM:
-      return { ...state, cartDetails: action.data };
+      return { ...state, items: action.data };
 
     default:
       return state;
