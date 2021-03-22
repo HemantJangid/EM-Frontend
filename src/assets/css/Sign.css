@@ -65,3 +65,8 @@
   color: var(--white);
   text-decoration: underline;
 }
+
+#sign label {
+  color: var(--white);
+  font-family: var(--sen);
+}
