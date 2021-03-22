@@ -1,4 +1,4 @@
-#hero {
+#test-hero {
   background: url("../img/backgrounds/contact.jpg");
   background-position: center;
   background-size: cover;
@@ -7,18 +7,40 @@
   align-items: center;
 }
 
-#hero h1 {
+#test-hero h1 {
   font-weight: 400;
   font-size: 5rem;
   text-transform: uppercase;
   margin-top: -10px;
   /* margin-bottom: -10px; */
   margin-left: -8px;
+  font-family: var(--opensans);
 }
 
-#hero h3 {
+#test-hero h3 {
   letter-spacing: 0.2rem;
   text-transform: uppercase;
+  font-family: var(--opensans);
+}
+
+@media screen and (max-width: 540px) {
+  #test-hero h1 {
+    font-size: 4rem;
+  }
+
+  #test-hero h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #test-hero h1 {
+    font-size: 3.2rem;
+  }
+
+  #test-hero h3 {
+    font-size: 1.2rem;
+  }
 }
 
 /* FORM */

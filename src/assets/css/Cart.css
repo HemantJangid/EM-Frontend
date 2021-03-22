@@ -64,14 +64,26 @@
   padding: 0;
 }
 
-#cart .promo-code input {
+#cart .promo-code input[type="text"] {
   background: transparent;
   border: 1px solid white;
   border-radius: 0;
   color: var(--white);
 }
 
+#cart .promo-code input[type="submit"] {
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 0;
+  color: var(--white);
+  max-width: 100px;
+}
+
 #cart a {
   color: var(--white);
   font-family: var(--sen);
+}
+
+#cart .cart-img {
+  max-width: 150px;
 }

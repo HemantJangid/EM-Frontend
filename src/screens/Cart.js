@@ -137,7 +137,7 @@ function Cart() {
       <section id="cart">
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-lg-3 bg-dark">
+            <div className="col-lg-3 col-md-12 bg-dark mx-md-0 mx-sm-4">
               <div className="my-5">
                 <h2 className="text-center">Aditya Pathak</h2>
               </div>
@@ -176,7 +176,7 @@ function Cart() {
               </div>
             </nav> */}
 
-            <main role="main" className="col-md-9 col-lg-9 px-md-4">
+            <main role="main" className="col-md-12 my-3 col-lg-9 px-md-4">
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                 <div>
                   <h4>Final touch up</h4>
@@ -188,7 +188,7 @@ function Cart() {
                     await logout();
                     history.push("/");
                   }}
-                  style={{ backgroundColor: "transparent", border: "none" }}
+                  className="bg-transparent border-0 my-3"
                 >
                   <Button text="Log out" />
                 </button>
@@ -216,7 +216,7 @@ function Cart() {
                                 <a href="#">
                                   <img
                                     src={`${item.product.image_url}`}
-                                    className="img-fluid"
+                                    className="img-fluid cart-img"
                                     alt={item.product.name && item.product.name}
                                   />
                                 </a>
@@ -224,7 +224,6 @@ function Cart() {
                               <td>
                                 <h4>{item.product.name}</h4>
                                 <p>
-                                  Model No.{" "}
                                   {item.product.model_number &&
                                     item.product.model_number}
                                 </p>
@@ -284,7 +283,7 @@ function Cart() {
                           );
                         })}
                         <tr>
-                          <td colSpan="3">
+                          <td colSpan="4">
                             <div className="d-flex align-items-center promo-code">
                               <p className="mr-3 mb-0 text-nowrap">
                                 Apply Promo Code
@@ -300,10 +299,11 @@ function Cart() {
                                 value="Apply"
                                 name="submit"
                                 className="form-control"
+                                width="200"
                               />
                             </div>
                           </td>
-                          <td></td>
+
                           <td colSpan="1">Total</td>
                           <td>
                             <b>{totalAmount()}</b>
@@ -320,7 +320,7 @@ function Cart() {
                   </div>
                   <center>
                     <button
-                      className="ml-2 plusminus"
+                      className="bg-transparent border-0 mt-5"
                       onClick={() => {
                         handleCheckout();
                       }}
