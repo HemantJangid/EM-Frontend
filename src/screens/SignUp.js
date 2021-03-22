@@ -56,7 +56,7 @@ function SignUp() {
           })
           .catch((err) => console.log("could not get token: ", err));
 
-        history.push("/cart");
+        history.push("/products");
       } catch {
         console.log("failed to create an account");
       }
