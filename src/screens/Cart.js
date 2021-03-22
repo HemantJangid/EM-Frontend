@@ -216,13 +216,17 @@ function Cart() {
                                   <img
                                     src={`${item.product.image_url}`}
                                     className="img-fluid"
-                                    alt={item.product.name}
+                                    alt={item.product.name && item.product.name}
                                   />
                                 </a>
                               </td>
                               <td>
                                 <h4>{item.product.name}</h4>
-                                <p>Model No. {item.product.model_number}</p>
+                                <p>
+                                  Model No.{" "}
+                                  {item.product.model_number &&
+                                    item.product.model_number}
+                                </p>
                               </td>
                               <td>
                                 <div className="d-block">
@@ -250,7 +254,9 @@ function Cart() {
                                   >
                                     -
                                   </button>
-                                  <p className="mb-0">{item.quantity}</p>
+                                  <p className="mb-0">
+                                    {item.quantity && item.quantity}
+                                  </p>
                                   <button
                                     className="ml-2 plusminus"
                                     onClick={() => {
@@ -264,9 +270,14 @@ function Cart() {
                                   </button>
                                 </div>
                               </td>
-                              <td>{item.product.selling_price}</td>
                               <td>
-                                {item.product.selling_price * item.quantity}
+                                {item.product.selling_price &&
+                                  item.product.selling_price}
+                              </td>
+                              <td>
+                                {item.product.selling_price &&
+                                  item.quantity &&
+                                  item.product.selling_price * item.quantity}
                               </td>
                             </tr>
                           );

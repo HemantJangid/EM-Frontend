@@ -48,7 +48,7 @@ function ProductDetails(props) {
     <div>
       <Header />
 
-      {productContent && (
+      {productContent != undefined && productContent != null && (
         <>
           <section id="product-hero">
             <div className="container">
