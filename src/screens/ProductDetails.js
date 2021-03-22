@@ -150,7 +150,7 @@ function ProductDetails(props) {
                   <div className="done-box">
                     <img src={tyres} alt="Neco" className="img-fluid" />
                     <h4>
-                      <span className="pri">26 inch</span> diameter and{" "}
+                      <span className="pri">26 inch</span> diameter and
                       <span className="pri">2 inch</span> wide heavy duty Tyres
                     </h4>
                   </div>

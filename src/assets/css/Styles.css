@@ -76,35 +76,25 @@ label:focus,
 
 /* HEADER */
 /* NAVBAR */
-#navbar {
-  top: 0;
-  background: rgba(255, 255, 255, 0);
-  transition: top 0.3s, background 0.3s;
-  z-index: 1000;
-}
 
 .navbar {
   font-family: var(--sen);
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  /* color: #000; */
+  color: var(--white);
+  background: linear-gradient(to bottom, #000, rgba(0, 0, 0, 0));
 }
 
 .navbar .nav-item .nav-link {
   color: #fff;
-  padding: 0;
   transition: all 0.1s linear;
 }
 
 .navbar .nav-item .nav-link:hover {
   color: #fff;
   opacity: 0.6;
-}
-
-.navbar-brand {
-  color: #fc8804 !important;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -117,6 +107,11 @@ label:focus,
 
 .custom-toggler.navbar-toggler:focus {
   border-color: rgba(0, 0, 0, 0);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
 }
 
 /* BUTTON */

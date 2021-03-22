@@ -1,8 +1,6 @@
 import React from "react";
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
-import rect from "../assets/img/backgrounds/rect.jpg";
-import man from "../assets/img/backgrounds/man.jpg";
 import common from "../assets/img/backgrounds/common.png";
 import moment from "moment";
 import { useFormik } from "formik";

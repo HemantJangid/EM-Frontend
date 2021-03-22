@@ -4,6 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import { Parallax } from "react-parallax";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Vimeo from '@u-wave/react-vimeo';
 
 import "../assets/css/Home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -53,7 +54,7 @@ function Home() {
         </div>
       </section>
 
-      <Parallax bgImage={numbers} bgImageAlt="the cat" strength={100}>
+      <Parallax bgImage={numbers} bgImageAlt="the cat" strength={500}>
         <section id="numbers">
           <div className="container">
             <div className="row justify-content-center">
@@ -78,30 +79,38 @@ function Home() {
       </Parallax>
 
       <section id="video">
-        <div className="container">
-          <div className="video-box">
-            <img src={play} alt="Play" />
-          </div>
-        </div>
+        <Vimeo
+          video="https://vimeo.com/509675910"
+          autoplay="false"
+          responsive="true"
+          // controls="false"
+          // autoplay="true"
+          // showByline="false"
+          // color="#68db85"
+          background="true"
+        />
       </section>
 
       <section id="products">
         <div className="row justify-content-center no-gutters">
-          <div className="col-lg-6">
+          <div className="col-lg-6 position-relative overflow-hidden">
+            <div className="emx-image-holder"></div>
             <div className="emx-box pl-3 pl-sm-5">
               <h2>EMX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
               <Button text="Explore models" />
             </div>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-6 overflow-hidden">
+            <div className="doodle-image-holder"></div>
             <div className="doodle-box pl-3 pl-sm-5">
               <h2>Doodle</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
               <Button text="Explore models" />
             </div>
           </div>
-          <div className="col-lg-12">
+          <div className="col-lg-12 overflow-hidden">
+            <div className="trex-image-holder"></div>
             <div className="trex-box pl-3 pl-sm-5">
               <h2>T-REX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />

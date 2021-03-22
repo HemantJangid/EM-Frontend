@@ -17,6 +17,8 @@ import { store, persistor } from "./redux/store/index";
 import { PersistGate } from "redux-persist/integration/react";
 import SelectAddress from "./screens/SelectAddress";
 import AddAddress from "./screens/AddAddress";
+import Footer from "./components/Footer";
+import Careers from "./screens/Careers";
 
 function App() {
   return (
@@ -25,11 +27,12 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <Router>
             <Switch>
-              <Route exact path="/" component={Blog} />
+              <Route exact path="/" component={Home} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
+              {/* <Route path="/pd" component={ProductDetails} /> */}
               <PrivateRoute path="/cart" component={Cart} />
               <PrivateRoute path="/select-address" component={SelectAddress} />
               <PrivateRoute path="/add-address" component={AddAddress} />

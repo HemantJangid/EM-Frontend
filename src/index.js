@@ -6,8 +6,11 @@ import App from "./App";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/css/Styles.css";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
-// AOS.init();
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init({
+  duration: 1000,
+  delay: 100,
+});
 
 ReactDOM.render(<App />, document.getElementById("root"));

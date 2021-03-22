@@ -101,6 +101,10 @@
   background: #000;
 }
 
+#vmion p {
+  font-size: 0.875rem;
+}
+
 /* TEAM */
 #team {
   padding: 100px 0;
