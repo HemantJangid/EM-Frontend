@@ -24,6 +24,11 @@
   background-repeat: no-repeat;
   position: relative;
 }
+#p1 h1,
+#p2 h1,
+#p3 h1 {
+  max-width: 500px;
+}
 
 .price {
   position: absolute;
@@ -36,6 +41,17 @@
   border-bottom-right-radius: 50px;
   font-weight: 600;
   font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .price {
+    top: 9%;
+  }
+  #p1 h1,
+  #p2 h1,
+  #p3 h1 {
+    font-size: 2rem;
+  }
 }
 
 .red {

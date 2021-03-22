@@ -5,7 +5,6 @@ import AllProducts from "./screens/Products";
 import ProductDetails from "./screens/ProductDetails";
 import About from "./screens/About";
 import Contact from "./screens/Contact";
-// import Blog from "./screens/Blog";
 // import Contact from "./screens/Contact";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
@@ -24,7 +23,7 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <Router>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={ProductDetails} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
               <Route path="/signin" component={SignIn} />

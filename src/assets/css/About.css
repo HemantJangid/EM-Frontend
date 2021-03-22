@@ -15,11 +15,73 @@
   margin-top: -30px;
   margin-bottom: -10px;
   margin-left: -14px;
+  font-family: var(--opensans);
 }
 
 #about-hero h3 {
-  letter-spacing: 0.2rem;
+  /* letter-spacing: 0.2rem; */
   text-transform: uppercase;
+  font-family: var(--opensans);
+}
+
+@media screen and (max-width: 1024px) {
+  #about-hero h1 {
+    font-size: 8rem;
+  }
+
+  /* #about-hero h3 {
+  } */
+}
+
+@media screen and (max-width: 768px) {
+  #about-hero h1 {
+    font-size: 6rem;
+    margin-bottom: 0;
+    margin-left: -10px;
+    margin-top: -20px;
+  }
+
+  /* #about-hero h3 {
+  } */
+}
+
+@media screen and (max-width: 540px) {
+  #about-hero h1 {
+    font-size: 5rem;
+    margin-bottom: 5px;
+    margin-left: -8px;
+    margin-top: -15px;
+  }
+
+  #about-hero h3 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  #about-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    margin-left: -5px;
+    margin-top: -10px;
+  }
+
+  #about-hero h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #about-hero h1 {
+    font-size: 3.2rem;
+    margin-bottom: 10px;
+    margin-left: -5px;
+    margin-top: -10px;
+  }
+
+  #about-hero h3 {
+    font-size: 1.4rem;
+  }
 }
 
 /* INFO */
@@ -34,8 +96,7 @@
 }
 
 /* MISSION VISION */
-#mission,
-#vision {
+#vmion {
   padding: 100px 0;
   background: #000;
 }

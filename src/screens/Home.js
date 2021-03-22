@@ -3,6 +3,7 @@ import Button from "../components/Button";
 import { Carousel } from "react-responsive-carousel";
 import { Parallax } from "react-parallax";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 import "../assets/css/Home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -23,7 +24,7 @@ function Home() {
         <div className="container">
           <h3>Ride The</h3>
           <img src={electric} alt="Electric" className="img-fluid electric" />
-          <h2>Revolution</h2>
+          <h2 className="mt-2">Revolution</h2>
           <img src={dots} alt="Dots" className="dots" />
           <div className="hero-btn">
             <Button text="View Products" />
@@ -32,7 +33,7 @@ function Home() {
       </section>
 
       <section id="info">
-        <div className="design-lines">
+        <div className="design-lines d-none d-sm-block">
           <img src={lines} alt="Lines" className="img-fluid" />
         </div>
         <div className="container">
@@ -56,17 +57,17 @@ function Home() {
         <section id="numbers">
           <div className="container">
             <div className="row justify-content-center">
-              <div className="col-lg-4">
+              <div className="col-md-4 mb-5">
                 <h4>Speed</h4>
                 <h1>25</h1>
                 <p>Kilometers per Hour</p>
               </div>
-              <div className="col-lg-4">
+              <div className="col-md-4 mb-5">
                 <h4>Range</h4>
                 <h1>45</h1>
                 <p>Kilometers in full charge</p>
               </div>
-              <div className="col-lg-4">
+              <div className="col-md-4 mb-5">
                 <h4>Battery</h4>
                 <h1>36</h1>
                 <p>Volts, 10.4Ah Samsung MJ1 Cell</p>
@@ -87,21 +88,21 @@ function Home() {
       <section id="products">
         <div className="row justify-content-center no-gutters">
           <div className="col-lg-6">
-            <div className="emx-box">
+            <div className="emx-box pl-3 pl-sm-5">
               <h2>EMX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
               <Button text="Explore models" />
             </div>
           </div>
           <div className="col-lg-6">
-            <div className="doodle-box">
+            <div className="doodle-box pl-3 pl-sm-5">
               <h2>Doodle</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
               <Button text="Explore models" />
             </div>
           </div>
           <div className="col-lg-12">
-            <div className="trex-box">
+            <div className="trex-box pl-3 pl-sm-5">
               <h2>T-REX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
               <Button text="Explore models" />
@@ -111,12 +112,12 @@ function Home() {
       </section>
 
       <section id="info2">
-        <div className="design-lines">
+        <div className="design-lines d-none d-lg-block">
           <img src={lines} alt="Lines" />
         </div>
         <div className="row justify-content-end align-items-center no-gutters">
           <div className="col-lg-5">
-            <div className="container">
+            <div className="container py-5 my-5 my-lg-0">
               <h3>Buy top notch accessories for your eBike</h3>
               <p className="mb-4">
                 EM brings in a range of best electric bikes that are affordable,
@@ -154,41 +155,52 @@ function Home() {
         <div className="container">
           <Carousel>
             <div className="testimonial-box">
-              <div className="text">
-                <p>
-                  Very excited to see the E-bike. The best part is it comes very
-                  sturdy. The material quality speaks for itself. Thank for the
-                  affordable ride EM.
-                </p>
-                <h4>Arvind, Bangalore</h4>
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-8">
+                  <p className="text-left">
+                    Very excited to see the E-bike. The best part is it comes very
+                    sturdy. The material quality speaks for itself. Thank for the
+                    affordable ride EM.</p>
+                  <h4 className="text-left">Arvind, Bangalore</h4>
+                </div>
+                <div className="col-lg-4">
+                  <img src={arvind} alt="Arvind" className="img-fluid my-3" />
+                </div>
               </div>
-              <img src={arvind} alt="Arvind" className="img-fluid" />
             </div>
             <div className="testimonial-box">
-              <div className="text">
-                <p>
-                  Very excited to see the E-bike. The best part is it comes very
-                  sturdy. The material quality speaks for itself. Thank for the
-                  affordable ride EM.
-                </p>
-                <h4>Arvind, Bangalore</h4>
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-8">
+                  <p className="text-left">
+                    Very excited to see the E-bike. The best part is it comes very
+                    sturdy. The material quality speaks for itself. Thank for the
+                    affordable ride EM.</p>
+                  <h4 className="text-left">Arvind, Bangalore</h4>
+                </div>
+                <div className="col-lg-4">
+                  <img src={arvind} alt="Arvind" className="img-fluid my-3" />
+                </div>
               </div>
-              <img src={arvind} alt="Arvind" className="img-fluid" />
             </div>
             <div className="testimonial-box">
-              <div className="text">
-                <p>
-                  Very excited to see the E-bike. The best part is it comes very
-                  sturdy. The material quality speaks for itself. Thank for the
-                  affordable ride EM.
-                </p>
-                <h4>Arvind, Bangalore</h4>
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-8">
+                  <p className="text-left">
+                    Very excited to see the E-bike. The best part is it comes very
+                    sturdy. The material quality speaks for itself. Thank for the
+                    affordable ride EM.</p>
+                  <h4 className="text-left">Arvind, Bangalore</h4>
+                </div>
+                <div className="col-lg-4">
+                  <img src={arvind} alt="Arvind" className="img-fluid my-3" />
+                </div>
               </div>
-              <img src={arvind} alt="Arvind" className="img-fluid" />
             </div>
           </Carousel>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
