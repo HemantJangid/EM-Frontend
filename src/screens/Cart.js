@@ -26,7 +26,6 @@ function Cart() {
   const [reRender, setReRender] = useState(true);
   const { logout } = useAuth();
   const history = useHistory();
-  // const [items, setItems] = useState([]);
   const { items } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
 
@@ -284,7 +283,7 @@ function Cart() {
                         })}
                         <tr>
                           <td colSpan="4">
-                            <div className="d-flex align-items-center promo-code">
+                            {/* <div className="d-flex align-items-center promo-code">
                               <p className="mr-3 mb-0 text-nowrap">
                                 Apply Promo Code
                               </p>
@@ -301,7 +300,7 @@ function Cart() {
                                 className="form-control"
                                 width="200"
                               />
-                            </div>
+                            </div> */}
                           </td>
 
                           <td colSpan="1">Total</td>
