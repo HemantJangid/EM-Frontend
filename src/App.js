@@ -5,7 +5,6 @@ import AllProducts from "./screens/Products";
 import ProductDetails from "./screens/ProductDetails";
 import About from "./screens/About";
 import Contact from "./screens/Contact";
-// import Contact from "./screens/Contact";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -17,6 +16,8 @@ import { store, persistor } from "./redux/store/index";
 import { PersistGate } from "redux-persist/integration/react";
 import SelectAddress from "./screens/SelectAddress";
 import AddAddress from "./screens/AddAddress";
+import Blog from "./screens/Blog";
+import BlogPost from "./screens/BlogPost";
 
 function App() {
   return (
@@ -25,11 +26,13 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <Router>
             <Switch>
-              <Route exact path="/" component={Blog} />
+              <Route exact path="/" component={Home} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
+              <Route path="/blog" component={Blog} />
+              <Route path="/blog-post" component={BlogPost} />
               <PrivateRoute path="/cart" component={Cart} />
               <PrivateRoute path="/select-address" component={SelectAddress} />
               <PrivateRoute path="/add-address" component={AddAddress} />

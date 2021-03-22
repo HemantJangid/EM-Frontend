@@ -64,6 +64,11 @@ const Header = () => {
                 Contact Us
               </Link>
             </li>
+            <li className="nav-item mt-2 ml-5">
+              <Link className="nav-link" to="/blog">
+                Blogs
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
