@@ -110,24 +110,25 @@ function Cart() {
   }
 
   function handleCheckout() {
-    auth.currentUser.getIdToken(true).then((idToken) => {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: idToken,
-      };
-      axios
-        .post(
-          `${constants.base_url}${constants.order}`,
-          { user_address_uuid: "e3eeef77-c213-4748-a5a9-af6ba2b81373" },
-          {
-            headers,
-          }
-        )
-        .then((res) => {
-          history.push("/");
-        })
-        .catch((err) => console.log(err));
-    });
+    // auth.currentUser.getIdToken(true).then((idToken) => {
+    //   const headers = {
+    //     "Content-Type": "application/json",
+    //     Authorization: idToken,
+    //   };
+    //   axios
+    //     .post(
+    //       `${constants.base_url}${constants.order}`,
+    //       { user_address_uuid: "e3eeef77-c213-4748-a5a9-af6ba2b81373" },
+    //       {
+    //         headers,
+    //       }
+    //     )
+    //     .then((res) => {
+    //       history.push("/");
+    //     })
+    //     .catch((err) => console.log(err));
+    // });
+    history.push("/select-address");
   }
 
   return (

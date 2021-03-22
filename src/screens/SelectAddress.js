@@ -1,11 +1,64 @@
-import React, { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
+import React, { useState, useEffect } from "react";
 
 import "../assets/css/Sign.css";
 import { Link, useHistory } from "react-router-dom";
-// import { useFormik } from "formik";
+import { auth } from "./../firebase";
+import constants from "../constant/RequestUrls";
+import axios from "axios";
 
 function SelectAddress() {
+  const [reRender, setReRender] = useState(true);
+  const [addresses, setAddresses] = useState([]);
+  const [selectedAddress, setSelectedAddress] = useState();
+  const history = useHistory();
+
+  useEffect(() => {
+    getAddress();
+  }, []);
+
+  function getAddress() {
+    auth.currentUser.getIdToken(true).then((idToken) => {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: idToken,
+      };
+      axios
+        .get(`${constants.base_url}${constants.address}`, { headers })
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            setAddresses(res.data.payload.address_list);
+            setReRender(!reRender);
+          }
+        })
+        .catch((err) => console.log(err));
+    });
+  }
+
+  function submitAddress() {
+    // alert(JSON.stringify({ user_address_uuid: selectedAddress }, null, 2));
+    auth.currentUser.getIdToken(true).then((idToken) => {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: idToken,
+      };
+      axios
+        .post(
+          `${constants.base_url}${constants.order}`,
+          { user_address_uuid: selectedAddress },
+          { headers }
+        )
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            history.push("/");
+          }
+        })
+        .catch((err) => console.log(err));
+    });
+  }
+  console.log("selected address: ", selectedAddress);
+
   return (
     <div>
       <section id="sign">
@@ -13,54 +66,52 @@ function SelectAddress() {
           <div className="row justify-content-center">
             <div className="col-lg-6">
               <div className="form-box">
-                <form>
+                {/* <form> */}
+                <div className="px-3 py-3">
                   <h2 className="mb-4">
-                    Add <span className="pri">Address</span>
+                    Select <span className="pri">Address</span>
                   </h2>
 
                   <div className="form-group">
-                    <div class="custom-control custom-radio">
-                      <input
-                        type="radio"
-                        id="customRadio1"
-                        name="customRadio"
-                        class="custom-control-input"
-                      />
-                      <label class="custom-control-label" for="customRadio1">
-                        Address Line 1
-                      </label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                      <input
-                        type="radio"
-                        id="customRadio2"
-                        name="customRadio"
-                        class="custom-control-input"
-                      />
-                      <label class="custom-control-label" for="customRadio2">
-                        Address Line 2
-                      </label>
-                    </div>
+                    {addresses.map((address, index) => (
+                      <div class="custom-control custom-radio">
+                        <input
+                          type="radio"
+                          id={`addressRadio${index}`}
+                          name="user_address_uuid"
+                          class="custom-control-input"
+                          onClick={() => setSelectedAddress(address.uuid)}
+                          value={address.uuid}
+                        />
+                        <label
+                          class="custom-control-label"
+                          for={`addressRadio${index}`}
+                        >
+                          {`${address.address_line_1}, ${address.address_line_2}, ${address.landmark}, ${address.city}, ${address.state}, ${address.pincode}`}
+                        </label>
+                      </div>
+                    ))}
                   </div>
                   <div className="form-group">
-                    <input
-                      // disabled={loading}
-                      className="form-control"
-                      type="Submit"
-                      defaultValue="Add New Address"
-                      name="submit"
-                    />
+                    <Link to="/add-address">
+                      <input
+                        // disabled={loading}
+                        className="form-control add-new-address text-center"
+                        defaultValue="Add New Address"
+                        name="submit"
+                      />
+                    </Link>
                   </div>
                   <div className="form-group">
-                    <input
-                      // disabled={loading}
-                      className="form-control"
-                      type="Submit"
-                      defaultValue="Continue"
-                      name="submit"
-                    />
+                    <button
+                      className="form-control add-new-address text-center"
+                      onClick={() => submitAddress()}
+                    >
+                      Continue
+                    </button>
                   </div>
-                </form>
+                </div>
+                {/* </form> */}
               </div>
             </div>
           </div>

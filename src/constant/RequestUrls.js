@@ -1,5 +1,5 @@
 const RequestUrls = {
-  base_url: "https://dev-api.byts.in/v1/",
+  base_url: "http://localhost:8000/v1/",
   sign_up: "user/signup",
   test_ride: "test-ride",
   contact: "user/lead",
@@ -8,6 +8,7 @@ const RequestUrls = {
   product: "product",
   cart: "cart",
   order: "order",
+  address: "user/address",
 };
 
 export default RequestUrls;

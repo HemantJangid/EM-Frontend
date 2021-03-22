@@ -57,6 +57,20 @@
   min-height: 45px;
 }
 
+#sign .add-new-address {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: var(--white);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--sen);
+  font-size: 0.875rem;
+  min-height: 45px;
+}
+
 #sign p {
   font-size: 0.875rem;
 }

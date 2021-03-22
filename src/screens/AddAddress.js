@@ -1,11 +1,46 @@
 import React, { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
 
 import "../assets/css/Sign.css";
 import { Link, useHistory } from "react-router-dom";
-// import { useFormik } from "formik";
+import { useFormik } from "formik";
+import { auth } from "./../firebase";
+import constants from "../constant/RequestUrls";
+import axios from "axios";
+import { addItem } from "./../redux/actions/cart";
 
 function AddAddress() {
+  const history = useHistory();
+
+  const formik = useFormik({
+    initialValues: {
+      full_name: "",
+      phone_number: "",
+      pincode: "",
+      address_line_1: "",
+      address_line_2: "",
+      landmark: "",
+      city: "",
+      state: "",
+    },
+    onSubmit: (values) => {
+      // alert(JSON.stringify(values, null, 2));
+      auth.currentUser.getIdToken(true).then((idToken) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: idToken,
+        };
+        axios
+          .post(`${constants.base_url}${constants.address}`, values, {
+            headers,
+          })
+          .then((res) => {
+            history.push("/select-address");
+          })
+          .catch((err) => console.log(err));
+      });
+    },
+  });
+
   return (
     <div>
       <section id="sign">
@@ -13,26 +48,30 @@ function AddAddress() {
           <div className="row justify-content-center">
             <div className="col-lg-6">
               <div className="form-box">
-                <form>
+                <form onSubmit={formik.handleSubmit}>
                   <h2 className="mb-4">
                     Add <span className="pri">Address</span>
                   </h2>
                   <div className="form-group">
                     <input
                       type="text"
-                      name="name"
-                      id="name"
+                      name="full_name"
+                      id="full_name"
                       placeholder="Full Name"
                       className="form-control"
+                      onChange={formik.handleChange}
+                      value={formik.values.full_name}
                     />
                   </div>
                   <div className="form-group">
                     <input
                       type="text"
-                      name="mobile"
-                      id="mobile"
+                      name="phone_number"
+                      id="phone_number"
                       placeholder="Mobile Number"
                       className="form-control"
+                      onChange={formik.handleChange}
+                      value={formik.values.phone_number}
                     />
                   </div>
                   <div className="form-group">
@@ -42,24 +81,30 @@ function AddAddress() {
                       id="pincode"
                       placeholder="Pincode"
                       className="form-control"
+                      onChange={formik.handleChange}
+                      value={formik.values.pincode}
                     />
                   </div>
                   <div className="form-group">
                     <input
                       type="text"
-                      name="add1"
-                      id="add1"
+                      name="address_line_1"
+                      id="address_line_1"
                       placeholder="Flat, House No, Building, Apartment"
                       className="form-control"
+                      onChange={formik.handleChange}
+                      value={formik.values.address_line_1}
                     />
                   </div>
                   <div className="form-group">
                     <input
                       type="text"
-                      name="add2"
-                      id="add2"
+                      name="address_line_2"
+                      id="address_line_2"
                       placeholder="Area, Colony, Street Sector, Village"
                       className="form-control"
+                      onChange={formik.handleChange}
+                      value={formik.values.address_line_2}
                     />
                   </div>
                   <div className="form-group">
@@ -69,16 +114,20 @@ function AddAddress() {
                       id="landmark"
                       placeholder="Landmark"
                       className="form-control"
+                      onChange={formik.handleChange}
+                      value={formik.values.landmark}
                     />
                   </div>
                   <div className="form-group form-row">
                     <div className="col">
                       <input
                         type="text"
-                        name="town"
-                        id="town"
+                        name="city"
+                        id="city"
                         placeholder="Town/City"
                         className="form-control"
+                        onChange={formik.handleChange}
+                        value={formik.values.city}
                       />
                     </div>
                     <div className="col">
@@ -88,12 +137,13 @@ function AddAddress() {
                         id="state"
                         placeholder="State"
                         className="form-control"
+                        onChange={formik.handleChange}
+                        value={formik.values.state}
                       />
                     </div>
                   </div>
                   <div className="form-group">
                     <input
-                      // disabled={loading}
                       className="form-control"
                       type="Submit"
                       defaultValue="Add Address"

@@ -15,7 +15,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store/index";
 import { PersistGate } from "redux-persist/integration/react";
-import SelectAddress from './screens/SelectAddress'
+import SelectAddress from "./screens/SelectAddress";
+import AddAddress from "./screens/AddAddress";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
               <PrivateRoute path="/cart" component={Cart} />
+              <PrivateRoute path="/select-address" component={SelectAddress} />
+              <PrivateRoute path="/add-address" component={AddAddress} />
               <Route path="/testride" component={TestRide} />
               {/* <Route component={Error} /> */}
               <Route path="/products" component={AllProducts} />
