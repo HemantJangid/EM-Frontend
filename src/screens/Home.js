@@ -83,10 +83,10 @@ function Home() {
           video="https://vimeo.com/509675910"
           autoplay="false"
           responsive="true"
-          // controls="false"
-          // autoplay="true"
-          // showByline="false"
-          // color="#68db85"
+          controls="false"
+          autoplay="true"
+          showByline="false"
+          color="#68db85"
           background="true"
         />
       </section>
