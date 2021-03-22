@@ -23,18 +23,6 @@ const Header = () => {
   //     prevScrollpos = currentScrollPos;
   //   };
   // });
-  {
-    /* <img src={logoWhite} alt="Logo" className="img-fluid" /> 
-             <button
-          className="navbar-toggler custom-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >*/
-  }
 
   return (
     <div>
@@ -80,9 +68,9 @@ const Header = () => {
                   Contact Us
               </Link>
               </li>
-              <li className="nav-item mt-2 ml-5">
-                <Link className="nav-link" to="/blog">
-                  Blogs
+              <li className="nav-item">
+                <Link className="nav-link mx-2" to="/blog">
+                  Blog
               </Link>
               </li>
             </ul>
