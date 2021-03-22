@@ -15,7 +15,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store/index";
 import { PersistGate } from "redux-persist/integration/react";
-import SelectAddress from './screens/SelectAddress'
+import Blog from './screens/Blog'
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <Router>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Blog} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
               <Route path="/signin" component={SignIn} />

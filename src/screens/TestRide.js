@@ -44,7 +44,7 @@ function TestRide() {
   return (
     <div>
       <Header />
-      <section id="hero">
+      <section id="test-hero">
         <div className="container">
           <h3 className="pri">Book a test ride</h3>
           <h1>Experience unparallel</h1>
@@ -62,7 +62,7 @@ function TestRide() {
             <form onSubmit={formik.handleSubmit}>
               <h3 className="mb-5">Book a test ride!</h3>
               <div className="form-row form-group">
-                <div className="col-lg-6">
+                <div className="col-lg-6 col-md-6">
                   <input
                     className="mb-4"
                     type="text"
@@ -73,7 +73,7 @@ function TestRide() {
                     value={formik.values.name}
                   />
                 </div>
-                <div className="col-lg-6">
+                <div className="col-lg-6 col-md-6">
                   <input
                     className="mb-4"
                     type="text"
@@ -97,7 +97,7 @@ function TestRide() {
                 />
               </div>
               <div className="form-row form-group">
-                <div className="col-lg-6">
+                <div className="col-lg-6 col-md-6">
                   <input
                     className="mb-4"
                     type="email"
@@ -108,7 +108,7 @@ function TestRide() {
                     value={formik.values.email}
                   />
                 </div>
-                <div className="col-lg-6">
+                <div className="col-lg-6 col-md-6">
                   <input
                     className="mb-4"
                     type="text"
@@ -121,7 +121,7 @@ function TestRide() {
                 </div>
               </div>
               <div className="form-row form-group">
-                <div className="col-lg-6">
+                <div className="col-lg-6 col-md-6">
                   <label for="preferred_date">Date:</label>
                   <input
                     className="mb-4"
@@ -134,7 +134,7 @@ function TestRide() {
                     value={formik.values.preferred_date}
                   />
                 </div>
-                <div className="col-lg-6">
+                <div className="col-lg-6 col-md-6">
                   <label for="preferred_time">Time:</label>
                   <input
                     className="mb-4"
@@ -161,7 +161,7 @@ function TestRide() {
               </div>
               <button
                 type="submit"
-                style={{ backgroundColor: "transparent", border: "none" }}
+                className="bg-transparent border-0 d-flex align-items-center justify-content-center w-100"
               >
                 <Button text="Enquire" color="black" />
               </button>
