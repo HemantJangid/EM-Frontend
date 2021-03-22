@@ -36,7 +36,7 @@ function BuySmart() {
     <div>
       <Header />
 
-      <section id="hero">
+      <section id="buy-hero">
         <div className="container">
           <h3 className="pri">Book a test ride</h3>
           <h1>Experience unparallel</h1>

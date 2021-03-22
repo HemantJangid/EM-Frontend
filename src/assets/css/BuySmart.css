@@ -1,4 +1,4 @@
-#hero {
+#buy-hero {
   background: url("../img/backgrounds/contact.jpg");
   background-position: center;
   background-size: cover;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-#hero h1 {
+#buy-hero h1 {
   font-weight: 400;
   font-size: 5rem;
   text-transform: uppercase;
@@ -16,7 +16,7 @@
   margin-left: -8px;
 }
 
-#hero h3 {
+#buy-hero h3 {
   letter-spacing: 0.2rem;
   text-transform: uppercase;
 }

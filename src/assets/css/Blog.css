@@ -1,4 +1,4 @@
-#hero {
+#blog-hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -6,7 +6,7 @@
   background: url("../img/backgrounds/blog.jpg");
 }
 
-#hero h1 {
+#blog-hero h1 {
   font-weight: 400;
   font-size: 5rem;
   text-transform: uppercase;
@@ -15,7 +15,7 @@
   margin-left: -8px;
 }
 
-#hero h3 {
+#blog-hero h3 {
   letter-spacing: 0.2rem;
   text-transform: uppercase;
 }

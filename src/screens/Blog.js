@@ -35,7 +35,7 @@ function Blog() {
     <div>
       <Header />
 
-      <section id="hero">
+      <section id="blog-hero">
         <div className="container">
           <h3 className="pri">Read with us</h3>
           <h1>Blogs </h1>

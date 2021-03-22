@@ -38,7 +38,7 @@ function Partner() {
     <div>
       <Header />
 
-      <section id="hero">
+      <section id="partner-hero">
         <div className="container">
           <h3 className="pri">Partner with us</h3>
           <h1>Become our partner</h1>

@@ -49,7 +49,7 @@ function About() {
                         </div>
                         <div className="col-lg-5 col-md-6 order-4 order-md-3 my-5">
                             <h3>Our Values.</h3>
-                            <img src={valuesHex} className="img-fluid my-4" alt="Rectangle" />
+                            <img src={valuesHex} className="img-fluid my-4p" alt="Rectangle" />
 
                         </div>
                         <div className="col-lg-7 col-md-6 order-3 order-md-4 my-5">
