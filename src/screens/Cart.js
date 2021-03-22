@@ -74,8 +74,6 @@ function Cart() {
   }
 
   function removeItemFromCart(i) {
-    changeQuantity(i, "decrease");
-    dispatch(addItem(items));
     auth.currentUser.getIdToken(true).then((idToken) => {
       const headers = {
         "Content-Type": "application/json",
@@ -86,7 +84,11 @@ function Cart() {
           `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
           { headers }
         )
-        .then((res) => console.log(res))
+        .then((res) => {
+          console.log(res);
+          changeQuantity(i, "decrease");
+          dispatch(addItem(items));
+        })
         .catch((err) => console.log(err));
     });
   }
@@ -107,13 +109,39 @@ function Cart() {
     }
   }
 
+  function handleCheckout() {
+    auth.currentUser.getIdToken(true).then((idToken) => {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: idToken,
+      };
+      axios
+        .post(
+          `${constants.base_url}${constants.order}`,
+          { user_address_uuid: "e3eeef77-c213-4748-a5a9-af6ba2b81373" },
+          {
+            headers,
+          }
+        )
+        .then((res) => {
+          history.push("/");
+        })
+        .catch((err) => console.log(err));
+    });
+  }
+
   return (
     <div>
       <Header />
       <section id="cart">
-        <div className="container-fluid">
-          <div className="row">
-            <nav
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-3 bg-dark">
+              <div className="my-5">
+                <h2 className="text-center">Aditya Pathak</h2>
+              </div>
+            </div>
+            {/* <nav
               id="sidebarMenu"
               className="col-md-3 col-lg-3 d-md-block bg-dark sidebar collapse"
             >
@@ -130,7 +158,7 @@ function Cart() {
                     <span data-feather="plus-circle"></span>
                   </a>
                 </h6>
-                {/* <ul className="nav flex-column mb-2">
+                <ul className="nav flex-column mb-2">
                   <li className="nav-item">
                     <a className="nav-link" href="#">
                       <span data-feather="file-text"></span>
@@ -143,11 +171,11 @@ function Cart() {
                       <h4>Current Orders</h4>
                     </a>
                   </li>
-                </ul> */}
+                </ul>
               </div>
-            </nav>
+            </nav> */}
 
-            <main role="main" className="col-md-9 col-lg-7 px-md-4">
+            <main role="main" className="col-md-9 col-lg-9 px-md-4">
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                 <div>
                   <h4>Final touch up</h4>
@@ -198,7 +226,7 @@ function Cart() {
                               </td>
                               <td>
                                 <div className="d-block">
-                                  <div id="donate">
+                                  <div id="radio-color">
                                     <label class="red">
                                       <input type="radio" name="toggle" />
                                       <span></span>
@@ -211,43 +239,30 @@ function Cart() {
                                 </div>
                               </td>
                               <td>
-                                {/* <div className="d-flex alig-items-center">
+                                <div className="d-flex alig-items-center">
                                   <button
-                                    onClick={handleDecrement}
                                     className="mr-2 plusminus"
+                                    onClick={() => {
+                                      // console.log("decrease quantity");
+                                      removeItemFromCart(index);
+                                      setReRender(!reRender);
+                                    }}
                                   >
                                     -
                                   </button>
-                                  <p className="mb-0">{qty}</p>
+                                  <p className="mb-0">{item.quantity}</p>
                                   <button
-                                    onClick={handleIncrement}
                                     className="ml-2 plusminus"
+                                    onClick={() => {
+                                      // console.log("increase quantity");
+                                      addItemToCart(index);
+                                      setReRender(!reRender);
+                                      // console.log(items);
+                                    }}
                                   >
                                     +
                                   </button>
-                                </div> */}
-                                <button
-                                  className="mr-2 plusminus"
-                                  onClick={() => {
-                                    // console.log("decrease quantity");
-                                    removeItemFromCart(index);
-                                    setReRender(!reRender);
-                                  }}
-                                >
-                                  -
-                                </button>
-                                <p className="mb-0">{item.quantity}</p>
-                                <button
-                                  className="ml-2 plusminus"
-                                  onClick={() => {
-                                    // console.log("increase quantity");
-                                    addItemToCart(index);
-                                    setReRender(!reRender);
-                                    // console.log(items);
-                                  }}
-                                >
-                                  +
-                                </button>
+                                </div>
                               </td>
                               <td>{item.product.selling_price}</td>
                               <td>
@@ -292,7 +307,14 @@ function Cart() {
                     <a href="">EMI*</a>
                   </div>
                   <center>
-                    <Button text="Proceed to checkout" />
+                    <button
+                      className="ml-2 plusminus"
+                      onClick={() => {
+                        handleCheckout();
+                      }}
+                    >
+                      <Button text="Proceed to checkout" />
+                    </button>
                   </center>
                 </div>
               </div>
