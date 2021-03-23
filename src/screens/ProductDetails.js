@@ -12,16 +12,16 @@ import axios from "axios";
 import constants from "../constant/RequestUrls";
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import Vimeo from '@u-wave/react-vimeo';
+import Vimeo from "@u-wave/react-vimeo";
 import { addItem } from "./../redux/actions/cart";
 import { auth } from "./../firebase";
 import navUrls from "./../constant/navUrls";
 
 function ProductDetails(props) {
   const [productContent, setProductContent] = useState();
+  const productDetails = props.location.state.product;
   const history = useHistory();
   const [reRender, setReRender] = useState(true);
-  const location = useLocation();
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cartReducer);
@@ -46,6 +46,7 @@ function ProductDetails(props) {
   }, []);
 
   console.log("productContent: ", productContent);
+  console.log("productDetails: ", productDetails);
   return (
     <div>
       <Header />
@@ -70,20 +71,20 @@ function ProductDetails(props) {
                     onClick={() => {
                       auth.currentUser
                         ? auth.currentUser.getIdToken(true).then((idToken) => {
-                          const headers = {
-                            "Content-Type": "application/json",
-                            Authorization: idToken,
-                          };
-                          props.location.state &&
-                            axios
-                              .post(
-                                `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
-                                { quantity: 1 },
-                                { headers }
-                              )
-                              .then((res) => history.push(navUrls.cart))
-                              .catch((err) => console.log(err));
-                        })
+                            const headers = {
+                              "Content-Type": "application/json",
+                              Authorization: idToken,
+                            };
+                            props.location.state &&
+                              axios
+                                .post(
+                                  `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
+                                  { quantity: 1 },
+                                  { headers }
+                                )
+                                .then((res) => history.push(navUrls.cart))
+                                .catch((err) => console.log(err));
+                          })
                         : history.push(navUrls.cart);
                     }}
                   >
@@ -112,11 +113,13 @@ function ProductDetails(props) {
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-lg-7 col-md-8 text-center">
-                  <p>No matter if you are planning a quick mountain ride with a group of friends or you are just out for daily leisure activities around the block</p>
-                  <h2>T-REX will take you anywhere.</h2>
-                  <p>This bold youth mountain bike has a contemporary design with a sturdy frame, front, and rear disc brakes and thoughfully designed E bike specifically for Indian terrain.</p>
-                  <h1 className="mt-5">From the maker's of TREX</h1>
-                  <p>LCD display odometer, 7-speed Shimano tourney dual derailleurs for cycling, LED Lamp for night riders, and much more, T-REX is an affordable e-bike for all.</p>
+                  <p>{productContent.info_page_content_1}</p>
+                  <h2>{productDetails.name} will take you anywhere.</h2>
+                  <p>{productContent.info_page_content_2}</p>
+                  <h1 className="mt-5">
+                    From the maker's of {productDetails.name}
+                  </h1>
+                  <p>{productContent.stats_page_content}</p>
                   <Button text="Watch Demo Video" color="black" />
                 </div>
               </div>
@@ -127,27 +130,23 @@ function ProductDetails(props) {
             <div className="numbers">
               <div className="container">
                 <div className="row justify-content-center">
-                  <div className="col-lg-4 col-md-4 text-center">
-                    <div className="mx-1">
-                      <h4>Frame</h4>
-                      <h1>6061</h1>
-                      <p>Retractable Aluminium Frame</p>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-4 text-center">
-                    <div className="mx-1">
-                      <h4>Range</h4>
-                      <h1>35+</h1>
-                      <p>Kilometers in full throttle</p>
-                    </div>
-                  </div>
-                  <div className="col-lg-4 col-md-4 text-center">
-                    <div className="mx-1">
-                      <h4>Battery</h4>
-                      <h1>36</h1>
-                      <p>Volts, 7.8 Ah Powerful Battery</p>
-                    </div>
-                  </div>
+                  {productContent.features_page_metrics_1.map(
+                    (feature, index) => {
+                      let metrics = feature.split("-");
+                      return (
+                        <div className="col-lg-4 col-md-4 text-center">
+                          <div className="mx-1">
+                            <h4>{metrics[0]}</h4>
+                            <h1>
+                              {metrics[1]}
+                              {index === 1 && "+"}
+                            </h1>
+                            <p>{metrics[2]}</p>
+                          </div>
+                        </div>
+                      );
+                    }
+                  )}
                 </div>
               </div>
               <div className="mx-auto mt-5">
@@ -200,17 +199,25 @@ function ProductDetails(props) {
                   <div className="buy-box py-3">
                     <div className="container text-center">
                       <div className="bg-white my-2 mb-5 py-3">
-                        <h4 className="text-dark font-weight-bold">INR 38,990</h4>
+                        <h4 className="text-dark font-weight-bold">
+                          INR {productDetails.selling_price}
+                        </h4>
                         <hr />
-                        <h2 className="text-dark">*EMI INR 1500/month</h2>
+                        <h2 className="text-dark">
+                          *EMI INR {productDetails.emi_per_month}/month
+                        </h2>
                       </div>
                       <div className="px-3">
                         <table>
                           {Object.keys(productContent.stats_page_metrics).map(
                             (key, index) => (
                               <tr key={index}>
-                                <td className="font-weight-bold text-capitalize">{key}</td>
-                                <td>{productContent.stats_page_metrics[key]}</td>
+                                <td className="font-weight-bold text-capitalize">
+                                  {key}
+                                </td>
+                                <td>
+                                  {productContent.stats_page_metrics[key]}
+                                </td>
                               </tr>
                             )
                           )}
@@ -267,7 +274,7 @@ function ProductDetails(props) {
       )}
 
       <Footer />
-    </div >
+    </div>
   );
 }
 
