@@ -7,6 +7,7 @@ import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import constants from "../constant/RequestUrls";
 import { auth } from "./../firebase";
+import navUrls from "./../constant/navUrls";
 
 function SignUp() {
   const [loading, setLoading] = useState(false);
@@ -56,7 +57,7 @@ function SignUp() {
           })
           .catch((err) => console.log("could not get token: ", err));
 
-        history.push("/products");
+        history.push(navUrls.products);
       } catch {
         console.log("failed to create an account");
       }
@@ -145,7 +146,8 @@ function SignUp() {
                   </div>
                   <hr />
                   <p>
-                    Already have an account? <Link to="/signin">Sign In</Link>
+                    Already have an account?{" "}
+                    <Link to={`${navUrls.signIn}`}>Sign In</Link>
                   </p>
                   <hr />
                   {/* <p>Or Sign up with <a href="">Facebook</a> or <a href="">Google</a></p> */}

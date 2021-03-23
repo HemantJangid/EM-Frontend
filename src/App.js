@@ -19,6 +19,9 @@ import SelectAddress from "./screens/SelectAddress";
 import AddAddress from "./screens/AddAddress";
 import Blog from "./screens/Blog";
 import Careers from "./screens/Careers";
+import navUrls from "./constant/navUrls";
+import { addItem } from "./redux/actions/cart";
+import BlogPost from "./screens/BlogPost";
 
 function App() {
   return (
@@ -27,20 +30,27 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <Router>
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/about" component={About} />
-              <Route path="/contact" component={Contact} />
-              <Route path="/signin" component={SignIn} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/blog" component={Blog} />
-              {/* <Route path="/pd" component={ProductDetails} /> */}
-              <PrivateRoute path="/cart" component={Cart} />
-              <PrivateRoute path="/select-address" component={SelectAddress} />
-              <PrivateRoute path="/add-address" component={AddAddress} />
-              <Route path="/testride" component={TestRide} />
+              <Route exact path={`${navUrls.home}`} component={Home} />
+              <Route path={`${navUrls.about}`} component={About} />
+              <Route path={`${navUrls.contact}`} component={Contact} />
+              <Route path={`${navUrls.signIn}`} component={SignIn} />
+              <Route path={`${navUrls.signUp}`} component={SignUp} />
+              <Route path={`${navUrls.blog}`} component={Blog} />
+              <Route path={`${navUrls.blogpost}`} component={BlogPost} />
+              {/* <Route path={`${navUrls.home}`}component={ProductDetails} /> */}
+              <PrivateRoute path={`${navUrls.cart}`} component={Cart} />
+              <PrivateRoute
+                path={`${navUrls.selectAddress}`}
+                component={SelectAddress}
+              />
+              <PrivateRoute
+                path={`${navUrls.addAddresss}`}
+                component={AddAddress}
+              />
+              <Route path={`${navUrls.testride}`} component={TestRide} />
               {/* <Route component={Error} /> */}
-              <Route path="/products" component={AllProducts} />
-              <Route path="/:productSlug" component={ProductDetails} />
+              <Route path={`${navUrls.products}`} component={AllProducts} />
+              <Route path={`${navUrls.product}`} component={ProductDetails} />
             </Switch>
           </Router>
         </PersistGate>

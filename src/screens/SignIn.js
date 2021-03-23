@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import "../assets/css/Sign.css";
 import { Link, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
+import navUrls from "./../constant/navUrls";
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ function SignIn() {
         setLoading(true);
         await login(values.email, values.password);
         console.log("logged in successfully");
-        history.push("/products");
+        history.push(navUrls.products);
       } catch {
         console.log("failed to login to the account");
       }
@@ -75,7 +76,8 @@ function SignIn() {
                     <b>Forgot Password?</b>
                   </p>
                   <p>
-                    Don't have an account? <Link to="/signup">Sign Up</Link>
+                    Don't have an account?{" "}
+                    <Link to={`${navUrls.signUp}`}>Sign Up</Link>
                   </p>
                   <hr />
                   {/* <p>

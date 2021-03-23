@@ -7,6 +7,7 @@ import constants from "../constant/RequestUrls";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import navUrls from "./../constant/navUrls";
 
 function Blog() {
   const [reRender, setReRender] = useState(true);
@@ -71,7 +72,7 @@ function Blog() {
                         <button
                           className="text-left"
                           onClick={() => {
-                            history.push("/blog-post", blog);
+                            history.push(navUrls.blogpost, blog);
                           }}
                           style={{
                             backgroundColor: "transparent",

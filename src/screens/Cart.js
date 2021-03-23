@@ -11,6 +11,7 @@ import { addItem } from "./../redux/actions/cart";
 import { auth } from "./../firebase";
 import constants from "../constant/RequestUrls";
 import axios from "axios";
+import navUrls from "./../constant/navUrls";
 
 function Cart() {
   const [qty, setQty] = useState(1);
@@ -127,7 +128,7 @@ function Cart() {
     //     })
     //     .catch((err) => console.log(err));
     // });
-    history.push("/select-address");
+    history.push(navUrls.selectAddress);
   }
 
   return (
@@ -185,7 +186,7 @@ function Cart() {
                 <button
                   onClick={async () => {
                     await logout();
-                    history.push("/");
+                    history.push(navUrls.home);
                   }}
                   className="bg-transparent border-0 my-3"
                 >
