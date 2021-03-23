@@ -5,7 +5,7 @@ import dots from "../assets/img/design/dots.svg";
 import neco from "../assets/img/design/neco.svg";
 import tyres from "../assets/img/design/tyres.svg";
 import light from "../assets/img/design/light.svg";
-import trexNumbers from "../assets/img/backgrounds/trex-numbers.jpg";
+import trexNumbers from "../assets/img/backgrounds/trex-numbers-min.jpg";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";

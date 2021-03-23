@@ -1,5 +1,5 @@
 #buy-hero {
-  background: url("../img/backgrounds/buysmart.jpg");
+  background: url("../img/backgrounds/buysmart-min.jpg");
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -25,7 +25,7 @@
 
 /* Savings Calculator */
 #savings-calculator {
-  background: url("../img/backgrounds/Frame_2.png");
+  background: url("../img/backgrounds/savings-min.jpg");
   background-position: center;
   background-size: cover;
   min-height: 100vh;

@@ -14,9 +14,9 @@ import electric from "../assets/img/design/electric.svg";
 import dots from "../assets/img/design/dots.svg";
 import lines from "../assets/img/design/lines.svg";
 import play from "../assets/img/design/play.svg";
-import numbers from "../assets/img/backgrounds/numbers.jpg";
+import numbers from "../assets/img/backgrounds/numbers-min.jpg";
 
-import arvind from "../assets/img/testimonials/arvind.jpg";
+import arvind from "../assets/img/testimonials/arvind-min.jpg";
 
 function Home() {
   return (
