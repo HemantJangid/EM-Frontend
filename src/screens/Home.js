@@ -5,7 +5,8 @@ import { Parallax } from "react-parallax";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Vimeo from '@u-wave/react-vimeo';
-
+import CountUp from 'react-countup';
+import VisibilitySensor from 'react-visibility-sensor';
 import "../assets/css/Home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -60,17 +61,35 @@ function Home() {
             <div className="row justify-content-center">
               <div className="col-md-4 mb-5">
                 <h4>Speed</h4>
-                <h1>25</h1>
+                <h1><CountUp start={0} end={25}>
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp></h1>
                 <p>Kilometers per Hour</p>
               </div>
               <div className="col-md-4 mb-5">
                 <h4>Range</h4>
-                <h1>45</h1>
+                <h1><CountUp start={0} end={45}>
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp></h1>
                 <p>Kilometers in full charge</p>
               </div>
               <div className="col-md-4 mb-5">
                 <h4>Battery</h4>
-                <h1>36</h1>
+                <h1><CountUp start={0} end={36}>
+                  {({ countUpRef, start }) => (
+                    <VisibilitySensor onChange={start} delayedCall>
+                      <span ref={countUpRef} />
+                    </VisibilitySensor>
+                  )}
+                </CountUp></h1>
                 <p>Volts, 10.4Ah Samsung MJ1 Cell</p>
               </div>
             </div>
@@ -81,13 +100,12 @@ function Home() {
       <section id="video">
         <Vimeo
           video="https://vimeo.com/509675910"
-          autoplay="false"
-          responsive="true"
-          controls="false"
-          autoplay="true"
-          showByline="false"
+          autoplay={true}
+          responsive={true}
+          controls={false}
+          showByline={false}
           color="#68db85"
-          background="true"
+          background={true}
         />
       </section>
 

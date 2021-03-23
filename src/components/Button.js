@@ -40,7 +40,7 @@ function Button(props) {
               <path
                 d="M58.4449 50.4227L30 66.8453L1.55516 50.4226L1.55516 17.5774L30 1.15472L58.4449 17.5774L58.4449 50.4227Z"
                 stroke={props.color ? props.color : "white"}
-                stroke-width="2"
+                strokeWidth="2"
               />
             </svg>
           </Hex>

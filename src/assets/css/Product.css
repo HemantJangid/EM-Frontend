@@ -9,19 +9,7 @@
 }
 
 #product-hero h1 {
-  font-size: 14rem;
-}
-
-#product-hero .buttons {
-  display: inline-flex;
-  justify-content: center;
-}
-
-#img-banner {
-  height: 100vh;
-  background-image: url("../img/backgrounds/trex.jpg");
-  background-position: center;
-  background-size: cover;
+  font-size: 22vw;
 }
 
 #product-info {
@@ -44,6 +32,36 @@ td {
   min-width: 90px;
 }
 
+#product-text {
+  padding: 100px 0;
+}
+
+#product-text p,
+#product-text h1,
+#product-text h2 {
+  color: #000;
+}
+
+#product-numbers {
+  padding: 100px 0;
+  background: url("../img/backgrounds/trex-numbers.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#product-numbers .numbers {
+  text-align: center;
+  padding: 100px 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+#product-numbers .numbers h1 {
+  font-weight: 800;
+  font-size: 7rem;
+  margin-bottom: -10px;
+  margin-top: -10px;
+}
+
 #product-info .content-2 {
   text-align: center;
 }
@@ -58,8 +76,17 @@ td {
   display: inline-block;
 }
 
+#buy {
+  padding: 100px 0;
+  background: #000;
+}
+
+#buy .buy-box {
+  background: #1c1c1c;
+}
+
 #done {
-  padding: 100px;
+  padding: 100px 0;
   background: var(--white);
 }
 
