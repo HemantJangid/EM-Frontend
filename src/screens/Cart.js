@@ -313,10 +313,10 @@ function Cart() {
                     </table>
                   </div>
                   <div className="d-flex">
-                    <a href="">Debit Card</a>
-                    <a href="">UPI</a>
-                    <a href="">Cash on delivery</a>
-                    <a href="">EMI*</a>
+                    <a className="mx-2" href="">Debit Card</a>
+                    <a className="mx-2" href="">UPI</a>
+                    <a className="mx-2" href="">Cash on delivery</a>
+                    <a className="mx-2" href="">EMI*</a>
                   </div>
                   <center>
                     <button

@@ -1,0 +1,31 @@
+#warranty {
+  padding: 100px 0;
+  background: #000;
+}
+
+input[type="text"] {
+  width: 100%;
+  outline: none;
+  background: transparent;
+  border-radius: 0;
+}
+
+input[type="text"]:focus {
+  width: 100%;
+  outline: none;
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 1px solid var(--pri);
+  color: #fff;
+}
+
+input[type="text"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 10px;
+}
+
+input[type="text"]::placeholder {
+  font-size: 0.875rem;
+  margin-bottom: 100px;
+}

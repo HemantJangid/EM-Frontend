@@ -23,7 +23,6 @@ import navUrls from "./constant/navUrls";
 import { addItem } from "./redux/actions/cart";
 import BlogPost from "./screens/BlogPost";
 import Partner from "./screens/Partner";
-import BuySmart from "./screens/BuySmart";
 
 function App() {
   return (
@@ -34,7 +33,6 @@ function App() {
             <Switch>
               <Route exact path={`${navUrls.home}`} component={Home} />
               <Route path={`${navUrls.about}`} component={About} />
-              <Route path="/buysmart" component={BuySmart} />
               <Route path={`${navUrls.contact}`} component={Contact} />
               <Route path={`${navUrls.signIn}`} component={SignIn} />
               <Route path={`${navUrls.signUp}`} component={SignUp} />
