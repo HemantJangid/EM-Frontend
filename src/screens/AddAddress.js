@@ -7,6 +7,7 @@ import { auth } from "./../firebase";
 import constants from "../constant/RequestUrls";
 import axios from "axios";
 import { addItem } from "./../redux/actions/cart";
+import navUrls from "./../constant/navUrls";
 
 function AddAddress() {
   const history = useHistory();
@@ -34,7 +35,7 @@ function AddAddress() {
             headers,
           })
           .then((res) => {
-            history.push("/select-address");
+            history.push(navUrls.selectAddress);
           })
           .catch((err) => console.log(err));
       });

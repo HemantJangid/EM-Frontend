@@ -13,6 +13,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "./../redux/actions/cart";
 import { auth } from "./../firebase";
+import navUrls from "./../constant/navUrls";
 
 function ProductDetails(props) {
   const [productContent, setProductContent] = useState();
@@ -22,7 +23,6 @@ function ProductDetails(props) {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cartReducer);
-  console.log(items);
 
   useEffect(() => {
     console.log("use effect is running");
@@ -43,7 +43,7 @@ function ProductDetails(props) {
       });
   }, []);
 
-  console.log(productContent);
+  console.log("productContent: ", productContent);
   return (
     <div>
       <Header />
@@ -57,7 +57,7 @@ function ProductDetails(props) {
                 <div className="mx-3">
                   <button
                     style={{ backgroundColor: "transparent", border: "none" }}
-                    onClick={() => history.push("/testride")}
+                    onClick={() => history.push(navUrls.testride)}
                   >
                     <Button text="Book a test ride" />
                   </button>
@@ -79,10 +79,10 @@ function ProductDetails(props) {
                                   { quantity: 1 },
                                   { headers }
                                 )
-                                .then((res) => history.push("/cart"))
+                                .then((res) => history.push(navUrls.cart))
                                 .catch((err) => console.log(err));
                           })
-                        : history.push("/cart");
+                        : history.push(navUrls.cart);
                     }}
                   >
                     <Button text="Add to cart" />
@@ -101,25 +101,27 @@ function ProductDetails(props) {
                   <h2>{productContent.stats_page_heading}</h2>
                   <p>{productContent.stats_page_content}</p>
                   <table>
-                    {Object.keys(productContent.stats_page_metrics).map(
-                      (key, index) => (
-                        <tr key={index}>
-                          <td className="pri">{key}</td>
-                          <td>{productContent.stats_page_metrics[key]}</td>
-                        </tr>
-                      )
-                    )}
+                    {productContent.stats_page_metrics != undefined &&
+                      productContent.stats_page_metrics != null &&
+                      Object.keys(productContent.stats_page_metrics).map(
+                        (key, index) => (
+                          <tr key={index}>
+                            <td className="pri">{key}</td>
+                            <td>{productContent.stats_page_metrics[key]}</td>
+                          </tr>
+                        )
+                      )}
                   </table>
                 </div>
                 <div className="col-lg-7">
                   <div className="content-2">
                     <h4>Shimano tourney dual derailleurs</h4>
                     <h1>
-                      {
+                      {productContent.stats_page_metrics != undefined &&
+                        productContent.stats_page_metrics != null &&
                         productContent.stats_page_metrics["derailleur"].split(
                           "-"
-                        )[0]
-                      }
+                        )[0]}
                     </h1>
                     <p>Speed</p>
                     <Button text="Download brochure" />

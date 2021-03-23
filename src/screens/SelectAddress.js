@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import { auth } from "./../firebase";
 import constants from "../constant/RequestUrls";
 import axios from "axios";
+import navUrls from "./../constant/navUrls";
 
 function SelectAddress() {
   const [reRender, setReRender] = useState(true);
@@ -51,7 +52,7 @@ function SelectAddress() {
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
-            history.push("/");
+            history.push(navUrls.home);
           }
         })
         .catch((err) => console.log(err));
@@ -93,7 +94,7 @@ function SelectAddress() {
                     ))}
                   </div>
                   <div className="form-group">
-                    <Link to="/add-address">
+                    <Link to={`${navUrls.addAddresss}`}>
                       <input
                         // disabled={loading}
                         className="form-control add-new-address text-center"
