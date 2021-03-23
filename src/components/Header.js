@@ -1,29 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logoWhite from "../assets/img/logowhite.png";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
+import constants from "../constant/RequestUrls";
+import axios from "axios";
 
 const Header = () => {
-  // useEffect(() => {
-  //   var prevScrollpos = window.pageYOffset;
-  //   window.onscroll = function () {
-  //     var currentScrollPos = window.pageYOffset;
-  //     if (this.screen.width > 500) {
-  //       if (prevScrollpos > currentScrollPos) {
-  //         document.getElementById("navbar").style.top = "0";
-  //       } else {
-  //         document.getElementById("navbar").style.top = "-100px";
-  //       }
-  //     }
-  //     if (currentScrollPos > 400) {
-  //       document.getElementById("navbar").style.background = "rgba(0, 0, 0, 1)";
-  //     } else {
-  //       document.getElementById("navbar").style.background = "rgba(0, 0, 0, 0)";
-  //     }
-  //     prevScrollpos = currentScrollPos;
-  //   };
-  // });
+  const [products, setProducts] = useState();
+  const [reRender, setReRender] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get(`${constants.base_url}${constants.all_vehicles}`)
+      .then((res) => {
+        if (res.status === 200) {
+          setProducts(res.data.payload.products);
+          setReRender(!reRender);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
@@ -59,15 +58,18 @@ const Header = () => {
                   Products
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to="/">
-                    EMX
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    Doodle
-                  </Link>
-                  <Link className="dropdown-item" to="/">
-                    T-Rex
-                  </Link>
+                  {products &&
+                    products.map((product) => (
+                      <Link
+                        className="dropdown-item"
+                        to={{
+                          pathname: `/${product.slug}`,
+                          state: { product: product },
+                        }}
+                      >
+                        {product.name}
+                      </Link>
+                    ))}
                 </div>
               </li>
               <li className="nav-item">

@@ -43,7 +43,7 @@ function ProductDetails(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [productDetails]);
 
   console.log("productContent: ", productContent);
   console.log("productDetails: ", productDetails);
