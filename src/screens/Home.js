@@ -55,7 +55,7 @@ function Home() {
         </div>
       </section>
 
-      <Parallax bgImage={numbers} bgImageAlt="the cat" strength={500}>
+      <Parallax bgImage={numbers} bgImageAlt="BG IMAGE" strength={400}>
         <section id="numbers">
           <div className="container">
             <div className="row justify-content-center">

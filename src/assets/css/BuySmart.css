@@ -66,52 +66,52 @@
 }
 
 /* FORM */
-form {
+#savings-calculator form {
   padding: 1rem 0rem;
 }
 
-.form-img {
+#savings-calculator .form-img {
   overflow: hidden;
 }
 
-.form-img img {
+#savings-calculator .form-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-form h3 {
+#savings-calculator form h3 {
   color: #000;
   text-align: center;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="number"],
-select {
+#savings-calculator input[type="text"],
+#savings-calculator input[type="email"],
+#savings-calculator input[type="date"],
+#savings-calculator input[type="number"],
+#savings-calculator select {
   width: 50%;
   background-color: transparent;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="number"],
-select {
+#savings-calculator input[type="text"],
+#savings-calculator input[type="email"],
+#savings-calculator input[type="date"],
+#savings-calculator input[type="number"],
+#savings-calculator select {
   border: none;
   border-bottom: 1px solid #000;
   padding-bottom: 10px;
   outline: none;
 }
 
-textarea {
+#savings-calculator textarea {
   border: 1px solid #000;
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="number"]::placeholder {
+#savings-calculator input[type="text"]::placeholder,
+#savings-calculator input[type="email"]::placeholder,
+#savings-calculator input[type="number"]::placeholder {
   font-size: 0.875rem;
   margin-bottom: 100px;
 }
