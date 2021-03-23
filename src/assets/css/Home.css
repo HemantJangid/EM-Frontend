@@ -1,6 +1,6 @@
 /* HERO */
 #hero {
-  background: url("../img/backgrounds/home.jpg");
+  background: url("../img/backgrounds/home-min.jpg");
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -166,7 +166,7 @@
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0)
     ),
-    url("../img/backgrounds/emx.jpg") center / cover no-repeat;
+    url("../img/backgrounds/emx-min.jpg") center / cover no-repeat;
   transition: all 300ms ease-in-out;
 }
 
@@ -180,7 +180,7 @@
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 1)
     ),
-    url("../img/backgrounds/doodle.jpg") center / cover no-repeat;
+    url("../img/backgrounds/doodle-min.jpg") center / cover no-repeat;
   transition: all 300ms ease-in-out;
 }
 
@@ -194,7 +194,7 @@
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0)
     ),
-    url("../img/backgrounds/trex.jpg") top center / cover no-repeat;
+    url("../img/backgrounds/trex-min.jpg") top center / cover no-repeat;
   transition: all 300ms ease-in-out;
 }
 
@@ -221,7 +221,7 @@
 
 #info2 .info2-img {
   height: 70vh;
-  background: url("../img/backgrounds/info2.jpg");
+  background: url("../img/backgrounds/info2-min.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -243,7 +243,7 @@
 /* TESTIMONIALS */
 #testimonial {
   padding: 100px 0;
-  background: url("../img/backgrounds/testimonials.jpg");
+  background: url("../img/backgrounds/testimonials-min.jpg");
   background-size: cover;
   background-position: center;
 }

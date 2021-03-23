@@ -2,9 +2,7 @@ import React from "react";
 
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
-// import rect from "../assets/img/backgrounds/rect.jpg";
-// import man from "../assets/img/backgrounds/man.jpg";
-import contactSide from "../assets/img/backgrounds/contact-side.jpg";
+import contactSide from "../assets/img/backgrounds/contact-side-min.jpg";
 
 import "../assets/css/Contact.css";
 import { useFormik } from "formik";

@@ -1,7 +1,7 @@
 import React from "react";
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
-import testrideSide from "../assets/img/backgrounds/testride-side.jpg";
+import testrideSide from "../assets/img/backgrounds/testride-side-min.jpg";
 import moment from "moment";
 import { useFormik } from "formik";
 import axios from "axios";

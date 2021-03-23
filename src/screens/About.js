@@ -3,12 +3,12 @@ import React from "react";
 import dots from "../assets/img/design/dots.svg";
 import valuesHex from "../assets/img/design/values.svg";
 import Button from "../components/Button";
-import vmion from "../assets/img/backgrounds/vmion.jpg";
-import values from "../assets/img/backgrounds/values.jpg";
-import rajib from "../assets/img/team/rajib.jpg";
-import kunal from "../assets/img/team/kunal.jpg";
-import aditya from "../assets/img/team/aditya.jpg";
-import sumedh from "../assets/img/team/sumedh.jpg";
+import vmion from "../assets/img/backgrounds/vmion-min.jpg";
+import values from "../assets/img/backgrounds/values-min.jpg";
+import rajib from "../assets/img/team/rajib-min.jpg";
+import kunal from "../assets/img/team/kunal-min.jpg";
+import aditya from "../assets/img/team/aditya-min.jpg";
+import sumedh from "../assets/img/team/sumedh-min.jpg";
 
 import "../assets/css/About.css";
 import Header from "../components/Header";

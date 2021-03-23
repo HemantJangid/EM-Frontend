@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import '../assets/css/Careers.css'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import careerSide from "../assets/img/backgrounds/careers-side.jpg";
+import careerSide from "../assets/img/backgrounds/careers-side-min.jpg";
 
 function Careers() {
     return (
