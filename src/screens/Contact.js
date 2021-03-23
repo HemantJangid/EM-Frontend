@@ -4,7 +4,7 @@ import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
 // import rect from "../assets/img/backgrounds/rect.jpg";
 // import man from "../assets/img/backgrounds/man.jpg";
-import common from "../assets/img/backgrounds/common.png";
+import contactSide from "../assets/img/backgrounds/contact-side.jpg";
 
 import "../assets/css/Contact.css";
 import { useFormik } from "formik";
@@ -43,7 +43,9 @@ function Contact() {
       <section id="contact-hero">
         <div className="container">
           <h3 className="pri">Reach us out at</h3>
-          <h1>info @ emotorad . com</h1>
+          <div className="d-flex flex-wrap">
+            <h1>info</h1><h1>@</h1><h1>emotorad</h1><h1>.</h1><h1>com</h1>
+          </div>
           <img src={dots} className="dots mb-4" alt="Dots" />
           <Button text="View products" />
         </div>
@@ -51,10 +53,10 @@ function Contact() {
 
       <section id="form">
         <div className="row justify-content-center no-gutters">
-          <div className="col-lg-6 form-img">
-            <img src={common} alt="Cycle" />
+          <div className="col-lg-6 col-md-6 form-img">
+            <img src={contactSide} alt="Cycle" />
           </div>
-          <div className="col-lg-6 align-content-center">
+          <div className="col-lg-6 col-md-6 align-content-center">
             <form onSubmit={formik.handleSubmit}>
               <h3 className="mb-5">Ask any query!</h3>
               <div className="form-row form-group">
@@ -121,14 +123,14 @@ function Contact() {
                   name="query"
                   id="query"
                   rows="7"
-                  placeholder="Query"
+                  // placeholder="Query"
                   onChange={formik.handleChange}
                   value={formik.values.query}
                 ></textarea>
               </div>
               <button
                 type="submit"
-                style={{ backgroundColor: "transparent", border: "none" }}
+                className="bg-transparent border-0 mx-auto w-100"
               >
                 <Button text="Enquire" color="black" />
               </button>

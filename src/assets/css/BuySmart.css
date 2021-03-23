@@ -1,5 +1,5 @@
 #buy-hero {
-  background: url("../img/backgrounds/contact.jpg");
+  background: url("../img/backgrounds/buysmart.jpg");
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -14,11 +14,13 @@
   margin-top: -10px;
   /* margin-bottom: -10px; */
   margin-left: -8px;
+  font-family: var(--opensans);
 }
 
 #buy-hero h3 {
   letter-spacing: 0.2rem;
   text-transform: uppercase;
+  font-family: var(--opensans);
 }
 
 /* Savings Calculator */
@@ -26,16 +28,41 @@
   background: url("../img/backgrounds/Frame_2.png");
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   padding-top: 4rem;
 }
 
+#savings-calculator h1,
+#savings-calculator h2,
+#savings-calculator h3,
+#savings-calculator h4,
+#savings-calculator p,
+#savings-calculator td {
+  color: #000;
+}
+
 #savings-calculator .card-savings {
-  height: 350px;
-  width: 350px;
-  background-color: white;
-  box-shadow: 10 10 10 rgba(0, 0, 0, 0.3);
+  box-shadow: 10px 10px 12px rgba(0, 0, 0, 0.1);
+  background: var(--white);
+  border-radius: 40px;
+}
+
+@media screen and (max-width: 540px) {
+  #buy-hero h1 {
+    font-size: 4rem;
+  }
+
+  #buy-hero h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  #buy-hero h1 {
+    font-size: 3rem;
+    margin-left: 0;
+  }
 }
 
 /* FORM */

@@ -21,6 +21,23 @@
   text-transform: uppercase;
 }
 
+@media screen and (max-width: 540px) {
+  #partner-hero h1 {
+    font-size: 4rem;
+  }
+
+  #partner-hero h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  #partner-hero h1 {
+    font-size: 3rem;
+    margin-left: 0;
+  }
+}
+
 /* FORM */
 form {
   padding: 2rem;

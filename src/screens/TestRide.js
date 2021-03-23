@@ -1,7 +1,7 @@
 import React from "react";
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
-import common from "../assets/img/backgrounds/common.png";
+import testrideSide from "../assets/img/backgrounds/testride-side.jpg";
 import moment from "moment";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -53,10 +53,10 @@ function TestRide() {
 
       <section id="form">
         <div className="row justify-content-center no-gutters">
-          <div className="col-lg-6 form-img">
-            <img src={common} alt="Cycle" />
+          <div className="col-lg-6 col-md-6 form-img">
+            <img src={testrideSide} alt="Cycle" />
           </div>
-          <div className="col-lg-6 align-content-center">
+          <div className="col-lg-6 col-md-6 align-content-center">
             <form onSubmit={formik.handleSubmit}>
               <h3 className="mb-5">Book a test ride!</h3>
               <div className="form-row form-group">

@@ -2,9 +2,7 @@ import React from "react";
 
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
-import rect from "../assets/img/backgrounds/rect.jpg";
-import man from "../assets/img/backgrounds/man.jpg";
-import common from "../assets/img/backgrounds/common.png";
+import partnerSide from "../assets/img/backgrounds/partner-side.jpg";
 
 import "../assets/css/Partner.css";
 import { useFormik } from "formik";
@@ -49,10 +47,10 @@ function Partner() {
 
       <section id="form">
         <div className="row justify-content-center no-gutters">
-          <div className="col-lg-6 form-img">
-            <img src={common} alt="Cycle" />
+          <div className="col-lg-6 col-md-6 form-img">
+            <img src={partnerSide} alt="Cycle" />
           </div>
-          <div className="col-lg-6 align-content-center">
+          <div className="col-lg-6 col-md-6 align-content-center">
             <form onSubmit={formik.handleSubmit}>
               <h3 className="mb-5">Fill the form!</h3>
               <div className="form-row form-group">
@@ -129,7 +127,7 @@ function Partner() {
               </div>
               <button
                 type="submit"
-                style={{ backgroundColor: "transparent", border: "none" }}
+                className="bg-transparent border-0 mx-auto w-100"
               >
                 <Button text="Enquire" color="black" />
               </button>
