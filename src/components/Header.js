@@ -70,6 +70,9 @@ const Header = () => {
                         {product.name}
                       </Link>
                     ))}
+                  <Link className="dropdown-item" to={`${navUrls.products}`}>
+                    All Products
+                  </Link>
                 </div>
               </li>
               <li className="nav-item">

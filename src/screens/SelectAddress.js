@@ -52,7 +52,8 @@ function SelectAddress() {
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
-            history.push(navUrls.home);
+            // history.push(navUrls.home);
+            history.push(navUrls.checkout, { order: res.data.payload });
           }
         })
         .catch((err) => console.log(err));

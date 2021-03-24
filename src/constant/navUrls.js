@@ -2,6 +2,7 @@ const navUrls = {
   home: "/",
   about: "/about",
   contact: "/contact",
+  checkout: "/checkout",
   signIn: "/signin",
   signUp: "/signup",
   blog: "/blog",

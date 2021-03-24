@@ -23,6 +23,7 @@ import navUrls from "./constant/navUrls";
 import { addItem } from "./redux/actions/cart";
 import BlogPost from "./screens/BlogPost";
 import Partner from "./screens/Partner";
+import Checkout from "./screens/Checkout";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
                 path={`${navUrls.addAddresss}`}
                 component={AddAddress}
               />
+              <PrivateRoute path={`${navUrls.checkout}`} component={Checkout} />
               <Route path={`${navUrls.testride}`} component={TestRide} />
               {/* <Route component={Error} /> */}
               <Route path={`${navUrls.products}`} component={AllProducts} />

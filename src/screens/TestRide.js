@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
 import testrideSide from "../assets/img/backgrounds/testride-side-min.jpg";
@@ -13,31 +13,62 @@ import Footer from "../components/Footer";
 function TestRide() {
   const todays_date_obj = new Date();
   const todays_date = moment(todays_date_obj).format("YYYY-MM-DD");
+  const [dealers, setDealers] = useState([]);
+  const [reRender, setReRender] = useState(true);
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    getAllDealers();
+  }, []);
+
+  function getAllDealers() {
+    axios
+      .get(`${constants.base_url}${constants.dealer}`)
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          let temp = res.data.payload.dealers;
+          var cities = [];
+          temp.forEach((item, i) => {
+            if (!cities.includes(item.city.toLowerCase()))
+              cities.push(item.city.toLowerCase());
+          });
+          setDealers(temp);
+          setCities(cities);
+          setReRender(!reRender);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   const formik = useFormik({
     initialValues: {
       name: "",
       organisation_name: "",
-      city: "",
+      city: "select",
       email: "",
       phone_number: "",
       preferred_date: "",
       preferred_time: "",
       bike_name: "",
-      dealer_id: 35,
+      dealer_id: "select",
     },
     onSubmit: (values) => {
-      // alert(JSON.stringify(values, null, 2));
-      axios
-        .post(`${constants.base_url}${constants.test_ride}`, values)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      alert(JSON.stringify(values, null, 2));
+      // axios
+      //   .post(`${constants.base_url}${constants.test_ride}`, values)
+      //   .then((res) => {
+      //     console.log(res);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     },
   });
+
+  console.log(cities);
 
   return (
     <div>
@@ -62,6 +93,7 @@ function TestRide() {
               <div className="form-row form-group">
                 <div className="col-lg-6 col-md-6">
                   <input
+                    required
                     className="mb-4"
                     type="text"
                     name="name"
@@ -83,20 +115,11 @@ function TestRide() {
                   />
                 </div>
               </div>
-              <div className="form-group">
-                <input
-                  className="mb-4"
-                  type="text"
-                  name="city"
-                  id="city"
-                  placeholder="City"
-                  onChange={formik.handleChange}
-                  value={formik.values.city}
-                />
-              </div>
+
               <div className="form-row form-group">
                 <div className="col-lg-6 col-md-6">
                   <input
+                    required
                     className="mb-4"
                     type="email"
                     name="email"
@@ -108,6 +131,7 @@ function TestRide() {
                 </div>
                 <div className="col-lg-6 col-md-6">
                   <input
+                    required
                     className="mb-4"
                     type="text"
                     name="phone_number"
@@ -120,8 +144,62 @@ function TestRide() {
               </div>
               <div className="form-row form-group">
                 <div className="col-lg-6 col-md-6">
+                  <label for="bike_name">Choose your City:</label>
+                  <select
+                    required
+                    id="city"
+                    name="city"
+                    onChange={formik.handleChange}
+                    value={formik.values.city}
+                    style={{ textTransform: "capitalize" }}
+                  >
+                    <option value="">Select</option>
+                    {cities.map((city, index) => {
+                      return (
+                        <option
+                          style={{ textTransform: "capitalize" }}
+                          value={city}
+                        >
+                          {city}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div className="col-lg-6 col-md-6">
+                  <label for="bike_name">Available Dealers(Choose one):</label>
+                  <select
+                    required
+                    id="dealer"
+                    name="dealer_id"
+                    onChange={formik.handleChange}
+                    value={formik.values.dealer_id}
+                    style={{ textTransform: "capitalize" }}
+                    disabled={formik.values.city === "select"}
+                  >
+                    <option value="">Select</option>
+                    {dealers.map((dealer, index) => {
+                      console.log(dealer.city.toLowerCase());
+                      if (dealer.city.toLowerCase() === formik.values.city) {
+                        console.log(dealer.city);
+                        return (
+                          <option
+                            style={{ textTransform: "capitalize" }}
+                            value={dealer.id}
+                          >
+                            {dealer.name}
+                          </option>
+                        );
+                      }
+                    })}
+                  </select>
+                </div>
+              </div>
+              <div className="form-row form-group">
+                <div className="col-lg-6 col-md-6">
                   <label for="preferred_date">Date:</label>
                   <input
+                    required
                     className="mb-4"
                     type="date"
                     name="preferred_date"
@@ -135,6 +213,7 @@ function TestRide() {
                 <div className="col-lg-6 col-md-6">
                   <label for="preferred_time">Time:</label>
                   <input
+                    required
                     className="mb-4"
                     type="time"
                     name="preferred_time"
@@ -147,11 +226,13 @@ function TestRide() {
               <div className="form-group mb-5">
                 <label for="bike_name">Choose your bike:</label>
                 <select
+                  required
                   id="bike_name"
                   name="bike_name"
                   onChange={formik.handleChange}
                   value={formik.values.bike_name}
                 >
+                  <option value="">Select</option>
                   <option value="t_rex">T-Rex</option>
                   <option value="emx">EMX</option>
                   <option value="doodle">Doodle</option>
