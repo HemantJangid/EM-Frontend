@@ -86,14 +86,24 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2" to={`${navUrls.blog}`}>
+                <Link className="nav-link mx-2" >
                   Blog
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2" to={`${navUrls.testride}`}>
+                <Link className="nav-link mx-2" >
                   Book a test ride
                 </Link>
+              </li>
+              <li className="nav-item dropdown">
+                <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+        </Link>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <Link className="dropdown-item" to={`${navUrls.testride}`}>Book A test ride</Link>
+                  <Link className="dropdown-item" to="/">Community</Link>
+                  <Link className="dropdown-item" to={`${navUrls.blog}`}>Blog</Link>
+                </div>
               </li>
             </ul>
           </div>
