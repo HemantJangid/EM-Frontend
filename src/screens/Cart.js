@@ -12,6 +12,7 @@ import { auth } from "./../firebase";
 import constants from "../constant/RequestUrls";
 import axios from "axios";
 import navUrls from "./../constant/navUrls";
+import { addUser } from "./../redux/actions/user";
 
 function Cart() {
   const [qty, setQty] = useState(1);
@@ -28,6 +29,7 @@ function Cart() {
   const { logout } = useAuth();
   const history = useHistory();
   const { items } = useSelector((state) => state.cartReducer);
+  const user = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -139,7 +141,9 @@ function Cart() {
           <div className="row justify-content-center">
             <div className="col-lg-3 col-md-12 bg-dark mx-md-0 mx-sm-4">
               <div className="my-5">
-                <h2 className="text-center">Aditya Pathak</h2>
+                <h2 className="text-center">
+                  {user && user != "" ? user : "name not available"}
+                </h2>
               </div>
             </div>
             {/* <nav
@@ -186,6 +190,8 @@ function Cart() {
                 <button
                   onClick={async () => {
                     await logout();
+                    dispatch(addUser({}));
+                    alert("You have been successfully logged out");
                     history.push(navUrls.home);
                   }}
                   className="bg-transparent border-0 my-3"
@@ -313,10 +319,18 @@ function Cart() {
                     </table>
                   </div>
                   <div className="d-flex">
-                    <a className="mx-2" href="">Debit Card</a>
-                    <a className="mx-2" href="">UPI</a>
-                    <a className="mx-2" href="">Cash on delivery</a>
-                    <a className="mx-2" href="">EMI*</a>
+                    <a className="mx-2" href="">
+                      Debit Card
+                    </a>
+                    <a className="mx-2" href="">
+                      UPI
+                    </a>
+                    <a className="mx-2" href="">
+                      Cash on delivery
+                    </a>
+                    <a className="mx-2" href="">
+                      EMI*
+                    </a>
                   </div>
                   <center>
                     <button
