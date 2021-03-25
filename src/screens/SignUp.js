@@ -8,10 +8,13 @@ import axios from "axios";
 import constants from "../constant/RequestUrls";
 import { auth } from "./../firebase";
 import navUrls from "./../constant/navUrls";
+import { useDispatch } from "react-redux";
+import { addUser } from "./../redux/actions/user";
 
 function SignUp() {
   const [loading, setLoading] = useState(false);
   const { signup, currentUser } = useAuth();
+  const dispatch = useDispatch();
   const history = useHistory();
   const formik = useFormik({
     initialValues: {
@@ -24,7 +27,13 @@ function SignUp() {
     onSubmit: async (values) => {
       try {
         setLoading(true);
-        await signup(values.email, values.password);
+        await signup(values.email, values.password).then(function (result) {
+          dispatch(addUser(`${values.first_name} ${values.last_name}`));
+          result.user.updateProfile({
+            displayName: `${values.first_name} ${values.last_name}`,
+          });
+        });
+
         auth.currentUser
           .getIdToken(true)
           .then((idToken) => {
@@ -58,8 +67,8 @@ function SignUp() {
           .catch((err) => console.log("could not get token: ", err));
 
         history.push(navUrls.products);
-      } catch {
-        console.log("failed to create an account");
+      } catch (err) {
+        alert(err);
       }
 
       setLoading(false);

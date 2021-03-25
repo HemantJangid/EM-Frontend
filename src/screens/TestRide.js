@@ -30,7 +30,11 @@ function TestRide() {
           let temp = res.data.payload.dealers;
           var cities = [];
           temp.forEach((item, i) => {
-            if (!cities.includes(item.city.toLowerCase()))
+            if (
+              item.city != null &&
+              item.city != undefined &&
+              !cities.includes(item.city.toLowerCase())
+            )
               cities.push(item.city.toLowerCase());
           });
           setDealers(temp);
@@ -179,8 +183,10 @@ function TestRide() {
                   >
                     <option value="">Select</option>
                     {dealers.map((dealer, index) => {
-                      console.log(dealer.city.toLowerCase());
-                      if (dealer.city.toLowerCase() === formik.values.city) {
+                      if (
+                        (dealer.city != null) & (dealer.city != undefined) &&
+                        dealer.city.toLowerCase() === formik.values.city
+                      ) {
                         console.log(dealer.city);
                         return (
                           <option
