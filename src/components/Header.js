@@ -45,6 +45,11 @@ const Header = () => {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link className="nav-link mx-2" to={`${navUrls.about}`}>
+                  Home
+                </Link>
+              </li>
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link mx-2 dropdown-toggle"
@@ -80,27 +85,30 @@ const Header = () => {
                   About Us
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link mx-2" to={`${navUrls.contact}`}>
-                  Contact Us
+              <li className="nav-item dropdown">
+                <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Assurance
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link mx-2" >
-                  Blog
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link mx-2" >
-                  Book a test ride
-                </Link>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <Link className="dropdown-item" to={`${navUrls.testride}`}>EMI, Insurance Calc</Link>
+                </div>
               </li>
               <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
+                  Reach Us
         </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to={`${navUrls.testride}`}>Book A test ride</Link>
+                  <Link className="dropdown-item" to={`${navUrls.contact}`}>Contact Us</Link>
+                  <Link className="dropdown-item" to={`${navUrls.partner}`}>Partner With Us</Link>
+                  <Link className="dropdown-item" to={`${navUrls.blog}`}>Careers</Link>
+                  <Link className="dropdown-item" to={`${navUrls.testride}`}>Book A Test Ride</Link>
+                </div>
+              </li>
+              <li className="nav-item dropdown">
+                <Link className="nav-link dropdown-toggle" to="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Community
+        </Link>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <Link className="dropdown-item" to="/">Community</Link>
                   <Link className="dropdown-item" to={`${navUrls.blog}`}>Blog</Link>
                 </div>

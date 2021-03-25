@@ -35,7 +35,7 @@ function App() {
             <Switch>
               <Route exact path={`${navUrls.home}`} component={Home} />
               <Route path={`${navUrls.about}`} component={About} />
-              {/* <Route path='/testride' component={} /> */}
+              <Route path={`${navUrls.partner}`} component={Partner} />
               <Route path={`${navUrls.contact}`} component={Contact} />
               <Route path={`${navUrls.signIn}`} component={SignIn} />
               <Route path={`${navUrls.signUp}`} component={SignUp} />

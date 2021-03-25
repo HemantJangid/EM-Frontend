@@ -59,14 +59,6 @@ function About() {
                 </div>
             </section>
 
-            <section id="vision">
-                <div className="container">
-                    <div className="row justify-content-center align-items-center">
-
-                    </div>
-                </div>
-            </section>
-
             <section id="team">
                 <div className="container">
                     <h3 className="mb-5">Our Team</h3>
@@ -75,21 +67,25 @@ function About() {
                             <img src={rajib} alt="Aditya Pathak" className="img-fluid" />
                             <h4>RAJIB GANGOPADHYAY</h4>
                             <p>Founder</p>
+                            <a href=""><i class="fab fa-linkedin"></i></a>
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6">
                             <img src={kunal} alt="Aditya Pathak" className="img-fluid" />
                             <h4>KUNAL GUPTA</h4>
                             <p>Co-Founder & CEO</p>
+                            <a href=""><i class="fab fa-linkedin"></i></a>
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6">
                             <img src={aditya} alt="Aditya Pathak" className="img-fluid" />
                             <h4>ADITYA OZA</h4>
                             <p>Co-Founder & CMO</p>
+                            <a href=""><i class="fab fa-linkedin"></i></a>
                         </div>
                         <div className="col-lg-3 col-md-4 col-sm-6">
                             <img src={sumedh} alt="Aditya Pathak" className="img-fluid" />
                             <h4>SUMEDH BATTEWAR</h4>
                             <p>Co-Founder & CBO</p>
+                            <a href=""><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>

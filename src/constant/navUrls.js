@@ -12,6 +12,7 @@ const navUrls = {
   addAddresss: "/add-address",
   testride: "/testride",
   products: "/products",
+  partner: "/partner",
   product: "/:productSlug",
 };
 
