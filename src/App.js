@@ -24,6 +24,7 @@ import { addItem } from "./redux/actions/cart";
 import BlogPost from "./screens/BlogPost";
 import Partner from "./screens/Partner";
 import Checkout from "./screens/Checkout";
+import Community from "./screens/Community";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Switch>
               <Route exact path={`${navUrls.home}`} component={Home} />
               <Route path={`${navUrls.about}`} component={About} />
+              {/* <Route path='/testride' component={} /> */}
               <Route path={`${navUrls.contact}`} component={Contact} />
               <Route path={`${navUrls.signIn}`} component={SignIn} />
               <Route path={`${navUrls.signUp}`} component={SignUp} />
@@ -48,7 +50,7 @@ function App() {
                 path={`${navUrls.addAddresss}`}
                 component={AddAddress}
               />
-              <PrivateRoute path={`${navUrls.checkout}`} component={Checkout} />
+              {/* <PrivateRoute path={`${navUrls.checkout}`} component={Checkout} /> */}
               <Route path={`${navUrls.testride}`} component={TestRide} />
               {/* <Route component={Error} /> */}
               <Route path={`${navUrls.products}`} component={AllProducts} />

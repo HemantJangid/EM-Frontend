@@ -1,0 +1,95 @@
+#comm-hero {
+  min-height: 100vh;
+  padding: 100px 0;
+  background: url("../img/backgrounds/community-min.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+#community-form {
+  min-height: 100vh;
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("../img/backgrounds/community-form.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#community-form .form-box {
+  background: #000;
+  padding: 2rem;
+  border-radius: 20px;
+  /* box-shadow: 10px 10px 17px rgba(255, 255, 255, 0.25); */
+}
+
+#community-form hr {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#community-form input[type="text"],
+#community-form input[type="email"],
+#community-form input[type="password"] {
+  border: none;
+  border-bottom: 1px solid white;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  font-family: var(--sen);
+  color: var(--white);
+}
+
+#community-form input[type="text"]::placeholder,
+#community-form input[type="email"]::placeholder,
+#community-form input[type="password"]::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#community-form input[type="text"]:focus,
+#community-form input[type="email"]:focus,
+#community-form input[type="password"]:focus {
+  border-bottom: 1px solid var(--pri);
+}
+
+#community-form input[type="submit"] {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: var(--white);
+  text-transform: uppercase;
+  font-family: var(--sen);
+  font-size: 0.875rem;
+  min-height: 45px;
+}
+
+#community-form .add-new-address {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: var(--white);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--sen);
+  font-size: 0.875rem;
+  min-height: 45px;
+}
+
+#community-form p {
+  font-size: 0.875rem;
+}
+
+#community-form a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+#community-form label {
+  color: var(--white);
+  font-family: var(--sen);
+}
