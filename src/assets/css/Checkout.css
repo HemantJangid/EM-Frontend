@@ -1,0 +1,86 @@
+#checkout {
+  min-height: 100vh;
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("../img/backgrounds/sign-min.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#checkout .form-box {
+  background: #000;
+  padding: 2rem;
+  border-radius: 20px;
+}
+
+#checkout hr {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#checkout input[type="text"],
+#checkout input[type="email"],
+#checkout input[type="password"] {
+  border: none;
+  border-bottom: 1px solid white;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  font-family: var(--sen);
+  color: var(--white);
+}
+
+#checkout input[type="text"]::placeholder,
+#checkout input[type="email"]::placeholder,
+#checkout input[type="password"]::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#checkout input[type="text"]:focus,
+#checkout input[type="email"]:focus,
+#checkout input[type="password"]:focus {
+  border-bottom: 1px solid var(--pri);
+}
+
+#checkout input[type="submit"] {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: var(--white);
+  text-transform: uppercase;
+  font-family: var(--sen);
+  font-size: 0.875rem;
+  min-height: 45px;
+}
+
+#checkout .add-new-address {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: var(--white);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--sen);
+  font-size: 0.875rem;
+  min-height: 45px;
+}
+
+#checkout p {
+  font-size: 0.875rem;
+}
+
+#checkout a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+#checkout label {
+  color: var(--white);
+  font-family: var(--sen);
+}

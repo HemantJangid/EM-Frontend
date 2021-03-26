@@ -16,7 +16,29 @@ import lines from "../assets/img/design/lines.svg";
 import play from "../assets/img/design/play.svg";
 import numbers from "../assets/img/backgrounds/numbers-min.jpg";
 
-import arvind from "../assets/img/testimonials/arvind-min.jpg";
+import udayAmbike from "../assets/img/testimonials/uday-ambike.jpg";
+import ayushGupta from "../assets/img/testimonials/ayush-gupta.jpg";
+import jamshedKhambatta from "../assets/img/testimonials/jamshed-khambatta.jpg";
+import rohitGupta from "../assets/img/testimonials/rohit-gupta.jpg";
+import rudrendaAmbike from "../assets/img/testimonials/rudrendra-ambike.jpg";
+import ambikeFamily from "../assets/img/testimonials/ambike-family.jpg";
+import tanveerSiddiqi from "../assets/img/testimonials/tanveer-siddiqi.jpg";
+import yudhishterBhati from "../assets/img/testimonials/yudhishter-bhati.jpg";
+import ambarBannerji from "../assets/img/testimonials/ambar-bannerji.jpg";
+
+import logo1 from "../assets/img/logos/logo1.png";
+import logo2 from "../assets/img/logos/logo2.png";
+import logo3 from "../assets/img/logos/logo3.png";
+import logo4 from "../assets/img/logos/logo4.png";
+import logo5 from "../assets/img/logos/logo5.png";
+import logo6 from "../assets/img/logos/logo6.png";
+import logo7 from "../assets/img/logos/logo7.png";
+import logo8 from "../assets/img/logos/logo8.png";
+import logo9 from "../assets/img/logos/logo9.png";
+import logo10 from "../assets/img/logos/logo10.png";
+import logo11 from "../assets/img/logos/logo11.png";
+import logo12 from "../assets/img/logos/logo12.png";
+import logo13 from "../assets/img/logos/logo13.png";
 
 function Home() {
   console.log(
@@ -172,21 +194,26 @@ function Home() {
       </section>
 
       <section id="feature">
-        <h3>Featured In</h3>
-        <marquee behavior="scroll" direction="right">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia iure
-          neque voluptatibus placeat voluptatum omnis distinctio impedit
-          repellendus earum sunt alias, veritatis laudantium molestias ut sed
-          ducimus enim a porro repellat suscipit numquam cumque accusantium
-          labore cupiditate. Alias laudantium non harum animi voluptatem tempora
-          accusamus quibusdam culpa quis enim ratione possimus fugiat, minus,
-          quisquam debitis beatae repellat consectetur eaque, delectus assumenda
-          laborum itaque sit necessitatibus laboriosam. Voluptas, repellendus
-          at? Tempore quam corporis perspiciatis quia non explicabo aut mollitia
-          suscipit quis! Ex necessitatibus aliquam cumque aperiam accusamus
-          voluptatum ad, reprehenderit consectetur optio fugit? Modi eveniet
-          esse molestiae. Similique pariatur amet facilis.
-        </marquee>
+        <h3 className="mb-5">Featured In</h3>
+        <div class="marquee">
+          <div class="track">
+            <div class="content">
+              <img src={logo1} alt="Logo" className="mx-5" />
+              <img src={logo2} alt="Logo" className="mx-5" />
+              <img src={logo3} alt="Logo" className="mx-5" />
+              <img src={logo4} alt="Logo" className="mx-5" />
+              <img src={logo5} alt="Logo" className="mx-5" />
+              <img src={logo6} alt="Logo" className="mx-5" />
+              <img src={logo7} alt="Logo" className="mx-5" />
+              <img src={logo8} alt="Logo" className="mx-5" />
+              <img src={logo9} alt="Logo" className="mx-5" />
+              <img src={logo10} alt="Logo" className="mx-5" />
+              <img src={logo11} alt="Logo" className="mx-5" />
+              <img src={logo12} alt="Logo" className="mx-5" />
+              <img src={logo13} alt="Logo" className="mx-5" />
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="testimonial">
@@ -196,14 +223,70 @@ function Home() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
                   <p className="text-left">
-                    Very excited to see the E-bike. The best part is it comes
-                    very sturdy. The material quality speaks for itself. Thank
-                    for the affordable ride EM.
+                    E-Bicycle, E Motorad is a newer method of transportation
+                    which not only support a much healthier lifestyle but also
+                    help in maintaining eco-friendly environment.
                   </p>
-                  <h4 className="text-left">Arvind, Bangalore</h4>
+                  <h4 className="text-left">Uday Ambike</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={arvind} alt="Arvind" className="img-fluid my-3" />
+                  <img
+                    src={udayAmbike}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-box">
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-8">
+                  <p className="text-left">
+                    The Product is as good as it gets, can not compare the
+                    comfort and the specs to any other product in the market.Ill
+                    suggest you to take a test ride so that you can feel its
+                    worth every penny.
+                  </p>
+                  <h4 className="text-left">Ayush Gupta</h4>
+                </div>
+                <div className="col-lg-4">
+                  <img
+                    src={ayushGupta}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-box">
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-8">
+                  <p className="text-left">
+                    1. The design of the E-Bicycle is very nice. And because of
+                    the black and yellow combination it gives the bike a premium
+                    look. <br />
+                    2. The bike is light weight which makes it comfortable to
+                    ride. <br />
+                    3. The battery is also good. And as it's a detachable
+                    battery we can carry the same for charging at the home.
+                    Inbuilt charging indicator provides an easy way to check the
+                    charging status. <br />
+                    4. All the modes: Pedal Mode, Assist Mode, Throttle Mode,
+                    Walk Mode, Cruise Mode are very nice. <br />
+                    5. The quality of the Tyres is very good. <br />
+                    6. The Dual Suspension system with lock unlock feature
+                    provides a good quality of ride and comfort as well
+                    specially while off-roading. <br />
+                    So overall the E-BICYCLE Electro Motorad is very very good.
+                  </p>
+                  <h4 className="text-left">Rudrendra Ambike</h4>
+                </div>
+                <div className="col-lg-4">
+                  <img
+                    src={rudrendaAmbike}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
@@ -215,10 +298,14 @@ function Home() {
                     very sturdy. The material quality speaks for itself. Thank
                     for the affordable ride EM.
                   </p>
-                  <h4 className="text-left">Arvind, Bangalore</h4>
+                  <h4 className="text-left">Yudhishter Bhati</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={arvind} alt="Arvind" className="img-fluid my-3" />
+                  <img
+                    src={yudhishterBhati}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
@@ -226,14 +313,95 @@ function Home() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
                   <p className="text-left">
-                    Very excited to see the E-bike. The best part is it comes
-                    very sturdy. The material quality speaks for itself. Thank
-                    for the affordable ride EM.
+                    Loving it more everyday, such a reliable product. I would
+                    recommend you to buy this without any doubts. Excellent
+                    Product quality.
                   </p>
-                  <h4 className="text-left">Arvind, Bangalore</h4>
+                  <h4 className="text-left">Tanveer Siddiqi</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={arvind} alt="Arvind" className="img-fluid my-3" />
+                  <img
+                    src={tanveerSiddiqi}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-box">
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-8">
+                  <p className="text-left">
+                    Overall Moovway or EMX what you call it is a really good
+                    experience, Nice powerful throttle response, Great
+                    suspension, Looks are amazing too. I recommend it to
+                    everyone who wants electric
+                  </p>
+                  <h4 className="text-left">Ambar Bannerji</h4>
+                </div>
+                <div className="col-lg-4">
+                  <img
+                    src={ambarBannerji}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-box">
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-8">
+                  <p className="text-left">
+                    EMXs battery life is awesome and the frame geometry is also
+                    so great that it makes it very light. My suggestion is that
+                    the drivetrain and the shifters can be upgraded, rest its
+                    one of the best ebike in the market.
+                  </p>
+                  <h4 className="text-left">Jamshed Khambatta</h4>
+                </div>
+                <div className="col-lg-4">
+                  <img
+                    src={jamshedKhambatta}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-box">
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-8">
+                  <p className="text-left">
+                    Till date I had superb experience and the ride is enjoyable
+                    as well. The quality of bike is just amazing!!
+                  </p>
+                  <h4 className="text-left">Rohit Gupta</h4>
+                </div>
+                <div className="col-lg-4">
+                  <img
+                    src={rohitGupta}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-box">
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-8">
+                  <p className="text-left">
+                    We all like to ride the Ebike including the ladies in our
+                    family, its such a joy and we are proud to be an advanced
+                    and responsible family that rides on electric vehicle.
+                  </p>
+                  <h4 className="text-left">Ambike Family</h4>
+                </div>
+                <div className="col-lg-4">
+                  <img
+                    src={ambikeFamily}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
