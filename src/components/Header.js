@@ -81,7 +81,7 @@ const Header = () => {
                 </div>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2" to={`${navUrls.about}`}>
+                <Link className="nav-link mx-2" to={`${navUrls.home}`}>
                   About Us
                 </Link>
               </li>
