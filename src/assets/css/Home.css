@@ -1,3 +1,5 @@
+@import url("https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css");
+
 /* HERO */
 #hero {
   background: url("../img/backgrounds/home-min.jpg");
@@ -6,6 +8,12 @@
   height: 100vh;
   display: flex;
   align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  #hero {
+    background-position: 60% 0%;
+  }
 }
 
 #hero .electric {
@@ -280,8 +288,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6rem 4rem;
+  padding: 2rem 4rem;
   border-radius: 20px !important;
+  background: #000;
+}
+
+@media screen and (max-width: 425px) {
+  #testimonial .testimonial-box {
+    padding: 2rem;
+  }
 }
 
 #testimonial .testimonial-box .text {
@@ -290,11 +305,40 @@
 }
 
 #testimonial .testimonial-box img {
-  width: 200px;
-  border-radius: 20px;
+  height: 300px;
+  border-radius: 70px;
 }
 
 #testimonial .carousel .carousel-status,
 #testimonial .carousel .thumbs {
   display: none;
+}
+
+#youtube-carousel {
+  padding: 100px 0;
+}
+
+#youtube-carousel .video-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+#youtube-carousel .video-container::after {
+  padding-top: 56.25%;
+  display: block;
+  content: "";
+}
+
+#youtube-carousel .video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#youtube-carousel .slick-prev:before,
+#youtube-carousel .slick-next:before {
+  color: #000;
 }
