@@ -31,7 +31,7 @@ function Blog() {
       .catch((err) => console.log(err));
   }
 
-  console.log(blogs);
+  // console.log(blogs);
   return (
     <div>
       <Header />
@@ -41,7 +41,12 @@ function Blog() {
           <h3 className="pri">Read with us</h3>
           <h1>Blogs </h1>
           <img src={dots} alt="Dots" className="dots mb-4" />
-          <Button text="View our products" />
+          <button
+            onClick={() => history.push(navUrls.products)}
+            className="bg-transparent border-0 text-left w-100"
+          >
+            <Button text="View products" />
+          </button>
         </div>
       </section>
 

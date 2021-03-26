@@ -9,6 +9,8 @@ import "../assets/css/TestRide.css";
 import constants from "../constant/RequestUrls";
 import Header from "./../components/Header";
 import Footer from "../components/Footer";
+import { useHistory } from "react-router-dom";
+import navUrls from "./../constant/navUrls";
 
 function TestRide() {
   const todays_date_obj = new Date();
@@ -16,6 +18,7 @@ function TestRide() {
   const [dealers, setDealers] = useState([]);
   const [reRender, setReRender] = useState(true);
   const [cities, setCities] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     getAllDealers();
@@ -25,7 +28,7 @@ function TestRide() {
     axios
       .get(`${constants.base_url}${constants.dealer}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status === 200) {
           let temp = res.data.payload.dealers;
           var cities = [];
@@ -60,19 +63,17 @@ function TestRide() {
       dealer_id: "select",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      // axios
-      //   .post(`${constants.base_url}${constants.test_ride}`, values)
-      //   .then((res) => {
-      //     console.log(res);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      // alert(JSON.stringify(values, null, 2));
+      axios
+        .post(`${constants.base_url}${constants.test_ride}`, values)
+        .then((res) => {
+          // console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   });
-
-  console.log(cities);
 
   return (
     <div>
@@ -82,7 +83,12 @@ function TestRide() {
           <h3 className="pri">Book a test ride</h3>
           <h1>Experience unparallel</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <Button text="View products" />
+          <button
+            onClick={() => history.push(navUrls.products)}
+            className="bg-transparent border-0 text-left w-100"
+          >
+            <Button text="View products" />
+          </button>
         </div>
       </section>
 
@@ -187,7 +193,7 @@ function TestRide() {
                         (dealer.city != null) & (dealer.city != undefined) &&
                         dealer.city.toLowerCase() === formik.values.city
                       ) {
-                        console.log(dealer.city);
+                        // console.log(dealer.city);
                         return (
                           <option
                             style={{ textTransform: "capitalize" }}

@@ -35,6 +35,8 @@ function AddAddress() {
             headers,
           })
           .then((res) => {
+            // console.log(res);
+            alert(res.data.message);
             history.push(navUrls.selectAddress);
           })
           .catch((err) => console.log(err));

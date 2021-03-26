@@ -26,7 +26,7 @@ function SelectAddress() {
       axios
         .get(`${constants.base_url}${constants.address}`, { headers })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             setAddresses(res.data.payload.address_list);
             setReRender(!reRender);
@@ -50,7 +50,7 @@ function SelectAddress() {
           { headers }
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             // history.push(navUrls.home);
             history.push(navUrls.checkout, { order: res.data.payload });
@@ -59,7 +59,6 @@ function SelectAddress() {
         .catch((err) => console.log(err));
     });
   }
-  console.log("selected address: ", selectedAddress);
 
   return (
     <div>

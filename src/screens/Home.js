@@ -1,13 +1,12 @@
-
 import React from "react";
 import Button from "../components/Button";
 import { Carousel } from "react-responsive-carousel";
 import { Parallax } from "react-parallax";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Vimeo from '@u-wave/react-vimeo';
-import CountUp from 'react-countup';
-import VisibilitySensor from 'react-visibility-sensor';
+import Vimeo from "@u-wave/react-vimeo";
+import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
 import "../assets/css/Home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -40,9 +39,16 @@ import logo10 from "../assets/img/logos/logo10.png";
 import logo11 from "../assets/img/logos/logo11.png";
 import logo12 from "../assets/img/logos/logo12.png";
 import logo13 from "../assets/img/logos/logo13.png";
-
+import { useHistory } from "react-router-dom";
+import navUrls from "./../constant/navUrls";
 
 function Home() {
+  const history = useHistory();
+  console.log(
+    window.location.hostname === "localhost"
+      ? "rzp_test_t4fMAIqMYPBJ38"
+      : "rzp_live_rrQB0T2BkwBGLm"
+  );
   return (
     <div>
       <Header />
@@ -53,7 +59,12 @@ function Home() {
           <h2 className="mt-2">Revolution</h2>
           <img src={dots} alt="Dots" className="dots" />
           <div className="hero-btn">
-            <Button text="View Products" />
+            <button
+              onClick={() => history.push(navUrls.products)}
+              className="bg-transparent border-0 mx-auto w-100"
+            >
+              <Button text="View Products" />
+            </button>
           </div>
         </div>
       </section>
@@ -73,7 +84,12 @@ function Home() {
                 a combination of manual pedaling with battery assist and
                 throttle.
               </p>
-              <Button text="Book a test ride" />
+              <button
+                onClick={() => history.push(navUrls.testride)}
+                className="bg-transparent border-0 mx-auto w-100"
+              >
+                <Button text="Book a test ride" />
+              </button>
             </div>
           </div>
         </div>
@@ -85,35 +101,41 @@ function Home() {
             <div className="row justify-content-center">
               <div className="col-md-4 mb-5">
                 <h4>Speed</h4>
-                <h1><CountUp start={0} end={25}>
-                  {({ countUpRef, start }) => (
-                    <VisibilitySensor onChange={start} delayedCall>
-                      <span ref={countUpRef} />
-                    </VisibilitySensor>
-                  )}
-                </CountUp></h1>
+                <h1>
+                  <CountUp start={0} end={25}>
+                    {({ countUpRef, start }) => (
+                      <VisibilitySensor onChange={start} delayedCall>
+                        <span ref={countUpRef} />
+                      </VisibilitySensor>
+                    )}
+                  </CountUp>
+                </h1>
                 <p>Kilometers per Hour</p>
               </div>
               <div className="col-md-4 mb-5">
                 <h4>Range</h4>
-                <h1><CountUp start={0} end={45}>
-                  {({ countUpRef, start }) => (
-                    <VisibilitySensor onChange={start} delayedCall>
-                      <span ref={countUpRef} />
-                    </VisibilitySensor>
-                  )}
-                </CountUp></h1>
+                <h1>
+                  <CountUp start={0} end={45}>
+                    {({ countUpRef, start }) => (
+                      <VisibilitySensor onChange={start} delayedCall>
+                        <span ref={countUpRef} />
+                      </VisibilitySensor>
+                    )}
+                  </CountUp>
+                </h1>
                 <p>Kilometers in full charge</p>
               </div>
               <div className="col-md-4 mb-5">
                 <h4>Battery</h4>
-                <h1><CountUp start={0} end={36}>
-                  {({ countUpRef, start }) => (
-                    <VisibilitySensor onChange={start} delayedCall>
-                      <span ref={countUpRef} />
-                    </VisibilitySensor>
-                  )}
-                </CountUp></h1>
+                <h1>
+                  <CountUp start={0} end={36}>
+                    {({ countUpRef, start }) => (
+                      <VisibilitySensor onChange={start} delayedCall>
+                        <span ref={countUpRef} />
+                      </VisibilitySensor>
+                    )}
+                  </CountUp>
+                </h1>
                 <p>Volts, 10.4Ah Samsung MJ1 Cell</p>
               </div>
             </div>
@@ -140,7 +162,12 @@ function Home() {
             <div className="emx-box pl-3 pl-sm-5">
               <h2>EMX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
-              <Button text="Explore models" />
+              <button
+                onClick={() => history.push(navUrls.products)}
+                className="bg-transparent border-0 text-left w-100"
+              >
+                <Button text="Explore models" />
+              </button>
             </div>
           </div>
           <div className="col-lg-6 overflow-hidden">
@@ -148,7 +175,12 @@ function Home() {
             <div className="doodle-box pl-3 pl-sm-5">
               <h2>Doodle</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
-              <Button text="Explore models" />
+              <button
+                onClick={() => history.push(navUrls.products)}
+                className="bg-transparent border-0 text-left w-100"
+              >
+                <Button text="Explore models" />
+              </button>
             </div>
           </div>
           <div className="col-lg-12 overflow-hidden">
@@ -156,7 +188,12 @@ function Home() {
             <div className="trex-box pl-3 pl-sm-5">
               <h2>T-REX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
-              <Button text="Explore models" />
+              <button
+                onClick={() => history.push(navUrls.products)}
+                className="bg-transparent border-0 text-left w-100"
+              >
+                <Button text="Explore models" />
+              </button>
             </div>
           </div>
         </div>
@@ -177,7 +214,12 @@ function Home() {
                 a combination of manual pedaling with battery assist and
                 throttle.
               </p>
-              <Button text="Shop now" />
+              {/* <button
+                onClick={() => history.push(navUrls.products)}
+                className="bg-transparent border-0 text-left w-100"
+              >
+                <Button text="Shop Now" />
+              </button> */}
             </div>
           </div>
           <div className="col-lg-6 info2-img"></div>
@@ -214,11 +256,18 @@ function Home() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
                   <p className="text-left">
-                    E-Bicycle, E Motorad is a newer method of transportation which not only support a much healthier lifestyle but also help in maintaining eco-friendly environment.</p>
+                    E-Bicycle, E Motorad is a newer method of transportation
+                    which not only support a much healthier lifestyle but also
+                    help in maintaining eco-friendly environment.
+                  </p>
                   <h4 className="text-left">Uday Ambike</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={udayAmbike} alt="Photo" className="img-fluid my-3" />
+                  <img
+                    src={udayAmbike}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
@@ -226,11 +275,19 @@ function Home() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
                   <p className="text-left">
-                    The Product is as good as it gets, can not compare the comfort and the specs to any other product in the market.Ill suggest you to take a test ride so that you can feel its worth every penny.</p>
+                    The Product is as good as it gets, can not compare the
+                    comfort and the specs to any other product in the market.Ill
+                    suggest you to take a test ride so that you can feel its
+                    worth every penny.
+                  </p>
                   <h4 className="text-left">Ayush Gupta</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={ayushGupta} alt="Photo" className="img-fluid my-3" />
+                  <img
+                    src={ayushGupta}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
@@ -238,29 +295,50 @@ function Home() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
                   <p className="text-left">
-                    1. The design of the E-Bicycle is very nice. And because of the black and yellow combination it gives the bike a premium look. <br />
-                    2. The bike is light weight which makes it comfortable to ride. <br />
-                    3. The battery is also good. And as it's a detachable battery we can carry the same for charging at the home. Inbuilt charging indicator provides an easy way to check the charging status. <br />
-                    4. All the modes: Pedal Mode, Assist Mode, Throttle Mode, Walk Mode, Cruise Mode are very nice. <br />
+                    1. The design of the E-Bicycle is very nice. And because of
+                    the black and yellow combination it gives the bike a premium
+                    look. <br />
+                    2. The bike is light weight which makes it comfortable to
+                    ride. <br />
+                    3. The battery is also good. And as it's a detachable
+                    battery we can carry the same for charging at the home.
+                    Inbuilt charging indicator provides an easy way to check the
+                    charging status. <br />
+                    4. All the modes: Pedal Mode, Assist Mode, Throttle Mode,
+                    Walk Mode, Cruise Mode are very nice. <br />
                     5. The quality of the Tyres is very good. <br />
-                    6. The Dual Suspension system with lock unlock feature provides a good quality of ride and comfort as well specially while off-roading. <br />
-So overall the E-BICYCLE Electro Motorad is very very good.</p>
+                    6. The Dual Suspension system with lock unlock feature
+                    provides a good quality of ride and comfort as well
+                    specially while off-roading. <br />
+                    So overall the E-BICYCLE Electro Motorad is very very good.
+                  </p>
                   <h4 className="text-left">Rudrendra Ambike</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={rudrendaAmbike} alt="Photo" className="img-fluid my-3" />
+                  <img
+                    src={rudrendaAmbike}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
             <div className="testimonial-box">
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
-                  <p className="text-left">Very excited to see the E-bike. The best part is it comes very sturdy. The material quality speaks for itself. Thank for the affordable ride EM.
+                  <p className="text-left">
+                    Very excited to see the E-bike. The best part is it comes
+                    very sturdy. The material quality speaks for itself. Thank
+                    for the affordable ride EM.
                   </p>
                   <h4 className="text-left">Yudhishter Bhati</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={yudhishterBhati} alt="Photo" className="img-fluid my-3" />
+                  <img
+                    src={yudhishterBhati}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
@@ -268,60 +346,95 @@ So overall the E-BICYCLE Electro Motorad is very very good.</p>
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
                   <p className="text-left">
-                    Loving it more everyday, such a reliable product. I would recommend you to buy this without any doubts. Excellent Product quality.
+                    Loving it more everyday, such a reliable product. I would
+                    recommend you to buy this without any doubts. Excellent
+                    Product quality.
                   </p>
                   <h4 className="text-left">Tanveer Siddiqi</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={tanveerSiddiqi} alt="Photo" className="img-fluid my-3" />
+                  <img
+                    src={tanveerSiddiqi}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
             <div className="testimonial-box">
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
-                  <p className="text-left">Overall Moovway or EMX what you call it is a really good experience, Nice powerful throttle response, Great suspension, Looks are amazing too. I recommend it to everyone who wants electric
+                  <p className="text-left">
+                    Overall Moovway or EMX what you call it is a really good
+                    experience, Nice powerful throttle response, Great
+                    suspension, Looks are amazing too. I recommend it to
+                    everyone who wants electric
                   </p>
                   <h4 className="text-left">Ambar Bannerji</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={ambarBannerji} alt="Photo" className="img-fluid my-3" />
+                  <img
+                    src={ambarBannerji}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
             <div className="testimonial-box">
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
-                  <p className="text-left">EMXs battery life is awesome and the frame geometry is also so great that it makes it very light.  My suggestion is that the drivetrain and the shifters can be upgraded, rest its one of the best ebike in the market.
+                  <p className="text-left">
+                    EMXs battery life is awesome and the frame geometry is also
+                    so great that it makes it very light. My suggestion is that
+                    the drivetrain and the shifters can be upgraded, rest its
+                    one of the best ebike in the market.
                   </p>
                   <h4 className="text-left">Jamshed Khambatta</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={jamshedKhambatta} alt="Photo" className="img-fluid my-3" />
+                  <img
+                    src={jamshedKhambatta}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
             <div className="testimonial-box">
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
-                  <p className="text-left">Till date I had superb experience and the ride is enjoyable as well. The quality of bike is just amazing!!
+                  <p className="text-left">
+                    Till date I had superb experience and the ride is enjoyable
+                    as well. The quality of bike is just amazing!!
                   </p>
                   <h4 className="text-left">Rohit Gupta</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={rohitGupta} alt="Photo" className="img-fluid my-3" />
+                  <img
+                    src={rohitGupta}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>
             <div className="testimonial-box">
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
-                  <p className="text-left">We all like to ride the Ebike including the ladies in our family, its such a joy and we are proud to be an advanced and responsible  family that rides on electric vehicle.
+                  <p className="text-left">
+                    We all like to ride the Ebike including the ladies in our
+                    family, its such a joy and we are proud to be an advanced
+                    and responsible family that rides on electric vehicle.
                   </p>
                   <h4 className="text-left">Ambike Family</h4>
                 </div>
                 <div className="col-lg-4">
-                  <img src={ambikeFamily} alt="Photo" className="img-fluid my-3" />
+                  <img
+                    src={ambikeFamily}
+                    alt="Photo"
+                    className="img-fluid my-3"
+                  />
                 </div>
               </div>
             </div>

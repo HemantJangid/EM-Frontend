@@ -27,7 +27,9 @@ function Contact() {
       axios
         .post(`${constants.base_url}${constants.contact}`, values)
         .then((res) => {
-          console.log(res);
+          alert(res.data.message);
+          formik.resetForm();
+          // console.log(res);
         })
         .catch((err) => {
           console.log(err);
@@ -42,7 +44,11 @@ function Contact() {
         <div className="container">
           <h3 className="pri">Reach us out at</h3>
           <div className="d-flex flex-wrap">
-            <h1>info</h1><h1>@</h1><h1>emotorad</h1><h1>.</h1><h1>com</h1>
+            <h1>info</h1>
+            <h1>@</h1>
+            <h1>emotorad</h1>
+            <h1>.</h1>
+            <h1>com</h1>
           </div>
           <img src={dots} className="dots mb-4" alt="Dots" />
           <Button text="View products" />

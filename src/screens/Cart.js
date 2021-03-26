@@ -45,7 +45,7 @@ function Cart() {
       axios
         .get(`${constants.base_url}${constants.cart}`, { headers })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             // setItems(res.data.payload.products);
             dispatch(addItem(res.data.payload.products));
@@ -70,7 +70,9 @@ function Cart() {
           { quantity: 1 },
           { headers }
         )
-        .then((res) => console.log(res))
+        .then((res) => {
+          // console.log(res)
+        })
         .catch((err) => console.log(err));
     });
   }
@@ -87,7 +89,7 @@ function Cart() {
           { headers }
         )
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           changeQuantity(i, "decrease");
           dispatch(addItem(items));
         })

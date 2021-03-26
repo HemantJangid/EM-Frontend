@@ -58,7 +58,7 @@ function SignUp() {
                       },
                       { headers }
                     )
-                    .then((res) => console.log("response: ", res))
+                    .then((res) => alert(res.data.message))
                     .catch((err) => console.log(err));
                 }
               })
