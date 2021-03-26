@@ -53,7 +53,6 @@ const Header = () => {
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link mx-2 dropdown-toggle"
-                  to={`${navUrls.products}`}
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"
@@ -88,7 +87,6 @@ const Header = () => {
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
-                  to="/"
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"
@@ -98,15 +96,13 @@ const Header = () => {
                   Assurance
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to={`${navUrls.testride}`}>
-                    EMI, Insurance Calc
-                  </Link>
+                  <Link className="dropdown-item">EMI</Link>
+                  <Link className="dropdown-item">Insurance Calc</Link>
                 </div>
               </li>
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
-                  to="/"
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"
@@ -122,9 +118,7 @@ const Header = () => {
                   <Link className="dropdown-item" to={`${navUrls.partner}`}>
                     Partner With Us
                   </Link>
-                  <Link className="dropdown-item" to={`${navUrls.blog}`}>
-                    Careers
-                  </Link>
+                  <Link className="dropdown-item">Careers</Link>
                   <Link className="dropdown-item" to={`${navUrls.testride}`}>
                     Book A Test Ride
                   </Link>
@@ -133,7 +127,6 @@ const Header = () => {
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle"
-                  to="/"
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"
@@ -143,9 +136,7 @@ const Header = () => {
                   Community
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to="/">
-                    Community
-                  </Link>
+                  <Link className="dropdown-item">Community</Link>
                   <Link className="dropdown-item" to={`${navUrls.blog}`}>
                     Blog
                   </Link>

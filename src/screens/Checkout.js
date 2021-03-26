@@ -88,6 +88,8 @@ function Checkout(props) {
     rzp1.open();
   };
 
+  console.log(order);
+
   return (
     <>
       <section id="checkout">
@@ -100,23 +102,34 @@ function Checkout(props) {
                 </h2>
                 <p>Check your order details and click pay</p>
                 <div className="form-group">
-                  <div className="d-flex align-items-center justify-content-between">
-                    <div className="d-block">
-                      <h4 className="text-capitalize">Karbon</h4>
-                      <p>1 x 65,000</p>
-                    </div>
-                    <h3>65,0000 INR</h3>
-                  </div>
+                  {order != undefined &&
+                    order != null &&
+                    order.order_items.map((item, index) => {
+                      return (
+                        <div className="d-flex align-items-center justify-content-between">
+                          <div className="d-block">
+                            <h4 className="text-capitalize">
+                              {item.product.name}
+                            </h4>
+                            <p>
+                              {item.quantity} x {item.product.selling_price}
+                            </p>
+                          </div>
+                          <h3>
+                            {Math.round(
+                              (item.amount * item.product.selling_price) / 100
+                            )}{" "}
+                            INR
+                          </h3>
+                        </div>
+                      );
+                    })}
                   <hr />
-                  <div className="d-flex align-items-center justify-content-between">
-                    <h4 className="text-capitalize">Total</h4>
-                    <h4>65,0000 INR</h4>
-                  </div>
-                  <hr />
-                  <h4 className="m-0">Hemant</h4>
-                  <p>999999</p>
+                  <h4 className="m-0">{address}</h4>
+                  <p>{address.pincode}</p>
                   {/* add more p tags here */}
                   <input
+                    onClick={openRazorpayModal}
                     className="form-control"
                     type="Submit"
                     defaultValue="Pay"
