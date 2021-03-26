@@ -39,8 +39,11 @@ import logo10 from "../assets/img/logos/logo10.png";
 import logo11 from "../assets/img/logos/logo11.png";
 import logo12 from "../assets/img/logos/logo12.png";
 import logo13 from "../assets/img/logos/logo13.png";
+import { useHistory } from "react-router-dom";
+import navUrls from "./../constant/navUrls";
 
 function Home() {
+  const history = useHistory();
   console.log(
     window.location.hostname === "localhost"
       ? "rzp_test_t4fMAIqMYPBJ38"
@@ -56,7 +59,12 @@ function Home() {
           <h2 className="mt-2">Revolution</h2>
           <img src={dots} alt="Dots" className="dots" />
           <div className="hero-btn">
-            <Button text="View Products" />
+            <button
+              onClick={() => history.push(navUrls.products)}
+              className="bg-transparent border-0 mx-auto w-100"
+            >
+              <Button text="View Products" />
+            </button>
           </div>
         </div>
       </section>
@@ -76,7 +84,12 @@ function Home() {
                 a combination of manual pedaling with battery assist and
                 throttle.
               </p>
-              <Button text="Book a test ride" />
+              <button
+                onClick={() => history.push(navUrls.testride)}
+                className="bg-transparent border-0 mx-auto w-100"
+              >
+                <Button text="Book a test ride" />
+              </button>
             </div>
           </div>
         </div>
@@ -149,7 +162,12 @@ function Home() {
             <div className="emx-box pl-3 pl-sm-5">
               <h2>EMX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
-              <Button text="Explore models" />
+              <button
+                onClick={() => history.push(navUrls.products)}
+                className="bg-transparent border-0 text-left w-100"
+              >
+                <Button text="Explore models" />
+              </button>
             </div>
           </div>
           <div className="col-lg-6 overflow-hidden">
@@ -157,7 +175,12 @@ function Home() {
             <div className="doodle-box pl-3 pl-sm-5">
               <h2>Doodle</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
-              <Button text="Explore models" />
+              <button
+                onClick={() => history.push(navUrls.products)}
+                className="bg-transparent border-0 text-left w-100"
+              >
+                <Button text="Explore models" />
+              </button>
             </div>
           </div>
           <div className="col-lg-12 overflow-hidden">
@@ -165,7 +188,12 @@ function Home() {
             <div className="trex-box pl-3 pl-sm-5">
               <h2>T-REX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
-              <Button text="Explore models" />
+              <button
+                onClick={() => history.push(navUrls.products)}
+                className="bg-transparent border-0 text-left w-100"
+              >
+                <Button text="Explore models" />
+              </button>
             </div>
           </div>
         </div>
@@ -186,7 +214,12 @@ function Home() {
                 a combination of manual pedaling with battery assist and
                 throttle.
               </p>
-              <Button text="Shop now" />
+              {/* <button
+                onClick={() => history.push(navUrls.products)}
+                className="bg-transparent border-0 text-left w-100"
+              >
+                <Button text="Shop Now" />
+              </button> */}
             </div>
           </div>
           <div className="col-lg-6 info2-img"></div>

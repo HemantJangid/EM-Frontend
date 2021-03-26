@@ -9,8 +9,12 @@ import { useFormik } from "formik";
 import axios from "axios";
 import Header from "./../components/Header";
 import Footer from "../components/Footer";
+import { useHistory } from "react-router-dom";
+import navUrls from "./../constant/navUrls";
 
 function Partner() {
+  const history = useHistory();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -43,7 +47,12 @@ function Partner() {
           <h3 className="pri">Partner with us</h3>
           <h1>Become our partner</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <Button text="View products" />
+          <button
+            onClick={() => history.push(navUrls.products)}
+            className="bg-transparent border-0 text-left w-100"
+          >
+            <Button text="View products" />
+          </button>
         </div>
       </section>
 

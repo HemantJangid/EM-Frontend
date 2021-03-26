@@ -46,7 +46,7 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link mx-2" to={`${navUrls.about}`}>
+                <Link className="nav-link mx-2" to={`${navUrls.home}`}>
                   Home
                 </Link>
               </li>
