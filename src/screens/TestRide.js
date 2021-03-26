@@ -25,7 +25,7 @@ function TestRide() {
     axios
       .get(`${constants.base_url}${constants.dealer}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status === 200) {
           let temp = res.data.payload.dealers;
           var cities = [];
@@ -60,19 +60,17 @@ function TestRide() {
       dealer_id: "select",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      // axios
-      //   .post(`${constants.base_url}${constants.test_ride}`, values)
-      //   .then((res) => {
-      //     console.log(res);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      // alert(JSON.stringify(values, null, 2));
+      axios
+        .post(`${constants.base_url}${constants.test_ride}`, values)
+        .then((res) => {
+          // console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   });
-
-  console.log(cities);
 
   return (
     <div>
@@ -187,7 +185,7 @@ function TestRide() {
                         (dealer.city != null) & (dealer.city != undefined) &&
                         dealer.city.toLowerCase() === formik.values.city
                       ) {
-                        console.log(dealer.city);
+                        // console.log(dealer.city);
                         return (
                           <option
                             style={{ textTransform: "capitalize" }}

@@ -4,9 +4,9 @@ import { Carousel } from "react-responsive-carousel";
 import { Parallax } from "react-parallax";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Vimeo from '@u-wave/react-vimeo';
-import CountUp from 'react-countup';
-import VisibilitySensor from 'react-visibility-sensor';
+import Vimeo from "@u-wave/react-vimeo";
+import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
 import "../assets/css/Home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -19,6 +19,11 @@ import numbers from "../assets/img/backgrounds/numbers-min.jpg";
 import arvind from "../assets/img/testimonials/arvind-min.jpg";
 
 function Home() {
+  console.log(
+    window.location.hostname === "localhost"
+      ? "rzp_test_t4fMAIqMYPBJ38"
+      : "rzp_live_rrQB0T2BkwBGLm"
+  );
   return (
     <div>
       <Header />
@@ -61,35 +66,41 @@ function Home() {
             <div className="row justify-content-center">
               <div className="col-md-4 mb-5">
                 <h4>Speed</h4>
-                <h1><CountUp start={0} end={25}>
-                  {({ countUpRef, start }) => (
-                    <VisibilitySensor onChange={start} delayedCall>
-                      <span ref={countUpRef} />
-                    </VisibilitySensor>
-                  )}
-                </CountUp></h1>
+                <h1>
+                  <CountUp start={0} end={25}>
+                    {({ countUpRef, start }) => (
+                      <VisibilitySensor onChange={start} delayedCall>
+                        <span ref={countUpRef} />
+                      </VisibilitySensor>
+                    )}
+                  </CountUp>
+                </h1>
                 <p>Kilometers per Hour</p>
               </div>
               <div className="col-md-4 mb-5">
                 <h4>Range</h4>
-                <h1><CountUp start={0} end={45}>
-                  {({ countUpRef, start }) => (
-                    <VisibilitySensor onChange={start} delayedCall>
-                      <span ref={countUpRef} />
-                    </VisibilitySensor>
-                  )}
-                </CountUp></h1>
+                <h1>
+                  <CountUp start={0} end={45}>
+                    {({ countUpRef, start }) => (
+                      <VisibilitySensor onChange={start} delayedCall>
+                        <span ref={countUpRef} />
+                      </VisibilitySensor>
+                    )}
+                  </CountUp>
+                </h1>
                 <p>Kilometers in full charge</p>
               </div>
               <div className="col-md-4 mb-5">
                 <h4>Battery</h4>
-                <h1><CountUp start={0} end={36}>
-                  {({ countUpRef, start }) => (
-                    <VisibilitySensor onChange={start} delayedCall>
-                      <span ref={countUpRef} />
-                    </VisibilitySensor>
-                  )}
-                </CountUp></h1>
+                <h1>
+                  <CountUp start={0} end={36}>
+                    {({ countUpRef, start }) => (
+                      <VisibilitySensor onChange={start} delayedCall>
+                        <span ref={countUpRef} />
+                      </VisibilitySensor>
+                    )}
+                  </CountUp>
+                </h1>
                 <p>Volts, 10.4Ah Samsung MJ1 Cell</p>
               </div>
             </div>
@@ -185,9 +196,10 @@ function Home() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
                   <p className="text-left">
-                    Very excited to see the E-bike. The best part is it comes very
-                    sturdy. The material quality speaks for itself. Thank for the
-                    affordable ride EM.</p>
+                    Very excited to see the E-bike. The best part is it comes
+                    very sturdy. The material quality speaks for itself. Thank
+                    for the affordable ride EM.
+                  </p>
                   <h4 className="text-left">Arvind, Bangalore</h4>
                 </div>
                 <div className="col-lg-4">
@@ -199,9 +211,10 @@ function Home() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
                   <p className="text-left">
-                    Very excited to see the E-bike. The best part is it comes very
-                    sturdy. The material quality speaks for itself. Thank for the
-                    affordable ride EM.</p>
+                    Very excited to see the E-bike. The best part is it comes
+                    very sturdy. The material quality speaks for itself. Thank
+                    for the affordable ride EM.
+                  </p>
                   <h4 className="text-left">Arvind, Bangalore</h4>
                 </div>
                 <div className="col-lg-4">
@@ -213,9 +226,10 @@ function Home() {
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
                   <p className="text-left">
-                    Very excited to see the E-bike. The best part is it comes very
-                    sturdy. The material quality speaks for itself. Thank for the
-                    affordable ride EM.</p>
+                    Very excited to see the E-bike. The best part is it comes
+                    very sturdy. The material quality speaks for itself. Thank
+                    for the affordable ride EM.
+                  </p>
                   <h4 className="text-left">Arvind, Bangalore</h4>
                 </div>
                 <div className="col-lg-4">

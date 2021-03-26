@@ -50,7 +50,7 @@ function App() {
                 path={`${navUrls.addAddresss}`}
                 component={AddAddress}
               />
-              {/* <PrivateRoute path={`${navUrls.checkout}`} component={Checkout} /> */}
+              <PrivateRoute path={`${navUrls.checkout}`} component={Checkout} />
               <Route path={`${navUrls.testride}`} component={TestRide} />
               {/* <Route component={Error} /> */}
               <Route path={`${navUrls.products}`} component={AllProducts} />

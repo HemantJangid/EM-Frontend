@@ -9,6 +9,7 @@ function Checkout(props) {
   const order = props.location.state.order;
   const address = `${order.user_address.address_line_1}, ${order.user_address.address_line_2} ${order.user_address.landmark} ${order.user_address.city} ${order.user_address.state}, ${order.user_address.pincode}`;
   const history = useHistory();
+  const domain = window.location.hostname;
 
   const verifyPayment = (razorpay_id, order_id) => {
     auth.currentUser.getIdToken(true).then((idToken) => {
@@ -56,7 +57,10 @@ function Checkout(props) {
     }
     const options = {
       //   key: "rzp_live_rrQB0T2BkwBGLm", // DO NOT MESS WITH THIS!!!! PROD
-      key: "rzp_test_t4fMAIqMYPBJ38", // DO NOT MESS WITH THIS!!!! TEST
+      key:
+        domain === "localhost"
+          ? "rzp_test_t4fMAIqMYPBJ38"
+          : "rzp_live_rrQB0T2BkwBGLm", // DO NOT MESS WITH THIS!!!! TEST
       amount: order.total_amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
       name: "Emotorad",
@@ -65,7 +69,7 @@ function Checkout(props) {
         "https://res.cloudinary.com/emotorad/image/upload/v1603493352/website/emotorad-logo_duvmv8.png",
 
       handler: function (response) {
-        console.log(response);
+        // console.log(response);
         verifyPayment(response.razorpay_payment_id, order.id);
       },
       prefill: {

@@ -25,7 +25,9 @@ function Partner() {
       axios
         .post("http://localhost:8000/v1/user/partner", values)
         .then((res) => {
-          console.log(res);
+          alert(res.data.message);
+          formik.resetForm();
+          // console.log(res);
         })
         .catch((err) => {
           console.log(err);

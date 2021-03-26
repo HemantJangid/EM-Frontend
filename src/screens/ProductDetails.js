@@ -5,7 +5,6 @@ import dots from "../assets/img/design/dots.svg";
 import neco from "../assets/img/design/neco.svg";
 import tyres from "../assets/img/design/tyres.svg";
 import light from "../assets/img/design/light.svg";
-import trexNumbers from "../assets/img/backgrounds/trex-numbers-min.jpg";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
@@ -27,13 +26,12 @@ function ProductDetails(props) {
   const { items } = useSelector((state) => state.cartReducer);
 
   useEffect(() => {
-    console.log("use effect is running");
     axios
       .get(
         `${constants.base_url}${constants.product}/${props.match.params.productSlug}/detail`
       )
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.status === 200) {
           setProductContent(res.data.payload);
           setLoading(false);
@@ -45,8 +43,6 @@ function ProductDetails(props) {
       });
   }, [productDetails]);
 
-  console.log("productContent: ", productContent);
-  console.log("productDetails: ", productDetails);
   return (
     <div>
       <Header />
@@ -109,7 +105,10 @@ function ProductDetails(props) {
             </section>
           </section>
 
-          <section id="product-text" style={{ background: "#FF5143" }}>
+          <section
+            id="product-text"
+            style={{ background: `${productContent.primary_color}` }}
+          >
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-lg-7 col-md-8 text-center">
@@ -126,7 +125,12 @@ function ProductDetails(props) {
             </div>
           </section>
 
-          <section id="product-numbers">
+          <section
+            id="product-numbers"
+            style={{
+              backgroundImage: `url(${productContent.info_4_bg_image_1})`,
+            }}
+          >
             <div className="numbers">
               <div className="container">
                 <div className="row justify-content-center">

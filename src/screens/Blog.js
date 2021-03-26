@@ -31,7 +31,7 @@ function Blog() {
       .catch((err) => console.log(err));
   }
 
-  console.log(blogs);
+  // console.log(blogs);
   return (
     <div>
       <Header />

@@ -7,6 +7,7 @@ import constants from "../constant/RequestUrls";
 import axios from "axios";
 import { Link, Route } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
+import bg_image from "../assets/img/backgrounds/pemx-min.jpg";
 
 function AllProducts({ match }) {
   const [products, setProducts] = useState();
@@ -26,13 +27,17 @@ function AllProducts({ match }) {
       });
   }, []);
 
-  console.log("products: ", products);
   return (
     <div>
       <Header />
       {products &&
         products.map((product) => (
-          <section id="p1">
+          <section
+            id="p1"
+            style={{
+              backgroundImage: `url(${product.bg_image})`,
+            }}
+          >
             <span className="price">INR {product.selling_price}/-</span>
             <div className="container">
               <h1 className="product-title">{product.title}</h1>
@@ -135,7 +140,7 @@ function AllProducts({ match }) {
       </section> */}
 
       <Footer />
-    </div >
+    </div>
   );
 }
 
