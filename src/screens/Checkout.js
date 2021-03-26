@@ -12,41 +12,41 @@ function Checkout(props) {
   const history = useHistory();
   const domain = window.location.hostname;
 
-  // const verifyPayment = (razorpay_id, order_id) => {
-  //   auth.currentUser.getIdToken(true).then((idToken) => {
-  //     const headers = {
-  //       "Content-Type": "application/json",
-  //       Authorization: idToken,
-  //     };
-  //     axios
-  //       .post(
-  //         `${constants.base_url}${constants.razorpay}`,
-  //         { razorpay_id, order_id },
-  //         { headers }
-  //       )
-  //       .then((res) => {
-  //         alert(res.data.message);
-  //         if (res.status === 200) {
-  //           history.push(navUrls.home);
-  //         }
-  //       })
-  //       .catch((err) => console.log(err));
-  //   });
-  // };
+  const verifyPayment = (razorpay_id, order_id) => {
+    auth.currentUser.getIdToken(true).then((idToken) => {
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: idToken,
+      };
+      axios
+        .post(
+          `${constants.base_url}${constants.razorpay}`,
+          { razorpay_id, order_id },
+          { headers }
+        )
+        .then((res) => {
+          alert(res.data.message);
+          if (res.status === 200) {
+            history.push(navUrls.home);
+          }
+        })
+        .catch((err) => console.log(err));
+    });
+  };
 
-  // function loadScript(src) {
-  //   return new Promise((resolve) => {
-  //     const script = document.createElement("script");
-  //     script.src = src;
-  //     script.onload = () => {
-  //       resolve(true);
-  //     };
-  //     script.onerror = () => {
-  //       resolve(false);
-  //     };
-  //     document.body.appendChild(script);
-  //   });
-  // }
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  }
 
   const openRazorpayModal = async () => {
     const res = await loadScript(
