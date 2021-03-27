@@ -5,6 +5,7 @@ const navUrls = {
   checkout: "/checkout",
   signIn: "/signin",
   signUp: "/signup",
+  warranty: "/warranty",
   blog: "/blog",
   blogpost: "/blog-post",
   cart: "/cart",

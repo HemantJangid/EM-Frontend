@@ -67,6 +67,7 @@ function ProductDetails(props) {
                     onClick={() => {
                       auth.currentUser
                         ? auth.currentUser.getIdToken(true).then((idToken) => {
+                            console.log(idToken);
                             const headers = {
                               "Content-Type": "application/json",
                               Authorization: idToken,

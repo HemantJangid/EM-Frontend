@@ -25,6 +25,7 @@ import BlogPost from "./screens/BlogPost";
 import Partner from "./screens/Partner";
 import Checkout from "./screens/Checkout";
 import Community from "./screens/Community";
+import Warranty from "./screens/Warranty";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               <Route path={`${navUrls.signUp}`} component={SignUp} />
               <Route path={`${navUrls.blog}`} component={Blog} />
               <Route path={`${navUrls.blogpost}`} component={BlogPost} />
+              <PrivateRoute path={`${navUrls.warranty}`} component={Warranty} />
               <PrivateRoute path={`${navUrls.cart}`} component={Cart} />
               <PrivateRoute
                 path={`${navUrls.selectAddress}`}
