@@ -190,7 +190,7 @@ function TestRide() {
                     <option value="">Select</option>
                     {dealers.map((dealer, index) => {
                       if (
-                        (dealer.city != null) & (dealer.city != undefined) &&
+                        (dealer.city !== null) & (dealer.city !== undefined) &&
                         dealer.city.toLowerCase() === formik.values.city
                       ) {
                         // console.log(dealer.city);

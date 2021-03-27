@@ -1,0 +1,50 @@
+#insurance-hero {
+  background: url("../img/backgrounds/insurance-min.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+#insurance-hero h1 {
+  font-weight: 400;
+  font-size: 5rem;
+  text-transform: uppercase;
+  margin-top: -10px;
+  /* margin-bottom: -10px; */
+  margin-left: -8px;
+  font-family: var(--opensans);
+}
+
+#insurance-hero h3 {
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  font-family: var(--opensans);
+}
+
+@media screen and (max-width: 540px) {
+  #insurance-hero h1 {
+    font-size: 4rem;
+  }
+
+  #insurance-hero h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  #insurance-hero h1 {
+    font-size: 3rem;
+    margin-left: 0;
+  }
+}
+
+#insurance {
+  background: #000;
+  padding: 100px 0;
+}
+
+#insurance img {
+  max-height: 200px;
+}

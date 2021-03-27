@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import logoWhite from "../assets/img/logowhite.png";
-import Button from "../components/Button";
 import { Link } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
 import constants from "../constant/RequestUrls";
@@ -80,13 +79,13 @@ const Header = () => {
                 </div>
               </li>
               <li className="nav-item">
-                <Link className="nav-link mx-2" to={`${navUrls.about}`}>
-                  About Us
+                <Link className="nav-link mx-2" to={`${navUrls.testride}`}>
+                  Test Ride
                 </Link>
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="nav-link dropdown-toggle"
+                  className="nav-link mx-2 dropdown-toggle"
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"
@@ -96,13 +95,14 @@ const Header = () => {
                   Assurance
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item">EMI</Link>
-                  <Link className="dropdown-item">Insurance Calc</Link>
+                  <Link className="dropdown-item" to={`${navUrls.emi}`}>EMI</Link>
+                  <Link className="dropdown-item" to={`${navUrls.insurance}`}>Insurance</Link>
+                  <Link className="dropdown-item" to={`${navUrls.savingsCalc}`}>Savings Calculator</Link>
                 </div>
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="nav-link dropdown-toggle"
+                  className="nav-link mx-2 dropdown-toggle"
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"
@@ -115,18 +115,18 @@ const Header = () => {
                   <Link className="dropdown-item" to={`${navUrls.contact}`}>
                     Contact Us
                   </Link>
+                  <Link className="dropdown-item" to={`${navUrls.about}`}>
+                    About Us
+                </Link>
                   <Link className="dropdown-item" to={`${navUrls.partner}`}>
                     Partner With Us
                   </Link>
-                  <Link className="dropdown-item">Careers</Link>
-                  <Link className="dropdown-item" to={`${navUrls.testride}`}>
-                    Book A Test Ride
-                  </Link>
+                  <Link className="dropdown-item" to={`${navUrls.careers}`}>Careers</Link>
                 </div>
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="nav-link dropdown-toggle"
+                  className="nav-link mx-2 dropdown-toggle"
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"
@@ -136,7 +136,7 @@ const Header = () => {
                   Community
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item">Community</Link>
+                  <Link className="dropdown-item" to={`${navUrls.community}`}>Community</Link>
                   <Link className="dropdown-item" to={`${navUrls.blog}`}>
                     Blog
                   </Link>
@@ -146,6 +146,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
+
     </div>
   );
 };

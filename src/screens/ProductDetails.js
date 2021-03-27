@@ -67,6 +67,7 @@ function ProductDetails(props) {
                     onClick={() => {
                       auth.currentUser
                         ? auth.currentUser.getIdToken(true).then((idToken) => {
+<<<<<<< HEAD
                             console.log(idToken);
                             const headers = {
                               "Content-Type": "application/json",
@@ -82,6 +83,22 @@ function ProductDetails(props) {
                                 .then((res) => history.push(navUrls.cart))
                                 .catch((err) => console.log(err));
                           })
+=======
+                          const headers = {
+                            "Content-Type": "application/json",
+                            Authorization: idToken,
+                          };
+                          props.location.state &&
+                            axios
+                              .post(
+                                `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
+                                { quantity: 1 },
+                                { headers }
+                              )
+                              .then((res) => history.push(navUrls.cart))
+                              .catch((err) => console.log(err));
+                        })
+>>>>>>> 3eb33cd53dc367d702f3cfa14aba068019287833
                         : history.push(navUrls.cart);
                     }}
                   >

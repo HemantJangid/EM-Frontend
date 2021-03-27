@@ -5,7 +5,6 @@ import AllProducts from "./screens/Products";
 import ProductDetails from "./screens/ProductDetails";
 import About from "./screens/About";
 import Contact from "./screens/Contact";
-// import Contact from "./screens/Contact";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -25,6 +24,9 @@ import BlogPost from "./screens/BlogPost";
 import Partner from "./screens/Partner";
 import Checkout from "./screens/Checkout";
 import Community from "./screens/Community";
+import Emi from "./screens/Emi";
+import Insurance from "./screens/Insurance";
+import BuySmart from "./screens/BuySmart";
 import Warranty from "./screens/Warranty";
 
 function App() {
@@ -38,6 +40,11 @@ function App() {
               <Route path={`${navUrls.about}`} component={About} />
               <Route path={`${navUrls.partner}`} component={Partner} />
               <Route path={`${navUrls.contact}`} component={Contact} />
+              <Route path={`${navUrls.careers}`} component={Careers} />
+              <Route path={`${navUrls.emi}`} component={Emi} />
+              <Route path={`${navUrls.insurance}`} component={Insurance} />
+              <Route path={`${navUrls.savingsCalc}`} component={BuySmart} />
+              <Route path={`${navUrls.community}`} component={Community} />
               <Route path={`${navUrls.signIn}`} component={SignIn} />
               <Route path={`${navUrls.signUp}`} component={SignUp} />
               <Route path={`${navUrls.blog}`} component={Blog} />

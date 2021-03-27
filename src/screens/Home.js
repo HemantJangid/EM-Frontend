@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "../components/Button";
-import { Carousel } from "react-responsive-carousel";
 import { Parallax } from "react-parallax";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -8,12 +7,11 @@ import Vimeo from "@u-wave/react-vimeo";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import "../assets/css/Home.css";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Slider from "react-slick";
 
 import electric from "../assets/img/design/electric.svg";
 import dots from "../assets/img/design/dots.svg";
 import lines from "../assets/img/design/lines.svg";
-import play from "../assets/img/design/play.svg";
 import numbers from "../assets/img/backgrounds/numbers-min.jpg";
 
 import udayAmbike from "../assets/img/testimonials/uday-ambike.jpg";
@@ -49,6 +47,58 @@ function Home() {
       ? "rzp_test_t4fMAIqMYPBJ38"
       : "rzp_live_rrQB0T2BkwBGLm"
   );
+
+  var settingsTestimonial = {
+    dots: true,
+    autoplay: true,
+    adaptiveHeight: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 786,
+        settings: {
+          arrows: false,
+        }
+      },
+    ]
+  };
+
+  var settingsYoutube = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    adaptiveHeight: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    initialSlide: 0,
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 786,
+        settings: {
+          arrows: false,
+          slidesToShow: 1,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      }
+    ]
+  };
+
   return (
     <div>
       <Header />
@@ -251,7 +301,7 @@ function Home() {
 
       <section id="testimonial">
         <div className="container">
-          <Carousel>
+          <Slider {...settingsTestimonial}>
             <div className="testimonial-box">
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-8">
@@ -266,7 +316,7 @@ function Home() {
                   <img
                     src={udayAmbike}
                     alt="Photo"
-                    className="img-fluid my-3"
+                    className="img-fluid my-3 mx-auto"
                   />
                 </div>
               </div>
@@ -286,7 +336,7 @@ function Home() {
                   <img
                     src={ayushGupta}
                     alt="Photo"
-                    className="img-fluid my-3"
+                    className="img-fluid my-3 mx-auto"
                   />
                 </div>
               </div>
@@ -318,7 +368,7 @@ function Home() {
                   <img
                     src={rudrendaAmbike}
                     alt="Photo"
-                    className="img-fluid my-3"
+                    className="img-fluid my-3 mx-auto"
                   />
                 </div>
               </div>
@@ -337,7 +387,7 @@ function Home() {
                   <img
                     src={yudhishterBhati}
                     alt="Photo"
-                    className="img-fluid my-3"
+                    className="img-fluid my-3 mx-auto"
                   />
                 </div>
               </div>
@@ -356,7 +406,7 @@ function Home() {
                   <img
                     src={tanveerSiddiqi}
                     alt="Photo"
-                    className="img-fluid my-3"
+                    className="img-fluid my-3 mx-auto"
                   />
                 </div>
               </div>
@@ -376,7 +426,7 @@ function Home() {
                   <img
                     src={ambarBannerji}
                     alt="Photo"
-                    className="img-fluid my-3"
+                    className="img-fluid my-3 mx-auto"
                   />
                 </div>
               </div>
@@ -396,7 +446,7 @@ function Home() {
                   <img
                     src={jamshedKhambatta}
                     alt="Photo"
-                    className="img-fluid my-3"
+                    className="img-fluid my-3 mx-auto"
                   />
                 </div>
               </div>
@@ -414,7 +464,7 @@ function Home() {
                   <img
                     src={rohitGupta}
                     alt="Photo"
-                    className="img-fluid my-3"
+                    className="img-fluid my-3 mx-auto"
                   />
                 </div>
               </div>
@@ -433,12 +483,56 @@ function Home() {
                   <img
                     src={ambikeFamily}
                     alt="Photo"
-                    className="img-fluid my-3"
+                    className="img-fluid my-3 mx-auto"
                   />
                 </div>
               </div>
             </div>
-          </Carousel>
+            {/* </Carousel> */}
+          </Slider>
+        </div>
+      </section>
+
+      <section id="youtube-carousel">
+        <div className="container">
+          <h2 className="text-center mb-5 text-dark">Online Reviews</h2>
+          <Slider  {...settingsYoutube}>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe src="https://www.youtube.com/embed/-NMJFHCz3DY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe src="https://www.youtube.com/embed/2iB_3SoHopA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe src="https://www.youtube.com/embed/cZnCNBycupg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe src="https://www.youtube.com/embed/5UTCeu4EcyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe src="https://www.youtube.com/embed/_qRYr3KlxnI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe src="https://www.youtube.com/embed/hwqY6wDdops" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe src="https://www.youtube.com/embed/RP9LQ3i8OeM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+          </Slider>
         </div>
       </section>
 
