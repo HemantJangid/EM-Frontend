@@ -5,11 +5,14 @@ import "../assets/css/Sign.css";
 import { Link, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import navUrls from "./../constant/navUrls";
+import { useDispatch } from "react-redux";
+import { addUser } from "./../redux/actions/user";
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const history = useHistory();
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -18,7 +21,9 @@ function SignIn() {
     onSubmit: async (values) => {
       try {
         setLoading(true);
-        await login(values.email, values.password);
+        let response = await login(values.email, values.password);
+        // console.log(response);
+        dispatch(addUser(response.user.displayName));
         console.log("logged in successfully");
         history.push(navUrls.products);
       } catch {

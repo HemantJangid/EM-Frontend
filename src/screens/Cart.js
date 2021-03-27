@@ -30,6 +30,7 @@ function Cart() {
   const history = useHistory();
   const { items } = useSelector((state) => state.cartReducer);
   const user = useSelector((state) => state.userReducer);
+  console.log(user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -192,7 +193,7 @@ function Cart() {
                 <button
                   onClick={async () => {
                     await logout();
-                    dispatch(addUser({}));
+                    dispatch(addUser(""));
                     alert("You have been successfully logged out");
                     history.push(navUrls.home);
                   }}
