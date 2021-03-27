@@ -7,10 +7,20 @@ import constants from "../constant/RequestUrls";
 import "../assets/css/Warranty.css";
 import moment from "moment";
 import { useFormik } from "formik";
+import { useAuth } from "../contexts/AuthContext";
+import axios from "axios";
+import { auth } from "./../firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "./../redux/actions/user";
+import { useHistory } from "react-router-dom";
+import navUrls from "./../constant/navUrls";
 
 function Warranty() {
   const todays_date_obj = new Date();
   const todays_date = moment(todays_date_obj).format("YYYY-MM-DD");
+  const dispatch = useDispatch();
+  const { logout } = useAuth();
+  const history = useHistory();
 
   const formik = useFormik({
     initialValues: {
@@ -19,15 +29,27 @@ function Warranty() {
       dealer_or_online: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      //   axios
-      //     .post(`${constants.base_url}${constants.warranty}`, values)
-      //     .then((res) => {
-      //       // console.log(res);
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
+      //   alert(JSON.stringify(values, null, 2));
+      auth.currentUser.getIdToken(true).then((idToken) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: idToken,
+        };
+        axios
+          .post(`${constants.base_url}${constants.warranty}`, values, {
+            headers,
+          })
+          .then(async (res) => {
+            // console.log(res);
+            if (res.status === 200) {
+              alert("Warranty activated successfully");
+              await logout();
+              dispatch(addUser(""));
+              history.push(navUrls.home);
+            }
+          })
+          .catch((err) => console.log(err));
+      });
     },
   });
   return (
@@ -49,17 +71,28 @@ function Warranty() {
                   <h3>Activate warranty</h3>
                   <img src={dots} alt="Dots" className="dots" />
                 </div>
-                <button className="bg-transparent border-0 my-3">
+                <button
+                  onClick={async () => {
+                    await logout();
+                    dispatch(addUser(""));
+                    alert("You have been successfully logged out");
+                    history.push(navUrls.home);
+                  }}
+                  className="bg-transparent border-0 my-3"
+                >
                   <Button text="Log out" />
                 </button>
               </div>
               <div className="row no-gutters">
                 <div className="col-lg-7">
-                  <form action className="py-3 px-0">
+                  <form onSubmit={formik.handleSubmit} className="py-3 px-0">
                     <div className="form-group">
                       <input
+                        required
+                        name="frame_number"
+                        id="frame_number"
                         type="text"
-                        className="form-control"
+                        className="mb-4"
                         placeholder="Frame No"
                         onChange={formik.handleChange}
                         value={formik.values.frame_number}
@@ -97,7 +130,12 @@ function Warranty() {
                       </select>
                     </div>
                     <div className="mt-5">
-                      <Button text="Activate" />
+                      <button
+                        type="submit"
+                        className="bg-transparent border-0 d-flex align-items-center justify-content-left w-100 text-left"
+                      >
+                        <Button text="Activate" />
+                      </button>
                     </div>
                   </form>
                 </div>
