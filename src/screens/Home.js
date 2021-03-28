@@ -255,7 +255,6 @@ function Home() {
         onLeave={handleExitViewport}
       >
         <section id="video">
-
           <Vimeo
             video="https://vimeo.com/509675910"
             autoplay={true}

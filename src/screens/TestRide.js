@@ -246,7 +246,7 @@ function TestRide() {
                 </div>
               </div>
               <div className="form-group mb-5">
-                <label for="bike_name">Choose your bike:</label>
+                <label for="bike_name">Which bike would you like to test ride?</label>
                 <select
                   required
                   id="bike_name"
