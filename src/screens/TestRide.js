@@ -105,6 +105,7 @@ function TestRide() {
           </div>
           <div className="col-lg-6 col-md-6 align-content-center">
             <form onSubmit={formik.handleSubmit}>
+              {console.log(formik.values.preferred_time)}
               <h3 className="mb-5">Book a test ride!</h3>
               <div className="form-row form-group">
                 <div className="col-lg-6 col-md-6">
@@ -162,6 +163,7 @@ function TestRide() {
                 <div className="col-lg-6 col-md-6">
                   <label for="bike_name">Choose your City:</label>
                   <select
+                    className="mb-4"
                     required
                     id="city"
                     name="city"
@@ -217,6 +219,7 @@ function TestRide() {
                 <div className="col-lg-6 col-md-6">
                   <label for="preferred_date">Date:</label>
                   <input
+                    placeholder="YYYY-MM-DD"
                     required
                     className="mb-4"
                     type="date"
@@ -231,6 +234,7 @@ function TestRide() {
                 <div className="col-lg-6 col-md-6">
                   <label for="preferred_time">Time:</label>
                   <input
+                    placeholder="HH-MM"
                     required
                     className="mb-4"
                     type="time"

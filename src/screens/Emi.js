@@ -139,7 +139,7 @@ function Emi() {
       <section id="coming-soon">
         <div className="contianer">
           <h2 className="text-center">
-            Coming <span className="pri">Soon</span>
+            Coming <span className="pri">Soon</span>!
           </h2>
         </div>
       </section>

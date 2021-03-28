@@ -67,6 +67,8 @@
 #book-testride input[type="date"],
 #book-testride input[type="time"],
 #book-testride select {
+  -webkit-appearance: none;
+  border-radius: 0;
   width: 100%;
 }
 
