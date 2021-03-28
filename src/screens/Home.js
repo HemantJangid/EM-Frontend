@@ -13,17 +13,17 @@ import Slider from "react-slick";
 import electric from "../assets/img/design/electric.svg";
 import dots from "../assets/img/design/dots.svg";
 import lines from "../assets/img/design/lines.svg";
-import numbers from "../assets/img/backgrounds/numbers-min.jpg";
+import numbers from "../assets/img/backgrounds/numbers-min.jpeg";
 
-import udayAmbike from "../assets/img/testimonials/uday-ambike.jpg";
-import ayushGupta from "../assets/img/testimonials/ayush-gupta.jpg";
-import jamshedKhambatta from "../assets/img/testimonials/jamshed-khambatta.jpg";
-import rohitGupta from "../assets/img/testimonials/rohit-gupta.jpg";
-import rudrendaAmbike from "../assets/img/testimonials/rudrendra-ambike.jpg";
-import ambikeFamily from "../assets/img/testimonials/ambike-family.jpg";
-import tanveerSiddiqi from "../assets/img/testimonials/tanveer-siddiqi.jpg";
-import yudhishterBhati from "../assets/img/testimonials/yudhishter-bhati.jpg";
-import ambarBannerji from "../assets/img/testimonials/ambar-bannerji.jpg";
+import udayAmbike from "../assets/img/testimonials/uday-ambike.jpeg";
+import ayushGupta from "../assets/img/testimonials/ayush-gupta.jpeg";
+import jamshedKhambatta from "../assets/img/testimonials/jamshed-khambatta.jpeg";
+import rohitGupta from "../assets/img/testimonials/rohit-gupta.jpeg";
+import rudrendaAmbike from "../assets/img/testimonials/rudrendra-ambike.jpeg";
+import ambikeFamily from "../assets/img/testimonials/ambike-family.jpeg";
+import tanveerSiddiqi from "../assets/img/testimonials/tanveer-siddiqi.jpeg";
+import yudhishterBhati from "../assets/img/testimonials/yudhishter-bhati.jpeg";
+import ambarBannerji from "../assets/img/testimonials/ambar-bannerji.jpeg";
 
 import logo1 from "../assets/img/logos/logo1.png";
 import logo2 from "../assets/img/logos/logo2.png";

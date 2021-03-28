@@ -7,8 +7,8 @@ import constants from "../constant/RequestUrls";
 import axios from "axios";
 import { Link, Route } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
-import bg_image from "../assets/img/backgrounds/pemx-min.jpg";
-import { Helmet } from 'react-helmet'
+import bg_image from "../assets/img/backgrounds/pemx-min.jpeg";
+import { Helmet } from "react-helmet";
 
 function AllProducts({ match }) {
   const [products, setProducts] = useState();
@@ -32,8 +32,13 @@ function AllProducts({ match }) {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Products | EMotorad | Best Electric Bicycle and Electric Bike</title>
-        <meta name="description" content="The best in class eBikes designed for the Indian terrains is all set to amaze you Book your electric beast today and feel the power of Indian EV." />
+        <title>
+          Products | EMotorad | Best Electric Bicycle and Electric Bike
+        </title>
+        <meta
+          name="description"
+          content="The best in class eBikes designed for the Indian terrains is all set to amaze you Book your electric beast today and feel the power of Indian EV."
+        />
       </Helmet>
 
       <Header />

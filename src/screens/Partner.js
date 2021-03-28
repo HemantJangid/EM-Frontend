@@ -2,7 +2,7 @@ import React from "react";
 
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
-import partnerSide from "../assets/img/backgrounds/partner-side-min.jpg";
+import partnerSide from "../assets/img/backgrounds/partner-side-min.jpeg";
 
 import "../assets/css/Partner.css";
 import { useFormik } from "formik";
@@ -43,7 +43,9 @@ function Partner() {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Partner With Us | EMotorad | Best Electric Bicycle and Electric Bike</title>
+        <title>
+          Partner With Us | EMotorad | Best Electric Bicycle and Electric Bike
+        </title>
         <meta
           name="description"
           content="Looking to find a trusted, reliable and one of the fastest growing partner in eBike, EV and electric cycle Industry, feel free pick your phone and ring us or you can drop in a message in the form below"
