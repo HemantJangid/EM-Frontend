@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../components/Button";
 import { Parallax } from "react-parallax";
 import Header from "../components/Header";
@@ -101,18 +101,17 @@ function Home() {
     ]
   };
 
-  let [shouldPlay, updatePlayState] = useState("");
+  let [shouldPlay, updatePlayState] = useState();
 
   let handleEnterViewport = function () {
-    updatePlayState("https://vimeo.com/509675910");
+    updatePlayState(509675910);
     console.log('play')
   }
   let handleExitViewport = function () {
-    updatePlayState("");
+    updatePlayState();
     console.log('pause')
 
   }
-
 
   return (
     <div>
@@ -565,7 +564,7 @@ function Home() {
       </section>
 
       <Footer />
-    </div >
+    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./screens/Home";
 import AllProducts from "./screens/Products";
@@ -30,17 +30,27 @@ import { store, persistor } from "./redux/store/index";
 import { PersistGate } from "redux-persist/integration/react";
 
 import navUrls from "./constant/navUrls";
-import { addItem } from "./redux/actions/cart";
 
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
+
+
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000)
+  }, [])
+
   return (
     <AuthProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Router>
             <ScrollToTop />
+
             <Switch>
               <Route exact path={`${navUrls.home}`} component={Home} />
               <Route path={`${navUrls.about}`} component={About} />
