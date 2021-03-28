@@ -104,11 +104,11 @@ function ProductDetails(props) {
               </div>
             </div>
           </section>
-
+          {console.log(productContent)}
           <section id="video">
             <section id="video">
               <Vimeo
-                video="https://vimeo.com/484731619"
+                video={productContent.video_page_video_link}
                 autoplay={true}
                 responsive={true}
                 controls={false}
