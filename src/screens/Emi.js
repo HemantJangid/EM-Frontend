@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 
 import Slider, { createSliderWithTooltip } from "rc-slider";
 import "rc-slider/assets/index.css";
+import navUrls from "../constant/navUrls";
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 
 function Emi() {
@@ -33,7 +34,7 @@ function Emi() {
             <h1>EM’s Insurance Partner</h1>
           </div>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <HashLink smooth to="/emi#emi">
+          <HashLink smooth to={`${navUrls.emi}#emi`}>
             <Button text="EMI Calculator" />
           </HashLink>
         </div>
@@ -129,7 +130,7 @@ function Emi() {
               <p className="mb-0 text-nowrap">Loan EMI</p>
             </div>
           </div>
-          <HashLink smooth to="/emi#coming-soon">
+          <HashLink smooth to={`${navUrls.emi}#coming-soon`}>
             <Button text="Check Loan Emi" />
           </HashLink>
         </div>

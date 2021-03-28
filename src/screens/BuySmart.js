@@ -30,7 +30,12 @@ function BuySmart() {
     },
   });
 
-  const [msg, setMsg] = useState(`How much I saved?`)
+  const [total, setTotal] = useState("How much I saved?");
+  const [petrolSaved, setPetrolSaved] = useState("");
+  const [petrolCostSaved, setPetrolCostSaved] = useState("");
+  const [mainCostSaved, setMainCostSaved] = useState("");
+  const [elecConsumed, setElecConsumed] = useState("");
+  const [carbonEmission, setCarbonEmission] = useState("");
   const [cars, setCars] = useState(0);
   const [scooter, setScooter] = useState(0);
   const [km, setKm] = useState(0);
@@ -38,12 +43,18 @@ function BuySmart() {
   const [years, setYears] = useState(0);
 
   function calcSavings() {
-    var petrolCost = 365 * years * km * petrol * ((cars / 15) + (scooter / 50));
-    var maintCost = km * petrol * ((cars * 121.66) + (scooter * 182.5));
-    var electCost = km * years * 365 / 10;
-    var tot = petrolCost + maintCost - electCost;
-    const msgm = `You Saved Rs \n` + tot;
-    setMsg(msgm)
+    var petrolSaved = Math.trunc(365 * years * km * ((cars / 15) + (scooter / 50)));
+    var petrolCost = Math.trunc(365 * years * km * petrol * ((cars / 15) + (scooter / 50)));
+    var maintCost = Math.trunc(km * petrol * ((cars * 121.66) + (scooter * 182.5)));
+    var electCost = Math.trunc(km * years * 365 / 10);
+    var carbon = Math.trunc(21 * 365 * km * years * (scooter + 10 * cars))
+    var tot = Math.trunc(petrolCost + maintCost - electCost);
+    setPetrolSaved("Petrol saved (Litres) " + petrolSaved);
+    setPetrolCostSaved("Petrol cost saved Rs " + petrolCost);
+    setMainCostSaved("Maintainence cost saved Rs " + maintCost);
+    setElecConsumed("Electricity consumed cost Rs " + electCost);
+    setCarbonEmission("Reduction in carbon emission (Mg of CO2) " + carbon);
+    setTotal("Total money saved Rs " + tot);
   }
 
   return (
@@ -75,7 +86,7 @@ function BuySmart() {
               <h3>Savings Calculator</h3>
               <h4>Save even after buying</h4>
               <img src={dots} alt="Dots" className="dots" />
-              <div className="form-group">
+              <div className="form-group mt-4">
                 <input
                   className="form-control"
                   type="number"
@@ -132,7 +143,12 @@ function BuySmart() {
             </div>
             <div className="col-lg-6 col-md-6">
               <div className="card-savings h-100 py-3 px-3 text-center d-flex flex-nowrap flex-column justify-content-center">
-                <h3 className="text-wrap">{msg}</h3>
+                <h4 className="text-capitalize">{petrolSaved}</h4>
+                <h4 className="text-capitalize">{petrolCostSaved}</h4>
+                <h4 className="text-capitalize">{mainCostSaved}</h4>
+                <h4 className="text-capitalize">{elecConsumed}</h4>
+                <h4 className="text-capitalize">{carbonEmission}</h4>
+                <h3 className="text-wrap">{total}</h3>
               </div>
             </div>
           </div>

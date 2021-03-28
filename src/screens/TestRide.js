@@ -92,7 +92,7 @@ function TestRide() {
           <h3 className="pri">Book a test ride</h3>
           <h1>Experience unparallel</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <HashLink smooth to="/testride#book-testride">
+          <HashLink smooth to={`${navUrls.testride}#book-testride`}>
             <Button text="Book now" />
           </HashLink>
         </div>

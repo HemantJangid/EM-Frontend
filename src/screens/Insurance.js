@@ -9,6 +9,7 @@ import emx from "../assets/img/insurance/emx.png";
 import Button from "../components/Button";
 import { HashLink } from "react-router-hash-link";
 import { Helmet } from "react-helmet";
+import navUrls from "../constant/navUrls";
 
 function Insurance() {
   return (
@@ -28,7 +29,9 @@ function Insurance() {
             <h1>EM’s Insurance Partner</h1>
           </div>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <Button text="Get Insured" />
+          <HashLink smooth to={`${navUrls.insurance}#insurance`}>
+            <Button text="Get Insured" />
+          </HashLink>
         </div>
       </section>
 
@@ -65,19 +68,19 @@ function Insurance() {
           <div className="my-5 d-inline-flex text-center flex-wrap flex-lg-nowrap">
             <div className="d-block mx-3">
               <img src={trex} alt="card" className="img-fluid my-4" />
-              <HashLink smooth to="/insurance#coming-soon">
+              <HashLink smooth to={`${navUrls.insurance}#coming-soon`}>
                 <Button text="Get T-Rex Insured" />
               </HashLink>
             </div>
             <div className="d-block mx-3">
               <img src={doodle} alt="card" className="img-fluid my-4" />
-              <HashLink smooth to="/insurance#coming-soon">
+              <HashLink smooth to={`${navUrls.insurance}#coming-soon`}>
                 <Button text="Get T-Rex Insured" />
               </HashLink>
             </div>
             <div className="d-block mx-3">
               <img src={emx} alt="card" className="img-fluid my-4" />
-              <HashLink smooth to="/insurance#coming-soon">
+              <HashLink smooth to={`${navUrls.insurance}#coming-soon`}>
                 <Button text="Get T-Rex Insured" />
               </HashLink>
             </div>

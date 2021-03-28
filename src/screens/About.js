@@ -15,6 +15,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { HashLink } from "react-router-hash-link";
 import { Helmet } from "react-helmet";
+import navUrls from "../constant/navUrls";
 
 function About() {
   return (
@@ -38,7 +39,8 @@ function About() {
             Em<span className="pri">o</span>t<span className="pri">o</span>rad
           </h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <HashLink smooth to="/about#team">
+          {console.log(`${navUrls.about}#team`)}
+          <HashLink smooth to={`${navUrls.about}#team`}>
             <Button text="Meet the team" />
           </HashLink>
         </div>

@@ -49,7 +49,7 @@ function Blog() {
           <h3 className="pri">Read About All the ebikes with us</h3>
           <h1>Blogs </h1>
           <img src={dots} alt="Dots" className="dots mb-4" />
-          <HashLink smooth to="/blog#blogs">
+          <HashLink smooth to={`${navUrls.blog}#blogs`}>
             <Button text="View Blogs" />
           </HashLink>
         </div>
