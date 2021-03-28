@@ -3,14 +3,32 @@
   background: #000;
 }
 
-input[type="text"] {
+#warranty input[type="text"],
+#warranty input[type="email"],
+#warranty input[type="date"],
+#warranty select {
   width: 100%;
   outline: none;
   background: transparent;
   border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  padding-bottom: 10px;
 }
 
-input[type="text"]:focus {
+#warranty label {
+  color: #fff;
+}
+
+#warranty option {
+  color: #000;
+}
+
+#warranty input[type="text"]:focus,
+#warranty input[type="email"]:focus,
+#warranty input[type="date"]:focus,
+#warranty select:focus {
   width: 100%;
   outline: none;
   background: transparent;
@@ -19,13 +37,15 @@ input[type="text"]:focus {
   color: #fff;
 }
 
-input[type="text"] {
-  border: none;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 10px;
-}
-
-input[type="text"]::placeholder {
+#warranty input[type="text"]::placeholder,
+#warranty input[type="email"]::placeholder,
+#warranty input[type="date"]::placeholder,
+#warranty select::placeholder {
   font-size: 0.875rem;
   margin-bottom: 100px;
+  color: #fff;
+}
+
+#warranty ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }

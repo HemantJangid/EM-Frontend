@@ -35,17 +35,17 @@ export function AuthProvider({ children }) {
   //     return currentUser.updatePassword(password)
   //   }
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      setLoading(false);
-    });
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged((user) => {
+  //     setCurrentUser(user);
+  //     setLoading(false);
+  //   });
 
-    return unsubscribe;
-  }, []);
+  //   return unsubscribe;
+  // }, []);
 
   const value = {
-    currentUser,
+    // currentUser,
     login,
     signup,
     logout,
@@ -56,8 +56,8 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
-      {/* {children} */}
+      {/* {!loading && children} */}
+      {children}
     </AuthContext.Provider>
   );
 }

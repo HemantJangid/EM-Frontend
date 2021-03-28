@@ -20,6 +20,7 @@ import Community from "./screens/Community";
 import Emi from "./screens/Emi";
 import Insurance from "./screens/Insurance";
 import BuySmart from "./screens/BuySmart";
+import Warranty from "./screens/Warranty";
 
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -54,6 +55,7 @@ function App() {
               <Route path={`${navUrls.signUp}`} component={SignUp} />
               <Route path={`${navUrls.blog}`} component={Blog} />
               <Route path={`${navUrls.blogpost}`} component={BlogPost} />
+              <PrivateRoute path={`${navUrls.warranty}`} component={Warranty} />
               <PrivateRoute path={`${navUrls.cart}`} component={Cart} />
               <PrivateRoute
                 path={`${navUrls.selectAddress}`}

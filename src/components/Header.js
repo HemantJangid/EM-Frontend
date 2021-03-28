@@ -95,9 +95,18 @@ const Header = () => {
                   Assurance
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to={`${navUrls.emi}`}>EMI</Link>
-                  <Link className="dropdown-item" to={`${navUrls.insurance}`}>Insurance</Link>
-                  <Link className="dropdown-item" to={`${navUrls.savingsCalc}`}>Savings Calculator</Link>
+                  <Link className="dropdown-item" to={`${navUrls.emi}`}>
+                    EMI
+                  </Link>
+                  <Link className="dropdown-item" to={`${navUrls.insurance}`}>
+                    Insurance
+                  </Link>
+                  <Link className="dropdown-item" to={`${navUrls.warranty}`}>
+                    Activate your Warranty
+                  </Link>
+                  <Link className="dropdown-item" to={`${navUrls.savingsCalc}`}>
+                    Savings Calculator
+                  </Link>
                 </div>
               </li>
               <li className="nav-item dropdown">
@@ -146,7 +155,6 @@ const Header = () => {
           </div>
         </div>
       </nav>
-
     </div>
   );
 };

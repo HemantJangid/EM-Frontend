@@ -10,6 +10,7 @@ const navUrls = {
   savingsCalc: "/savings-calc",
   signIn: "/signin",
   signUp: "/signup",
+  warranty: "/warranty",
   blog: "/blog",
   blogpost: "/blog-post",
   cart: "/cart",
