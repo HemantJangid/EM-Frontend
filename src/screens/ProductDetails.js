@@ -104,7 +104,6 @@ function ProductDetails(props) {
               </div>
             </div>
           </section>
-          {console.log(productContent)}
           <section id="video">
             <section id="video">
               <Vimeo

@@ -274,20 +274,12 @@ function Home() {
         </section>
       </Parallax>
 
-      <Waypoint onEnter={handleEnterViewport}>
-        <section id="video">
-          {/* <Vimeo
-            video="https://vimeo.com/509675910"
-            autoplay={true}
-            responsive={true}
-            controls={false}
-            showByline={false}
-            background={true}
-          /> */}
+      <Waypoint onEnter={handleEnterViewport} onLeave={handleExitViewport}>
+        <section id="video" className="video-container">
           <iframe
             src="https://player.vimeo.com/video/509675910"
             style={{
-              height: "100vh",
+              height: "100%",
               width: "100%",
             }}
             frameBorder="0"
