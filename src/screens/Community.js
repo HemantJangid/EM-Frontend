@@ -2,10 +2,16 @@ import React from 'react'
 import '../assets/css/Community.css'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import { Helmet } from "react-helmet";
 
 function Community() {
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Community | EMotorad | Best Electric Bicycle and Electric Bike</title>
+                <meta name="description" content="EMotorad is a closely-knit community of enthusiasts who love to ride e-bikes, want to find their impact ambition, and share a common purpose of sustainability." />
+            </Helmet>
             <Header />
             <section id="comm-hero" className="d-flex justify-content-center flex-column">
                 <div className="container h-100">

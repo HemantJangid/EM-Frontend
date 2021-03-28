@@ -7,7 +7,7 @@ const navUrls = {
   community: "/community",
   emi: "/emi",
   insurance: "/insurance",
-  savingsCalc: "/savings-calc",
+  buySmart: "/buysmart",
   signIn: "/signin",
   signUp: "/signup",
   warranty: "/warranty",

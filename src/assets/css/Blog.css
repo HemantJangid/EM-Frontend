@@ -21,6 +21,10 @@
   font-family: var(--opensans);
 }
 
+#blogs-hero a {
+  text-decoration: none;
+}
+
 #blogs {
   padding: 100px 0;
 }

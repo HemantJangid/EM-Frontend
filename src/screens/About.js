@@ -14,10 +14,18 @@ import "../assets/css/About.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { HashLink } from 'react-router-hash-link'
+import { Helmet } from "react-helmet";
+
 
 function About() {
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>About Us | EMotorad | Best Electric Bicycle and Electric Bike</title>
+                <meta name="description" content="We are a bunch of EV maniacs coming together with a mission to help India shift to EV with reliable and affordable luxury eBikes." />
+            </Helmet>
+
             <Header />
             <section id="about-hero">
                 <div className="container">

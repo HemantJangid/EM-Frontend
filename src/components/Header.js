@@ -104,8 +104,8 @@ const Header = () => {
                   <Link className="dropdown-item" to={`${navUrls.warranty}`}>
                     Activate your Warranty
                   </Link>
-                  <Link className="dropdown-item" to={`${navUrls.savingsCalc}`}>
-                    Savings Calculator
+                  <Link className="dropdown-item" to={`${navUrls.buySmart}`}>
+                    Buy Smart
                   </Link>
                 </div>
               </li>

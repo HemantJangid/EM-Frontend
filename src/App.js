@@ -49,7 +49,7 @@ function App() {
               <Route path={`${navUrls.careers}`} component={Careers} />
               <Route path={`${navUrls.emi}`} component={Emi} />
               <Route path={`${navUrls.insurance}`} component={Insurance} />
-              <Route path={`${navUrls.savingsCalc}`} component={BuySmart} />
+              <Route path={`${navUrls.buySmart}`} component={BuySmart} />
               <Route path={`${navUrls.community}`} component={Community} />
               <Route path={`${navUrls.signIn}`} component={SignIn} />
               <Route path={`${navUrls.signUp}`} component={SignUp} />

@@ -12,6 +12,8 @@ import Footer from "../components/Footer";
 import { Link, useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
 import { HashLink } from 'react-router-hash-link'
+import { Helmet } from "react-helmet";
+
 
 function TestRide() {
   const todays_date_obj = new Date();
@@ -78,6 +80,12 @@ function TestRide() {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Test Ride | EMotorad | Best Electric Bicycle and Electric Bike</title>
+        <meta name="description" content="Test ride the electric revolution at your nearest city, See what it feels like Indian to ride an Ebike" />
+      </Helmet>
+
       <Header />
       <section id="test-hero">
         <div className="container">

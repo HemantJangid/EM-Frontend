@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
@@ -8,6 +8,7 @@ import { useFormik, Field, Form } from "formik";
 import "../assets/css/BuySmart.css";
 import Header from "./../components/Header";
 import Footer from "../components/Footer";
+import { Helmet } from "react-helmet";
 
 function BuySmart() {
   const todays_date_obj = new Date();
@@ -29,8 +30,33 @@ function BuySmart() {
     },
   });
 
+  const [msg, setMsg] = useState(`How much I saved?`)
+  const [cars, setCars] = useState(0);
+  const [scooter, setScooter] = useState(0);
+  const [km, setKm] = useState(0);
+  const [petrol, setPetrol] = useState(0);
+  const [years, setYears] = useState(0);
+
+  function calcSavings() {
+    var petrolCost = 365 * years * km * petrol * ((cars / 15) + (scooter / 50));
+    var maintCost = km * petrol * ((cars * 121.66) + (scooter * 182.5));
+    var electCost = km * years * 365 / 10;
+    var tot = petrolCost + maintCost - electCost;
+    const msgm = `You Saved Rs \n` + tot;
+    setMsg(msgm)
+  }
+
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Buy Smart | Best Electric Bicycle and Electric Bike</title>
+        <meta
+          name="description"
+          content="Reduce your carbon footprints by riding an eBike, Find easy EMI Options on all our latest eBikes, Activate your eBike warranty and Get your eBike Insured with us."
+        />
+      </Helmet>
+
       <Header />
 
       <section id="buy-hero">
@@ -44,79 +70,69 @@ function BuySmart() {
 
       <section id="savings-calculator">
         <div className="container">
-          <h3>Savings Calculator</h3>
-          <h4>Save even after buying</h4>
-          <img src={dots} alt="Dots" className="dots" />
           <div className="row justify-content-center">
             <div className="col-lg-6 col-md-6">
-              <form onSubmit={formik.handleSubmit}>
-                <table cellPadding="10">
-                  <tr>
-                    <td>Number of scooters used:</td>
-                    <td>
-                      <input
-                        className="ml-5"
-                        type="number"
-                        name="num_scooters"
-                        id="num_scooters"
-                        onChange={formik.handleChange}
-                        value={formik.values.num_scooters}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Speed</td>
-                    <td>
-                      <input
-                        className="ml-5"
-                        type="number"
-                        name="num_scooters"
-                        id="num_scooters"
-                        onChange={formik.handleChange}
-                        value={formik.values.num_scooters}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Battery</td>
-                    <td>
-                      <input
-                        className="ml-5"
-                        type="number"
-                        name="num_scooters"
-                        id="num_scooters"
-                        onChange={formik.handleChange}
-                        value={formik.values.num_scooters}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Derailleur</td>
-                    <td>
-                      <input
-                        className="ml-5"
-                        type="number"
-                        name="num_scooters"
-                        id="num_scooters"
-                        onChange={formik.handleChange}
-                        value={formik.values.num_scooters}
-                      />
-                    </td>
-                  </tr>
-                </table>
-                <button
-                  type="submit"
-                  className="bg-transparent border-0 mt-3"
-                >
-                  <Button text="Calculate" color="black" />
-                </button>
-              </form>
+              <h3>Savings Calculator</h3>
+              <h4>Save even after buying</h4>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  type="number"
+                  name="cars"
+                  id="cars"
+                  placeholder="No of Cars used"
+                  onChange={e => setCars(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  type="number"
+                  name="scooters"
+                  id="scooters"
+                  placeholder="No of Scooters/Motorcycles used"
+                  onChange={e => setScooter(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  type="number"
+                  name="km"
+                  id="km"
+                  placeholder="Average Kilometers travelled daily"
+                  onChange={e => setKm(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  type="number"
+                  name="petrol"
+                  id="petrol"
+                  placeholder="Petrol price"
+                  onChange={e => setPetrol(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  className="form-control"
+                  type="number"
+                  name="years"
+                  id="years"
+                  placeholder="Years of usage"
+                  onChange={e => setYears(e.target.value)}
+                />
+              </div>
+              <button className="bg-transparent border-0 mt-3" onClick={calcSavings}>
+                <Button text="Calculate" color="black" />
+              </button>
+
             </div>
             <div className="col-lg-6 col-md-6">
               <div className="card-savings h-100 py-3 px-3 text-center d-flex flex-nowrap flex-column justify-content-center">
-                <h3>You Saved!</h3>
-                <h2>2,00,000/-</h2>
-                <h4>INR</h4>
+                <h3 className="text-wrap">{msg}</h3>
               </div>
             </div>
           </div>

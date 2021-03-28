@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../components/Button";
 import { Parallax } from "react-parallax";
 import Header from "../components/Header";
@@ -7,6 +7,7 @@ import Vimeo from "@u-wave/react-vimeo";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import "../assets/css/Home.css";
+import { Waypoint } from 'react-waypoint';
 import Slider from "react-slick";
 
 import electric from "../assets/img/design/electric.svg";
@@ -100,6 +101,19 @@ function Home() {
     ]
   };
 
+  let [shouldPlay, updatePlayState] = useState("");
+
+  let handleEnterViewport = function () {
+    updatePlayState("https://vimeo.com/509675910");
+    console.log('play')
+  }
+  let handleExitViewport = function () {
+    updatePlayState("");
+    console.log('pause')
+
+  }
+
+
   return (
     <div>
       <Helmet>
@@ -108,6 +122,7 @@ function Home() {
         <meta name="description" content="Looking for the Best Electric Bicycle? Emotorad offers high tech, reliable, and fast electric cycles. Ebike at the best prices. Buy an Electric Bicycle Now!" />
         <meta name="keywords" content="electric bicycle, electric bike, e bikes, electric cycle, best electric bike, best electric bicycle, electric bike price, power bike, e bike price, electric cycle price, e bicycle, electric bicycle price, electric bike company, electric bike motors, ebike motors, electric bike cycle" />
       </Helmet>
+
       <Header />
       <section id="hero">
         <div className="container">
@@ -200,18 +215,23 @@ function Home() {
         </section>
       </Parallax>
 
-      <section id="video">
-        <Vimeo
-          video="https://vimeo.com/509675910"
-          autoplay={true}
-          responsive={true}
-          paused={true}
-          controls={false}
-          showByline={false}
-          color="#68db85"
-          background={true}
-        />
-      </section>
+      <Waypoint
+        onEnter={handleEnterViewport}
+        onLeave={handleExitViewport}
+      >
+        <section id="video">
+
+          <Vimeo
+            video={shouldPlay}
+            autoplay={true}
+            responsive={true}
+            controls={false}
+            showByline={false}
+            background={true}
+          />
+        </section>
+      </Waypoint>
+
 
       <section id="products">
         <div className="row justify-content-center no-gutters">
@@ -289,19 +309,19 @@ function Home() {
         <div class="marquee">
           <div class="track">
             <div class="content">
-              <img src={logo1} alt="Logo" className="mx-5" />
-              <img src={logo2} alt="Logo" className="mx-5" />
-              <img src={logo3} alt="Logo" className="mx-5" />
-              <img src={logo4} alt="Logo" className="mx-5" />
-              <img src={logo5} alt="Logo" className="mx-5" />
-              <img src={logo6} alt="Logo" className="mx-5" />
-              <img src={logo7} alt="Logo" className="mx-5" />
-              <img src={logo8} alt="Logo" className="mx-5" />
-              <img src={logo9} alt="Logo" className="mx-5" />
-              <img src={logo10} alt="Logo" className="mx-5" />
-              <img src={logo11} alt="Logo" className="mx-5" />
-              <img src={logo12} alt="Logo" className="mx-5" />
-              <img src={logo13} alt="Logo" className="mx-5" />
+              <a href="https://www.zeebiz.com/small-business/news-pune-ev-startup-launches-india-s-first-e-cycle-with-dual-suspension-price-starts-at-rs-50000-140808"><img src={logo1} alt="Logo" className="mx-5" /></a>
+              <a href="https://auto.hindustantimes.com/auto/two-wheelers/pune-based-ev-startup-launches-e-cycle-with-dual-suspension-at-rs-50-000-41605690000216.html"><img src={logo2} alt="Logo" className="mx-5" /></a>
+              <a href="https://indianexpress.com/article/cities/pune/clean-green-and-profitable-a-pune-based-startup-bucks-economic-gloom-to-e-cycle-its-way-to-success-7210581/"><img src={logo3} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.thetribalbox.com/emotorad-pune-ev-start-up-introduces-premium-e-cycles-for-bike-enthusiasts-in-india"><img src={logo4} alt="Logo" className="mx-5" /></a>
+              <a href="https://m.dailyhunt.in/news/india/english/bike+dekho-epaper-bikedeko/emotorad+t+rex+electric+mtb+set+to+launch+next+week-newsid-n242739834"><img src={logo5} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.bikedekho.com/news/emotorad-t-rex-electric-mtb-set-to-launch-next-week"><img src={logo6} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.zigwheels.com/news-features/news/emotorad-trex-ebike-to-launch-later-this-month/40780/"><img src={logo7} alt="Logo" className="mx-5" /></a>
+              <a href=""><img src={logo8} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.financialexpress.com/auto/electric-vehicles/emotorad-t-rex-all-terrain-electric-bike-india-launch-expected-price-range-charging-time-top-speed-deliveries-bookings-features/2168017/lite/"><img src={logo9} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.manufacturingtodayindia.com/products-suppliers/9024-pune-ev-startup-launches-indias-first-e-cycle-with-dual-suspension"><img src={logo10} alt="Logo" className="mx-5" /></a>
+              <a href=""><img src={logo11} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.livemint.com/auto-news/pune-ev-startup-launches-india-s-first-e-cycle-with-dual-suspension-11605713806838.html"><img src={logo12} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.google.com/amp/s/m.timesofindia.com/city/pune/startup-rolls-out-e-cycle-at-rs-50000/amp_articleshow/79291049.cms"><img src={logo13} alt="Logo" className="mx-5" /></a>
             </div>
           </div>
         </div>
@@ -545,7 +565,7 @@ function Home() {
       </section>
 
       <Footer />
-    </div>
+    </div >
   );
 }
 
