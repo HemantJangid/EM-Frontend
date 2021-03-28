@@ -7,7 +7,7 @@ import Vimeo from "@u-wave/react-vimeo";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import "../assets/css/Home.css";
-import { Waypoint } from 'react-waypoint';
+import { Waypoint } from "react-waypoint";
 import Slider from "react-slick";
 
 import electric from "../assets/img/design/electric.svg";
@@ -64,9 +64,9 @@ function Home() {
         breakpoint: 786,
         settings: {
           arrows: false,
-        }
+        },
       },
-    ]
+    ],
   };
 
   var settingsYoutube = {
@@ -86,8 +86,8 @@ function Home() {
           slidesToShow: 2,
           slidesToScroll: 3,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 786,
@@ -95,31 +95,43 @@ function Home() {
           arrows: false,
           slidesToShow: 1,
           slidesToScroll: 2,
-          initialSlide: 2
-        }
-      }
-    ]
+          initialSlide: 2,
+        },
+      },
+    ],
   };
 
   let [shouldPlay, updatePlayState] = useState();
 
   let handleEnterViewport = function () {
-    updatePlayState(509675910);
-    console.log('play')
-  }
+    getVideoPlayer().play();
+  };
   let handleExitViewport = function () {
-    updatePlayState();
-    console.log('pause')
+    getVideoPlayer().pause();
+  };
 
-  }
+  const getVideoPlayer = () => {
+    let playerWindow = new window.Vimeo.Player(
+      document.querySelector("#video")
+    );
+    console.log(playerWindow);
+    return playerWindow;
+  };
 
   return (
     <div>
       <Helmet>
         <meta charSet="utf-8" />
         <title>EMotorad | Best Electric Bicycle and Electric Bike</title>
-        <meta name="description" content="Looking for the Best Electric Bicycle? Emotorad offers high tech, reliable, and fast electric cycles. Ebike at the best prices. Buy an Electric Bicycle Now!" />
-        <meta name="keywords" content="electric bicycle, electric bike, e bikes, electric cycle, best electric bike, best electric bicycle, electric bike price, power bike, e bike price, electric cycle price, e bicycle, electric bicycle price, electric bike company, electric bike motors, ebike motors, electric bike cycle" />
+        <meta
+          name="description"
+          content="Looking for the Best Electric Bicycle? Emotorad offers high tech, reliable, and fast electric cycles. Ebike at the best prices. Buy an Electric Bicycle Now!"
+        />
+        <meta
+          name="keywords"
+          content="electric bicycle, electric bike, e bikes, electric cycle, best electric bike, best electric bicycle, electric bike price, power bike, e bike price, electric cycle price, e bicycle, electric bicycle price, electric bike company, electric bike motors, ebike motors, electric bike cycle"
+        />
+        <script src="https://player.vimeo.com/api/player.js"></script>
       </Helmet>
 
       <Header />
@@ -128,7 +140,11 @@ function Home() {
           <div className="first-page d-flex align-items-center">
             <div className="container">
               <h3>Ride The</h3>
-              <img src={electric} alt="Electric" className="img-fluid electric" />
+              <img
+                src={electric}
+                alt="Electric"
+                className="img-fluid electric"
+              />
               <h2 className="mt-2">Revolution</h2>
               <img src={dots} alt="Dots" className="dots" />
               <div className="hero-btn">
@@ -144,7 +160,11 @@ function Home() {
           <div className="second-page d-flex align-items-center">
             <div className="container">
               <h3>Ride The</h3>
-              <img src={electric} alt="Electric" className="img-fluid electric" />
+              <img
+                src={electric}
+                alt="Electric"
+                className="img-fluid electric"
+              />
               <h2 className="mt-2">Revolution</h2>
               <img src={dots} alt="Dots" className="dots" />
               <div className="hero-btn">
@@ -160,7 +180,11 @@ function Home() {
           <div className="third-page d-flex align-items-center">
             <div className="container">
               <h3>Ride The</h3>
-              <img src={electric} alt="Electric" className="img-fluid electric" />
+              <img
+                src={electric}
+                alt="Electric"
+                className="img-fluid electric"
+              />
               <h2 className="mt-2">Revolution</h2>
               <img src={dots} alt="Dots" className="dots" />
               <div className="hero-btn">
@@ -250,19 +274,26 @@ function Home() {
         </section>
       </Parallax>
 
-      <Waypoint
-        onEnter={handleEnterViewport}
-        onLeave={handleExitViewport}
-      >
+      <Waypoint onEnter={handleEnterViewport}>
         <section id="video">
-          <Vimeo
+          {/* <Vimeo
             video="https://vimeo.com/509675910"
             autoplay={true}
             responsive={true}
             controls={false}
             showByline={false}
             background={true}
-          />
+          /> */}
+          <iframe
+            src="https://player.vimeo.com/video/509675910"
+            style={{
+              height: "100vh",
+              width: "100%",
+            }}
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+            allowFullScreen
+          ></iframe>
         </section>
       </Waypoint>
 
@@ -342,19 +373,45 @@ function Home() {
         <div className="marquee">
           <div className="track">
             <div className="content">
-              <a href="https://www.zeebiz.com/small-business/news-pune-ev-startup-launches-india-s-first-e-cycle-with-dual-suspension-price-starts-at-rs-50000-140808"><img src={logo1} alt="Logo" className="mx-5" /></a>
-              <a href="https://auto.hindustantimes.com/auto/two-wheelers/pune-based-ev-startup-launches-e-cycle-with-dual-suspension-at-rs-50-000-41605690000216.html"><img src={logo2} alt="Logo" className="mx-5" /></a>
-              <a href="https://indianexpress.com/article/cities/pune/clean-green-and-profitable-a-pune-based-startup-bucks-economic-gloom-to-e-cycle-its-way-to-success-7210581/"><img src={logo3} alt="Logo" className="mx-5" /></a>
-              <a href="https://www.thetribalbox.com/emotorad-pune-ev-start-up-introduces-premium-e-cycles-for-bike-enthusiasts-in-india"><img src={logo4} alt="Logo" className="mx-5" /></a>
-              <a href="https://m.dailyhunt.in/news/india/english/bike+dekho-epaper-bikedeko/emotorad+t+rex+electric+mtb+set+to+launch+next+week-newsid-n242739834"><img src={logo5} alt="Logo" className="mx-5" /></a>
-              <a href="https://www.bikedekho.com/news/emotorad-t-rex-electric-mtb-set-to-launch-next-week"><img src={logo6} alt="Logo" className="mx-5" /></a>
-              <a href="https://www.zigwheels.com/news-features/news/emotorad-trex-ebike-to-launch-later-this-month/40780/"><img src={logo7} alt="Logo" className="mx-5" /></a>
-              <a href=""><img src={logo8} alt="Logo" className="mx-5" /></a>
-              <a href="https://www.financialexpress.com/auto/electric-vehicles/emotorad-t-rex-all-terrain-electric-bike-india-launch-expected-price-range-charging-time-top-speed-deliveries-bookings-features/2168017/lite/"><img src={logo9} alt="Logo" className="mx-5" /></a>
-              <a href="https://www.manufacturingtodayindia.com/products-suppliers/9024-pune-ev-startup-launches-indias-first-e-cycle-with-dual-suspension"><img src={logo10} alt="Logo" className="mx-5" /></a>
-              <a href=""><img src={logo11} alt="Logo" className="mx-5" /></a>
-              <a href="https://www.livemint.com/auto-news/pune-ev-startup-launches-india-s-first-e-cycle-with-dual-suspension-11605713806838.html"><img src={logo12} alt="Logo" className="mx-5" /></a>
-              <a href="https://www.google.com/amp/s/m.timesofindia.com/city/pune/startup-rolls-out-e-cycle-at-rs-50000/amp_articleshow/79291049.cms"><img src={logo13} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.zeebiz.com/small-business/news-pune-ev-startup-launches-india-s-first-e-cycle-with-dual-suspension-price-starts-at-rs-50000-140808">
+                <img src={logo1} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://auto.hindustantimes.com/auto/two-wheelers/pune-based-ev-startup-launches-e-cycle-with-dual-suspension-at-rs-50-000-41605690000216.html">
+                <img src={logo2} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://indianexpress.com/article/cities/pune/clean-green-and-profitable-a-pune-based-startup-bucks-economic-gloom-to-e-cycle-its-way-to-success-7210581/">
+                <img src={logo3} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://www.thetribalbox.com/emotorad-pune-ev-start-up-introduces-premium-e-cycles-for-bike-enthusiasts-in-india">
+                <img src={logo4} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://m.dailyhunt.in/news/india/english/bike+dekho-epaper-bikedeko/emotorad+t+rex+electric+mtb+set+to+launch+next+week-newsid-n242739834">
+                <img src={logo5} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://www.bikedekho.com/news/emotorad-t-rex-electric-mtb-set-to-launch-next-week">
+                <img src={logo6} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://www.zigwheels.com/news-features/news/emotorad-trex-ebike-to-launch-later-this-month/40780/">
+                <img src={logo7} alt="Logo" className="mx-5" />
+              </a>
+              <a href="">
+                <img src={logo8} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://www.financialexpress.com/auto/electric-vehicles/emotorad-t-rex-all-terrain-electric-bike-india-launch-expected-price-range-charging-time-top-speed-deliveries-bookings-features/2168017/lite/">
+                <img src={logo9} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://www.manufacturingtodayindia.com/products-suppliers/9024-pune-ev-startup-launches-indias-first-e-cycle-with-dual-suspension">
+                <img src={logo10} alt="Logo" className="mx-5" />
+              </a>
+              <a href="">
+                <img src={logo11} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://www.livemint.com/auto-news/pune-ev-startup-launches-india-s-first-e-cycle-with-dual-suspension-11605713806838.html">
+                <img src={logo12} alt="Logo" className="mx-5" />
+              </a>
+              <a href="https://www.google.com/amp/s/m.timesofindia.com/city/pune/startup-rolls-out-e-cycle-at-rs-50000/amp_articleshow/79291049.cms">
+                <img src={logo13} alt="Logo" className="mx-5" />
+              </a>
             </div>
           </div>
         </div>
@@ -557,40 +614,82 @@ function Home() {
       <section id="youtube-carousel">
         <div className="container">
           <h2 className="text-center mb-5 text-dark">Online Reviews</h2>
-          <Slider  {...settingsYoutube}>
+          <Slider {...settingsYoutube}>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/-NMJFHCz3DY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe
+                  src="https://www.youtube.com/embed/-NMJFHCz3DY"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/2iB_3SoHopA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe
+                  src="https://www.youtube.com/embed/2iB_3SoHopA"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/cZnCNBycupg" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe
+                  src="https://www.youtube.com/embed/cZnCNBycupg"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/5UTCeu4EcyU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe
+                  src="https://www.youtube.com/embed/5UTCeu4EcyU"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/_qRYr3KlxnI" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe
+                  src="https://www.youtube.com/embed/_qRYr3KlxnI"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/hwqY6wDdops" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe
+                  src="https://www.youtube.com/embed/hwqY6wDdops"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/RP9LQ3i8OeM" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <iframe
+                  src="https://www.youtube.com/embed/RP9LQ3i8OeM"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
           </Slider>

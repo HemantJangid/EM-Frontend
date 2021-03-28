@@ -144,6 +144,7 @@
 /* VIDEO */
 #video {
   background-color: #000;
+  width: 100%;
 }
 
 /* #video .video-box {
