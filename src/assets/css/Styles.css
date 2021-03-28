@@ -179,6 +179,10 @@ label:focus,
   width: 1px;
 }
 
+#footer a {
+  text-decoration: none;
+}
+
 #footer .copyright {
   text-align: center;
   color: #fff;

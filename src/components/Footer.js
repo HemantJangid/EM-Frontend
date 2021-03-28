@@ -23,10 +23,21 @@ function Footer() {
               <a href="#">+91-8686050590</a>
               <h5 className="mt-5">Social Media</h5>
               <div className="d-flex align-items-center social-links">
-                <a href="https://www.facebook.com/EMotorad" className="mr-3"><i class="fab fa-facebook-square"></i></a>
-                <a href="https://twitter.com/ElectroMotorad" className="mr-3"><i class="fab fa-twitter-square"></i></a>
-                <a href="https://www.linkedin.com/company/motorad-electro/" className="mr-3"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.instagram.com/em_bikes/" className="mr-3"><i class="fab fa-instagram-square"></i></a>
+                <a href="https://www.facebook.com/EMotorad" className="mr-3">
+                  <i className="fab fa-facebook-square"></i>
+                </a>
+                <a href="https://twitter.com/ElectroMotorad" className="mr-3">
+                  <i className="fab fa-twitter-square"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/motorad-electro/"
+                  className="mr-3"
+                >
+                  <i className="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.instagram.com/em_bikes/" className="mr-3">
+                  <i className="fab fa-instagram-square"></i>
+                </a>
               </div>
             </div>
             <div className="col-lg-3 col-md-6 mt-5">
@@ -65,12 +76,9 @@ function Footer() {
                     </button>
                   </div>
                   <div className="my-2">
-                    <button
-                      //   onClick={() => history.push(navUrls.testride)}
-                      className="bg-transparent border-0 text-left w-100"
-                    >
+                    <a href="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/products/brochures/EM+Brochure.pdf">
                       <Button text="Download brochure" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

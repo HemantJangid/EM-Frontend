@@ -75,17 +75,17 @@ function SelectAddress() {
 
                   <div className="form-group">
                     {addresses.map((address, index) => (
-                      <div class="custom-control custom-radio">
+                      <div className="custom-control custom-radio">
                         <input
                           type="radio"
                           id={`addressRadio${index}`}
                           name="user_address_uuid"
-                          class="custom-control-input"
+                          className="custom-control-input"
                           onClick={() => setSelectedAddress(address.uuid)}
                           value={address.uuid}
                         />
                         <label
-                          class="custom-control-label"
+                          className="custom-control-label"
                           for={`addressRadio${index}`}
                         >
                           {`${address.address_line_1}, ${address.address_line_2}, ${address.landmark}, ${address.city}, ${address.state}, ${address.pincode}`}

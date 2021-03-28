@@ -2,17 +2,45 @@
 
 /* HERO */
 #hero {
-  background: url("../img/backgrounds/home-min.jpeg");
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
-@media screen and (max-width: 500px) {
-  #hero {
-    background-position: 60% 0%;
+#hero .first-page,
+#hero .second-page,
+#hero .third-page {
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+}
+
+#hero .first-page {
+  background: url("../img/backgrounds/home-min.jpeg");
+}
+
+#hero .second-page {
+  background: url("../img/backgrounds/home2-min.jpg");
+}
+
+#hero .third-page {
+  background: url("../img/backgrounds/home3-min.jpeg");
+}
+
+@media screen and (max-width: 719px) {
+  #hero .first-page {
+    background: url("../img/backgrounds/homemob-min.jpg");
+    background-position: center;
+  }
+
+  #hero .second-page {
+    background: url("../img/backgrounds/home2mob-min.jpg");
+    background-position: center;
+  }
+
+  #hero .third-page {
+    background: url("../img/backgrounds/home3mob-min.jpg");
+    background-position: center;
   }
 }
 

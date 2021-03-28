@@ -245,11 +245,11 @@ function Cart() {
                               <td>
                                 <div className="d-block">
                                   <div id="radio-color">
-                                    <label class="red">
+                                    <label className="red">
                                       <input type="radio" name="toggle" />
                                       <span></span>
                                     </label>
-                                    <label class="green">
+                                    <label className="green">
                                       <input type="radio" name="toggle" />
                                       <span></span>
                                     </label>

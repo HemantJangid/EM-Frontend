@@ -99,7 +99,7 @@ function About() {
               <h4>RAJIB GANGOPADHYAY</h4>
               <p>Founder</p>
               <a href="https://www.linkedin.com/in/rajib-gangopadhyay-5135281b">
-                <i class="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin"></i>
               </a>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6">
@@ -107,7 +107,7 @@ function About() {
               <h4>KUNAL GUPTA</h4>
               <p>Co-Founder & CEO</p>
               <a href="https://www.linkedin.com/in/kunal-gupta-300784b1/">
-                <i class="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin"></i>
               </a>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6">
@@ -115,7 +115,7 @@ function About() {
               <h4>ADITYA OZA</h4>
               <p>Co-Founder & CMO</p>
               <a href="https://www.linkedin.com/in/aditya-oza-30356090/">
-                <i class="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin"></i>
               </a>
             </div>
             <div className="col-lg-3 col-md-4 col-sm-6">
@@ -123,7 +123,7 @@ function About() {
               <h4>SUMEDH BATTEWAR</h4>
               <p>Co-Founder & CBO</p>
               <a href="https://www.linkedin.com/in/sumedh-battewar-39a647147">
-                <i class="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin"></i>
               </a>
             </div>
           </div>

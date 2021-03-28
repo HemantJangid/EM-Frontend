@@ -124,20 +124,56 @@ function Home() {
 
       <Header />
       <section id="hero">
-        <div className="container">
-          <h3>Ride The</h3>
-          <img src={electric} alt="Electric" className="img-fluid electric" />
-          <h2 className="mt-2">Revolution</h2>
-          <img src={dots} alt="Dots" className="dots" />
-          <div className="hero-btn">
-            <button
-              onClick={() => history.push(navUrls.products)}
-              className="bg-transparent border-0 mx-auto w-100"
-            >
-              <Button text="View Products" />
-            </button>
+        <Slider arrows={false}>
+          <div className="first-page d-flex align-items-center">
+            <div className="container">
+              <h3>Ride The</h3>
+              <img src={electric} alt="Electric" className="img-fluid electric" />
+              <h2 className="mt-2">Revolution</h2>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="hero-btn">
+                <button
+                  onClick={() => history.push(navUrls.products)}
+                  className="bg-transparent border-0 mx-auto w-100"
+                >
+                  <Button text="View Products" />
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+          <div className="second-page d-flex align-items-center">
+            <div className="container">
+              <h3>Ride The</h3>
+              <img src={electric} alt="Electric" className="img-fluid electric" />
+              <h2 className="mt-2">Revolution</h2>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="hero-btn">
+                <button
+                  onClick={() => history.push(navUrls.products)}
+                  className="bg-transparent border-0 mx-auto w-100"
+                >
+                  <Button text="View Products" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="third-page d-flex align-items-center">
+            <div className="container">
+              <h3>Ride The</h3>
+              <img src={electric} alt="Electric" className="img-fluid electric" />
+              <h2 className="mt-2">Revolution</h2>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="hero-btn">
+                <button
+                  onClick={() => history.push(navUrls.products)}
+                  className="bg-transparent border-0 mx-auto w-100"
+                >
+                  <Button text="View Products" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </Slider>
       </section>
 
       <section id="info">
@@ -221,7 +257,7 @@ function Home() {
         <section id="video">
 
           <Vimeo
-            video={shouldPlay}
+            video="https://vimeo.com/509675910"
             autoplay={true}
             responsive={true}
             controls={false}
@@ -230,7 +266,6 @@ function Home() {
           />
         </section>
       </Waypoint>
-
 
       <section id="products">
         <div className="row justify-content-center no-gutters">
@@ -305,9 +340,9 @@ function Home() {
 
       <section id="feature">
         <h3 className="mb-5">Featured In</h3>
-        <div class="marquee">
-          <div class="track">
-            <div class="content">
+        <div className="marquee">
+          <div className="track">
+            <div className="content">
               <a href="https://www.zeebiz.com/small-business/news-pune-ev-startup-launches-india-s-first-e-cycle-with-dual-suspension-price-starts-at-rs-50000-140808"><img src={logo1} alt="Logo" className="mx-5" /></a>
               <a href="https://auto.hindustantimes.com/auto/two-wheelers/pune-based-ev-startup-launches-e-cycle-with-dual-suspension-at-rs-50-000-41605690000216.html"><img src={logo2} alt="Logo" className="mx-5" /></a>
               <a href="https://indianexpress.com/article/cities/pune/clean-green-and-profitable-a-pune-based-startup-bucks-economic-gloom-to-e-cycle-its-way-to-success-7210581/"><img src={logo3} alt="Logo" className="mx-5" /></a>
@@ -526,37 +561,37 @@ function Home() {
           <Slider  {...settingsYoutube}>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/-NMJFHCz3DY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/-NMJFHCz3DY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/2iB_3SoHopA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/2iB_3SoHopA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/cZnCNBycupg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/cZnCNBycupg" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/5UTCeu4EcyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/5UTCeu4EcyU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/_qRYr3KlxnI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/_qRYr3KlxnI" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/hwqY6wDdops" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/hwqY6wDdops" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/RP9LQ3i8OeM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/RP9LQ3i8OeM" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
           </Slider>
