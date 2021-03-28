@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import navUrls from "./../constant/navUrls";
 import { useDispatch } from "react-redux";
 import { addUser } from "./../redux/actions/user";
+import { Helmet } from 'react-helmet'
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -36,6 +37,12 @@ function SignIn() {
   // console.log(currentUser.getIdToken());
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>
+          Sign In | EMotorad | Best Electric Bicycle and Electric Bike
+        </title>
+      </Helmet>
       <section id="sign">
         <div className="container">
           <div className="row justify-content-center">

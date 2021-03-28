@@ -1,13 +1,13 @@
 const navUrls = {
   home: "/",
-  about: "/about",
-  contact: "/contact",
+  about: "/about-us",
+  contact: "/contact-us",
   checkout: "/checkout",
   careers: "/careers",
   community: "/community",
   emi: "/emi",
   insurance: "/insurance",
-  savingsCalc: "/savings-calc",
+  buySmart: "/buysmart",
   signIn: "/signin",
   signUp: "/signup",
   warranty: "/warranty",
@@ -16,9 +16,9 @@ const navUrls = {
   cart: "/cart",
   selectAddress: "/select-address",
   addAddresss: "/add-address",
-  testride: "/testride",
+  testride: "/book-test-ride",
   products: "/products",
-  partner: "/partner",
+  partner: "/partner-with-us",
   product: "/:productSlug",
 };
 

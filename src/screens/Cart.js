@@ -13,6 +13,7 @@ import constants from "../constant/RequestUrls";
 import axios from "axios";
 import navUrls from "./../constant/navUrls";
 import { addUser } from "./../redux/actions/user";
+import { Helmet } from "react-helmet";
 
 function Cart() {
   const [qty, setQty] = useState(1);
@@ -138,6 +139,10 @@ function Cart() {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Cart | EMotorad | Best Electric Bicycle and Electric Bike</title>
+      </Helmet>
       <Header />
       <section id="cart">
         <div className="container">
@@ -240,11 +245,11 @@ function Cart() {
                               <td>
                                 <div className="d-block">
                                   <div id="radio-color">
-                                    <label class="red">
+                                    <label className="red">
                                       <input type="radio" name="toggle" />
                                       <span></span>
                                     </label>
-                                    <label class="green">
+                                    <label className="green">
                                       <input type="radio" name="toggle" />
                                       <span></span>
                                     </label>

@@ -1,5 +1,5 @@
 #partner-hero {
-  background: url("../img/backgrounds/partner-min.jpg");
+  background: url("../img/backgrounds/partner-min.jpeg");
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -68,6 +68,8 @@ select {
 input[type="text"],
 input[type="email"],
 select {
+  -webkit-appearance: none;
+  border-radius: 0;
   border: none;
   border-bottom: 1px solid #000;
   padding-bottom: 10px;

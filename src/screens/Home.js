@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../components/Button";
 import { Parallax } from "react-parallax";
 import Header from "../components/Header";
@@ -7,22 +7,23 @@ import Vimeo from "@u-wave/react-vimeo";
 import CountUp from "react-countup";
 import VisibilitySensor from "react-visibility-sensor";
 import "../assets/css/Home.css";
+import { Waypoint } from 'react-waypoint';
 import Slider from "react-slick";
 
 import electric from "../assets/img/design/electric.svg";
 import dots from "../assets/img/design/dots.svg";
 import lines from "../assets/img/design/lines.svg";
-import numbers from "../assets/img/backgrounds/numbers-min.jpg";
+import numbers from "../assets/img/backgrounds/numbers-min.jpeg";
 
-import udayAmbike from "../assets/img/testimonials/uday-ambike.jpg";
-import ayushGupta from "../assets/img/testimonials/ayush-gupta.jpg";
-import jamshedKhambatta from "../assets/img/testimonials/jamshed-khambatta.jpg";
-import rohitGupta from "../assets/img/testimonials/rohit-gupta.jpg";
-import rudrendaAmbike from "../assets/img/testimonials/rudrendra-ambike.jpg";
-import ambikeFamily from "../assets/img/testimonials/ambike-family.jpg";
-import tanveerSiddiqi from "../assets/img/testimonials/tanveer-siddiqi.jpg";
-import yudhishterBhati from "../assets/img/testimonials/yudhishter-bhati.jpg";
-import ambarBannerji from "../assets/img/testimonials/ambar-bannerji.jpg";
+import udayAmbike from "../assets/img/testimonials/uday-ambike.jpeg";
+import ayushGupta from "../assets/img/testimonials/ayush-gupta.jpeg";
+import jamshedKhambatta from "../assets/img/testimonials/jamshed-khambatta.jpeg";
+import rohitGupta from "../assets/img/testimonials/rohit-gupta.jpeg";
+import rudrendaAmbike from "../assets/img/testimonials/rudrendra-ambike.jpeg";
+import ambikeFamily from "../assets/img/testimonials/ambike-family.jpeg";
+import tanveerSiddiqi from "../assets/img/testimonials/tanveer-siddiqi.jpeg";
+import yudhishterBhati from "../assets/img/testimonials/yudhishter-bhati.jpeg";
+import ambarBannerji from "../assets/img/testimonials/ambar-bannerji.jpeg";
 
 import logo1 from "../assets/img/logos/logo1.png";
 import logo2 from "../assets/img/logos/logo2.png";
@@ -39,6 +40,7 @@ import logo12 from "../assets/img/logos/logo12.png";
 import logo13 from "../assets/img/logos/logo13.png";
 import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
+import { Helmet } from "react-helmet";
 
 function Home() {
   const history = useHistory();
@@ -99,24 +101,79 @@ function Home() {
     ]
   };
 
+  let [shouldPlay, updatePlayState] = useState();
+
+  let handleEnterViewport = function () {
+    updatePlayState(509675910);
+    console.log('play')
+  }
+  let handleExitViewport = function () {
+    updatePlayState();
+    console.log('pause')
+
+  }
+
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>EMotorad | Best Electric Bicycle and Electric Bike</title>
+        <meta name="description" content="Looking for the Best Electric Bicycle? Emotorad offers high tech, reliable, and fast electric cycles. Ebike at the best prices. Buy an Electric Bicycle Now!" />
+        <meta name="keywords" content="electric bicycle, electric bike, e bikes, electric cycle, best electric bike, best electric bicycle, electric bike price, power bike, e bike price, electric cycle price, e bicycle, electric bicycle price, electric bike company, electric bike motors, ebike motors, electric bike cycle" />
+      </Helmet>
+
       <Header />
       <section id="hero">
-        <div className="container">
-          <h3>Ride The</h3>
-          <img src={electric} alt="Electric" className="img-fluid electric" />
-          <h2 className="mt-2">Revolution</h2>
-          <img src={dots} alt="Dots" className="dots" />
-          <div className="hero-btn">
-            <button
-              onClick={() => history.push(navUrls.products)}
-              className="bg-transparent border-0 mx-auto w-100"
-            >
-              <Button text="View Products" />
-            </button>
+        <Slider arrows={false}>
+          <div className="first-page d-flex align-items-center">
+            <div className="container">
+              <h3>Ride The</h3>
+              <img src={electric} alt="Electric" className="img-fluid electric" />
+              <h2 className="mt-2">Revolution</h2>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="hero-btn">
+                <button
+                  onClick={() => history.push(navUrls.products)}
+                  className="bg-transparent border-0 mx-auto w-100"
+                >
+                  <Button text="View Products" />
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+          <div className="second-page d-flex align-items-center">
+            <div className="container">
+              <h3>Ride The</h3>
+              <img src={electric} alt="Electric" className="img-fluid electric" />
+              <h2 className="mt-2">Revolution</h2>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="hero-btn">
+                <button
+                  onClick={() => history.push(navUrls.products)}
+                  className="bg-transparent border-0 mx-auto w-100"
+                >
+                  <Button text="View Products" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="third-page d-flex align-items-center">
+            <div className="container">
+              <h3>Ride The</h3>
+              <img src={electric} alt="Electric" className="img-fluid electric" />
+              <h2 className="mt-2">Revolution</h2>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="hero-btn">
+                <button
+                  onClick={() => history.push(navUrls.products)}
+                  className="bg-transparent border-0 mx-auto w-100"
+                >
+                  <Button text="View Products" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </Slider>
       </section>
 
       <section id="info">
@@ -193,17 +250,21 @@ function Home() {
         </section>
       </Parallax>
 
-      <section id="video">
-        <Vimeo
-          video="https://vimeo.com/509675910"
-          autoplay={true}
-          responsive={true}
-          controls={false}
-          showByline={false}
-          color="#68db85"
-          background={true}
-        />
-      </section>
+      <Waypoint
+        onEnter={handleEnterViewport}
+        onLeave={handleExitViewport}
+      >
+        <section id="video">
+          <Vimeo
+            video="https://vimeo.com/509675910"
+            autoplay={true}
+            responsive={true}
+            controls={false}
+            showByline={false}
+            background={true}
+          />
+        </section>
+      </Waypoint>
 
       <section id="products">
         <div className="row justify-content-center no-gutters">
@@ -216,7 +277,7 @@ function Home() {
                 onClick={() => history.push(navUrls.products)}
                 className="bg-transparent border-0 text-left w-100"
               >
-                <Button text="Explore models" />
+                <Button text="Explore model" />
               </button>
             </div>
           </div>
@@ -229,7 +290,7 @@ function Home() {
                 onClick={() => history.push(navUrls.products)}
                 className="bg-transparent border-0 text-left w-100"
               >
-                <Button text="Explore models" />
+                <Button text="Explore model" />
               </button>
             </div>
           </div>
@@ -242,7 +303,7 @@ function Home() {
                 onClick={() => history.push(navUrls.products)}
                 className="bg-transparent border-0 text-left w-100"
               >
-                <Button text="Explore models" />
+                <Button text="Explore model" />
               </button>
             </div>
           </div>
@@ -264,12 +325,12 @@ function Home() {
                 a combination of manual pedaling with battery assist and
                 throttle.
               </p>
-              {/* <button
+              <button
                 onClick={() => history.push(navUrls.products)}
                 className="bg-transparent border-0 text-left w-100"
               >
                 <Button text="Shop Now" />
-              </button> */}
+              </button>
             </div>
           </div>
           <div className="col-lg-6 info2-img"></div>
@@ -278,22 +339,22 @@ function Home() {
 
       <section id="feature">
         <h3 className="mb-5">Featured In</h3>
-        <div class="marquee">
-          <div class="track">
-            <div class="content">
-              <img src={logo1} alt="Logo" className="mx-5" />
-              <img src={logo2} alt="Logo" className="mx-5" />
-              <img src={logo3} alt="Logo" className="mx-5" />
-              <img src={logo4} alt="Logo" className="mx-5" />
-              <img src={logo5} alt="Logo" className="mx-5" />
-              <img src={logo6} alt="Logo" className="mx-5" />
-              <img src={logo7} alt="Logo" className="mx-5" />
-              <img src={logo8} alt="Logo" className="mx-5" />
-              <img src={logo9} alt="Logo" className="mx-5" />
-              <img src={logo10} alt="Logo" className="mx-5" />
-              <img src={logo11} alt="Logo" className="mx-5" />
-              <img src={logo12} alt="Logo" className="mx-5" />
-              <img src={logo13} alt="Logo" className="mx-5" />
+        <div className="marquee">
+          <div className="track">
+            <div className="content">
+              <a href="https://www.zeebiz.com/small-business/news-pune-ev-startup-launches-india-s-first-e-cycle-with-dual-suspension-price-starts-at-rs-50000-140808"><img src={logo1} alt="Logo" className="mx-5" /></a>
+              <a href="https://auto.hindustantimes.com/auto/two-wheelers/pune-based-ev-startup-launches-e-cycle-with-dual-suspension-at-rs-50-000-41605690000216.html"><img src={logo2} alt="Logo" className="mx-5" /></a>
+              <a href="https://indianexpress.com/article/cities/pune/clean-green-and-profitable-a-pune-based-startup-bucks-economic-gloom-to-e-cycle-its-way-to-success-7210581/"><img src={logo3} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.thetribalbox.com/emotorad-pune-ev-start-up-introduces-premium-e-cycles-for-bike-enthusiasts-in-india"><img src={logo4} alt="Logo" className="mx-5" /></a>
+              <a href="https://m.dailyhunt.in/news/india/english/bike+dekho-epaper-bikedeko/emotorad+t+rex+electric+mtb+set+to+launch+next+week-newsid-n242739834"><img src={logo5} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.bikedekho.com/news/emotorad-t-rex-electric-mtb-set-to-launch-next-week"><img src={logo6} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.zigwheels.com/news-features/news/emotorad-trex-ebike-to-launch-later-this-month/40780/"><img src={logo7} alt="Logo" className="mx-5" /></a>
+              <a href=""><img src={logo8} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.financialexpress.com/auto/electric-vehicles/emotorad-t-rex-all-terrain-electric-bike-india-launch-expected-price-range-charging-time-top-speed-deliveries-bookings-features/2168017/lite/"><img src={logo9} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.manufacturingtodayindia.com/products-suppliers/9024-pune-ev-startup-launches-indias-first-e-cycle-with-dual-suspension"><img src={logo10} alt="Logo" className="mx-5" /></a>
+              <a href=""><img src={logo11} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.livemint.com/auto-news/pune-ev-startup-launches-india-s-first-e-cycle-with-dual-suspension-11605713806838.html"><img src={logo12} alt="Logo" className="mx-5" /></a>
+              <a href="https://www.google.com/amp/s/m.timesofindia.com/city/pune/startup-rolls-out-e-cycle-at-rs-50000/amp_articleshow/79291049.cms"><img src={logo13} alt="Logo" className="mx-5" /></a>
             </div>
           </div>
         </div>
@@ -499,37 +560,37 @@ function Home() {
           <Slider  {...settingsYoutube}>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/-NMJFHCz3DY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/-NMJFHCz3DY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/2iB_3SoHopA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/2iB_3SoHopA" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/cZnCNBycupg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/cZnCNBycupg" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/5UTCeu4EcyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/5UTCeu4EcyU" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/_qRYr3KlxnI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/_qRYr3KlxnI" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/hwqY6wDdops" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/hwqY6wDdops" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
             <div className="px-3">
               <div className="d-flex align-items-center justify-content-center h-100 video-container">
-                <iframe src="https://www.youtube.com/embed/RP9LQ3i8OeM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/RP9LQ3i8OeM" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               </div>
             </div>
           </Slider>

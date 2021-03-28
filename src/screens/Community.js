@@ -2,10 +2,16 @@ import React from 'react'
 import '../assets/css/Community.css'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import { Helmet } from "react-helmet";
 
 function Community() {
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Community | EMotorad | Best Electric Bicycle and Electric Bike</title>
+                <meta name="description" content="EMotorad is a closely-knit community of enthusiasts who love to ride e-bikes, want to find their impact ambition, and share a common purpose of sustainability." />
+            </Helmet>
             <Header />
             <section id="comm-hero" className="d-flex justify-content-center flex-column">
                 <div className="container h-100">
@@ -31,22 +37,15 @@ So, if you are interested in expanding your professional network, gaining more k
                                     <div className="form-group">
                                         <input
                                             type="text"
-                                            name="fname"
-                                            id="fname"
-                                            placeholder="First Name"
+                                            name="name"
+                                            id="name"
+                                            placeholder="Name"
                                             className="form-control"
+                                            required
                                         />
                                     </div>
-                                    <div className="form-group">
-                                        <input
-                                            type="text"
-                                            name="lname"
-                                            id="lname"
-                                            placeholder="Last Name"
-                                            className="form-control"
-                                        />
-                                    </div>
-                                    <div className="form-group">
+
+                                    {/* <div className="form-group">
                                         <input
                                             type="text"
                                             name="oname"
@@ -54,7 +53,7 @@ So, if you are interested in expanding your professional network, gaining more k
                                             placeholder="Organisation's Name"
                                             className="form-control"
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
                                         <input
                                             type="email"
@@ -62,6 +61,7 @@ So, if you are interested in expanding your professional network, gaining more k
                                             id="email"
                                             placeholder="Email"
                                             className="form-control"
+                                            required
                                         />
                                     </div>
                                     <div className="form-group">
@@ -71,9 +71,10 @@ So, if you are interested in expanding your professional network, gaining more k
                                             id="phone"
                                             placeholder="Phone Number"
                                             className="form-control"
+                                            required
                                         />
                                     </div>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <input
                                             type="text"
                                             name="address"
@@ -81,21 +82,22 @@ So, if you are interested in expanding your professional network, gaining more k
                                             placeholder="Address"
                                             className="form-control"
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
                                         <input
                                             type="text"
-                                            name="country"
-                                            id="country"
-                                            placeholder="Country"
+                                            name="city"
+                                            id="city"
+                                            placeholder="City"
                                             className="form-control"
+                                            required
                                         />
                                     </div><div className="form-group">
                                         <input
                                             type="text"
-                                            name="cycleid"
-                                            id="cycleid"
-                                            placeholder="Cycle ID"
+                                            name="frameno"
+                                            id="frameno"
+                                            placeholder="EM Frame Number"
                                             className="form-control"
                                         />
                                     </div>

@@ -15,6 +15,7 @@ import Vimeo from "@u-wave/react-vimeo";
 import { addItem } from "./../redux/actions/cart";
 import { auth } from "./../firebase";
 import navUrls from "./../constant/navUrls";
+import { Helmet } from "react-helmet";
 
 function ProductDetails(props) {
   const [productContent, setProductContent] = useState();
@@ -49,6 +50,18 @@ function ProductDetails(props) {
 
       {productContent != undefined && productContent != null && (
         <>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>
+              {productContent.landing_page_content} | EMotorad | Best Electric
+              Bicycle and Electric Bike
+            </title>
+            <meta
+              name="description"
+              content="Experience the Best In Class Ebike Now in India"
+            />
+          </Helmet>
+
           <section id="product-hero">
             <div className="container">
               <h1>{productContent.landing_page_content}</h1>

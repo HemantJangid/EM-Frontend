@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "./../redux/actions/user";
 import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
+import { Helmet } from "react-helmet";
 
 function Warranty() {
   const todays_date_obj = new Date();
@@ -54,6 +55,12 @@ function Warranty() {
   });
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>
+          Warranty | EMotorad | Best Electric Bicycle and Electric Bike
+        </title>
+      </Helmet>
       <Header />
       <section id="warranty">
         <div className="container">

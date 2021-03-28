@@ -179,6 +179,10 @@ label:focus,
   width: 1px;
 }
 
+#footer a {
+  text-decoration: none;
+}
+
 #footer .copyright {
   text-align: center;
   color: #fff;
@@ -186,4 +190,20 @@ label:focus,
   margin-top: 5rem;
   margin-bottom: -3rem;
   font-size: 0.8rem;
+}
+
+#footer .social-links a i {
+  font-size: 1.6rem;
+}
+
+#footer .social-links a i:hover {
+  color: var(--pri);
+}
+
+#preloader {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

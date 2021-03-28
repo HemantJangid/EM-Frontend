@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
-import testrideSide from "../assets/img/backgrounds/testride-side-min.jpg";
+import testrideSide from "../assets/img/backgrounds/testride-side-min.jpeg";
 import moment from "moment";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -9,8 +9,11 @@ import "../assets/css/TestRide.css";
 import constants from "../constant/RequestUrls";
 import Header from "./../components/Header";
 import Footer from "../components/Footer";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
+import { HashLink } from 'react-router-hash-link'
+import { Helmet } from "react-helmet";
+
 
 function TestRide() {
   const todays_date_obj = new Date();
@@ -77,28 +80,32 @@ function TestRide() {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Test Ride | EMotorad | Best Electric Bicycle and Electric Bike</title>
+        <meta name="description" content="Test ride the electric revolution at your nearest city, See what it feels like Indian to ride an Ebike" />
+      </Helmet>
+
       <Header />
       <section id="test-hero">
         <div className="container">
           <h3 className="pri">Book a test ride</h3>
           <h1>Experience unparallel</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <button
-            onClick={() => history.push(navUrls.products)}
-            className="bg-transparent border-0 text-left w-100"
-          >
-            <Button text="View products" />
-          </button>
+          <HashLink smooth to={`${navUrls.testride}#book-testride`}>
+            <Button text="Book now" />
+          </HashLink>
         </div>
       </section>
 
-      <section id="form">
+      <section id="book-testride">
         <div className="row justify-content-center no-gutters">
           <div className="col-lg-6 col-md-6 form-img">
             <img src={testrideSide} alt="Cycle" />
           </div>
           <div className="col-lg-6 col-md-6 align-content-center">
             <form onSubmit={formik.handleSubmit}>
+              {console.log(formik.values.preferred_time)}
               <h3 className="mb-5">Book a test ride!</h3>
               <div className="form-row form-group">
                 <div className="col-lg-6 col-md-6">
@@ -156,6 +163,7 @@ function TestRide() {
                 <div className="col-lg-6 col-md-6">
                   <label for="bike_name">Choose your City:</label>
                   <select
+                    className="mb-4"
                     required
                     id="city"
                     name="city"
@@ -211,6 +219,7 @@ function TestRide() {
                 <div className="col-lg-6 col-md-6">
                   <label for="preferred_date">Date:</label>
                   <input
+                    placeholder="YYYY-MM-DD"
                     required
                     className="mb-4"
                     type="date"
@@ -225,6 +234,7 @@ function TestRide() {
                 <div className="col-lg-6 col-md-6">
                   <label for="preferred_time">Time:</label>
                   <input
+                    placeholder="HH-MM"
                     required
                     className="mb-4"
                     type="time"
@@ -236,7 +246,7 @@ function TestRide() {
                 </div>
               </div>
               <div className="form-group mb-5">
-                <label for="bike_name">Choose your bike:</label>
+                <label for="bike_name">Which bike would you like to test ride?</label>
                 <select
                   required
                   id="bike_name"

@@ -8,6 +8,8 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
+import { Helmet } from "react-helmet";
+import { HashLink } from 'react-router-hash-link'
 
 function Blog() {
   const [reRender, setReRender] = useState(true);
@@ -34,19 +36,22 @@ function Blog() {
   // console.log(blogs);
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Blogs | EMotorad | Best Electric Bicycle and Electric Bike</title>
+        <meta name="description" content="Read all about the Ebike, EV and Electric cycling with us at Emotorad's blog Page" />
+      </Helmet>
+
       <Header />
 
       <section id="blog-hero">
         <div className="container">
-          <h3 className="pri">Read with us</h3>
+          <h3 className="pri">Read About All the ebikes with us</h3>
           <h1>Blogs </h1>
           <img src={dots} alt="Dots" className="dots mb-4" />
-          <button
-            onClick={() => history.push(navUrls.products)}
-            className="bg-transparent border-0 text-left w-100"
-          >
-            <Button text="View products" />
-          </button>
+          <HashLink smooth to={`${navUrls.blog}#blogs`}>
+            <Button text="View Blogs" />
+          </HashLink>
         </div>
       </section>
 

@@ -104,34 +104,8 @@ const Header = () => {
                   <Link className="dropdown-item" to={`${navUrls.warranty}`}>
                     Activate your Warranty
                   </Link>
-                  <Link className="dropdown-item" to={`${navUrls.savingsCalc}`}>
-                    Savings Calculator
-                  </Link>
-                </div>
-              </li>
-              <li className="nav-item dropdown">
-                <Link
-                  className="nav-link mx-2 dropdown-toggle"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Reach Us
-                </Link>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to={`${navUrls.contact}`}>
-                    Contact Us
-                  </Link>
-                  <Link className="dropdown-item" to={`${navUrls.about}`}>
-                    About Us
-                  </Link>
-                  <Link className="dropdown-item" to={`${navUrls.partner}`}>
-                    Partner With Us
-                  </Link>
-                  <Link className="dropdown-item" to={`${navUrls.careers}`}>
-                    Careers
+                  <Link className="dropdown-item" to={`${navUrls.buySmart}`}>
+                    Buy Smart
                   </Link>
                 </div>
               </li>
@@ -147,11 +121,33 @@ const Header = () => {
                   Community
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to={`${navUrls.community}`}>
-                    Community
-                  </Link>
+                  <Link className="dropdown-item" to={`${navUrls.community}`}>Community</Link>
                   <Link className="dropdown-item" to={`${navUrls.blog}`}>
                     Blog
+                  </Link>
+                </div>
+              </li>
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link mx-2 dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Reach Us
+                </Link>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <Link className="dropdown-item" to={`${navUrls.about}`}>
+                    About Us
+                </Link>
+                  <Link className="dropdown-item" to={`${navUrls.partner}`}>
+                    Partner With Us
+                  </Link>
+                  <Link className="dropdown-item" to={`${navUrls.careers}`}>Careers</Link>
+                  <Link className="dropdown-item" to={`${navUrls.contact}`}>
+                    Contact Us
                   </Link>
                 </div>
               </li>

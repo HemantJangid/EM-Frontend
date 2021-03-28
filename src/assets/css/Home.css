@@ -2,17 +2,45 @@
 
 /* HERO */
 #hero {
-  background: url("../img/backgrounds/home-min.jpg");
-  background-position: center;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
-@media screen and (max-width: 500px) {
-  #hero {
-    background-position: 60% 0%;
+#hero .first-page,
+#hero .second-page,
+#hero .third-page {
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+}
+
+#hero .first-page {
+  background: url("../img/backgrounds/home-min.jpeg");
+}
+
+#hero .second-page {
+  background: url("../img/backgrounds/home2-min.jpg");
+}
+
+#hero .third-page {
+  background: url("../img/backgrounds/home3-min.jpeg");
+}
+
+@media screen and (max-width: 719px) {
+  #hero .first-page {
+    background: url("../img/backgrounds/homemob-min.jpg");
+    background-position: center;
+  }
+
+  #hero .second-page {
+    background: url("../img/backgrounds/home2mob-min.jpg");
+    background-position: center;
+  }
+
+  #hero .third-page {
+    background: url("../img/backgrounds/home3mob-min.jpg");
+    background-position: center;
   }
 }
 
@@ -174,7 +202,7 @@
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0)
     ),
-    url("../img/backgrounds/emx-min.jpg") center / cover no-repeat;
+    url("../img/backgrounds/emx-min.jpeg") center / cover no-repeat;
   transition: all 300ms ease-in-out;
 }
 
@@ -188,7 +216,7 @@
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 1)
     ),
-    url("../img/backgrounds/doodle-min.jpg") center / cover no-repeat;
+    url("../img/backgrounds/doodle-min.jpeg") center / cover no-repeat;
   transition: all 300ms ease-in-out;
 }
 
@@ -202,7 +230,7 @@
       rgba(0, 0, 0, 0.7),
       rgba(0, 0, 0, 0)
     ),
-    url("../img/backgrounds/trex-min.jpg") top center / cover no-repeat;
+    url("../img/backgrounds/trex-min.jpeg") top center / cover no-repeat;
   transition: all 300ms ease-in-out;
 }
 
@@ -229,7 +257,7 @@
 
 #info2 .info2-img {
   height: 70vh;
-  background: url("../img/backgrounds/info2-min.jpg");
+  background: url("../img/backgrounds/info2-min.jpeg");
   background-position: center;
   background-size: cover;
 }
@@ -279,7 +307,7 @@
 /* TESTIMONIALS */
 #testimonial {
   padding: 100px 0;
-  background: url("../img/backgrounds/testimonials-min.jpg");
+  background: url("../img/backgrounds/testimonials-min.jpeg");
   background-size: cover;
   background-position: center;
 }
