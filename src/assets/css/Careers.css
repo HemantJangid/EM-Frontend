@@ -23,6 +23,10 @@
   font-family: var(--opensans);
 }
 
+#careers-hero a {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 540px) {
   #careers-hero h1 {
     font-size: 4rem;

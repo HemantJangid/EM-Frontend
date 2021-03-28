@@ -9,8 +9,9 @@ import "../assets/css/TestRide.css";
 import constants from "../constant/RequestUrls";
 import Header from "./../components/Header";
 import Footer from "../components/Footer";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
+import { HashLink } from 'react-router-hash-link'
 
 function TestRide() {
   const todays_date_obj = new Date();
@@ -83,16 +84,13 @@ function TestRide() {
           <h3 className="pri">Book a test ride</h3>
           <h1>Experience unparallel</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <button
-            onClick={() => history.push(navUrls.products)}
-            className="bg-transparent border-0 text-left w-100"
-          >
-            <Button text="View products" />
-          </button>
+          <HashLink smooth to="/testride#book-testride">
+            <Button text="Book now" />
+          </HashLink>
         </div>
       </section>
 
-      <section id="form">
+      <section id="book-testride">
         <div className="row justify-content-center no-gutters">
           <div className="col-lg-6 col-md-6 form-img">
             <img src={testrideSide} alt="Cycle" />

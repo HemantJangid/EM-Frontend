@@ -13,6 +13,7 @@ import sumedh from "../assets/img/team/sumedh-min.jpg";
 import "../assets/css/About.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { HashLink } from 'react-router-hash-link'
 
 function About() {
     return (
@@ -23,7 +24,9 @@ function About() {
                     <h3>About</h3>
                     <h1>Em<span className="pri">o</span>t<span className="pri">o</span>rad</h1>
                     <img src={dots} className="dots mb-4" alt="Dots" />
-                    <Button text="Meet the team" />
+                    <HashLink smooth to="/about#team">
+                        <Button text="Meet the team" />
+                    </HashLink>
                 </div>
             </section>
 

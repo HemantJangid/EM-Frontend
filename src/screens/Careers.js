@@ -15,7 +15,9 @@ function Careers() {
                     <h3 className="pri">We are</h3>
                     <h1>Hiring</h1>
                     <img src={dots} className="dots mb-4" alt="Dots" />
-                    <Button text="View Vacancies" />
+                    <a href="https://www.linkedin.com/company/emotorad/jobs">
+                        <Button text="View Vacancies" />
+                    </a>
                 </div>
             </section>
 

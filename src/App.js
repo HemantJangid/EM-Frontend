@@ -7,19 +7,12 @@ import About from "./screens/About";
 import Contact from "./screens/Contact";
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
-import { AuthProvider } from "./contexts/AuthContext";
 import Cart from "./screens/Cart";
 import TestRide from "./screens/TestRide";
-import PrivateRoute from "./components/PrivateRoute";
-import { Provider } from "react-redux";
-import { store, persistor } from "./redux/store/index";
-import { PersistGate } from "redux-persist/integration/react";
 import SelectAddress from "./screens/SelectAddress";
 import AddAddress from "./screens/AddAddress";
 import Blog from "./screens/Blog";
 import Careers from "./screens/Careers";
-import navUrls from "./constant/navUrls";
-import { addItem } from "./redux/actions/cart";
 import BlogPost from "./screens/BlogPost";
 import Partner from "./screens/Partner";
 import Checkout from "./screens/Checkout";
@@ -28,12 +21,25 @@ import Emi from "./screens/Emi";
 import Insurance from "./screens/Insurance";
 import BuySmart from "./screens/BuySmart";
 
+import { AuthProvider } from "./contexts/AuthContext";
+
+import PrivateRoute from "./components/PrivateRoute";
+import { Provider } from "react-redux";
+import { store, persistor } from "./redux/store/index";
+import { PersistGate } from "redux-persist/integration/react";
+
+import navUrls from "./constant/navUrls";
+import { addItem } from "./redux/actions/cart";
+
+import ScrollToTop from "./components/ScrollToTop";
+
 function App() {
   return (
     <AuthProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Router>
+            <ScrollToTop />
             <Switch>
               <Route exact path={`${navUrls.home}`} component={Home} />
               <Route path={`${navUrls.about}`} component={About} />

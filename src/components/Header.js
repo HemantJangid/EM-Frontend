@@ -109,19 +109,13 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Reach Us
+                  Community
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to={`${navUrls.contact}`}>
-                    Contact Us
+                  <Link className="dropdown-item" to={`${navUrls.community}`}>Community</Link>
+                  <Link className="dropdown-item" to={`${navUrls.blog}`}>
+                    Blog
                   </Link>
-                  <Link className="dropdown-item" to={`${navUrls.about}`}>
-                    About Us
-                </Link>
-                  <Link className="dropdown-item" to={`${navUrls.partner}`}>
-                    Partner With Us
-                  </Link>
-                  <Link className="dropdown-item" to={`${navUrls.careers}`}>Careers</Link>
                 </div>
               </li>
               <li className="nav-item dropdown">
@@ -133,12 +127,18 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Community
+                  Reach Us
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to={`${navUrls.community}`}>Community</Link>
-                  <Link className="dropdown-item" to={`${navUrls.blog}`}>
-                    Blog
+                  <Link className="dropdown-item" to={`${navUrls.about}`}>
+                    About Us
+                </Link>
+                  <Link className="dropdown-item" to={`${navUrls.partner}`}>
+                    Partner With Us
+                  </Link>
+                  <Link className="dropdown-item" to={`${navUrls.careers}`}>Careers</Link>
+                  <Link className="dropdown-item" to={`${navUrls.contact}`}>
+                    Contact Us
                   </Link>
                 </div>
               </li>

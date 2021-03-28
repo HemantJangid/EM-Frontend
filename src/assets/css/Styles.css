@@ -187,3 +187,11 @@ label:focus,
   margin-bottom: -3rem;
   font-size: 0.8rem;
 }
+
+#footer .social-links a i {
+  font-size: 1.6rem;
+}
+
+#footer .social-links a i:hover {
+  color: var(--pri);
+}

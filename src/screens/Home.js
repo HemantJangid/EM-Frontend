@@ -39,6 +39,7 @@ import logo12 from "../assets/img/logos/logo12.png";
 import logo13 from "../assets/img/logos/logo13.png";
 import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
+import { Helmet } from "react-helmet";
 
 function Home() {
   const history = useHistory();
@@ -101,6 +102,12 @@ function Home() {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>EMotorad | Best Electric Bicycle and Electric Bike</title>
+        <meta name="description" content="Looking for the Best Electric Bicycle? Emotorad offers high tech, reliable, and fast electric cycles. Ebike at the best prices. Buy an Electric Bicycle Now!" />
+        <meta name="keywords" content="electric bicycle, electric bike, e bikes, electric cycle, best electric bike, best electric bicycle, electric bike price, power bike, e bike price, electric cycle price, e bicycle, electric bicycle price, electric bike company, electric bike motors, ebike motors, electric bike cycle" />
+      </Helmet>
       <Header />
       <section id="hero">
         <div className="container">
@@ -198,6 +205,7 @@ function Home() {
           video="https://vimeo.com/509675910"
           autoplay={true}
           responsive={true}
+          paused={true}
           controls={false}
           showByline={false}
           color="#68db85"
@@ -216,7 +224,7 @@ function Home() {
                 onClick={() => history.push(navUrls.products)}
                 className="bg-transparent border-0 text-left w-100"
               >
-                <Button text="Explore models" />
+                <Button text="Explore model" />
               </button>
             </div>
           </div>
@@ -229,7 +237,7 @@ function Home() {
                 onClick={() => history.push(navUrls.products)}
                 className="bg-transparent border-0 text-left w-100"
               >
-                <Button text="Explore models" />
+                <Button text="Explore model" />
               </button>
             </div>
           </div>
@@ -242,7 +250,7 @@ function Home() {
                 onClick={() => history.push(navUrls.products)}
                 className="bg-transparent border-0 text-left w-100"
               >
-                <Button text="Explore models" />
+                <Button text="Explore model" />
               </button>
             </div>
           </div>
@@ -264,12 +272,12 @@ function Home() {
                 a combination of manual pedaling with battery assist and
                 throttle.
               </p>
-              {/* <button
+              <button
                 onClick={() => history.push(navUrls.products)}
                 className="bg-transparent border-0 text-left w-100"
               >
                 <Button text="Shop Now" />
-              </button> */}
+              </button>
             </div>
           </div>
           <div className="col-lg-6 info2-img"></div>

@@ -21,6 +21,13 @@ function Footer() {
               <a href="#">info@emotorad.com</a>
               <h5 className="mt-5">Call us on</h5>
               <a href="#">+91-8686050590</a>
+              <h5 className="mt-5">Social Media</h5>
+              <div className="d-flex align-items-center social-links">
+                <a href="https://www.facebook.com/EMotorad" className="mr-3"><i class="fab fa-facebook-square"></i></a>
+                <a href="https://twitter.com/ElectroMotorad" className="mr-3"><i class="fab fa-twitter-square"></i></a>
+                <a href="https://www.linkedin.com/company/motorad-electro/" className="mr-3"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/em_bikes/" className="mr-3"><i class="fab fa-instagram-square"></i></a>
+              </div>
             </div>
             <div className="col-lg-3 col-md-6 mt-5">
               <h5>Find us here</h5>
@@ -74,7 +81,7 @@ function Footer() {
           </p>
         </div>
       </section>
-    </div>
+    </div >
   );
 }
 

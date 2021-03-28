@@ -26,6 +26,10 @@
   font-family: var(--opensans);
 }
 
+#about-hero a {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 1024px) {
   #about-hero h1 {
     font-size: 8rem;
