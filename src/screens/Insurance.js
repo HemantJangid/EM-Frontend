@@ -7,6 +7,7 @@ import doodle from "../assets/img/insurance/doodle.png";
 import trex from "../assets/img/insurance/trex.png";
 import emx from "../assets/img/insurance/emx.png";
 import Button from "../components/Button";
+import { HashLink } from 'react-router-hash-link'
 
 function Insurance() {
     return <div>
@@ -33,11 +34,32 @@ function Insurance() {
                 Completely flexible EMI — from 3 to 12 months to suit your budget <br />
                 Early re-pay any time, with zero penalty <br />
                 No hidden fees</p>
-                <div className="my-5 d-inline-block text-center">
-                    <img src={trex} alt="card" className="img-fluid my-4 mx-3" />
-                    <img src={doodle} alt="card" className="img-fluid my-4 mx-3" />
-                    <img src={emx} alt="card" className="img-fluid my-4 mx-3" />
+                <div className="my-5 d-inline-flex text-center flex-wrap flex-lg-nowrap">
+                    <div className="d-block mx-3">
+                        <img src={trex} alt="card" className="img-fluid my-4" />
+                        <HashLink smooth to="/insurance#coming-soon">
+                            <Button text="Get T-Rex Insured" />
+                        </HashLink>
+                    </div>
+                    <div className="d-block mx-3">
+                        <img src={doodle} alt="card" className="img-fluid my-4" />
+                        <HashLink smooth to="/insurance#coming-soon">
+                            <Button text="Get T-Rex Insured" />
+                        </HashLink>
+                    </div>
+                    <div className="d-block mx-3">
+                        <img src={emx} alt="card" className="img-fluid my-4" />
+                        <HashLink smooth to="/insurance#coming-soon">
+                            <Button text="Get T-Rex Insured" />
+                        </HashLink>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="coming-soon">
+            <div className="container">
+                <h2 className="text-center">Coming <span className="pri">Soon</span>!</h2>
             </div>
         </section>
         <Footer />

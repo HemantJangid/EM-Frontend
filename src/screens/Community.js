@@ -31,22 +31,15 @@ So, if you are interested in expanding your professional network, gaining more k
                                     <div className="form-group">
                                         <input
                                             type="text"
-                                            name="fname"
-                                            id="fname"
-                                            placeholder="First Name"
+                                            name="name"
+                                            id="name"
+                                            placeholder="Name"
                                             className="form-control"
+                                            required
                                         />
                                     </div>
-                                    <div className="form-group">
-                                        <input
-                                            type="text"
-                                            name="lname"
-                                            id="lname"
-                                            placeholder="Last Name"
-                                            className="form-control"
-                                        />
-                                    </div>
-                                    <div className="form-group">
+
+                                    {/* <div className="form-group">
                                         <input
                                             type="text"
                                             name="oname"
@@ -54,7 +47,7 @@ So, if you are interested in expanding your professional network, gaining more k
                                             placeholder="Organisation's Name"
                                             className="form-control"
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
                                         <input
                                             type="email"
@@ -62,6 +55,7 @@ So, if you are interested in expanding your professional network, gaining more k
                                             id="email"
                                             placeholder="Email"
                                             className="form-control"
+                                            required
                                         />
                                     </div>
                                     <div className="form-group">
@@ -71,9 +65,10 @@ So, if you are interested in expanding your professional network, gaining more k
                                             id="phone"
                                             placeholder="Phone Number"
                                             className="form-control"
+                                            required
                                         />
                                     </div>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <input
                                             type="text"
                                             name="address"
@@ -81,21 +76,22 @@ So, if you are interested in expanding your professional network, gaining more k
                                             placeholder="Address"
                                             className="form-control"
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
                                         <input
                                             type="text"
-                                            name="country"
-                                            id="country"
-                                            placeholder="Country"
+                                            name="city"
+                                            id="city"
+                                            placeholder="City"
                                             className="form-control"
+                                            required
                                         />
                                     </div><div className="form-group">
                                         <input
                                             type="text"
-                                            name="cycleid"
-                                            id="cycleid"
-                                            placeholder="Cycle ID"
+                                            name="frameno"
+                                            id="frameno"
+                                            placeholder="EM Frame Number"
                                             className="form-control"
                                         />
                                     </div>
