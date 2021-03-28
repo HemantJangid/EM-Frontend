@@ -8,14 +8,14 @@ function BlogPost(props) {
   return (
     <div>
       <Header />
-
       <section id="post">
         <div className="container">
           <h2>{blog_details.blog_title}</h2>
-          {/* <h4>2020 Dashboard</h4> */}
           <img src={blog_details.blog_image} alt="" className="img-fluid" />
-          <p className="mt-5">{blog_details.blog_content}</p>
-          {/* <Button text="Next post" color="black" className="mt-5" /> */}
+          <div
+            dangerouslySetInnerHTML={{ __html: blog_details.blog_content }}
+            className="mt-5"
+          ></div>
         </div>
       </section>
       <Footer />
