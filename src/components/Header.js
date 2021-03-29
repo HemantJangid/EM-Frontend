@@ -14,7 +14,16 @@ const Header = () => {
       .get(`${constants.base_url}${constants.all_vehicles}`)
       .then((res) => {
         if (res.status === 200) {
-          setProducts(res.data.payload.products);
+          let prod = res.data.payload.products;
+          console.log(prod);
+          prod.sort((a, b) =>
+            a.display_position > b.display_position
+              ? 1
+              : b.display_position > a.display_position
+                ? -1
+                : 0
+          );
+          setProducts(prod);
           setReRender(!reRender);
         }
       })

@@ -53,6 +53,10 @@ p {
   opacity: 0.8;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 textarea:hover,
 input:hover,
 textarea:active,
@@ -129,6 +133,7 @@ label:focus,
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer !important;
 }
 
 .em-btn .hex-box {

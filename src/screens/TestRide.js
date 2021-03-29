@@ -44,6 +44,7 @@ function TestRide() {
               cities.push(item.city.toLowerCase());
           });
           setDealers(temp);
+          cities.sort();
           setCities(cities);
           setReRender(!reRender);
         }
@@ -56,7 +57,7 @@ function TestRide() {
   const formik = useFormik({
     initialValues: {
       name: "",
-      organisation_name: "",
+      organisation_name: "empty",
       city: "select",
       email: "",
       phone_number: "",
@@ -70,7 +71,10 @@ function TestRide() {
       axios
         .post(`${constants.base_url}${constants.test_ride}`, values)
         .then((res) => {
-          // console.log(res);
+          if (res.status === 200) {
+            alert("Congratulations your test ride is confirmed!");
+            formik.handleReset();
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -108,7 +112,7 @@ function TestRide() {
               {console.log(formik.values.preferred_time)}
               <h3 className="mb-5">Book a test ride!</h3>
               <div className="form-row form-group">
-                <div className="col-lg-6 col-md-6">
+                <div className="col-lg-12 col-md-12">
                   <input
                     required
                     className="mb-4"
@@ -120,7 +124,7 @@ function TestRide() {
                     value={formik.values.name}
                   />
                 </div>
-                <div className="col-lg-6 col-md-6">
+                {/* <div className="col-lg-6 col-md-6">
                   <input
                     className="mb-4"
                     type="text"
@@ -130,7 +134,7 @@ function TestRide() {
                     onChange={formik.handleChange}
                     value={formik.values.organisation_name}
                   />
-                </div>
+                </div> */}
               </div>
 
               <div className="form-row form-group">
@@ -264,7 +268,7 @@ function TestRide() {
                 type="submit"
                 className="bg-transparent border-0 d-flex align-items-center justify-content-center w-100"
               >
-                <Button text="Enquire" color="black" />
+                <Button text="Book now" color="black" />
               </button>
             </form>
           </div>

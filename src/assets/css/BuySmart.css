@@ -23,6 +23,10 @@
   font-family: var(--opensans);
 }
 
+#buy-hero a {
+  text-decoration: none;
+}
+
 /* Savings Calculator */
 #savings-calculator {
   background: url("../img/backgrounds/savings-min.jpeg");

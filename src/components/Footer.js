@@ -76,7 +76,10 @@ function Footer() {
                     </button>
                   </div>
                   <div className="my-2">
-                    <a href="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/products/brochures/EM+Brochure.pdf">
+                    <a
+                      target="_blank"
+                      href="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/products/brochures/EM+Brochure.pdf"
+                    >
                       <Button text="Download brochure" />
                     </a>
                   </div>
@@ -89,7 +92,7 @@ function Footer() {
           </p>
         </div>
       </section>
-    </div >
+    </div>
   );
 }
 

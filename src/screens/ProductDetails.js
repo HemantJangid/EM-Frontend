@@ -9,13 +9,14 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import axios from "axios";
 import constants from "../constant/RequestUrls";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Vimeo from "@u-wave/react-vimeo";
 import { addItem } from "./../redux/actions/cart";
 import { auth } from "./../firebase";
 import navUrls from "./../constant/navUrls";
 import { Helmet } from "react-helmet";
+import Modal from "react-modal";
 
 function ProductDetails(props) {
   const [productContent, setProductContent] = useState();
@@ -32,8 +33,8 @@ function ProductDetails(props) {
         `${constants.base_url}${constants.product}/${props.match.params.productSlug}/detail`
       )
       .then((res) => {
-        // console.log(res);
         if (res.status === 200) {
+          // console.log(res.data.payload.info_page_bg_image_url);
           setProductContent(res.data.payload);
           setLoading(false);
           setReRender(!reRender);
@@ -43,6 +44,46 @@ function ProductDetails(props) {
         console.log(err);
       });
   }, [productDetails]);
+
+  const customStyles = {
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.9)'
+    },
+    content: {
+      top: "50%",
+      left: "50%",
+      padding: "0px",
+      margin: "0px",
+      width: '80%',
+      height: "fit-content",
+      transform: "translate(-50%, -50%)",
+    },
+  };
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  function openModal() {
+    setIsOpen(true);
+    console.log("Before")
+    getVideoPlayer().play();
+    console.log("after")
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    getVideoPlayer().pause();
+  }
+
+  const getVideoPlayer = () => {
+    let playerWindow = new window.Vimeo.Player(
+      document.querySelector("#video-product")
+    );
+    return playerWindow;
+  };
 
   return (
     <div>
@@ -60,6 +101,7 @@ function ProductDetails(props) {
               name="description"
               content="Experience the Best In Class Ebike Now in India"
             />
+            <script src="https://player.vimeo.com/api/player.js"></script>
           </Helmet>
 
           <section id="product-hero">
@@ -80,21 +122,21 @@ function ProductDetails(props) {
                     onClick={() => {
                       auth.currentUser
                         ? auth.currentUser.getIdToken(true).then((idToken) => {
-                            console.log(idToken);
-                            const headers = {
-                              "Content-Type": "application/json",
-                              Authorization: idToken,
-                            };
-                            props.location.state &&
-                              axios
-                                .post(
-                                  `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
-                                  { quantity: 1 },
-                                  { headers }
-                                )
-                                .then((res) => history.push(navUrls.cart))
-                                .catch((err) => console.log(err));
-                          })
+                          // console.log(idToken);
+                          const headers = {
+                            "Content-Type": "application/json",
+                            Authorization: idToken,
+                          };
+                          props.location.state &&
+                            axios
+                              .post(
+                                `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
+                                { quantity: 1 },
+                                { headers }
+                              )
+                              .then((res) => history.push(navUrls.cart))
+                              .catch((err) => console.log(err));
+                        })
                         : history.push(navUrls.cart);
                     }}
                   >
@@ -104,19 +146,16 @@ function ProductDetails(props) {
               </div>
             </div>
           </section>
-          <section id="video">
-            <section id="video">
-              <Vimeo
-                video={productContent.video_page_video_link}
-                autoplay={true}
-                responsive={true}
-                controls={false}
-                showByline={false}
-                color="#68db85"
-                background={true}
-              />
-            </section>
-          </section>
+
+          <Vimeo
+            video={productContent.video_page_video_link}
+            autoplay={true}
+            responsive={true}
+            controls={false}
+            showByline={false}
+            color="#68db85"
+            background={true}
+          />
 
           <section
             id="product-text"
@@ -132,11 +171,45 @@ function ProductDetails(props) {
                     From the maker's of {productDetails.name}
                   </h1>
                   <p>{productContent.stats_page_content}</p>
-                  <Button text="Watch Demo Video" color="black" />
+                  <button onClick={openModal} className="bg-transparent border-0">
+                    <Button text="Watch Demo Video" color="black" />
+                  </button>
                 </div>
               </div>
             </div>
           </section>
+
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+          >
+            <section id="video-product" className="video-container" style={{ position: "relative" }}>
+              {/* <iframe
+                src="https://player.vimeo.com/video/509675910"
+                style={{
+                  height: "100%",
+                  width: "100%",
+                }}
+                frameBorder="0"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+              ></iframe> */}
+              <div onClick={closeModal} className="close-btn d-flex align-items-center justify-content-center">
+                <i class="fas fa-times"></i>
+              </div>
+              <Vimeo
+                style={{ zIndex: "900" }}
+                video={productContent.info_page_bg_image_url}
+                autoplay={true}
+                responsive={true}
+                controls={false}
+                showByline={false}
+                color="#68db85"
+                background={true}
+              />
+            </section>
+          </Modal>
 
           <section
             id="product-numbers"
@@ -167,7 +240,12 @@ function ProductDetails(props) {
                 </div>
               </div>
               <div className="mx-auto mt-5">
-                <Button text="Download Brochure" />
+                <a
+                  target="_blank"
+                  href={`${productContent.features_page_heading_2}`}
+                >
+                  <Button text="Download Brochure" />
+                </a>
               </div>
             </div>
           </section>
@@ -202,7 +280,12 @@ function ProductDetails(props) {
                         )[0]}
                     </h1>
                     <p>Speed</p>
-                    <Button text="Download brochure" />
+                    <a
+                      target="_blank"
+                      href={`${productContent.features_page_heading_2}`}
+                    >
+                      <Button text="Download Brochure" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -247,10 +330,39 @@ function ProductDetails(props) {
               </div>
               <div className="d-flex flex-wrap mt-5 justify-content-center">
                 <div className="my-3 mx-3">
-                  <Button text="Buy Now" />
+                  <button
+                    className="bg-transparent border-0"
+                    onClick={() => {
+                      auth.currentUser
+                        ? auth.currentUser.getIdToken(true).then((idToken) => {
+                          // console.log(idToken);
+                          const headers = {
+                            "Content-Type": "application/json",
+                            Authorization: idToken,
+                          };
+                          props.location.state &&
+                            axios
+                              .post(
+                                `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
+                                { quantity: 1 },
+                                { headers }
+                              )
+                              .then((res) => history.push(navUrls.cart))
+                              .catch((err) => console.log(err));
+                        })
+                        : history.push(navUrls.cart);
+                    }}
+                  >
+                    <Button text="Buy Now" />
+                  </button>
                 </div>
                 <div className="my-3 mx-3">
-                  <Button text="Book a test ride" />
+                  <button
+                    style={{ backgroundColor: "transparent", border: "none" }}
+                    onClick={() => history.push(navUrls.testride)}
+                  >
+                    <Button text="Book a test ride" />
+                  </button>
                 </div>
               </div>
             </div>
@@ -260,7 +372,7 @@ function ProductDetails(props) {
             <div className="container">
               <h2>We are not done yet</h2>
               <img src={dots} alt="Dots" className="dots" />
-              <div className="mt-5 row justify-content-center">
+              <div className="my-5 row justify-content-center">
                 <div className="col-lg-4 col-md-4 col-sm-6 my-3">
                   <div className="done-box">
                     <img src={neco} alt="Neco" className="img-fluid" />
@@ -284,6 +396,14 @@ function ProductDetails(props) {
                     </h4>
                   </div>
                 </div>
+              </div>
+              <div className="d-flex justify-content-center">
+                <button
+                  style={{ backgroundColor: "transparent", border: "none" }}
+                  onClick={() => history.push(navUrls.testride)}
+                >
+                  <Button text="Book a test ride" color="black" />
+                </button>
               </div>
             </div>
           </section>

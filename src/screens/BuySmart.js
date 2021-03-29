@@ -9,6 +9,8 @@ import "../assets/css/BuySmart.css";
 import Header from "./../components/Header";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
+import { HashLink } from 'react-router-hash-link'
+import navUrls from '../constant/navUrls'
 
 function BuySmart() {
   const todays_date_obj = new Date();
@@ -72,10 +74,12 @@ function BuySmart() {
 
       <section id="buy-hero">
         <div className="container">
-          <h3 className="pri">INSURANCE / EMI / SAVINGS</h3>
-          <h1>Buy smart with Emotorad</h1>
+          <h3 className="pri">Save big time with out Ebikes</h3>
+          <h1>Savings Calculator</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <Button text="View products" />
+          <HashLink smooth to={`${navUrls.buySmart}#savings-calculator`}>
+            <Button text="Calculate Savings" />
+          </HashLink>
         </div>
       </section>
 
@@ -148,7 +152,7 @@ function BuySmart() {
                 <h4 className="text-capitalize">{mainCostSaved}</h4>
                 <h4 className="text-capitalize">{elecConsumed}</h4>
                 <h4 className="text-capitalize">{carbonEmission}</h4>
-                <h3 className="text-wrap">{total}</h3>
+                <h3 className="text-wrap mt-5">{total}</h3>
               </div>
             </div>
           </div>
