@@ -29,9 +29,9 @@ function Emi() {
       <Header />
       <section id="emi-hero">
         <div className="container">
-          <h3 className="pri">Get your ebike insured with</h3>
+          <h3 className="pri">Get best emi plans with</h3>
           <div className="d-flex flex-wrap">
-            <h1>EM’s Insurance Partner</h1>
+            <h1>EM’s insured emi partner</h1>
           </div>
           <img src={dots} className="dots mb-4" alt="Dots" />
           <HashLink smooth to={`${navUrls.emi}#emi`}>

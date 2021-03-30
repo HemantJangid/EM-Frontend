@@ -75,13 +75,13 @@ function Insurance() {
             <div className="d-block mx-3">
               <img src={doodle} alt="card" className="img-fluid my-4" />
               <HashLink smooth to={`${navUrls.insurance}#coming-soon`}>
-                <Button text="Get T-Rex Insured" />
+                <Button text="Get Doodle Insured" />
               </HashLink>
             </div>
             <div className="d-block mx-3">
               <img src={emx} alt="card" className="img-fluid my-4" />
               <HashLink smooth to={`${navUrls.insurance}#coming-soon`}>
-                <Button text="Get T-Rex Insured" />
+                <Button text="Get EMX Insured" />
               </HashLink>
             </div>
           </div>
