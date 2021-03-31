@@ -115,17 +115,12 @@ function Checkout(props) {
                               {item.quantity} x {item.product.selling_price}
                             </p>
                           </div>
-                          <h3>
-                            {Math.round(
-                              (item.amount * item.product.selling_price) / 100
-                            )}{" "}
-                            INR
-                          </h3>
+                          <h3>{Math.round(item.quantity * item.amount)} INR</h3>
                         </div>
                       );
                     })}
                   <hr />
-                  <h4 className="m-0">{address}</h4>
+                  <p className="m-0">{address}</p>
                   <p>{address.pincode}</p>
                   {/* add more p tags here */}
                   <input
