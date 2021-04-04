@@ -78,6 +78,11 @@ label:focus,
   color: var(--pri);
 }
 
+#loader {
+  height: 100vh;
+  background: #000;
+}
+
 /* HEADER */
 /* NAVBAR */
 

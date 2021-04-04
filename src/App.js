@@ -32,17 +32,16 @@ import { PersistGate } from "redux-persist/integration/react";
 import navUrls from "./constant/navUrls";
 
 import ScrollToTop from "./components/ScrollToTop";
+import Loader from "./components/Loader";
 
 function App() {
-
-
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000)
-  }, [])
+    }, 2000);
+  }, []);
 
   return (
     <AuthProvider>
@@ -53,6 +52,7 @@ function App() {
 
             <Switch>
               <Route exact path={`${navUrls.home}`} component={Home} />
+              <Route exact path="/loader" component={Loader} />
               <Route path={`${navUrls.about}`} component={About} />
               <Route path={`${navUrls.partner}`} component={Partner} />
               <Route path={`${navUrls.contact}`} component={Contact} />

@@ -9,10 +9,12 @@ import { Link, Route } from "react-router-dom";
 import ProductDetails from "./ProductDetails";
 import bg_image from "../assets/img/backgrounds/pemx-min.jpeg";
 import { Helmet } from "react-helmet";
+import Loader from "../components/Loader";
 
 function AllProducts({ match }) {
   const [products, setProducts] = useState();
   const [reRender, setReRender] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -30,6 +32,7 @@ function AllProducts({ match }) {
           );
           setProducts(prod);
           setReRender(!reRender);
+          setLoading(false);
         }
       })
       .catch((err) => {
@@ -51,7 +54,10 @@ function AllProducts({ match }) {
       </Helmet>
 
       <Header />
-      {products &&
+      {loading ? (
+        <Loader />
+      ) : (
+        products &&
         products.map((product) => (
           <section
             id="p1"
@@ -80,85 +86,8 @@ function AllProducts({ match }) {
               </Link>
             </div>
           </section>
-        ))}
-
-      {/* <section id="p1">
-        <span className="price">INR 40,000/-</span>
-        <div className="container">
-          <h1>
-            Ride The
-            Electric Revolution
-          </h1>
-          <p>EMI starting at</p>
-          <h4 className="mb-5">INR 1999/Month</h4>
-          <Button text="download brochure" />
-          <div className="mt-3"></div>
-          <Link
-            key={product.slug}
-            to={{
-              pathname: `/${product.slug}`,
-              state: { product: product },
-            }}
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            <Button text="Read more" color="white" />
-          </Link>
-        </div>
-      </section>
-
-      <section id="p2">
-        <span className="price">INR 40,000/-</span>
-        <div className="container">
-          <h1>
-            Best in class commute for all vehicle
-             made for <span className="red">Indian terrain</span>
-          </h1>
-          <p>EMI starting at</p>
-          <h4 className="mb-5">INR 1500/Month</h4>
-          <Button text="download brochure" />
-          <div className="mt-3"></div>
-          <Link
-            key={product.slug}
-            to={{
-              pathname: `/${product.slug}`,
-              state: { product: product },
-            }}
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            <Button text="Read more" color="white" />
-          </Link>
-        </div>
-      </section>
-
-      <section id="p3">
-        <span className="price">INR 40,000/-</span>
-        <div className="container">
-          <h1>
-            Fat Tyre SUV of Electric
-            Bike Segment
-          </h1>
-          <p>EMI starting at</p>
-          <h4 className="mb-5">INR 2100/Month</h4>
-          <Button text="download brochure" />
-          <div className="mt-3"></div>
-          <Link
-            key={product.slug}
-            to={{
-              pathname: `/${product.slug}`,
-              state: { product: product },
-            }}
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            <Button text="Read more" color="white" />
-          </Link>
-        </div>
-      </section> */}
+        ))
+      )}
 
       <Footer />
     </div>
