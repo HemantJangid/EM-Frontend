@@ -7,7 +7,7 @@ import { useFormik } from "formik";
 import navUrls from "./../constant/navUrls";
 import { useDispatch } from "react-redux";
 import { addUser } from "./../redux/actions/user";
-import { Helmet } from 'react-helmet'
+import { Helmet } from "react-helmet";
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -27,8 +27,9 @@ function SignIn() {
         dispatch(addUser(response.user.displayName));
         console.log("logged in successfully");
         history.push(navUrls.products);
-      } catch {
+      } catch (error) {
         console.log("failed to login to the account");
+        alert(error.message);
       }
 
       setLoading(false);
