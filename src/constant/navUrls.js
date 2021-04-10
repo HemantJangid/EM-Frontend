@@ -19,8 +19,7 @@ const navUrls = {
   testride: "/book-test-ride",
   products: "/products",
   partner: "/partner-with-us",
-  product: "/:productSlug",
-  product_new: "/product/:productSlug",
+  product: "/product/:productSlug",
 };
 
 export default navUrls;

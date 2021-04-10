@@ -20,8 +20,8 @@ const Header = () => {
             a.display_position > b.display_position
               ? 1
               : b.display_position > a.display_position
-                ? -1
-                : 0
+              ? -1
+              : 0
           );
           setProducts(prod);
           setReRender(!reRender);
@@ -75,7 +75,7 @@ const Header = () => {
                       <Link
                         className="dropdown-item"
                         to={{
-                          pathname: `/${product.slug}`,
+                          pathname: `/product/${product.slug}`,
                           state: { product: product },
                         }}
                       >
@@ -130,7 +130,9 @@ const Header = () => {
                   Community
                 </Link>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link className="dropdown-item" to={`${navUrls.community}`}>Community</Link>
+                  <Link className="dropdown-item" to={`${navUrls.community}`}>
+                    Community
+                  </Link>
                   <Link className="dropdown-item" to={`${navUrls.blog}`}>
                     Blog
                   </Link>
@@ -150,11 +152,13 @@ const Header = () => {
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <Link className="dropdown-item" to={`${navUrls.about}`}>
                     About Us
-                </Link>
+                  </Link>
                   <Link className="dropdown-item" to={`${navUrls.partner}`}>
                     Partner With Us
                   </Link>
-                  <Link className="dropdown-item" to={`${navUrls.careers}`}>Careers</Link>
+                  <Link className="dropdown-item" to={`${navUrls.careers}`}>
+                    Careers
+                  </Link>
                   <Link className="dropdown-item" to={`${navUrls.contact}`}>
                     Contact Us
                   </Link>

@@ -75,7 +75,7 @@ function AllProducts({ match }) {
               <Link
                 key={product.slug}
                 to={{
-                  pathname: `/${product.slug}`,
+                  pathname: `/product/${product.slug}`,
                   state: { product: product },
                 }}
                 style={{
