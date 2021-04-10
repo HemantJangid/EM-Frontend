@@ -79,7 +79,10 @@ label:focus,
 }
 
 #loader {
+  position: fixed;
   height: 100vh;
+  width: 100%;
+  z-index: 1000;
   background: #000;
 }
 
@@ -208,12 +211,4 @@ label:focus,
 
 #footer .social-links a i:hover {
   color: var(--pri);
-}
-
-#preloader {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

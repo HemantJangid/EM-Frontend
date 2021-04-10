@@ -4,10 +4,17 @@ import { Link } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
 import constants from "../constant/RequestUrls";
 import axios from "axios";
+import Loader from "./Loader";
 
 const Header = () => {
   const [products, setProducts] = useState();
   const [reRender, setReRender] = useState(true);
+  const [loading, setLoading] = useState("flex");
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading("none");
+    }, 2000);
+  }, []);
 
   useEffect(() => {
     axios
@@ -168,6 +175,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      <Loader display={loading} />
     </div>
   );
 };

@@ -49,7 +49,6 @@ function App() {
         <PersistGate loading={null} persistor={persistor}>
           <Router>
             <ScrollToTop />
-
             <Switch>
               <Route exact path={`${navUrls.home}`} component={Home} />
               <Route exact path="/loader" component={Loader} />

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
 
 import dots from "../assets/img/design/dots.svg";
 import logo from "../assets/img/design/logo.svg";
 import navUrls from "./../constant/navUrls";
 import { useHistory } from "react-router-dom";
+import Loader from "./Loader";
 
 function Footer() {
   const history = useHistory();

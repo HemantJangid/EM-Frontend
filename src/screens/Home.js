@@ -44,13 +44,6 @@ import { Helmet } from "react-helmet";
 import Loader from "../components/Loader";
 
 function Home() {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
-
   const history = useHistory();
   console.log(
     window.location.hostname === "localhost"
@@ -143,74 +136,71 @@ function Home() {
       </Helmet>
 
       <Header />
-      {loading ? (
-        <Loader />
-      ) : (
-        <section id="hero">
-          <Slider arrows={false}>
-            <div className="first-page d-flex align-items-center">
-              <div className="container">
-                <h3>Ride The</h3>
-                <img
-                  src={electric}
-                  alt="Electric"
-                  className="img-fluid electric"
-                />
-                <h2 className="mt-2">Revolution</h2>
-                <img src={dots} alt="Dots" className="dots" />
-                <div className="hero-btn">
-                  <button
-                    onClick={() => history.push(navUrls.products)}
-                    className="bg-transparent border-0 mx-auto w-100"
-                  >
-                    <Button text="View Products" />
-                  </button>
-                </div>
+      {/* <Loader display="flex" /> */}
+      <section id="hero">
+        <Slider arrows={false}>
+          <div className="first-page d-flex align-items-center">
+            <div className="container">
+              <h3>Ride The</h3>
+              <img
+                src={electric}
+                alt="Electric"
+                className="img-fluid electric"
+              />
+              <h2 className="mt-2">Revolution</h2>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="hero-btn">
+                <button
+                  onClick={() => history.push(navUrls.products)}
+                  className="bg-transparent border-0 mx-auto w-100"
+                >
+                  <Button text="View Products" />
+                </button>
               </div>
             </div>
-            <div className="second-page d-flex align-items-center">
-              <div className="container">
-                <h3>Ride The</h3>
-                <img
-                  src={electric}
-                  alt="Electric"
-                  className="img-fluid electric"
-                />
-                <h2 className="mt-2">Revolution</h2>
-                <img src={dots} alt="Dots" className="dots" />
-                <div className="hero-btn">
-                  <button
-                    onClick={() => history.push(navUrls.products)}
-                    className="bg-transparent border-0 mx-auto w-100"
-                  >
-                    <Button text="View Products" />
-                  </button>
-                </div>
+          </div>
+          <div className="second-page d-flex align-items-center">
+            <div className="container">
+              <h3>Ride The</h3>
+              <img
+                src={electric}
+                alt="Electric"
+                className="img-fluid electric"
+              />
+              <h2 className="mt-2">Revolution</h2>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="hero-btn">
+                <button
+                  onClick={() => history.push(navUrls.products)}
+                  className="bg-transparent border-0 mx-auto w-100"
+                >
+                  <Button text="View Products" />
+                </button>
               </div>
             </div>
-            <div className="third-page d-flex align-items-center">
-              <div className="container">
-                <h3>Ride The</h3>
-                <img
-                  src={electric}
-                  alt="Electric"
-                  className="img-fluid electric"
-                />
-                <h2 className="mt-2">Revolution</h2>
-                <img src={dots} alt="Dots" className="dots" />
-                <div className="hero-btn">
-                  <button
-                    onClick={() => history.push(navUrls.products)}
-                    className="bg-transparent border-0 mx-auto w-100"
-                  >
-                    <Button text="View Products" />
-                  </button>
-                </div>
+          </div>
+          <div className="third-page d-flex align-items-center">
+            <div className="container">
+              <h3>Ride The</h3>
+              <img
+                src={electric}
+                alt="Electric"
+                className="img-fluid electric"
+              />
+              <h2 className="mt-2">Revolution</h2>
+              <img src={dots} alt="Dots" className="dots" />
+              <div className="hero-btn">
+                <button
+                  onClick={() => history.push(navUrls.products)}
+                  className="bg-transparent border-0 mx-auto w-100"
+                >
+                  <Button text="View Products" />
+                </button>
               </div>
             </div>
-          </Slider>
-        </section>
-      )}
+          </div>
+        </Slider>
+      </section>
 
       <section id="info">
         <div className="design-lines d-none d-sm-block">

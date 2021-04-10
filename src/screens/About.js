@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import dots from "../assets/img/design/dots.svg";
 import valuesHex from "../assets/img/design/values.svg";
@@ -16,16 +16,8 @@ import Footer from "../components/Footer";
 import { HashLink } from "react-router-hash-link";
 import { Helmet } from "react-helmet";
 import navUrls from "../constant/navUrls";
-import Loader from "../components/Loader";
 
 function About() {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-  }, []);
-
   return (
     <div>
       <Helmet>
@@ -40,23 +32,20 @@ function About() {
       </Helmet>
 
       <Header />
-      {loading ? (
-        <Loader />
-      ) : (
-        <section id="about-hero">
-          <div className="container">
-            <h3>About</h3>
-            <h1>
-              Em<span className="pri">o</span>t<span className="pri">o</span>rad
-            </h1>
-            <img src={dots} className="dots mb-4" alt="Dots" />
-            {console.log(`${navUrls.about}#team`)}
-            <HashLink smooth to={`${navUrls.about}#team`}>
-              <Button text="Meet the team" />
-            </HashLink>
-          </div>
-        </section>
-      )}
+
+      <section id="about-hero">
+        <div className="container">
+          <h3>About</h3>
+          <h1>
+            Em<span className="pri">o</span>t<span className="pri">o</span>rad
+          </h1>
+          <img src={dots} className="dots mb-4" alt="Dots" />
+          {console.log(`${navUrls.about}#team`)}
+          <HashLink smooth to={`${navUrls.about}#team`}>
+            <Button text="Meet the team" />
+          </HashLink>
+        </div>
+      </section>
 
       <section id="about-info">
         <h3>A Company with a Million Dreams!</h3>
