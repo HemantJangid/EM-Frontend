@@ -20,6 +20,7 @@ const navUrls = {
   products: "/products",
   partner: "/partner-with-us",
   product: "/:productSlug",
+  product_new: "/product/:productSlug",
 };
 
 export default navUrls;

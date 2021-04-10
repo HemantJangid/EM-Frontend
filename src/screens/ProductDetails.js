@@ -21,21 +21,23 @@ import Loader from "../components/Loader";
 
 function ProductDetails(props) {
   const [productContent, setProductContent] = useState();
-  const productDetails = props.location.state.product;
   const history = useHistory();
   const [reRender, setReRender] = useState(true);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cartReducer);
 
+  console.log("slug: ", props.match.params.productSlug);
+
   useEffect(() => {
+    console.log("use effect is running");
     axios
       .get(
         `${constants.base_url}${constants.product}/${props.match.params.productSlug}/detail`
       )
       .then((res) => {
         if (res.status === 200) {
-          // console.log(res.data.payload.info_page_bg_image_url);
+          console.log(res.data.payload);
           setProductContent(res.data.payload);
           setLoading(false);
           setReRender(!reRender);
@@ -44,7 +46,7 @@ function ProductDetails(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, [productDetails]);
+  }, [props.match.params.productSlug]);
 
   const customStyles = {
     overlay: {
@@ -172,10 +174,13 @@ function ProductDetails(props) {
                 <div className="row justify-content-center">
                   <div className="col-lg-7 col-md-8 text-center">
                     <p>{productContent.info_page_content_1}</p>
-                    <h2>{productDetails.name} will take you anywhere.</h2>
+                    <h2>
+                      {productContent.landing_page_content} will take you
+                      anywhere.
+                    </h2>
                     <p>{productContent.info_page_content_2}</p>
                     <h1 className="mt-5">
-                      From the maker's of {productDetails.name}
+                      From the maker's of {productContent.landing_page_content}
                     </h1>
                     <p>{productContent.stats_page_content}</p>
                     <button
@@ -317,11 +322,11 @@ function ProductDetails(props) {
                       <div className="container text-center">
                         <div className="bg-white my-2 mb-5 py-3">
                           <h4 className="text-dark font-weight-bold">
-                            INR {productDetails.selling_price}
+                            INR {productContent.pricing_page_amount}
                           </h4>
                           <hr />
                           <h2 className="text-dark">
-                            *EMI INR {productDetails.emi_per_month}/month
+                            *EMI INR {productContent.pricing_page_emi}/month
                           </h2>
                         </div>
                         <div className="px-3">

@@ -78,7 +78,11 @@ function App() {
               <PrivateRoute path={`${navUrls.checkout}`} component={Checkout} />
               <Route path={`${navUrls.testride}`} component={TestRide} />
               {/* <Route component={Error} /> */}
-              <Route path={`${navUrls.products}`} component={AllProducts} />
+              <Route
+                exact
+                path={`${navUrls.products}`}
+                component={AllProducts}
+              />
               <Route path={`${navUrls.product}`} component={ProductDetails} />
             </Switch>
           </Router>
