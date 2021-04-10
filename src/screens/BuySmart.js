@@ -9,8 +9,8 @@ import "../assets/css/BuySmart.css";
 import Header from "./../components/Header";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
-import { HashLink } from 'react-router-hash-link'
-import navUrls from '../constant/navUrls'
+import { HashLink } from "react-router-hash-link";
+import navUrls from "../constant/navUrls";
 
 function BuySmart() {
   const todays_date_obj = new Date();
@@ -45,11 +45,13 @@ function BuySmart() {
   const [years, setYears] = useState(0);
 
   function calcSavings() {
-    var petrolSaved = Math.trunc(365 * years * km * ((cars / 15) + (scooter / 50)));
-    var petrolCost = Math.trunc(365 * years * km * petrol * ((cars / 15) + (scooter / 50)));
-    var maintCost = Math.trunc(km * petrol * ((cars * 121.66) + (scooter * 182.5)));
-    var electCost = Math.trunc(km * years * 365 / 10);
-    var carbon = Math.trunc(21 * 365 * km * years * (scooter + 10 * cars))
+    var petrolSaved = Math.trunc(365 * years * km * (cars / 15 + scooter / 50));
+    var petrolCost = Math.trunc(
+      365 * years * km * petrol * (cars / 15 + scooter / 50)
+    );
+    var maintCost = Math.trunc(km * petrol * (cars * 121.66 + scooter * 182.5));
+    var electCost = Math.trunc((km * years * 365) / 10);
+    var carbon = Math.trunc(21 * 365 * km * years * (scooter + 10 * cars));
     var tot = Math.trunc(petrolCost + maintCost - electCost);
     setPetrolSaved("Petrol saved (Litres) " + petrolSaved);
     setPetrolCostSaved("Petrol cost saved Rs " + petrolCost);
@@ -74,7 +76,7 @@ function BuySmart() {
 
       <section id="buy-hero">
         <div className="container">
-          <h3 className="pri">Save big time with out Ebikes</h3>
+          <h3 className="pri">Save big time with our Ebikes</h3>
           <h1>Savings Calculator</h1>
           <img src={dots} className="dots mb-4" alt="Dots" />
           <HashLink smooth to={`${navUrls.buySmart}#savings-calculator`}>
@@ -97,7 +99,7 @@ function BuySmart() {
                   name="cars"
                   id="cars"
                   placeholder="No of Cars used"
-                  onChange={e => setCars(e.target.value)}
+                  onChange={(e) => setCars(e.target.value)}
                 />
               </div>
               <div className="form-group">
@@ -107,7 +109,7 @@ function BuySmart() {
                   name="scooters"
                   id="scooters"
                   placeholder="No of Scooters/Motorcycles used"
-                  onChange={e => setScooter(e.target.value)}
+                  onChange={(e) => setScooter(e.target.value)}
                 />
               </div>
               <div className="form-group">
@@ -117,7 +119,7 @@ function BuySmart() {
                   name="km"
                   id="km"
                   placeholder="Average Kilometers travelled daily"
-                  onChange={e => setKm(e.target.value)}
+                  onChange={(e) => setKm(e.target.value)}
                 />
               </div>
               <div className="form-group">
@@ -127,7 +129,7 @@ function BuySmart() {
                   name="petrol"
                   id="petrol"
                   placeholder="Petrol price"
-                  onChange={e => setPetrol(e.target.value)}
+                  onChange={(e) => setPetrol(e.target.value)}
                 />
               </div>
               <div className="form-group">
@@ -137,13 +139,15 @@ function BuySmart() {
                   name="years"
                   id="years"
                   placeholder="Years of usage"
-                  onChange={e => setYears(e.target.value)}
+                  onChange={(e) => setYears(e.target.value)}
                 />
               </div>
-              <button className="bg-transparent border-0 mt-3" onClick={calcSavings}>
+              <button
+                className="bg-transparent border-0 mt-3"
+                onClick={calcSavings}
+              >
                 <Button text="Calculate" color="black" />
               </button>
-
             </div>
             <div className="col-lg-6 col-md-6">
               <div className="card-savings h-100 py-3 px-3 text-center d-flex flex-nowrap flex-column justify-content-center">

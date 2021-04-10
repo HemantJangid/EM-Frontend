@@ -299,7 +299,7 @@ function Home() {
               <h2>EMX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
               <button
-                onClick={() => history.push(navUrls.products)}
+                onClick={() => history.push("/product/emx")}
                 className="bg-transparent border-0 text-left w-100"
               >
                 <Button text="Explore model" />
@@ -312,7 +312,7 @@ function Home() {
               <h2>Doodle</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
               <button
-                onClick={() => history.push(navUrls.products)}
+                onClick={() => history.push("/product/doodle")}
                 className="bg-transparent border-0 text-left w-100"
               >
                 <Button text="Explore model" />
@@ -325,7 +325,7 @@ function Home() {
               <h2>T-REX</h2>
               <img className="dots mb-4" src={dots} alt="Dots" />
               <button
-                onClick={() => history.push(navUrls.products)}
+                onClick={() => history.push("/product/t-rex")}
                 className="bg-transparent border-0 text-left w-100"
               >
                 <Button text="Explore model" />

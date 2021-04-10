@@ -10,7 +10,9 @@ import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import constants from "../constant/RequestUrls";
-import { Helmet } from 'react-helmet'
+import { Helmet } from "react-helmet";
+import navUrls from "../constant/navUrls";
+import { HashLink } from "react-router-hash-link";
 
 function Contact() {
   const formik = useFormik({
@@ -42,8 +44,13 @@ function Contact() {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Contact Us | EMotorad | Best Electric Bicycle and Electric Bike</title>
-        <meta name="description" content="Want to get in touch with the most reliable and one of the fastest growing companies across India and beyond in EV space, feel free pick your phone and ring us or you can drop in a message in the form below." />
+        <title>
+          Contact Us | EMotorad | Best Electric Bicycle and Electric Bike
+        </title>
+        <meta
+          name="description"
+          content="Want to get in touch with the most reliable and one of the fastest growing companies across India and beyond in EV space, feel free pick your phone and ring us or you can drop in a message in the form below."
+        />
       </Helmet>
 
       <Header />
@@ -58,7 +65,9 @@ function Contact() {
             <h1>com</h1>
           </div>
           <img src={dots} className="dots mb-4" alt="Dots" />
-          <Button text="View products" />
+          <HashLink smooth to={`${navUrls.contact}#form`}>
+            <Button text="Reach us" />
+          </HashLink>
         </div>
       </section>
 
