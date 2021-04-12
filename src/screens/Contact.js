@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
@@ -15,6 +15,7 @@ import navUrls from "../constant/navUrls";
 import { HashLink } from "react-router-hash-link";
 
 function Contact() {
+  const [formLoading, setFormLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       first_name: "",
@@ -26,13 +27,33 @@ function Contact() {
       meta: {},
     },
     onSubmit: (values) => {
+      setFormLoading(true);
       // alert(JSON.stringify(values, null, 2));
       axios
         .post(`${constants.base_url}${constants.contact}`, values)
         .then((res) => {
-          alert(res.data.message);
-          formik.resetForm();
+          let email_values = {
+            email: "jhemant539@gmail.com",
+            subject: "A Lead is recieved.",
+            message: `<h2>A new Lead has been recieved from ${values.first_name} ${values.last_name} at Emotorad Website</h2><h2>Lead Details</h2><table><tbody><tr><td>Name</td><td>${values.first_name} ${values.last_name}</td></tr><tr><td>Email</td><td>${values.email}</td></tr><tr><td>Address</td><td>${values.address}</td</tr><tr><td>Phone Number</td><td>${values.phone}</td></tr><tr><td>Query</td><td>${values.query}</td></tr></tbody></table>`,
+            meta: {},
+          };
+
+          axios
+            .post(`${constants.base_url}${constants.email}`, email_values)
+            .then((res) => {
+              console.log(res);
+              if (res.status === 200) {
+                alert(res.data.message);
+                formik.resetForm();
+                setFormLoading(false);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
           // console.log(res);
+          formik.resetForm();
         })
         .catch((err) => {
           console.log(err);
@@ -83,6 +104,7 @@ function Contact() {
               <div className="form-row form-group">
                 <div className="col-lg-6">
                   <input
+                    required
                     className="mb-4"
                     type="text"
                     name="first_name"
@@ -94,6 +116,7 @@ function Contact() {
                 </div>
                 <div className="col-lg-6">
                   <input
+                    required
                     className="mb-4"
                     type="text"
                     name="last_name"
@@ -106,6 +129,7 @@ function Contact() {
               </div>
               <div className="form-group">
                 <input
+                  required
                   className="mb-4"
                   type="text"
                   name="address"
@@ -118,6 +142,7 @@ function Contact() {
               <div className="form-row form-group">
                 <div className="col-lg-6">
                   <input
+                    required
                     className="mb-4"
                     type="email"
                     name="email"
@@ -129,6 +154,7 @@ function Contact() {
                 </div>
                 <div className="col-lg-6">
                   <input
+                    required
                     className="mb-4"
                     type="text"
                     name="phone"
@@ -150,6 +176,7 @@ function Contact() {
                 ></textarea>
               </div>
               <button
+                disabled={formLoading}
                 type="submit"
                 className="bg-transparent border-0 mx-auto w-100"
               >

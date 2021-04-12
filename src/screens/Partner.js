@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
@@ -11,10 +11,13 @@ import Header from "./../components/Header";
 import Footer from "../components/Footer";
 import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
+import constants from "../constant/RequestUrls";
 import { Helmet } from "react-helmet";
+import { addItem } from "./../redux/actions/cart";
 
 function Partner() {
   const history = useHistory();
+  const [formLoading, setFormLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -26,12 +29,31 @@ function Partner() {
       interested_in: "showroom",
     },
     onSubmit: (values) => {
+      setFormLoading(true);
       // alert(JSON.stringify(values, null, 2));
       axios
-        .post("http://localhost:8000/v1/user/partner", values)
+        .post(`${constants.base_url}${constants.partner}`, values)
         .then((res) => {
-          alert(res.data.message);
-          formik.resetForm();
+          let email_values = {
+            email: "info@emotorad.com",
+            subject: "A new Partner request is recieved.",
+            message: `<h2>A new Partner request has been recieved from ${values.name} at Emotorad Website</h2><h2>Order Details</h2><table><tbody><tr><td>Name</td><td>${values.name}</td></tr><tr><td>Organisation Name</td><td>${values.organisation_name}</td></tr><tr><td>Email</td><td>${values.email}</td></tr><tr><td>Address</td><td>${values.address}</td</tr><tr><td>Phone Number</td><td>${values.phone}</td></tr><tr><td>Interested In</td><td>${values.interested_in}</td></tr></tbody></table>`,
+            meta: {},
+          };
+
+          axios
+            .post(`${constants.base_url}${constants.email}`, email_values)
+            .then((res) => {
+              console.log(res);
+              if (res.status === 200) {
+                alert(res.data.message);
+                formik.resetForm();
+                setFormLoading(false);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
           // console.log(res);
         })
         .catch((err) => {
@@ -80,6 +102,7 @@ function Partner() {
               <div className="form-row form-group">
                 <div className="col-lg-6">
                   <input
+                    required
                     className="mb-4"
                     type="text"
                     name="name"
@@ -91,6 +114,7 @@ function Partner() {
                 </div>
                 <div className="col-lg-6">
                   <input
+                    required
                     className="mb-4"
                     type="text"
                     name="organisation_name"
@@ -103,6 +127,7 @@ function Partner() {
               </div>
               <div className="form-group">
                 <input
+                  required
                   className="mb-4"
                   type="text"
                   name="address"
@@ -115,6 +140,7 @@ function Partner() {
               <div className="form-row form-group">
                 <div className="col-lg-6">
                   <input
+                    required
                     className="mb-4"
                     type="email"
                     name="email"
@@ -126,6 +152,7 @@ function Partner() {
                 </div>
                 <div className="col-lg-6">
                   <input
+                    required
                     className="mb-4"
                     type="text"
                     name="phone"
@@ -139,6 +166,7 @@ function Partner() {
               <div className="form-group mb-5">
                 <label for="cars">Interested in:</label>
                 <select
+                  required
                   id="interested_in"
                   name="interested_in"
                   onChange={formik.handleChange}
@@ -150,6 +178,7 @@ function Partner() {
                 </select>
               </div>
               <button
+                disabled={formLoading}
                 type="submit"
                 className="bg-transparent border-0 mx-auto w-100"
               >
