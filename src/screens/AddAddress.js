@@ -39,7 +39,10 @@ function AddAddress() {
             alert(res.data.message);
             history.push(navUrls.selectAddress);
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
       });
     },
   });

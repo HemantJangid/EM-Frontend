@@ -60,10 +60,16 @@ function SignUp() {
                       { headers }
                     )
                     .then((res) => alert(res.data.message))
-                    .catch((err) => console.log(err));
+                    .catch((err) => {
+                      console.log(err);
+                      alert(err.response.data.message);
+                    });
                 }
               })
-              .catch((err) => console.log(err));
+              .catch((err) => {
+                console.log(err);
+                alert(err.response.data.message);
+              });
           })
           .catch((err) => console.log("could not get token: ", err));
 

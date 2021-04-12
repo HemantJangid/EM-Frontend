@@ -54,7 +54,10 @@ function Cart() {
             setReRender(!reRender);
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          alert(err.response.data.message);
+        });
     });
   }
 
@@ -75,7 +78,10 @@ function Cart() {
         .then((res) => {
           // console.log(res)
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          alert(err.response.data.message);
+        });
     });
   }
 
@@ -95,7 +101,10 @@ function Cart() {
           changeQuantity(i, "decrease");
           dispatch(addItem(items));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          alert(err.response.data.message);
+        });
     });
   }
 

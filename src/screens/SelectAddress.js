@@ -32,7 +32,10 @@ function SelectAddress() {
             setReRender(!reRender);
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          alert(err.response.data.message);
+        });
     });
   }
 
@@ -56,7 +59,10 @@ function SelectAddress() {
             history.push(navUrls.checkout, { order: res.data.payload });
           }
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          alert(err.response.data.message);
+        });
     });
   }
 

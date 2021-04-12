@@ -49,7 +49,10 @@ function Warranty() {
               history.push(navUrls.home);
             }
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
       });
     },
   });

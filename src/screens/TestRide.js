@@ -11,9 +11,8 @@ import Header from "./../components/Header";
 import Footer from "../components/Footer";
 import { Link, useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
-import { HashLink } from 'react-router-hash-link'
+import { HashLink } from "react-router-hash-link";
 import { Helmet } from "react-helmet";
-
 
 function TestRide() {
   const todays_date_obj = new Date();
@@ -51,6 +50,7 @@ function TestRide() {
       })
       .catch((err) => {
         console.log(err);
+        alert(err.response.data.message);
       });
   }
 
@@ -78,6 +78,7 @@ function TestRide() {
         })
         .catch((err) => {
           console.log(err);
+          alert(err.response.data.message);
         });
     },
   });
@@ -86,8 +87,13 @@ function TestRide() {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Test Ride | EMotorad | Best Electric Bicycle and Electric Bike</title>
-        <meta name="description" content="Test ride the electric revolution at your nearest city, See what it feels like Indian to ride an Ebike" />
+        <title>
+          Test Ride | EMotorad | Best Electric Bicycle and Electric Bike
+        </title>
+        <meta
+          name="description"
+          content="Test ride the electric revolution at your nearest city, See what it feels like Indian to ride an Ebike"
+        />
       </Helmet>
 
       <Header />
@@ -250,7 +256,9 @@ function TestRide() {
                 </div>
               </div>
               <div className="form-group mb-5">
-                <label for="bike_name">Which bike would you like to test ride?</label>
+                <label for="bike_name">
+                  Which bike would you like to test ride?
+                </label>
                 <select
                   required
                   id="bike_name"

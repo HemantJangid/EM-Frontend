@@ -9,7 +9,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
 import { Helmet } from "react-helmet";
-import { HashLink } from 'react-router-hash-link'
+import { HashLink } from "react-router-hash-link";
 
 function Blog() {
   const [reRender, setReRender] = useState(true);
@@ -30,7 +30,10 @@ function Blog() {
           setReRender(!reRender);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert(err.response.data.message);
+      });
   }
 
   // console.log(blogs);
@@ -38,8 +41,13 @@ function Blog() {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Blogs | EMotorad | Best Electric Bicycle and Electric Bike</title>
-        <meta name="description" content="Read all about the Ebike, EV and Electric cycling with us at Emotorad's blog Page" />
+        <title>
+          Blogs | EMotorad | Best Electric Bicycle and Electric Bike
+        </title>
+        <meta
+          name="description"
+          content="Read all about the Ebike, EV and Electric cycling with us at Emotorad's blog Page"
+        />
       </Helmet>
 
       <Header />

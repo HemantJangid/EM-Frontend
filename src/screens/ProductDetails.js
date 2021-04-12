@@ -45,6 +45,7 @@ function ProductDetails(props) {
       })
       .catch((err) => {
         console.log(err);
+        alert(err.response.data.message);
       });
   }, [props.match.params.productSlug]);
 
@@ -143,8 +144,14 @@ function ProductDetails(props) {
                                       { quantity: 1 },
                                       { headers }
                                     )
-                                    .then((res) => history.push(navUrls.cart))
-                                    .catch((err) => console.log(err));
+                                    .then((res) => {
+                                      console.log(res);
+                                      history.push(navUrls.cart);
+                                    })
+                                    .catch((err) => {
+                                      console.log(err.response);
+                                      alert(err.response.data.message);
+                                    });
                               })
                           : history.push(navUrls.cart);
                       }}
@@ -372,7 +379,10 @@ function ProductDetails(props) {
                                       { headers }
                                     )
                                     .then((res) => history.push(navUrls.cart))
-                                    .catch((err) => console.log(err));
+                                    .catch((err) => {
+                                      console.log(err);
+                                      alert(err.response.data.message);
+                                    });
                               })
                           : history.push(navUrls.cart);
                       }}
