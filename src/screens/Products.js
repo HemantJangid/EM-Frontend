@@ -67,7 +67,7 @@ function AllProducts({ match }) {
             }}
           >
             <span className="price">INR {product.selling_price}/-</span>
-            <div className="container">
+            <div className="container products-container">
               <h1 className="product-title">{product.title}</h1>
               <p>EMI starting at</p>
               <h4 className="mb-5">INR {product.emi_per_month}/Month</h4>
@@ -86,6 +86,7 @@ function AllProducts({ match }) {
                 <Button text="Read more" color="white" />
               </Link>
             </div>
+            <div class="products-overlay"></div>
           </section>
         ))
       )}
