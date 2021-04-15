@@ -58,6 +58,11 @@
   .products-overlay {
     opacity: 0.4;
   }
+
+  .products-container .em-btn {
+    z-index: 1000;
+    position: relative;
+  }
 }
 
 .price {

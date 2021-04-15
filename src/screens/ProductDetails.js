@@ -18,6 +18,7 @@ import navUrls from "./../constant/navUrls";
 import { Helmet } from "react-helmet";
 import Modal from "react-modal";
 import Loader from "../components/Loader";
+import { Waypoint } from "react-waypoint";
 
 function ProductDetails(props) {
   const [productContent, setProductContent] = useState();
@@ -89,6 +90,23 @@ function ProductDetails(props) {
     return playerWindow;
   };
 
+  let [shouldPlay, updatePlayState] = useState();
+
+  let handleEnterViewport = function () {
+    getVideoPlayer2().play();
+  };
+  let handleExitViewport = function () {
+    getVideoPlayer2().pause();
+  };
+
+  const getVideoPlayer2 = () => {
+    let playerWindow2 = new window.Vimeo.Player(
+      document.querySelector("#video")
+    );
+    console.log(playerWindow2);
+    return playerWindow2;
+  };
+
   return (
     <div>
       <Header />
@@ -156,14 +174,32 @@ function ProductDetails(props) {
                           : history.push(navUrls.cart);
                       }}
                     >
-                      <Button text="Add to cart" />
+                      <Button text="Buy Now" />
                     </button>
                   </div>
                 </div>
               </div>
             </section>
 
-            <Vimeo
+            <Waypoint
+              onEnter={handleEnterViewport}
+              onLeave={handleExitViewport}
+            >
+              <section id="video" className="video-container">
+                <iframe
+                  src={productContent.video_page_video_link}
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                  }}
+                  frameBorder="0"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                ></iframe>
+              </section>
+            </Waypoint>
+
+            {/* <Vimeo
               video={productContent.video_page_video_link}
               autoplay={true}
               responsive={true}
@@ -171,7 +207,7 @@ function ProductDetails(props) {
               showByline={false}
               color="#68db85"
               background={true}
-            />
+            /> */}
 
             <section
               id="product-text"
