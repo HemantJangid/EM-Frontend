@@ -10,50 +10,62 @@ import { useFormik } from "formik";
 import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
 import { auth } from "./../firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "./../redux/actions/user";
 import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
 import { Helmet } from "react-helmet";
+import { addWarrantyData } from "./../redux/actions/warranty";
 
 function Warranty() {
   const todays_date_obj = new Date();
   const todays_date = moment(todays_date_obj).format("YYYY-MM-DD");
   const dispatch = useDispatch();
   const { logout } = useAuth();
+  const user = useSelector((state) => state.userReducer);
+  const warrantyData = useSelector((state) => state.warrantyReducer);
   const history = useHistory();
+  console.log(warrantyData);
+  console.log(user);
 
   const formik = useFormik({
     initialValues: {
-      frame_number: "",
-      purchase_date: "",
-      dealer_or_online: "",
+      frame_number: warrantyData ? warrantyData.frame_number : "",
+      purchase_date: warrantyData ? warrantyData.purchase_date : "",
+      dealer_or_online: warrantyData ? warrantyData.dealer_or_online : "",
     },
     onSubmit: (values) => {
       //   alert(JSON.stringify(values, null, 2));
-      auth.currentUser.getIdToken(true).then((idToken) => {
-        const headers = {
-          "Content-Type": "application/json",
-          Authorization: idToken,
-        };
-        axios
-          .post(`${constants.base_url}${constants.warranty}`, values, {
-            headers,
-          })
-          .then(async (res) => {
-            // console.log(res);
-            if (res.status === 200) {
-              alert("Warranty activated successfully");
-              await logout();
-              dispatch(addUser(""));
-              history.push(navUrls.home);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-            alert(err.response.data.message);
-          });
-      });
+
+      if (auth.currentUser) {
+        auth.currentUser.getIdToken(true).then((idToken) => {
+          const headers = {
+            "Content-Type": "application/json",
+            Authorization: idToken,
+          };
+          axios
+            .post(`${constants.base_url}${constants.warranty}`, values, {
+              headers,
+            })
+            .then(async (res) => {
+              // console.log(res);
+              if (res.status === 200) {
+                alert("Warranty activated successfully");
+                await logout();
+                dispatch(addUser(""));
+                dispatch(addWarrantyData({}));
+                history.push(navUrls.home);
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              alert(err.response.data.message);
+            });
+        });
+      } else {
+        dispatch(addWarrantyData(values));
+        history.push(navUrls.signIn);
+      }
     },
   });
   return (
@@ -70,7 +82,7 @@ function Warranty() {
           <div className="row justify-content-center">
             <div className="col-lg-3 col-md-12 bg-dark mx-md-0 mx-sm-4">
               <div className="my-5">
-                <h2 className="text-center">Aditya Pathak</h2>
+                <h2 className="text-center">{auth.currentUser && user}</h2>
               </div>
             </div>
 
@@ -81,17 +93,19 @@ function Warranty() {
                   <h3>Activate warranty</h3>
                   <img src={dots} alt="Dots" className="dots" />
                 </div>
-                <button
-                  onClick={async () => {
-                    await logout();
-                    dispatch(addUser(""));
-                    alert("You have been successfully logged out");
-                    history.push(navUrls.home);
-                  }}
-                  className="bg-transparent border-0 my-3"
-                >
-                  <Button text="Log out" />
-                </button>
+                {auth.currentUser && (
+                  <button
+                    onClick={async () => {
+                      await logout();
+                      dispatch(addUser(""));
+                      alert("You have been successfully logged out");
+                      history.push(navUrls.home);
+                    }}
+                    className="bg-transparent border-0 my-3"
+                  >
+                    <Button text="Log out" />
+                  </button>
+                )}
               </div>
               <div className="row no-gutters">
                 <div className="col-lg-7">

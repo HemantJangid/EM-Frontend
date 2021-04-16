@@ -5,16 +5,20 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import constants from "../constant/RequestUrls";
 import axios from "axios";
-import { Link, Route } from "react-router-dom";
-import ProductDetails from "./ProductDetails";
-import bg_image from "../assets/img/backgrounds/pemx-min.jpeg";
+import { useSelector, useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 import Loader from "../components/Loader";
+import { addItem } from "./../redux/actions/cart";
+import navUrls from "./../constant/navUrls";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
-function AllProducts({ match }) {
+function AllProducts() {
   const [products, setProducts] = useState();
   const [reRender, setReRender] = useState(true);
+  const { items } = useSelector((state) => state.cartReducer);
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     axios
@@ -73,18 +77,34 @@ function AllProducts({ match }) {
               <h4 className="mb-5">INR {product.emi_per_month}/Month</h4>
               <Button text="download brochure" />
               <div className="mt-3"></div>
-              <Link
-                key={product.slug}
-                to={{
-                  pathname: `/product/${product.slug}`,
-                  state: { product: product },
-                }}
-                style={{
-                  textDecoration: "none",
+              <button
+                className="bg-transparent border-0"
+                onClick={() => {
+                  let alreadyInCart = false;
+                  for (let i = 0; i < items.length; i++) {
+                    if (items[i].product.uuid === product.uuid) {
+                      alreadyInCart = true;
+                      items[i].quantity += 1;
+                      dispatch(addItem([...items]));
+                    }
+                  }
+
+                  if (!alreadyInCart) {
+                    dispatch(
+                      addItem([
+                        ...items,
+                        {
+                          quantity: 1,
+                          product: product,
+                        },
+                      ])
+                    );
+                  }
+                  history.push(navUrls.cart);
                 }}
               >
-                <Button text="Read more" color="white" />
-              </Link>
+                <Button text="Buy Now" color="white" />
+              </button>
             </div>
           </section>
         ))

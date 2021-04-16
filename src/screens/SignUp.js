@@ -73,7 +73,7 @@ function SignUp() {
           })
           .catch((err) => console.log("could not get token: ", err));
 
-        history.push(navUrls.products);
+        history.goBack();
       } catch (err) {
         alert(err);
       }

@@ -33,7 +33,7 @@ function Contact() {
         .post(`${constants.base_url}${constants.contact}`, values)
         .then((res) => {
           let email_values = {
-            email: "jhemant539@gmail.com",
+            email: "info@emotorad.com",
             subject: "A Lead is recieved.",
             message: `<h2>A new Lead has been recieved from ${values.first_name} ${values.last_name} at Emotorad Website</h2><h2>Lead Details</h2><table><tbody><tr><td>Name</td><td>${values.first_name} ${values.last_name}</td></tr><tr><td>Email</td><td>${values.email}</td></tr><tr><td>Address</td><td>${values.address}</td</tr><tr><td>Phone Number</td><td>${values.phone}</td></tr><tr><td>Query</td><td>${values.query}</td></tr></tbody></table>`,
             meta: {},

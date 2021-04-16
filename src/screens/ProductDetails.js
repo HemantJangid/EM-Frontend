@@ -89,6 +89,8 @@ function ProductDetails(props) {
     return playerWindow;
   };
 
+  console.log(items);
+
   return (
     <div>
       <Header />
@@ -128,42 +130,66 @@ function ProductDetails(props) {
                     <button
                       className="bg-transparent border-0"
                       onClick={() => {
-                        auth.currentUser
-                          ? auth.currentUser
-                              .getIdToken(true)
-                              .then((idToken) => {
-                                // console.log(idToken);
-                                const headers = {
-                                  "Content-Type": "application/json",
-                                  Authorization: idToken,
-                                };
-                                props.location.state &&
-                                  axios
-                                    .post(
-                                      `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
-                                      { quantity: 1 },
-                                      { headers }
-                                    )
-                                    .then((res) => {
-                                      console.log(res);
-                                      history.push(navUrls.cart);
-                                    })
-                                    .catch((err) => {
-                                      console.log(err.response);
-                                      alert(err.response.data.message);
-                                    });
-                              })
-                          : history.push(navUrls.cart);
+                        // auth.currentUser
+                        //   ? auth.currentUser
+                        //       .getIdToken(true)
+                        //       .then((idToken) => {
+                        //         // console.log(idToken);
+                        //         const headers = {
+                        //           "Content-Type": "application/json",
+                        //           Authorization: idToken,
+                        //         };
+                        //         props.location.state &&
+                        //           axios
+                        //             .post(
+                        //               `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
+                        //               { quantity: 1 },
+                        //               { headers }
+                        //             )
+                        //             .then((res) => {
+                        //               console.log(res);
+                        //               history.push(navUrls.cart);
+                        //             })
+                        //             .catch((err) => {
+                        //               console.log(err.response);
+                        //               alert(err.response.data.message);
+                        //             });
+                        //       })
+                        //   : history.push(navUrls.cart);
+                        let alreadyInCart = false;
+                        for (let i = 0; i < items.length; i++) {
+                          if (
+                            items[i].product.uuid ===
+                            productContent.product.uuid
+                          ) {
+                            alreadyInCart = true;
+                            items[i].quantity += 1;
+                            dispatch(addItem([...items]));
+                          }
+                        }
+
+                        if (!alreadyInCart) {
+                          dispatch(
+                            addItem([
+                              ...items,
+                              {
+                                quantity: 1,
+                                product: productContent.product,
+                              },
+                            ])
+                          );
+                        }
+                        history.push(navUrls.cart);
                       }}
                     >
-                      <Button text="Add to cart" />
+                      <Button text="Buy Now" />
                     </button>
                   </div>
                 </div>
               </div>
             </section>
 
-            <Vimeo
+            {/* <Vimeo
               video={productContent.video_page_video_link}
               autoplay={true}
               responsive={true}
@@ -171,7 +197,7 @@ function ProductDetails(props) {
               showByline={false}
               color="#68db85"
               background={true}
-            />
+            /> */}
 
             <section
               id="product-text"
@@ -227,7 +253,7 @@ function ProductDetails(props) {
                 >
                   <i class="fas fa-times"></i>
                 </div>
-                <Vimeo
+                {/* <Vimeo
                   style={{ zIndex: "900" }}
                   video={productContent.info_page_bg_image_url}
                   autoplay={true}
@@ -236,7 +262,7 @@ function ProductDetails(props) {
                   showByline={false}
                   color="#68db85"
                   background={true}
-                />
+                /> */}
               </section>
             </Modal>
 

@@ -5,15 +5,45 @@ import "../assets/css/Sign.css";
 import { Link, useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import navUrls from "./../constant/navUrls";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "./../redux/actions/user";
+import constants from "../constant/RequestUrls";
 import { Helmet } from "react-helmet";
+import { auth } from "../firebase";
+import axios from "axios";
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const history = useHistory();
+  const { items } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
+  console.log(items);
+
+  function addItemToCart(item) {
+    console.log(item);
+    auth.currentUser
+      ? auth.currentUser.getIdToken(true).then((idToken) => {
+          const headers = {
+            "Content-Type": "application/json",
+            Authorization: idToken,
+          };
+          axios
+            .post(
+              `${constants.base_url}${constants.cart}/${item.product.uuid}`,
+              { quantity: 1 },
+              { headers }
+            )
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err.response);
+            });
+        })
+      : history.push(navUrls.cart);
+  }
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -23,13 +53,23 @@ function SignIn() {
       try {
         setLoading(true);
         let response = await login(values.email, values.password);
-        // console.log(response);
         dispatch(addUser(response.user.displayName));
-        console.log("logged in successfully");
-        history.push(navUrls.products);
+        for (let i in items) {
+          addItemToCart(items[i]);
+        }
+        history.goBack();
       } catch (error) {
-        console.log("failed to login to the account");
-        alert(error.message);
+        console.log(error);
+        switch (error.code) {
+          case "auth/user-not-found":
+            alert(
+              "There is no user account with this email. Please SignUp first."
+            );
+          case "auth/wrong-password":
+            alert("Please check your password again.");
+          default:
+            alert(error.message);
+        }
       }
 
       setLoading(false);

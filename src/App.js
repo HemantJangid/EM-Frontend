@@ -64,8 +64,8 @@ function App() {
               <Route path={`${navUrls.signUp}`} component={SignUp} />
               <Route path={`${navUrls.blog}`} component={Blog} />
               <Route path={`${navUrls.blogpost}`} component={BlogPost} />
-              <PrivateRoute path={`${navUrls.warranty}`} component={Warranty} />
-              <PrivateRoute path={`${navUrls.cart}`} component={Cart} />
+              <Route path={`${navUrls.warranty}`} component={Warranty} />
+              <Route path={`${navUrls.cart}`} component={Cart} />
               <PrivateRoute
                 path={`${navUrls.selectAddress}`}
                 component={SelectAddress}

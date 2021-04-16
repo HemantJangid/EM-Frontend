@@ -16,22 +16,11 @@ import { addUser } from "./../redux/actions/user";
 import { Helmet } from "react-helmet";
 
 function Cart() {
-  const [qty, setQty] = useState(1);
-
-  const handleIncrement = () => {
-    setQty((prevQty) => prevQty + 1);
-  };
-
-  const handleDecrement = () => {
-    if (qty > 1) setQty((prevQty) => prevQty - 1);
-  };
-
   const [reRender, setReRender] = useState(true);
   const { logout } = useAuth();
   const history = useHistory();
   const { items } = useSelector((state) => state.cartReducer);
   const user = useSelector((state) => state.userReducer);
-  console.log(user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,73 +28,78 @@ function Cart() {
   }, []);
 
   function getCart() {
-    auth.currentUser.getIdToken(true).then((idToken) => {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: idToken,
-      };
-      axios
-        .get(`${constants.base_url}${constants.cart}`, { headers })
-        .then((res) => {
-          // console.log(res);
-          if (res.status === 200) {
-            // setItems(res.data.payload.products);
-            dispatch(addItem(res.data.payload.products));
-            setReRender(!reRender);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          alert(err.response.data.message);
-        });
-    });
+    auth.currentUser &&
+      auth.currentUser.getIdToken(true).then((idToken) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: idToken,
+        };
+        axios
+          .get(`${constants.base_url}${constants.cart}`, { headers })
+          .then((res) => {
+            // console.log(res);
+            if (res.status === 200) {
+              // setItems(res.data.payload.products);
+              dispatch(addItem(res.data.payload.products));
+              setReRender(!reRender);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
+      });
   }
 
   function addItemToCart(i) {
     changeQuantity(i, "increase");
     dispatch(addItem(items));
-    auth.currentUser.getIdToken(true).then((idToken) => {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: idToken,
-      };
-      axios
-        .post(
-          `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
-          { quantity: 1 },
-          { headers }
-        )
-        .then((res) => {
-          // console.log(res)
-        })
-        .catch((err) => {
-          console.log(err);
-          alert(err.response.data.message);
-        });
-    });
+    auth.currentUser &&
+      auth.currentUser.getIdToken(true).then((idToken) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: idToken,
+        };
+        axios
+          .post(
+            `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
+            { quantity: 1 },
+            { headers }
+          )
+          .then((res) => {
+            // console.log(res)
+          })
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
+      });
   }
 
   function removeItemFromCart(i) {
-    auth.currentUser.getIdToken(true).then((idToken) => {
-      const headers = {
-        "Content-Type": "application/json",
-        Authorization: idToken,
-      };
-      axios
-        .delete(
-          `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
-          { headers }
-        )
-        .then((res) => {
-          // console.log(res);
-          changeQuantity(i, "decrease");
-          dispatch(addItem(items));
-        })
-        .catch((err) => {
-          console.log(err);
-          alert(err.response.data.message);
-        });
-    });
+    let item = items[i];
+    changeQuantity(i, "decrease");
+    dispatch(addItem(items));
+
+    auth.currentUser &&
+      auth.currentUser.getIdToken(true).then((idToken) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: idToken,
+        };
+        axios
+          .delete(
+            `${constants.base_url}${constants.cart}/${item.product.uuid}`,
+            { headers }
+          )
+          .then((res) => {
+            // console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
+      });
   }
 
   function totalAmount() {
@@ -143,8 +137,16 @@ function Cart() {
     //     })
     //     .catch((err) => console.log(err));
     // });
-    history.push(navUrls.selectAddress);
+    // history.push(navUrls.selectAddress);
+
+    if (auth.currentUser) {
+      history.push(navUrls.selectAddress);
+    } else {
+      history.push(navUrls.signIn);
+    }
   }
+
+  console.log(items);
 
   return (
     <div>
@@ -159,43 +161,44 @@ function Cart() {
             <div className="col-lg-3 col-md-12 bg-dark mx-md-0 mx-sm-4">
               <div className="my-5">
                 <h2 className="text-center">
-                  {user && user != "" ? user : "name not available"}
+                  {/* {user && user != "" ? user : "name not available"} */}
+                  {auth.currentUser && user}
                 </h2>
               </div>
             </div>
             {/* <nav
-              id="sidebarMenu"
-              className="col-md-3 col-lg-3 d-md-block bg-dark sidebar collapse"
-            >
-              <div className="sidebar-sticky pt-3">
-                <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-5 mb-1 text-muted">
-                  <span>
-                    <h2>Aditya Pathak</h2>
-                  </span>
-                  <a
-                    className="d-flex align-items-center text-muted"
-                    href="#"
-                    aria-label="Add a new report"
-                  >
-                    <span data-feather="plus-circle"></span>
-                  </a>
-                </h6>
-                <ul className="nav flex-column mb-2">
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      <span data-feather="file-text"></span>
-                      <h4>My Past Orders</h4>
+                id="sidebarMenu"
+                className="col-md-3 col-lg-3 d-md-block bg-dark sidebar collapse"
+              >
+                <div className="sidebar-sticky pt-3">
+                  <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-5 mb-1 text-muted">
+                    <span>
+                      <h2>Aditya Pathak</h2>
+                    </span>
+                    <a
+                      className="d-flex align-items-center text-muted"
+                      href="#"
+                      aria-label="Add a new report"
+                    >
+                      <span data-feather="plus-circle"></span>
                     </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#">
-                      <span data-feather="file-text"></span>
-                      <h4>Current Orders</h4>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </nav> */}
+                  </h6>
+                  <ul className="nav flex-column mb-2">
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">
+                        <span data-feather="file-text"></span>
+                        <h4>My Past Orders</h4>
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">
+                        <span data-feather="file-text"></span>
+                        <h4>Current Orders</h4>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </nav> */}
 
             <main role="main" className="col-md-12 my-3 col-lg-9 px-md-4">
               <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
@@ -204,17 +207,20 @@ function Cart() {
                   <h3>My Cart</h3>
                   <img src={dots} alt="Dots" className="dots" />
                 </div>
-                <button
-                  onClick={async () => {
-                    await logout();
-                    dispatch(addUser(""));
-                    alert("You have been successfully logged out");
-                    history.push(navUrls.home);
-                  }}
-                  className="bg-transparent border-0 my-3"
-                >
-                  <Button text="Log out" />
-                </button>
+                {auth.currentUser && (
+                  <button
+                    onClick={async () => {
+                      await logout();
+                      dispatch(addUser(""));
+                      dispatch(addItem([]));
+                      alert("You have been successfully logged out");
+                      history.push(navUrls.home);
+                    }}
+                    className="bg-transparent border-0 my-3"
+                  >
+                    <Button text="Log out" />
+                  </button>
+                )}
               </div>
               <div className="cart-box px-4 py-4">
                 <h3 className="pri">Shopping cart</h3>
@@ -232,13 +238,12 @@ function Cart() {
                       </thead>
                       <tbody>
                         {items.map((item, index) => {
-                          console.log(item);
                           return (
                             <tr>
                               <td>
                                 <a href="#">
                                   <img
-                                    src={`${item.product.image_url}`}
+                                    // src={`${item.product.image_url}`}
                                     className="img-fluid cart-img"
                                     alt={item.product.name && item.product.name}
                                   />
@@ -308,23 +313,23 @@ function Cart() {
                         <tr>
                           <td colSpan="4">
                             {/* <div className="d-flex align-items-center promo-code">
-                              <p className="mr-3 mb-0 text-nowrap">
-                                Apply Promo Code
-                              </p>
-                              <input
-                                className="form-control mr-3"
-                                type="text"
-                                name="promo"
-                                id="promo"
-                              />
-                              <input
-                                type="submit"
-                                value="Apply"
-                                name="submit"
-                                className="form-control"
-                                width="200"
-                              />
-                            </div> */}
+                                <p className="mr-3 mb-0 text-nowrap">
+                                  Apply Promo Code
+                                </p>
+                                <input
+                                  className="form-control mr-3"
+                                  type="text"
+                                  name="promo"
+                                  id="promo"
+                                />
+                                <input
+                                  type="submit"
+                                  value="Apply"
+                                  name="submit"
+                                  className="form-control"
+                                  width="200"
+                                />
+                              </div> */}
                           </td>
 
                           <td colSpan="1">Total</td>
@@ -335,25 +340,29 @@ function Cart() {
                       </tbody>
                     </table>
                   </div>
-                  <div className="d-flex">
-                    <a className="mx-2" href="">
-                      Debit Card
-                    </a>
-                    <a className="mx-2" href="">
-                      UPI
-                    </a>
-                    <a className="mx-2" href="">
-                      Cash on delivery
-                    </a>
-                    <a className="mx-2" href="">
-                      EMI*
-                    </a>
-                  </div>
+                  {/* <div className="d-flex">
+                      <a className="mx-2" href="">
+                        Debit Card
+                      </a>
+                      <a className="mx-2" href="">
+                        UPI
+                      </a>
+                      <a className="mx-2" href="">
+                        Cash on delivery
+                      </a>
+                      <a className="mx-2" href="">
+                        EMI*
+                      </a>
+                    </div> */}
                   <center>
                     <button
                       className="bg-transparent border-0 mt-5"
                       onClick={() => {
-                        handleCheckout();
+                        if (items.length === 0) {
+                          alert("You need to add items to cart first.");
+                        } else {
+                          handleCheckout();
+                        }
                       }}
                     >
                       <Button text="Proceed to checkout" />
