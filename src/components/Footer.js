@@ -19,15 +19,23 @@ function Footer() {
           <div className="row justify-content-center">
             <div className="col-lg-3 col-md-6 mt-5">
               <h5>Email us at</h5>
-              <a href="#">info@emotorad.com</a>
+              <a href="mailto:info@emotorad.com">info@emotorad.com</a>
               <h5 className="mt-5">Call us on</h5>
-              <a href="#">+91-8686050590</a>
+              <a href="tel:+918686050590">+91-8686050590</a>
               <h5 className="mt-5">Social Media</h5>
               <div className="d-flex align-items-center social-links">
-                <a href="https://www.facebook.com/EMotorad" className="mr-3">
+                <a
+                  target="_blank"
+                  href="https://www.facebook.com/EMotorad"
+                  className="mr-3"
+                >
                   <i className="fab fa-facebook-square"></i>
                 </a>
-                <a href="https://twitter.com/ElectroMotorad" className="mr-3">
+                <a
+                  target="_blank"
+                  href="https://twitter.com/ElectroMotorad"
+                  className="mr-3"
+                >
                   <i className="fab fa-twitter-square"></i>
                 </a>
                 <a
@@ -36,7 +44,11 @@ function Footer() {
                 >
                   <i className="fab fa-linkedin"></i>
                 </a>
-                <a href="https://www.instagram.com/em_bikes/" className="mr-3">
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/e_motorad/"
+                  className="mr-3"
+                >
                   <i className="fab fa-instagram-square"></i>
                 </a>
               </div>

@@ -6,12 +6,11 @@ function Loader(props) {
   return (
     <div>
       <section
-        id="loader"
-        className={`d-${props.display} align-items-center justify-content-center`}
+        className={`d-${props.display} align-items-center justify-content-center loader`}
       >
-        <div className="container w-100 d-inline-flex justify-content-center">
-          <img src={logoWhite} alt="Logo" />
-        </div>
+        {/* <div className="container w-100 d-inline-flex justify-content-center"> */}
+        <img src={logoWhite} alt="Logo" className="loader-logo" />
+        {/* </div> */}
       </section>
     </div>
   );
