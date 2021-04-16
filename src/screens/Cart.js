@@ -7,12 +7,12 @@ import Footer from "../components/Footer";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { addUser } from "./../redux/actions/user";
 import { addItem } from "./../redux/actions/cart";
 import { auth } from "./../firebase";
 import constants from "../constant/RequestUrls";
 import axios from "axios";
 import navUrls from "./../constant/navUrls";
-import { addUser } from "./../redux/actions/user";
 import { Helmet } from "react-helmet";
 
 function Cart() {

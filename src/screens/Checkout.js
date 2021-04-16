@@ -4,12 +4,20 @@ import { auth } from "./../firebase";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
+import { useAuth } from "../contexts/AuthContext";
+import { useSelector, useDispatch } from "react-redux";
+import { addUser } from "./../redux/actions/user";
+import { addItem } from "./../redux/actions/cart";
 import "../assets/css/Checkout.css";
 
 function Checkout(props) {
+  const { logout } = useAuth();
+  const { items } = useSelector((state) => state.cartReducer);
+  const user = useSelector((state) => state.userReducer);
   const order = props.location.state.order;
   const address = `${order.user_address.address_line_1}, ${order.user_address.address_line_2} ${order.user_address.landmark} ${order.user_address.city} ${order.user_address.state}, ${order.user_address.pincode}`;
   const history = useHistory();
+  const dispatch = useDispatch();
   const domain = window.location.hostname;
 
   const verifyPayment = (razorpay_id, order_id) => {
@@ -24,9 +32,13 @@ function Checkout(props) {
           { razorpay_id, order_id },
           { headers }
         )
-        .then((res) => {
+        .then(async (res) => {
           alert(res.data.message);
+          console.log(res);
           if (res.status === 200) {
+            dispatch(addUser(""));
+            dispatch(addItem([]));
+            await logout();
             history.push(navUrls.home);
           }
         })
@@ -73,7 +85,8 @@ function Checkout(props) {
         "https://res.cloudinary.com/emotorad/image/upload/v1603493352/website/emotorad-logo_duvmv8.png",
 
       handler: function (response) {
-        // console.log(response);
+        console.log(response);
+        console.log(order.id);
         verifyPayment(response.razorpay_payment_id, order.id);
       },
       prefill: {
