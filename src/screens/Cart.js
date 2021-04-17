@@ -138,12 +138,11 @@ function Cart() {
     //     .catch((err) => console.log(err));
     // });
     // history.push(navUrls.selectAddress);
-
-    if (auth.currentUser) {
-      history.push(navUrls.selectAddress);
-    } else {
-      history.push(navUrls.signIn);
-    }
+    // if (auth.currentUser) {
+    //   history.push(navUrls.selectAddress);
+    // } else {
+    //   history.push(navUrls.signIn);
+    // }
   }
 
   console.log(items);
@@ -259,11 +258,11 @@ function Cart() {
                               <td>
                                 <div className="d-block">
                                   <div id="radio-color">
-                                    <label className="red">
+                                    <label style={{ backgroundColor: "blue" }}>
                                       <input type="radio" name="toggle" />
                                       <span></span>
                                     </label>
-                                    <label className="green">
+                                    <label style={{ backgroundColor: "green" }}>
                                       <input type="radio" name="toggle" />
                                       <span></span>
                                     </label>

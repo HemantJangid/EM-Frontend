@@ -205,13 +205,13 @@ function ProductDetails(props) {
               </div>
             </section>
 
-            <Waypoint
+            {/* <Waypoint
               onEnter={handleEnterViewport}
               onLeave={handleExitViewport}
             >
               <section id="video" className="video-container">
                 <iframe
-                  src={productContent.video_page_video_link}
+                  src={`${productContent.video_page_video_link}`}
                   style={{
                     height: "100%",
                     width: "100%",
@@ -221,7 +221,7 @@ function ProductDetails(props) {
                   allowFullScreen
                 ></iframe>
               </section>
-            </Waypoint>
+            </Waypoint> */}
 
             <Vimeo
               video={productContent.video_page_video_link}
@@ -422,29 +422,30 @@ function ProductDetails(props) {
                     <button
                       className="bg-transparent border-0"
                       onClick={() => {
-                        auth.currentUser
-                          ? auth.currentUser
-                              .getIdToken(true)
-                              .then((idToken) => {
-                                // console.log(idToken);
-                                const headers = {
-                                  "Content-Type": "application/json",
-                                  Authorization: idToken,
-                                };
-                                props.location.state &&
-                                  axios
-                                    .post(
-                                      `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
-                                      { quantity: 1 },
-                                      { headers }
-                                    )
-                                    .then((res) => history.push(navUrls.cart))
-                                    .catch((err) => {
-                                      console.log(err);
-                                      alert(err.response.data.message);
-                                    });
-                              })
-                          : history.push(navUrls.cart);
+                        let alreadyInCart = false;
+                        for (let i = 0; i < items.length; i++) {
+                          if (
+                            items[i].product.uuid ===
+                            productContent.product.uuid
+                          ) {
+                            alreadyInCart = true;
+                            items[i].quantity += 1;
+                            dispatch(addItem([...items]));
+                          }
+                        }
+
+                        if (!alreadyInCart) {
+                          dispatch(
+                            addItem([
+                              ...items,
+                              {
+                                quantity: 1,
+                                product: productContent.product,
+                              },
+                            ])
+                          );
+                        }
+                        history.push(navUrls.cart);
                       }}
                     >
                       <Button text="Buy Now" />
