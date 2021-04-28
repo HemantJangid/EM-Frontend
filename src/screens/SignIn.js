@@ -20,12 +20,12 @@ function SignIn() {
   const history = useHistory();
   const { items } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
-  console.log(items);
+  // console.log(items);
 
   function addItemToCart(item) {
-    console.log(item);
-    auth.currentUser
-      ? auth.currentUser.getIdToken(true).then((idToken) => {
+    return new Promise((resolve, reject) => {
+      auth.currentUser &&
+        auth.currentUser.getIdToken(true).then((idToken) => {
           const headers = {
             "Content-Type": "application/json",
             Authorization: idToken,
@@ -33,17 +33,29 @@ function SignIn() {
           axios
             .post(
               `${constants.base_url}${constants.cart}/${item.product.uuid}`,
-              { quantity: 1 },
+              {
+                quantity: item.quantity,
+                color: item.color,
+              },
               { headers }
             )
             .then((res) => {
               console.log(res);
+              resolve(res);
             })
             .catch((err) => {
               console.log(err.response);
+              reject(err);
             });
-        })
-      : history.push(navUrls.cart);
+        });
+    });
+  }
+
+  async function addItemsToCart() {
+    for (let i in items) {
+      await addItemToCart(items[i]);
+    }
+    history.goBack();
   }
 
   const formik = useFormik({
@@ -56,10 +68,7 @@ function SignIn() {
         setLoading(true);
         let response = await login(values.email, values.password);
         dispatch(addUser(response.user.displayName));
-        for (let i in items) {
-          addItemToCart(items[i]);
-        }
-        history.goBack();
+        addItemsToCart();
       } catch (error) {
         console.log(error);
         switch (error.code) {

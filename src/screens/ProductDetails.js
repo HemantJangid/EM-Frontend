@@ -28,17 +28,17 @@ function ProductDetails(props) {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cartReducer);
 
-  console.log("slug: ", props.match.params.productSlug);
+  // console.log("slug: ", props.match.params.productSlug);
 
   useEffect(() => {
-    console.log("use effect is running");
+    // console.log("use effect is running");
     axios
       .get(
         `${constants.base_url}${constants.product}/${props.match.params.productSlug}/detail`
       )
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data.payload);
+          // console.log(res.data.payload);
           setProductContent(res.data.payload);
           setLoading(false);
           setReRender(!reRender);
@@ -73,9 +73,9 @@ function ProductDetails(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
-    console.log("Before");
+    // console.log("Before");
     getVideoPlayer().play();
-    console.log("after");
+    // console.log("after");
   }
 
   function closeModal() {
@@ -103,7 +103,7 @@ function ProductDetails(props) {
     let playerWindow2 = new window.Vimeo.Player(
       document.querySelector("#video")
     );
-    console.log(playerWindow2);
+    // console.log(playerWindow2);
     return playerWindow2;
   };
 
@@ -146,56 +146,63 @@ function ProductDetails(props) {
                     <button
                       className="bg-transparent border-0"
                       onClick={() => {
-                        // auth.currentUser
-                        //   ? auth.currentUser
-                        //       .getIdToken(true)
-                        //       .then((idToken) => {
-                        //         // console.log(idToken);
-                        //         const headers = {
-                        //           "Content-Type": "application/json",
-                        //           Authorization: idToken,
-                        //         };
-                        //         props.location.state &&
-                        //           axios
-                        //             .post(
-                        //               `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
-                        //               { quantity: 1 },
-                        //               { headers }
-                        //             )
-                        //             .then((res) => {
-                        //               console.log(res);
-                        //               history.push(navUrls.cart);
-                        //             })
-                        //             .catch((err) => {
-                        //               console.log(err.response);
-                        //               alert(err.response.data.message);
-                        //             });
-                        //       })
-                        //   : history.push(navUrls.cart);
-                        let alreadyInCart = false;
-                        for (let i = 0; i < items.length; i++) {
-                          if (
-                            items[i].product.uuid ===
-                            productContent.product.uuid
-                          ) {
-                            alreadyInCart = true;
-                            items[i].quantity += 1;
-                            dispatch(addItem([...items]));
+                        if (auth.currentUser) {
+                          auth.currentUser.getIdToken(true).then((idToken) => {
+                            // console.log(idToken);
+                            const headers = {
+                              "Content-Type": "application/json",
+                              Authorization: idToken,
+                            };
+                            props.location.state &&
+                              axios
+                                .post(
+                                  `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
+                                  {
+                                    quantity: 1,
+                                    color: JSON.stringify(
+                                      productContent.product.product_colors[0]
+                                    ),
+                                  },
+                                  { headers }
+                                )
+                                .then((res) => {
+                                  // console.log(res);
+                                  history.push(navUrls.cart);
+                                })
+                                .catch((err) => {
+                                  console.log(err.response);
+                                  alert(err.response.data.message);
+                                });
+                          });
+                        } else {
+                          let alreadyInCart = false;
+                          for (let i = 0; i < items.length; i++) {
+                            if (
+                              items[i].product.uuid ===
+                              productContent.product.uuid
+                            ) {
+                              alreadyInCart = true;
+                              items[i].quantity += 1;
+                              dispatch(addItem([...items]));
+                            }
                           }
-                        }
 
-                        if (!alreadyInCart) {
-                          dispatch(
-                            addItem([
-                              ...items,
-                              {
-                                quantity: 1,
-                                product: productContent.product,
-                              },
-                            ])
-                          );
+                          if (!alreadyInCart) {
+                            dispatch(
+                              addItem([
+                                ...items,
+                                {
+                                  quantity: 1,
+                                  product: productContent.product,
+                                  color: JSON.stringify(
+                                    productContent.product.product_colors[0]
+                                  ),
+                                },
+                              ])
+                            );
+                          }
+                          history.push(navUrls.cart);
                         }
-                        history.push(navUrls.cart);
                       }}
                     >
                       <Button text="Buy Now" />
@@ -441,6 +448,8 @@ function ProductDetails(props) {
                               {
                                 quantity: 1,
                                 product: productContent.product,
+                                color:
+                                  productContent.product.product_colors[0].uuid,
                               },
                             ])
                           );

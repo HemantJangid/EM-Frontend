@@ -33,7 +33,7 @@ import navUrls from "./constant/navUrls";
 
 import ScrollToTop from "./components/ScrollToTop";
 import Loader from "./components/Loader";
-import newCart from "./screens/newCart";
+import NewCart from "./screens/newCart";
 import CartNext from "./screens/CartNext";
 
 function App() {
@@ -55,7 +55,6 @@ function App() {
               <Route exact path={`${navUrls.home}`} component={Home} />
               <Route exact path="/loader" component={Loader} />
               <Route path={`${navUrls.about}`} component={About} />
-              <Route path={`${navUrls.newCart}`} component={newCart} />
               <Route path={`${navUrls.cartNext}`} component={CartNext} />
               <Route path={`${navUrls.partner}`} component={Partner} />
               <Route path={`${navUrls.contact}`} component={Contact} />
@@ -69,7 +68,7 @@ function App() {
               <Route path={`${navUrls.blog}`} component={Blog} />
               <Route path={`${navUrls.blogpost}`} component={BlogPost} />
               <Route path={`${navUrls.warranty}`} component={Warranty} />
-              <Route path={`${navUrls.cart}`} component={Cart} />
+              <Route path={`${navUrls.cart}`} component={NewCart} />
               <PrivateRoute
                 path={`${navUrls.selectAddress}`}
                 component={SelectAddress}

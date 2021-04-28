@@ -14,121 +14,307 @@ import constants from "../constant/RequestUrls";
 import axios from "axios";
 import navUrls from "./../constant/navUrls";
 import { Helmet } from "react-helmet";
-import cycle from '../temp/cycle.png'
+import cycle from "../temp/cycle.png";
+import { cleanData } from "jquery";
 
-function newCart() {
-    return (
-        <div>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>Cart | EMotorad | Best Electric Bicycle and Electric Bike</title>
-            </Helmet>
-            <Header />
-            <section id="cart">
-                <div className="container">
-                    <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                        <div>
-                            <h3>My Cart</h3>
-                            <img src={dots} alt="Dots" className="dots" />
-                        </div>
-                        <button className="bg-transparent border-0 my-3">
-                            <Button text="Log out" />
+const NewCart = () => {
+  const [reRender, setReRender] = useState(true);
+  const [selectedColor, setSelectedColor] = useState([]);
+  const { logout } = useAuth();
+  const history = useHistory();
+  //   const items = [];
+  const { items } = useSelector((state) => state.cartReducer);
+  const user = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+
+  console.log("items: ", items);
+
+  useEffect(() => {
+    getCart();
+  }, []);
+
+  function getCart() {
+    console.log("getting cart items");
+    auth.currentUser &&
+      auth.currentUser.getIdToken(true).then((idToken) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: idToken,
+        };
+        axios
+          .get(`${constants.base_url}${constants.cart}`, { headers })
+          .then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+              // setItems(res.data.payload.products);
+              dispatch(addItem(res.data.payload.products));
+              setReRender(!reRender);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
+      });
+  }
+
+  function addItemToCart(i) {
+    changeQuantity(i, "increase");
+    dispatch(addItem(items));
+    auth.currentUser &&
+      auth.currentUser.getIdToken(true).then((idToken) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: idToken,
+        };
+        axios
+          .post(
+            `${constants.base_url}${constants.cart}/${items[i].product.uuid}`,
+            { quantity: items[i].quantity, color: items[i].color },
+            { headers }
+          )
+          .then((res) => {
+            // console.log(res)
+          })
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
+      });
+  }
+
+  function removeItemFromCart(i) {
+    let item = items[i];
+    changeQuantity(i, "decrease");
+    dispatch(addItem(items));
+
+    auth.currentUser &&
+      auth.currentUser.getIdToken(true).then((idToken) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: idToken,
+        };
+        axios
+          .delete(
+            `${constants.base_url}${constants.cart}/${item.product.uuid}`,
+            { headers }
+          )
+          .then((res) => {
+            // console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
+      });
+  }
+
+  function totalAmount() {
+    let totalAmount = 0;
+    for (let i = 0; i < items.length; i++) {
+      totalAmount += items[i].product.selling_price * items[i].quantity;
+    }
+    return totalAmount;
+  }
+
+  function changeQuantity(i, change) {
+    if (change === "increase") items[i].quantity += 1;
+    else if (change === "decrease") {
+      if (items[i].quantity === 1) items.splice(i, 1);
+      else items[i].quantity -= 1;
+    }
+  }
+
+  function handleCheckout() {
+    // auth.currentUser.getIdToken(true).then((idToken) => {
+    //   const headers = {
+    //     "Content-Type": "application/json",
+    //     Authorization: idToken,
+    //   };
+    //   axios
+    //     .post(
+    //       `${constants.base_url}${constants.order}`,
+    //       { user_address_uuid: "e3eeef77-c213-4748-a5a9-af6ba2b81373" },
+    //       {
+    //         headers,
+    //       }
+    //     )
+    //     .then((res) => {
+    //       history.push("/");
+    //     })
+    //     .catch((err) => console.log(err));
+    // });
+    // history.push(navUrls.selectAddress);
+    if (auth.currentUser) {
+      history.push(navUrls.selectAddress);
+    } else {
+      history.push(navUrls.signIn);
+    }
+  }
+
+  function changeColor(e, pi) {
+    // console.log(e.target.value, items[pi].color);
+    items[pi].color = e.target.value;
+    auth.currentUser &&
+      auth.currentUser.getIdToken(true).then((idToken) => {
+        const headers = {
+          "Content-Type": "application/json",
+          Authorization: idToken,
+        };
+        axios
+          .post(
+            `${constants.base_url}${constants.cart}/${items[pi].product.uuid}`,
+            { quantity: items[pi].quantity, color: items[pi].color },
+            { headers }
+          )
+          .then((res) => {
+            // console.log(res)
+          })
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
+      });
+    setReRender(!reRender);
+  }
+
+  console.log(items);
+
+  return (
+    <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Cart | EMotorad | Best Electric Bicycle and Electric Bike</title>
+      </Helmet>
+      <Header />
+      <section id="cart">
+        <div className="container">
+          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            <div>
+              <h3>My Cart</h3>
+              <img src={dots} alt="Dots" className="dots" />
+            </div>
+            {auth.currentUser && (
+              <button
+                onClick={async () => {
+                  await logout();
+                  dispatch(addUser(""));
+                  dispatch(addItem([]));
+                  alert("You have been successfully logged out");
+                  history.push(navUrls.home);
+                }}
+                className="bg-transparent border-0 my-3"
+              >
+                <Button text="Log out" />
+              </button>
+            )}
+          </div>
+          <div className="cart-box px-4 py-4">
+            <h3 className="pri pb-4">Shopping cart</h3>
+            {items.map((item, pi) => {
+              return (
+                <div className="d-flex align-items-center justify-content-between border-bottom pb-3 flex-wrap mb-4">
+                  <div className="d-inline-flex align-items-center flex-wrap">
+                    <div className="p-4 mx-sm-auto">
+                      <img
+                        src={JSON.parse(item.color).image}
+                        className="img-fluid cart-img"
+                      />
+                    </div>
+                    <div className="d-block my-3">
+                      <h3>{item.product.name}</h3>
+                      {/* <h5>
+                        <strike>38,990 INR</strike>
+                      </h5> */}
+                      <h4>{item.product.selling_price} INR</h4>
+                      {/* <h6 className="mb-0">Yellow and Green</h6> */}
+                      {/* <p className="mb-0">
+                        Delivery date to be confirmed by Email
+                      </p> */}
+                    </div>
+                  </div>
+
+                  <div className="d-block right-area">
+                    <label htmlFor="colorSelection">Select Color</label>
+                    <select
+                      className="mb-4 form-control"
+                      required
+                      id="color"
+                      onChange={(e) => changeColor(e, pi)}
+                      name="color"
+                      style={{ textTransform: "capitalize" }}
+                    >
+                      {item.product.product_colors.map((color, ci) => {
+                        return (
+                          <option
+                            value={JSON.stringify(color)}
+                            key={ci}
+                            selected={
+                              JSON.parse(item.color).name === color.name
+                            }
+                          >
+                            {color.name}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <div className="d-inline-flex align-items-center justify-content-between">
+                      <div className="d-inline-flex align-items-center">
+                        <button
+                          className="mr-2 plusminus"
+                          onClick={() => {
+                            // console.log("decrease quantity");
+                            removeItemFromCart(pi);
+                            setReRender(!reRender);
+                          }}
+                        >
+                          -
                         </button>
+                        <p className="mb-0">{item.quantity}</p>
+                        <button
+                          className="ml-2 plusminus"
+                          onClick={() => {
+                            // console.log("increase quantity");
+                            addItemToCart(pi);
+                            setReRender(!reRender);
+                            // console.log(items);
+                          }}
+                        >
+                          +
+                        </button>
+                      </div>
+                      <h5 className="mx-2 mb-0">
+                        {item.quantity * item.product.selling_price} INR
+                      </h5>
+                      {/* <div className="del-btn ml-2">
+                        <i class="far fa-trash-alt"></i>
+                      </div> */}
                     </div>
-                    <div className="cart-box px-4 py-4">
-                        <h3 className="pri pb-4">Shopping cart</h3>
-                        <div className="d-flex align-items-center justify-content-between border-bottom pb-3 flex-wrap mb-4">
-                            <div className="d-inline-flex align-items-center flex-wrap">
-                                <div className="p-4 mx-sm-auto">
-                                    <img src={cycle} className="img-fluid cart-img" />
-                                </div>
-                                <div className="d-block my-3">
-                                    <h3>T-Rex</h3>
-                                    <h5><strike>38,990 INR</strike></h5>
-                                    <h4>38,990 INR</h4>
-                                    <h6 className="mb-0">Yellow and Green</h6>
-                                    <p className="mb-0">Delivery date to be confirmed by Email</p>
-                                </div>
-                            </div>
-
-                            <div className="d-block right-area">
-                                <label htmlFor="colorSelection">Select Color</label>
-                                <select
-                                    className="mb-4 form-control"
-                                    required
-                                    id="colorSelection"
-                                    name="colorSelect"
-                                    style={{ textTransform: "capitalize" }}
-                                >
-                                    <option value="">Yellow & Green</option>
-                                    <option value="">Red & Pink</option>
-                                </select>
-                                <div className="d-inline-flex align-items-center justify-content-between">
-                                    <div className="d-inline-flex align-items-center">
-                                        <button className="mr-2 plusminus">-</button>
-                                        <p className="mb-0">1</p>
-                                        <button className="ml-2 plusminus">+</button>
-                                    </div>
-                                    <h5 className="mx-2 mb-0">38990 INR</h5>
-                                    <div className="del-btn ml-2">
-                                        <i class="far fa-trash-alt"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="d-flex align-items-center justify-content-between border-bottom pb-3 flex-wrap mb-4">
-                            <div className="d-inline-flex align-items-center flex-wrap">
-                                <div className="p-4 mx-sm-auto">
-                                    <img src={cycle} className="img-fluid cart-img" />
-                                </div>
-                                <div className="d-block my-3">
-                                    <h3>Doodle</h3>
-                                    <h5><strike>38,990 INR</strike></h5>
-                                    <h4>38,990 INR</h4>
-                                    <h6 className="mb-0">Yellow and Green</h6>
-                                    <p className="mb-0">Delivery date to be confirmed by Email</p>
-                                </div>
-                            </div>
-
-                            <div className="d-block right-area">
-                                <label htmlFor="colorSelection">Select Color</label>
-                                <select
-                                    className="mb-4 form-control"
-                                    required
-                                    id="colorSelection"
-                                    name="colorSelect"
-                                    style={{ textTransform: "capitalize" }}
-                                >
-                                    <option value="">Yellow & Green</option>
-                                    <option value="">Red & Pink</option>
-                                </select>
-                                <div className="d-inline-flex align-items-center justify-content-between">
-                                    <div className="d-inline-flex align-items-center">
-                                        <button className="mr-2 plusminus">-</button>
-                                        <p className="mb-0">1</p>
-                                        <button className="ml-2 plusminus">+</button>
-                                    </div>
-                                    <h5 className="mx-2 mb-0">38990 INR</h5>
-                                    <div className="del-btn ml-2">
-                                        <i class="far fa-trash-alt"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <center>
-                            <button
-                                className="bg-transparent border-0 mt-4 mb-3"
-                            >
-                                <Button text="Proceed to checkout" />
-                            </button>
-                        </center>
-                    </div>
+                  </div>
                 </div>
-            </section>
-            <Footer />
-        </div >
-    );
-}
+              );
+            })}
 
-export default newCart;
+            <center>
+              <button
+                className="bg-transparent border-0 mt-5"
+                onClick={() => {
+                  if (items.length === 0) {
+                    alert("You need to add items to cart first.");
+                  } else {
+                    handleCheckout();
+                  }
+                }}
+              >
+                <Button text="Proceed to checkout" />
+              </button>
+            </center>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </div>
+  );
+};
+
+export default NewCart;
