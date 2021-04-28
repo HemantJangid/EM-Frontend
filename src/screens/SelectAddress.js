@@ -4,14 +4,18 @@ import "../assets/css/Sign.css";
 import { Link, useHistory } from "react-router-dom";
 import { auth } from "./../firebase";
 import constants from "../constant/RequestUrls";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import navUrls from "./../constant/navUrls";
 
-function SelectAddress() {
+function SelectAddress(props) {
   const [reRender, setReRender] = useState(true);
   const [addresses, setAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState();
+  const discount = useSelector((state) => state.discountReducer);
   const history = useHistory();
+
+  console.log(props.location);
 
   useEffect(() => {
     getAddress();
@@ -40,7 +44,16 @@ function SelectAddress() {
   }
 
   function submitAddress() {
-    // alert(JSON.stringify({ user_address_uuid: selectedAddress }, null, 2));
+    // alert(
+    //   JSON.stringify(
+    //     {
+    //       user_address_uuid: selectedAddress,
+    //       discount_code: discount.discount_code,
+    //     },
+    //     null,
+    //     2
+    //   )
+    // );
     auth.currentUser.getIdToken(true).then((idToken) => {
       const headers = {
         "Content-Type": "application/json",
@@ -49,7 +62,10 @@ function SelectAddress() {
       axios
         .post(
           `${constants.base_url}${constants.order}`,
-          { user_address_uuid: selectedAddress },
+          {
+            user_address_uuid: selectedAddress,
+            discount_code: discount.discount_code,
+          },
           { headers }
         )
         .then((res) => {
