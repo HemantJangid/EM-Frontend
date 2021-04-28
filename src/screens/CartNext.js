@@ -52,7 +52,7 @@ function CartNext() {
     if (activeStep === 0) {
         comp = <div className="row justify-content-center">
             <div className="col-lg-5 my-2">
-                <div className="py-4 px-2 px-sm-5 bg-box">
+                <div className="py-4 px-2 px-sm-4 bg-box">
                     <h4 className="px-3">Detail Order</h4>
                     <table className='table table-borderless mb-0' width="100%">
                         <tbody>
@@ -82,7 +82,7 @@ function CartNext() {
 
             </div>
             <div className="col-lg-5 my-2">
-                <div className="py-4 px-2 px-sm-5 bg-box">
+                <div className="py-4 px-2 px-sm-4 bg-box">
                     <h4>Shipping Address</h4>
                     <form className="p-0">
                         <div className=" form-group">
@@ -231,7 +231,7 @@ function CartNext() {
     } else if (activeStep === 1) {
         comp = <div className="row justify-content-center">
             <div className="col-lg-5 my-2">
-                <div className="py-4 px-2 px-sm-5 bg-box">
+                <div className="py-4 px-2 px-sm-4 bg-box">
                     <h4 className="px-2">Detail Order</h4>
                     <table className='table table-borderless mb-0' width="100%">
                         <tbody>
@@ -258,13 +258,13 @@ function CartNext() {
                         </tbody>
                     </table>
                 </div>
-                <div className="py-4 px-2 px-sm-5 bg-box mt-3">
+                <div className="py-4 px-2 px-sm-4 bg-box mt-3">
                     <h4 className="px-1">Payment Detail</h4>
                     <p>Please make a payment according with the limit time specified, starting from now</p>
                 </div>
             </div>
             <div className="col-lg-6 my-2">
-                <div className="py-4 px-2 px-sm-5 bg-box">
+                <div className="py-4 px-2 px-sm-4 bg-box">
                     <h4>Shipping Address</h4>
                     <table className='table table-borderless mb-0' width="100%">
                         <tbody>
@@ -348,7 +348,7 @@ function CartNext() {
                                     <div>
                                         {comp}
                                         <div className="d-flex justify-content-center flex-wrap">
-                                            {activeStep !== 0 ? <button className="bg-transparent border-0 mx-2 my-3" onClick={handleBack}><Button text="Back" /></button> : <></>}
+                                            {/* {activeStep !== 0 ? <button className="bg-transparent border-0 mx-2 my-3" onClick={handleBack}><Button text="Back" /></button> : <></>} */}
 
                                             <button
                                                 className="bg-transparent border-0 mx-2 my-3"
