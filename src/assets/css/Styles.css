@@ -76,7 +76,7 @@ label:focus,
 }
 
 .pri {
-  color: var(--pri);
+  color: var(--pri) !important;
 }
 
 .loader {
