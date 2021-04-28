@@ -1,0 +1,118 @@
+#cart {
+  padding: 100px 0;
+  background: #000;
+}
+
+#cart .cart-box {
+  box-shadow: 0px 0px 14px rgba(255, 255, 255, 0.15);
+}
+
+#cart .bg-grey {
+  background-color: #dadada;
+}
+
+#cart h3 {
+  font-size: 1.5rem;
+}
+
+#cart h5 {
+  font-size: 1rem;
+  color: var(--white);
+}
+
+#cart h4 {
+  font-size: 1.3rem;
+  color: var(--pri);
+}
+
+#cart h6 {
+  font-size: 1rem;
+  padding: 0;
+  color: var(--white);
+}
+
+#cart p {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+#cart .right-area {
+  text-align: right;
+}
+
+#cart label {
+  color: var(--white);
+}
+
+#cart select {
+  width: 100%;
+  outline: none;
+}
+
+#cart select {
+  display: block;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ffffff;
+  background-color: rgb(0 0 0 / 15%);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#cart .del-btn {
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  color: var(--white);
+}
+
+#cart .plusminus {
+  background: #333;
+  color: var(--white);
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  padding: 0;
+}
+
+#cart .promo-code input[type="text"] {
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 0;
+  color: var(--white);
+}
+
+#cart .promo-code input[type="submit"] {
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 0;
+  color: var(--white);
+  max-width: 100px;
+}
+
+#cart a {
+  color: var(--white);
+  font-family: var(--sen);
+}
+
+#cart .cart-img {
+  max-width: 150px;
+}
+
+@media screen and (max-width: 992px) {
+  #cart .right-area {
+    text-align: left;
+    width: 100%;
+  }
+}

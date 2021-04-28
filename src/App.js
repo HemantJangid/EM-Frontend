@@ -33,6 +33,8 @@ import navUrls from "./constant/navUrls";
 
 import ScrollToTop from "./components/ScrollToTop";
 import Loader from "./components/Loader";
+import newCart from "./screens/newCart";
+import CartNext from "./screens/CartNext";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -53,6 +55,8 @@ function App() {
               <Route exact path={`${navUrls.home}`} component={Home} />
               <Route exact path="/loader" component={Loader} />
               <Route path={`${navUrls.about}`} component={About} />
+              <Route path={`${navUrls.newCart}`} component={newCart} />
+              <Route path={`${navUrls.cartNext}`} component={CartNext} />
               <Route path={`${navUrls.partner}`} component={Partner} />
               <Route path={`${navUrls.contact}`} component={Contact} />
               <Route path={`${navUrls.careers}`} component={Careers} />

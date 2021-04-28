@@ -14,6 +14,8 @@ const navUrls = {
   blog: "/blog",
   blogpost: "/blog-post",
   cart: "/cart",
+  cartNext: "/cartNext",
+  newCart: "/newCart",
   selectAddress: "/select-address",
   addAddresss: "/add-address",
   testride: "/book-test-ride",
