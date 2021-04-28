@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import "../assets/css/newCart.css";
 import dots from "../assets/img/design/dots.svg";
+import confirmation from "../assets/img/design/confirmation.png";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import { Helmet } from "react-helmet";
@@ -9,7 +10,81 @@ import cycle from "../temp/cycle.png";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import StepConnector from '@material-ui/core/StepConnector';
+import clsx from 'clsx';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PaymentIcon from '@material-ui/icons/Payment';
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import '../assets/css/CartNext.css'
+
+
+const ColorlibConnector = withStyles({
+    alternativeLabel: {
+        top: 22,
+        color: '#fff',
+    },
+    active: {
+        '& $line': {
+            backgroundColor: '#68db85',
+        },
+    },
+    completed: {
+        '& $line': {
+            backgroundColor: '#68db85',
+        },
+    },
+    line: {
+        height: 3,
+        border: 0,
+        backgroundColor: '#eaeaf0',
+        borderRadius: 1,
+    },
+})(StepConnector);
+
+const useColorlibStepIconStyles = makeStyles({
+    root: {
+        backgroundColor: '#ccc',
+        zIndex: 1,
+        color: '#fff',
+        width: 50,
+        height: 50,
+        display: 'flex',
+        borderRadius: '50%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    active: {
+        backgroundColor: '#68db85',
+        boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
+    },
+    completed: {
+        backgroundColor: '#68db85',
+    },
+});
+
+function ColorlibStepIcon(props) {
+    const classes = useColorlibStepIconStyles();
+    const { active, completed } = props;
+
+    const icons = {
+        1: <ShoppingCartIcon style={{ color: '#000' }} />,
+        2: <PaymentIcon style={{ color: '#000' }} />,
+        3: <PlaylistAddCheckIcon style={{ color: '#000' }} />,
+    };
+
+    return (
+        <div
+            className={clsx(classes.root, {
+                [classes.active]: active,
+                [classes.completed]: completed,
+            })}
+        >
+            {icons[String(props.icon)]}
+        </div>
+    );
+}
+
 
 function getSteps() {
     return [
@@ -19,30 +94,21 @@ function getSteps() {
     ];
 }
 
-function getStepContent(stepIndex) {
-    switch (stepIndex) {
-        case 0:
-            return "1. Checkout";
-        case 1:
-            return "What is an ad group anyways?";
-        case 2:
-            return "This is the bit I really care about!";
-        default:
-            return "Unknown stepIndex";
-    }
-}
-
 function CartNext() {
     const [activeStep, setActiveStep] = useState(0);
     const steps = getSteps();
     let comp;
 
     const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        window.scroll(0, 0)
+        if (activeStep < 2)
+            setActiveStep((prevActiveStep) => prevActiveStep + 1);
     };
 
     const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+        window.scroll(0, 0)
+        if (activeStep !== -1)
+            setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
     const handleReset = () => {
@@ -79,7 +145,6 @@ function CartNext() {
                         </tbody>
                     </table>
                 </div>
-
             </div>
             <div className="col-lg-5 my-2">
                 <div className="py-4 px-2 px-sm-4 bg-box">
@@ -130,6 +195,17 @@ function CartNext() {
                             />
                         </div>
                         <div className="form-group">
+                            <label htmlFor="country">Country</label>
+                            <input
+                                className="form-control"
+                                required
+                                type="text"
+                                name="country"
+                                id="country"
+                                placeholder="Country"
+                            />
+                        </div>
+                        {/* <div className="form-group">
                             <label htmlFor="name">Country</label>
                             <select
                                 required
@@ -141,8 +217,19 @@ function CartNext() {
                                 <option value="Pakistan">Pakistan</option>
                                 <option value="China">China</option>
                             </select>
-                        </div>
+                        </div> */}
                         <div className="form-group">
+                            <label htmlFor="state">State/Province</label>
+                            <input
+                                className="form-control"
+                                required
+                                type="text"
+                                name="state"
+                                id="state"
+                                placeholder="State/Province"
+                            />
+                        </div>
+                        {/* <div className="form-group">
                             <label htmlFor="name">State/Province</label>
                             <select
                                 required
@@ -154,22 +241,20 @@ function CartNext() {
                                 <option value="Pakistan">Pakistan</option>
                                 <option value="China">China</option>
                             </select>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="name">State/Province</label>
-                            <select
-                                required
-                                id="state"
-                                name="state"
-                                className="form-control"
-                            >
-                                <option value="Delhi">Delhi</option>
-                                <option value="Pakistan">Pakistan</option>
-                                <option value="China">China</option>
-                            </select>
-                        </div>
+                        </div> */}
                         <div className="form-row">
                             <div className="col form-group">
+                                <label htmlFor="city">City</label>
+                                <input
+                                    className="form-control"
+                                    required
+                                    type="text"
+                                    name="city"
+                                    id="city"
+                                    placeholder="City"
+                                />
+                            </div>
+                            {/* <div className="col form-group">
                                 <label htmlFor="name">City</label>
                                 <select
                                     required
@@ -181,7 +266,7 @@ function CartNext() {
                                     <option value="Pakistan">Indore</option>
                                     <option value="China">China</option>
                                 </select>
-                            </div>
+                            </div> */}
                             <div className="col form-group">
                                 <label htmlFor="zipcode">Zip Code</label>
                                 <input
@@ -194,19 +279,7 @@ function CartNext() {
                                 />
                             </div>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="name">Full Name</label>
-
-                            <input
-                                className="form-control"
-                                required
-                                type="text"
-                                name="phone"
-                                id="phone"
-                                placeholder="Contact Number"
-                            />
-                        </div>
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label for="courier">Choose Courier</label>
                             <select
                                 className="form-control"
@@ -216,7 +289,7 @@ function CartNext() {
                             >
                                 <option value="GATI">GATI</option>
                             </select>
-                        </div>
+                        </div> */}
                         {/* <button
                         disabled={formLoading}
                         type="submit"
@@ -312,6 +385,74 @@ function CartNext() {
                 </div>
             </div>
         </div>
+    } else if (activeStep === 2) {
+        comp = <div className="row justify-content-center">
+            <div className="col-lg-5 my-2">
+                <div className="py-4 px-2 px-sm-4 bg-box">
+                    <img src={confirmation} alt="Confirmation" className="img-fluid" />
+                    <div className="text-center">
+                        <h4 className="my-3">Order Confirmed</h4>
+                        <p>Your order have been confirmed, please wait and track your order</p>
+                        <Button text="Track Order" />
+                        <p className="mt-3">Your assembly information will be sent to you on email</p>
+                    </div>
+                </div>
+            </div>
+            <div className="col-lg-6 my-2">
+                <div className="py-4 px-2 px-sm-4 bg-box">
+                    <table className='table table-borderless mb-0' width="100%">
+                        <tbody>
+                            <tr>
+                                <td><p><i class="far fa-clock mr-2"></i> 10 days delivery</p></td>
+                                <td className="text-left"><p><i class="fas fa-truck mr-2"></i>GATI Express</p></td>
+                            </tr>
+                            <tr>
+                                <td><img src={cycle} alt="Cycle" className="img-fluid" /></td>
+                                <td className="text-left">
+                                    <h5>T-rex (Yellow and Green)</h5>
+                                    <p>1 x  INR 38,990</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src={cycle} alt="Cycle" className="img-fluid" /></td>
+                                <td className="text-left">
+                                    <h5>T-rex (White and Red)</h5>
+                                    <p>1 x  INR 38,990</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td className="text-left">74,990 INR</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping Cost</td>
+                                <td className="text-left">Free</td>
+                            </tr>
+                            <tr>
+                                <td>Promo Code</td>
+                                <td className="text-left">EM-15</td>
+                            </tr>
+                            <tr>
+                                <td>Packaging</td>
+                                <td className="text-left">Free</td>
+                            </tr>
+                            <tr>
+                                <td>GST (18%)</td>
+                                <td className="text-left">Included</td>
+                            </tr>
+                            <tr style={{ borderTop: '1px solid #fff', borderBottom: '1px solid #fff' }}>
+                                <td>Grand Total</td>
+                                <td className="text-left"><h3>74,990 INR</h3></td>
+                            </tr>
+                            <tr>
+                                <td>Shipping Address</td>
+                                <td className="text-left"><h3><p>40 Saket Vihar, Palasia, Indore Madhya pradesh 452001</p></h3></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     }
 
     return (
@@ -330,10 +471,10 @@ function CartNext() {
                     </div>
                     <div className="cart-box px-4 py-4">
                         <div>
-                            <Stepper activeStep={activeStep} alternativeLabel>
+                            <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
                                 {steps.map((label) => (
                                     <Step key={label}>
-                                        <StepLabel>{label}</StepLabel>
+                                        <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
                                     </Step>
                                 ))}
                             </Stepper>
@@ -349,7 +490,6 @@ function CartNext() {
                                         {comp}
                                         <div className="d-flex justify-content-center flex-wrap">
                                             {/* {activeStep !== 0 ? <button className="bg-transparent border-0 mx-2 my-3" onClick={handleBack}><Button text="Back" /></button> : <></>} */}
-
                                             <button
                                                 className="bg-transparent border-0 mx-2 my-3"
                                                 onClick={handleNext}
