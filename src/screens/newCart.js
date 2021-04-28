@@ -20,12 +20,14 @@ import { cleanData } from "jquery";
 
 const NewCart = () => {
   const [reRender, setReRender] = useState(true);
-  const discount = useSelector((state) => state.discountReducer);
+  const { discount } = useSelector((state) => state.discountReducer);
   const [promocodeApplied, setPromocodeApplied] = useState(
     discount.discountApplied
   );
   const [discountPercent, setDiscountPercent] = useState(discount.percent);
-  const [promocode, setPromocode] = useState(discount.discount_code);
+  const [promocode, setPromocode] = useState(
+    discount.discount_code === "NO-PROMO-CODE" ? "" : discount.discount_code
+  );
   const [selectedColor, setSelectedColor] = useState([]);
   const { logout } = useAuth();
   const history = useHistory();
@@ -201,9 +203,11 @@ const NewCart = () => {
           setDiscountPercent(res.data.payload.discount_percent);
           dispatch(
             addCode({
-              discountApplied: true,
-              discount_code: promocode,
-              percent: res.data.payload.discount_percent,
+              discount: {
+                discountApplied: true,
+                discount_code: promocode,
+                percent: res.data.payload.discount_percent,
+              },
             })
           );
         }
@@ -363,6 +367,7 @@ const NewCart = () => {
                           <strike>{totalAmount()} INR</strike>
                         </h5>
                       )}
+                      {console.log(discount.percent, discountPercent)}
                       <h4>{totalAmount() * (1 - discountPercent / 100)} INR</h4>
                     </div>
                   </div>
