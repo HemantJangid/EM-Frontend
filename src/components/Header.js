@@ -22,7 +22,7 @@ const Header = () => {
       .then((res) => {
         if (res.status === 200) {
           let prod = res.data.payload.products;
-          console.log(prod);
+          // console.log(prod);
           prod.sort((a, b) =>
             a.display_position > b.display_position
               ? 1
