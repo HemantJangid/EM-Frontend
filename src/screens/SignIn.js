@@ -76,8 +76,10 @@ function SignIn() {
             alert(
               "There is no user account with this email. Please SignUp first."
             );
+            break;
           case "auth/wrong-password":
             alert("Please check your password again.");
+            break;
           default:
             alert(error.message);
         }

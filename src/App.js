@@ -55,7 +55,6 @@ function App() {
               <Route exact path={`${navUrls.home}`} component={Home} />
               <Route exact path="/loader" component={Loader} />
               <Route path={`${navUrls.about}`} component={About} />
-              <Route path={`${navUrls.cartNext}`} component={CartNext} />
               <Route path={`${navUrls.partner}`} component={Partner} />
               <Route path={`${navUrls.contact}`} component={Contact} />
               <Route path={`${navUrls.careers}`} component={Careers} />
@@ -77,6 +76,7 @@ function App() {
                 path={`${navUrls.addAddresss}`}
                 component={AddAddress}
               />
+              <PrivateRoute path={`${navUrls.cartNext}`} component={CartNext} />
               <PrivateRoute path={`${navUrls.checkout}`} component={Checkout} />
               <Route path={`${navUrls.testride}`} component={TestRide} />
               {/* <Route component={Error} /> */}

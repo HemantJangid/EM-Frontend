@@ -28,7 +28,6 @@ const NewCart = () => {
   const [promocode, setPromocode] = useState(
     discount.discount_code === "NO-PROMO-CODE" ? "" : discount.discount_code
   );
-  const [selectedColor, setSelectedColor] = useState([]);
   const { logout } = useAuth();
   const history = useHistory();
   const { items } = useSelector((state) => state.cartReducer);
@@ -156,7 +155,7 @@ const NewCart = () => {
     // history.push(navUrls.selectAddress);
     if (auth.currentUser) {
       history.push({
-        pathname: navUrls.selectAddress,
+        pathname: navUrls.cartNext,
       });
     } else {
       history.push(navUrls.signIn);
