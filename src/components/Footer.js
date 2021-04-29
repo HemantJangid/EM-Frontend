@@ -101,7 +101,8 @@ function Footer() {
             </div>
           </div>
           <p className="copyright">
-            &copy; All Rights reserved | Privacy Policy | Credits
+            &copy; All Rights reserved by Inkodop technologies Pvt Ltd.
+            {/* | Privacy Policy | Credits */}
           </p>
         </div>
       </section>
