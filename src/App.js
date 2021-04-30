@@ -35,6 +35,10 @@ import ScrollToTop from "./components/ScrollToTop";
 import Loader from "./components/Loader";
 import NewCart from "./screens/newCart";
 import CartNext from "./screens/CartNext";
+import ReactGA from "react-ga";
+
+const TRACKING_ID = "UA-180929846-1";
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -90,6 +94,14 @@ function App() {
           </Router>
         </PersistGate>
       </Provider>
+      <a
+        href="https://wa.me/+918686050591"
+        class="whatsapp_float"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+      </a>
     </AuthProvider>
   );
 }
