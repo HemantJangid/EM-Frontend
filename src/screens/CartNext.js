@@ -336,6 +336,23 @@ const CartNext = () => {
         <div className="col-lg-5 my-2">
           <div className="py-4 px-2 px-sm-4 bg-box">
             <h4>Shipping Address</h4>
+            <div className="custom-control custom-radio">
+              <input
+                type="radio"
+                id="address"
+                name="user_address_uuid"
+                className="custom-control-input"
+              />
+              <label
+                className="custom-control-label"
+                for="address"
+              >
+                The address will come here!
+              </label>
+            </div>
+            <button
+              className="form-control add-new-address text-center"
+            >Continue</button>
             <form className="p-0" onSubmit={formik.handleSubmit}>
               <div className=" form-group">
                 <label htmlFor="full_name">Full Name</label>
