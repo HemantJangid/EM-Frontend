@@ -16,7 +16,7 @@ import Footer from "../components/Footer";
 
 function SignUp() {
   const [loading, setLoading] = useState(false);
-  const { signup, currentUser } = useAuth();
+  const { signup, resetPassword } = useAuth();
   const dispatch = useDispatch();
   const history = useHistory();
   const formik = useFormik({
@@ -83,6 +83,7 @@ function SignUp() {
       setLoading(false);
     },
   });
+
   return (
     <div>
       <Helmet>

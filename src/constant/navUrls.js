@@ -22,6 +22,7 @@ const navUrls = {
   products: "/products",
   partner: "/partner-with-us",
   product: "/product/:productSlug",
+  resetPassword: "/reset-password",
 };
 
 export default navUrls;

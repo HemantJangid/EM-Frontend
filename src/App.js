@@ -36,6 +36,7 @@ import Loader from "./components/Loader";
 import NewCart from "./screens/newCart";
 import CartNext from "./screens/CartNext";
 import ReactGA from "react-ga";
+import ResetPassword from "./screens/ResetPassword";
 
 const TRACKING_ID = "UA-180929846-1";
 ReactGA.initialize(TRACKING_ID);
@@ -72,6 +73,10 @@ function App() {
               <Route path={`${navUrls.blogpost}`} component={BlogPost} />
               <Route path={`${navUrls.warranty}`} component={Warranty} />
               <Route path={`${navUrls.cart}`} component={NewCart} />
+              <Route
+                path={`${navUrls.resetPassword}`}
+                component={ResetPassword}
+              />
               <PrivateRoute
                 path={`${navUrls.selectAddress}`}
                 component={SelectAddress}

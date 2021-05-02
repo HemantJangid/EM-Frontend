@@ -14,87 +14,36 @@ import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-function SignIn() {
+function ResetPassword() {
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { resetPassword } = useAuth();
   const history = useHistory();
-  const { items } = useSelector((state) => state.cartReducer);
-  const dispatch = useDispatch();
-  // console.log(items);
-
-  function addItemToCart(item) {
-    return new Promise((resolve, reject) => {
-      auth.currentUser &&
-        auth.currentUser.getIdToken(true).then((idToken) => {
-          const headers = {
-            "Content-Type": "application/json",
-            Authorization: idToken,
-          };
-          axios
-            .post(
-              `${constants.base_url}${constants.cart}/${item.product.uuid}`,
-              {
-                quantity: item.quantity,
-                color: item.color,
-              },
-              { headers }
-            )
-            .then((res) => {
-              console.log(res);
-              resolve(res);
-            })
-            .catch((err) => {
-              console.log(err.response);
-              reject(err);
-            });
-        });
-    });
-  }
-
-  async function addItemsToCart() {
-    for (let i in items) {
-      await addItemToCart(items[i]);
-    }
-    history.goBack();
-  }
 
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
     },
     onSubmit: async (values) => {
       try {
         setLoading(true);
-        let response = await login(values.email, values.password);
-        dispatch(addUser(response.user.displayName));
-        addItemsToCart();
+        let response = await resetPassword(values.email);
+        alert(
+          "Please follow the instructions in your mail to reset your password."
+        );
       } catch (error) {
         console.log(error);
-        switch (error.code) {
-          case "auth/user-not-found":
-            alert(
-              "There is no user account with this email. Please SignUp first."
-            );
-            break;
-          case "auth/wrong-password":
-            alert("Please check your password again.");
-            break;
-          default:
-            alert(error.message);
-        }
+        alert(error.message);
       }
 
       setLoading(false);
     },
   });
-  // console.log(currentUser.getIdToken());
   return (
     <div>
       <Helmet>
         <meta charSet="utf-8" />
         <title>
-          Sign In | EMotorad | Best Electric Bicycle and Electric Bike
+          Reset Password | EMotorad | Best Electric Bicycle and Electric Bike
         </title>
       </Helmet>
       <Header />
@@ -105,7 +54,7 @@ function SignIn() {
               <div className="form-box">
                 <form onSubmit={formik.handleSubmit}>
                   <h2 className="mb-4">
-                    Sign <span className="pri">In</span>
+                    Reset <span className="pri">Password</span>
                   </h2>
                   <div className="form-group">
                     <input
@@ -120,29 +69,16 @@ function SignIn() {
                   </div>
                   <div className="form-group">
                     <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="Enter your Password"
-                      className="form-control"
-                      onChange={formik.handleChange}
-                      value={formik.values.password}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
                       disabled={loading}
                       className="form-control"
                       type="Submit"
-                      defaultValue="Sign In"
+                      defaultValue="Reset Password"
                       name="submit"
                     />
                   </div>
                   <hr />
                   <p>
-                    <Link to={`${navUrls.resetPassword}`}>
-                      Forgot Password?
-                    </Link>
+                    <Link to={`${navUrls.signIn}`}>Sign In</Link>
                   </p>
                   <p>
                     Don't have an account?{" "}
@@ -164,4 +100,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default ResetPassword;
