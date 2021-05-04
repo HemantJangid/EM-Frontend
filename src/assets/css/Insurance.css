@@ -57,3 +57,112 @@
   background: #000;
   padding: 100px 0;
 }
+
+.insurance-form {
+  background-color: #000;
+}
+
+.insurance-form .close-btn {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  z-index: 1000;
+  background: var(--pri);
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+
+.insurance-form .close-btn i {
+  color: var(--white);
+}
+
+@media screen and (max-width: 550px) {
+  .insurance-form .close-btn {
+    height: 20px;
+    width: 20px;
+  }
+
+  .insurance-form .close-btn i {
+    color: var(--white);
+    font-size: 0.7rem;
+  }
+}
+
+.insurance-form input[type="text"],
+.insurance-form input[type="date"],
+.insurance-form input[type="email"],
+.insurance-form input[type="number"],
+.insurance-form select {
+  -webkit-appearance: none;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid white;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  font-family: var(--sen);
+  color: var(--white);
+}
+
+.insurance-form input[type="text"]::placeholder,
+.insurance-form input[type="date"]::placeholder,
+.insurance-form input[type="email"]::placeholder,
+.insurance-form input[type="number"]::placeholder,
+.insurance-form select::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.insurance-form input[type="text"]:focus,
+.insurance-form input[type="date"]:focus,
+.insurance-form input[type="email"]:focus,
+.insurance-form input[type="number"]:focus,
+.insurance-form select:focus {
+  border-bottom: 1px solid var(--pri);
+  background-color: #000;
+  color: var(--white);
+}
+
+.insurance-form input[type="submit"] {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: var(--white);
+  text-transform: uppercase;
+  font-family: var(--sen);
+  font-size: 0.875rem;
+  min-height: 45px;
+}
+
+.insurance-form .add-new-address {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: var(--white);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: var(--sen);
+  font-size: 0.875rem;
+  min-height: 45px;
+}
+
+.insurance-form p {
+  font-size: 0.875rem;
+}
+
+.insurance-form a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.insurance-form label {
+  color: var(--white);
+  font-family: var(--sen);
+}
+
+.insurance-form ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
