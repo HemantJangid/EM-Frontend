@@ -61,7 +61,7 @@ function AllProducts() {
 
       <Header />
       {loading ? (
-        <Loader />
+        <Loader logo="hide" />
       ) : (
         products &&
         products.map((product) => (

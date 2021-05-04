@@ -112,7 +112,7 @@ function ProductDetails(props) {
       <Header />
 
       {loading ? (
-        <Loader />
+        <Loader logo="hide" />
       ) : (
         productContent != undefined &&
         productContent != null && (
