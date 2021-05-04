@@ -133,8 +133,50 @@ function Emi() {
           <HashLink smooth to={`${navUrls.emi}#coming-soon`}>
             <Button text="Check Loan Emi" />
           </HashLink>
+          <button className="bg-transparent border-0">
+
+          </button>
         </div>
       </section>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+      >
+        <section
+          id="video-product"
+          className="video-container"
+          style={{ position: "relative" }}
+        >
+          {/* <iframe
+                src="https://player.vimeo.com/video/509675910"
+                style={{
+                  height: "100%",
+                  width: "100%",
+                }}
+                frameBorder="0"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+              ></iframe> */}
+          <div
+            onClick={closeModal}
+            className="close-btn d-flex align-items-center justify-content-center"
+          >
+            <i class="fas fa-times"></i>
+          </div>
+          <Vimeo
+            style={{ zIndex: "900" }}
+            video={productContent.info_page_bg_image_url}
+            autoplay={true}
+            responsive={true}
+            controls={false}
+            showByline={false}
+            color="#68db85"
+            background={true}
+          />
+        </section>
+      </Modal>
 
       <section id="coming-soon">
         <div className="contianer">

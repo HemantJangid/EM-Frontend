@@ -75,7 +75,7 @@ function Footer() {
                   <div className="my-2">
                     <button
                       onClick={() => history.push(navUrls.testride)}
-                      className="bg-transparent border-0 text-left w-100"
+                      className="bg-transparent border-0 px-0 text-left w-100"
                     >
                       <Button text="Book a test ride" />
                     </button>
@@ -83,7 +83,7 @@ function Footer() {
                   <div className="my-2">
                     <button
                       onClick={() => history.push(navUrls.contact)}
-                      className="bg-transparent border-0 text-left w-100"
+                      className="bg-transparent border-0 px-0 text-left w-100"
                     >
                       <Button text="Reach us out" />
                     </button>

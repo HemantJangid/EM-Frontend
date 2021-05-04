@@ -79,7 +79,7 @@ function AllProducts() {
               <Button text="download brochure" />
               <div className="mt-3"></div>
               <button
-                className="bg-transparent border-0"
+                className="bg-transparent border-0 px-0"
                 onClick={() => {
                   if (auth.currentUser) {
                     auth.currentUser.getIdToken(true).then((idToken) => {
@@ -134,7 +134,7 @@ function AllProducts() {
               >
                 <Button text="Buy Now" />
               </button>
-              <button
+              {/* <button
                 className="bg-transparent border-0"
                 onClick={() => {
                   let alreadyInCart = false;
@@ -161,7 +161,7 @@ function AllProducts() {
                 }}
               >
                 <Button text="Buy Now" color="white" />
-              </button>
+              </button> */}
             </div>
             <div class="products-overlay"></div>
           </section>

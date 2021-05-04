@@ -5,7 +5,7 @@ import dots from "../assets/img/design/dots.svg";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import { useAuth } from "../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addUser } from "./../redux/actions/user";
 import { addItem } from "./../redux/actions/cart";
@@ -333,7 +333,7 @@ const NewCart = () => {
                 </div>
               );
             })}
-            {items.length != 0 && (
+            {items.length !== 0 ? (
               <>
                 <div className="d-flex align-items-center justify-content-between flex-wrap flex-md-nowrap">
                   <div className="d-inline-flex align-items-center promo-code flex-wrap flex-lg-nowrap gutter-1">
@@ -386,6 +386,15 @@ const NewCart = () => {
                     <Button text="Proceed to checkout" />
                   </button>
                 </center>
+              </>
+            ) : (
+              <>
+                <div className="text-center my-5">
+                  <h4 className="mb-5">Cart is empty</h4>
+                  <Link to="/products">
+                    <Button text="Browse Products" />
+                  </Link>
+                </div>
               </>
             )}
           </div>
