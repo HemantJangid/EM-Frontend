@@ -66,6 +66,7 @@
 #book-testride input[type="email"],
 #book-testride input[type="date"],
 #book-testride input[type="time"],
+#book-testride input[type="number"],
 #book-testride select {
   -webkit-appearance: none;
   border-radius: 0;
@@ -75,6 +76,7 @@
 #book-testride input[type="text"],
 #book-testride input[type="email"],
 #book-testride input[type="date"],
+#book-testride input[type="number"],
 #book-testride input[type="time"],
 #book-testride select {
   border: none;
@@ -87,6 +89,7 @@
   border: 1px solid #000;
 }
 
+#book-testride input[type="number"]::placeholder,
 #book-testride input[type="text"]::placeholder,
 #book-testride input[type="email"]::placeholder {
   font-size: 0.875rem;

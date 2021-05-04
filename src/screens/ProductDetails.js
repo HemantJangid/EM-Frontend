@@ -429,32 +429,63 @@ function ProductDetails(props) {
                     <button
                       className="bg-transparent border-0"
                       onClick={() => {
-                        let alreadyInCart = false;
-                        for (let i = 0; i < items.length; i++) {
-                          if (
-                            items[i].product.uuid ===
-                            productContent.product.uuid
-                          ) {
-                            alreadyInCart = true;
-                            items[i].quantity += 1;
-                            dispatch(addItem([...items]));
+                        if (auth.currentUser) {
+                          auth.currentUser.getIdToken(true).then((idToken) => {
+                            // console.log(idToken);
+                            const headers = {
+                              "Content-Type": "application/json",
+                              Authorization: idToken,
+                            };
+                            props.location.state &&
+                              axios
+                                .post(
+                                  `${constants.base_url}${constants.cart}/${props.location.state.product.uuid}`,
+                                  {
+                                    quantity: 1,
+                                    color: JSON.stringify(
+                                      productContent.product.product_colors[0]
+                                    ),
+                                  },
+                                  { headers }
+                                )
+                                .then((res) => {
+                                  // console.log(res);
+                                  history.push(navUrls.cart);
+                                })
+                                .catch((err) => {
+                                  console.log(err.response);
+                                  alert(err.response.data.message);
+                                });
+                          });
+                        } else {
+                          let alreadyInCart = false;
+                          for (let i = 0; i < items.length; i++) {
+                            if (
+                              items[i].product.uuid ===
+                              productContent.product.uuid
+                            ) {
+                              alreadyInCart = true;
+                              items[i].quantity += 1;
+                              dispatch(addItem([...items]));
+                            }
                           }
-                        }
 
-                        if (!alreadyInCart) {
-                          dispatch(
-                            addItem([
-                              ...items,
-                              {
-                                quantity: 1,
-                                product: productContent.product,
-                                color:
-                                  productContent.product.product_colors[0].uuid,
-                              },
-                            ])
-                          );
+                          if (!alreadyInCart) {
+                            dispatch(
+                              addItem([
+                                ...items,
+                                {
+                                  quantity: 1,
+                                  product: productContent.product,
+                                  color: JSON.stringify(
+                                    productContent.product.product_colors[0]
+                                  ),
+                                },
+                              ])
+                            );
+                          }
+                          history.push(navUrls.cart);
                         }
-                        history.push(navUrls.cart);
                       }}
                     >
                       <Button text="Buy Now" />

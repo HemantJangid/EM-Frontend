@@ -160,7 +160,7 @@ function TestRide() {
                   <input
                     required
                     className="mb-4"
-                    type="text"
+                    type="number"
                     name="phone_number"
                     id="phone_number"
                     placeholder="Contact Number"

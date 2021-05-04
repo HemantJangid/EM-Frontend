@@ -16,6 +16,7 @@ import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
 import { Helmet } from "react-helmet";
 import { addWarrantyData } from "./../redux/actions/warranty";
+import { DeleteSharp } from "@material-ui/icons";
 
 function Warranty() {
   const todays_date_obj = new Date();
@@ -24,18 +25,44 @@ function Warranty() {
   const { logout } = useAuth();
   const user = useSelector((state) => state.userReducer);
   const warrantyData = useSelector((state) => state.warrantyReducer);
+  const [reRender, setReRender] = useState(true);
   const history = useHistory();
-  console.log(warrantyData);
-  console.log(user);
+  const [dealers, setDealers] = useState([]);
+  // console.log(dealers);
+  // console.log(user);
+
+  useEffect(() => {
+    getAllDealers();
+  }, []);
+
+  function getAllDealers() {
+    axios
+      .get(`${constants.base_url}${constants.dealer}`)
+      .then((res) => {
+        // console.log(res);
+        if (res.status === 200) {
+          let temp = res.data.payload.dealers;
+          setDealers(temp);
+          setReRender(!reRender);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err.response.data.message);
+      });
+  }
 
   const formik = useFormik({
     initialValues: {
+      name: warrantyData ? warrantyData.name : "",
+      phone: warrantyData ? warrantyData.phone : "",
       frame_number: warrantyData ? warrantyData.frame_number : "",
       purchase_date: warrantyData ? warrantyData.purchase_date : "",
       dealer_or_online: warrantyData ? warrantyData.dealer_or_online : "",
+      dealer_or_platform: warrantyData ? warrantyData.dealer_or_platform : "",
     },
     onSubmit: (values) => {
-      //   alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
 
       if (auth.currentUser) {
         auth.currentUser.getIdToken(true).then((idToken) => {
@@ -48,7 +75,7 @@ function Warranty() {
               headers,
             })
             .then(async (res) => {
-              // console.log(res);
+              console.log(res);
               if (res.status === 200) {
                 alert("Warranty activated successfully");
                 await logout();
@@ -113,6 +140,30 @@ function Warranty() {
                     <div className="form-group">
                       <input
                         required
+                        name="name"
+                        id="name"
+                        type="text"
+                        className="mb-4"
+                        placeholder="Name"
+                        onChange={formik.handleChange}
+                        value={formik.values.name}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        required
+                        name="phone"
+                        id="phone"
+                        type="number"
+                        className="mb-4"
+                        placeholder="Contact Number"
+                        onChange={formik.handleChange}
+                        value={formik.values.phone}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        required
                         name="frame_number"
                         id="frame_number"
                         type="text"
@@ -131,7 +182,7 @@ function Warranty() {
                         name="purchase_date"
                         id="purchase_date"
                         style={{ textTransform: "uppercase" }}
-                        min={todays_date}
+                        max={todays_date}
                         onChange={formik.handleChange}
                         value={formik.values.purchase_date}
                       />
@@ -152,6 +203,45 @@ function Warranty() {
                         <option value="dealer">Dealer</option>
                         <option value="online">Online</option>
                       </select>
+                    </div>
+                    <div className="form-group">
+                      {formik.values.dealer_or_online === "dealer" && (
+                        <select
+                          required
+                          id="dealer_or_platform"
+                          name="dealer_or_platform"
+                          onChange={formik.handleChange}
+                          value={formik.values.dealer_or_platform}
+                          style={{ textTransform: "capitalize" }}
+                        >
+                          <option value="">Select</option>
+                          {dealers.map((dealer, index) => {
+                            return (
+                              <option value={dealer.name} key={index}>
+                                {dealer.name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      )}
+                      {formik.values.dealer_or_online === "online" && (
+                        <select
+                          required
+                          id="dealer_or_platform"
+                          name="dealer_or_platform"
+                          onChange={formik.handleChange}
+                          value={formik.values.dealer_or_platform}
+                          style={{ textTransform: "capitalize" }}
+                        >
+                          <option value="">Select</option>
+                          <option value="Amazon">Amazon</option>
+                          <option value="Flipkart">Flipkart</option>
+                          <option value="Blive">Blive</option>
+                          <option value="Em Official Website">
+                            Em Official Website
+                          </option>
+                        </select>
+                      )}
                     </div>
                     <div className="mt-5">
                       <button

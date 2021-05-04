@@ -11,6 +11,7 @@ import Loader from "../components/Loader";
 import { addItem } from "./../redux/actions/cart";
 import navUrls from "./../constant/navUrls";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import { auth } from "../firebase";
 
 function AllProducts() {
   const [products, setProducts] = useState();
@@ -77,6 +78,62 @@ function AllProducts() {
               <h4 className="mb-5">INR {product.emi_per_month}/Month</h4>
               <Button text="download brochure" />
               <div className="mt-3"></div>
+              <button
+                className="bg-transparent border-0"
+                onClick={() => {
+                  if (auth.currentUser) {
+                    auth.currentUser.getIdToken(true).then((idToken) => {
+                      // console.log(idToken);
+                      const headers = {
+                        "Content-Type": "application/json",
+                        Authorization: idToken,
+                      };
+                      axios
+                        .post(
+                          `${constants.base_url}${constants.cart}/${product.uuid}`,
+                          {
+                            quantity: 1,
+                            color: JSON.stringify(product.product_colors[0]),
+                          },
+                          { headers }
+                        )
+                        .then((res) => {
+                          // console.log(res);
+                          history.push(navUrls.cart);
+                        })
+                        .catch((err) => {
+                          console.log(err.response);
+                          alert(err.response.data.message);
+                        });
+                    });
+                  } else {
+                    let alreadyInCart = false;
+                    for (let i = 0; i < items.length; i++) {
+                      if (items[i].product.uuid === product.uuid) {
+                        alreadyInCart = true;
+                        items[i].quantity += 1;
+                        dispatch(addItem([...items]));
+                      }
+                    }
+
+                    if (!alreadyInCart) {
+                      dispatch(
+                        addItem([
+                          ...items,
+                          {
+                            quantity: 1,
+                            product: product,
+                            color: JSON.stringify(product.product_colors[0]),
+                          },
+                        ])
+                      );
+                    }
+                    history.push(navUrls.cart);
+                  }
+                }}
+              >
+                <Button text="Buy Now" />
+              </button>
               <button
                 className="bg-transparent border-0"
                 onClick={() => {

@@ -6,6 +6,7 @@
 #warranty input[type="text"],
 #warranty input[type="email"],
 #warranty input[type="date"],
+#warranty input[type="number"],
 #warranty select {
   width: 100%;
   outline: none;
@@ -27,6 +28,7 @@
 
 #warranty input[type="text"]:focus,
 #warranty input[type="email"]:focus,
+#warranty input[type="number"]:focus,
 #warranty input[type="date"]:focus,
 #warranty select:focus {
   width: 100%;
@@ -39,6 +41,7 @@
 
 #warranty input[type="text"]::placeholder,
 #warranty input[type="email"]::placeholder,
+#warranty input[type="number"]::placeholder,
 #warranty input[type="date"]::placeholder,
 #warranty select::placeholder {
   font-size: 0.875rem;
