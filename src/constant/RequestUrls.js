@@ -19,6 +19,7 @@ const RequestUrls = {
   email: "user/email",
   promocode: "apply-promocode",
   community: "user/community",
+  insurance: "insurance",
 };
 
 export default RequestUrls;

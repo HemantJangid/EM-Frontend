@@ -40,7 +40,7 @@ function Insurance() {
       left: 0,
       right: 0,
       bottom: 0,
-      zIndex: '1000',
+      zIndex: "1000",
       backgroundColor: "rgba(0, 0, 0, 0.9)",
     },
     content: {
@@ -49,7 +49,7 @@ function Insurance() {
       padding: "0px",
       margin: "0px",
       width: "80%",
-      maxWidth: '540px',
+      maxWidth: "540px",
       height: "fit-content",
       transform: "translate(-50%, -50%)",
     },
@@ -98,25 +98,21 @@ function Insurance() {
       dealer_or_platform: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      // axios
-      //   .post(`${constants.base_url}${constants.warranty}`, values, {
-      //     headers,
-      //   })
-      //   .then(async (res) => {
-      //     console.log(res);
-      //     if (res.status === 200) {
-      //       alert("Warranty activated successfully");
-      //       await logout();
-      //       dispatch(addUser(""));
-      //       dispatch(addWarrantyData({}));
-      //       history.push(navUrls.home);
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //     alert(err.response.data.message);
-      //   });
+      // alert(JSON.stringify(values, null, 2));
+      axios
+        .post(`${constants.base_url}${constants.insurance}`, values)
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            alert("Insurance request created successfully.");
+            formik.resetForm();
+            closeModal();
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(err.response.data.message);
+        });
     },
   });
 
@@ -176,19 +172,28 @@ function Insurance() {
           <div className="my-5 d-inline-flex text-center flex-wrap flex-lg-nowrap">
             <div className="d-block mx-3">
               <img src={trex} alt="card" className="img-fluid my-4" />
-              <button className="bg-transparent border-0 px-0 mx-2" onClick={openModal}>
+              <button
+                className="bg-transparent border-0 px-0 mx-2"
+                onClick={openModal}
+              >
                 <Button text="Get T-Rex Insured" />
               </button>
             </div>
             <div className="d-block mx-3">
               <img src={doodle} alt="card" className="img-fluid my-4" />
-              <button className="bg-transparent border-0 px-0 mx-2" onClick={openModal}>
+              <button
+                className="bg-transparent border-0 px-0 mx-2"
+                onClick={openModal}
+              >
                 <Button text="Get Doodle Insured" />
               </button>
             </div>
             <div className="d-block mx-3">
               <img src={emx} alt="card" className="img-fluid my-4" />
-              <button className="bg-transparent border-0 px-0 mx-2" onClick={openModal}>
+              <button
+                className="bg-transparent border-0 px-0 mx-2"
+                onClick={openModal}
+              >
                 <Button text="Get EMX Insured" />
               </button>
             </div>
@@ -254,9 +259,7 @@ function Insurance() {
               />
             </div>
             <div className="form-group">
-              <label for="dealer_or_online">
-                Purchased from Dealer/Online
-                      </label>
+              <label for="dealer_or_online">Purchased from Dealer/Online</label>
               <select
                 required
                 id="dealer_or_online"
@@ -308,16 +311,13 @@ function Insurance() {
                   <option value="Blive">Blive</option>
                   <option value="Em Official Website">
                     Em Official Website
-                          </option>
+                  </option>
                 </select>
               )}
             </div>
             <div className="mt-5">
               <center>
-                <button
-                  type="submit"
-                  className="bg-transparent border-0"
-                >
+                <button type="submit" className="bg-transparent border-0">
                   <Button text="Activate" />
                 </button>
               </center>
@@ -332,13 +332,13 @@ function Insurance() {
         </div>
       </Modal>
 
-      <section id="coming-soon">
+      {/* <section id="coming-soon">
         <div className="container">
           <h2 className="text-center">
             Coming <span className="pri">Soon</span>!
           </h2>
         </div>
-      </section>
+      </section> */}
       <Footer />
     </div>
   );
