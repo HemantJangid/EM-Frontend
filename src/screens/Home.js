@@ -10,6 +10,12 @@ import "../assets/css/Home.css";
 import { Waypoint } from "react-waypoint";
 import Slider from "react-slick";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Pagination, Autoplay, EffectFade } from "swiper/core";
+import "swiper/swiper.scss";
+import "swiper/components/pagination/pagination.scss";
+import "swiper/components/effect-fade/effect-fade.scss";
+
 import electric from "../assets/img/design/electric.svg";
 import dots from "../assets/img/design/dots.svg";
 import lines from "../assets/img/design/lines.svg";
@@ -42,6 +48,9 @@ import { useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
 import { Helmet } from "react-helmet";
 import Loader from "../components/Loader";
+import { HashLink } from "react-router-hash-link";
+
+SwiperCore.use([Pagination, Autoplay, EffectFade]);
 
 function Home() {
   const history = useHistory();
@@ -137,7 +146,87 @@ function Home() {
 
       <Header />
       {/* <Loader display="flex" /> */}
-      <section id="hero">
+      <section id="home">
+        <Swiper loop autoplay effect="fade" pagination={{ clickable: true }}>
+          <SwiperSlide>
+            <section
+              id="home-hero"
+              className="pan-background d-flex align-items-center home-hero-1"
+            >
+              <div className="container">
+                <h3>Ride The</h3>
+                <img
+                  src={electric}
+                  alt="Electric"
+                  className="img-fluid electric"
+                />
+                <h2 className="mt-2">Revolution</h2>
+                <img src={dots} alt="Dots" className="dots" />
+                <div className="hero-btn">
+                  <button
+                    onClick={() => history.push(navUrls.products)}
+                    className="bg-transparent border-0 mx-auto w-100"
+                  >
+                    <Button text="View Products" />
+                  </button>
+                </div>
+              </div>
+            </section>
+          </SwiperSlide>
+          <SwiperSlide>
+            <section
+              id="home-hero"
+              className="pan-background d-flex align-items-center home-hero-2"
+            >
+              <div className="container">
+                <h3>Ride The</h3>
+                <img
+                  src={electric}
+                  alt="Electric"
+                  className="img-fluid electric"
+                />
+                <h2 className="mt-2">Revolution</h2>
+                <img src={dots} alt="Dots" className="dots" />
+                <div className="hero-btn">
+                  <button
+                    onClick={() => history.push(navUrls.products)}
+                    className="bg-transparent border-0 mx-auto w-100"
+                  >
+                    <Button text="View Products" />
+                  </button>
+                </div>
+              </div>
+            </section>
+          </SwiperSlide>
+          <SwiperSlide>
+            <section
+              id="home-hero"
+              className="pan-background d-flex align-items-center home-hero-3"
+            >
+              <div className="container">
+                <h3>Ride The</h3>
+                <img
+                  src={electric}
+                  alt="Electric"
+                  className="img-fluid electric"
+                />
+                <h2 className="mt-2">Revolution</h2>
+                <img src={dots} alt="Dots" className="dots" />
+                <div className="hero-btn">
+                  <button
+                    onClick={() => history.push(navUrls.products)}
+                    className="bg-transparent border-0 mx-auto w-100"
+                  >
+                    <Button text="View Products" />
+                  </button>
+                </div>
+              </div>
+            </section>
+          </SwiperSlide>
+        </Swiper>
+      </section>
+
+      {/* <section id="hero">
         <Slider arrows={false}>
           <div className="first-page d-flex align-items-center">
             <div className="container">
@@ -200,7 +289,7 @@ function Home() {
             </div>
           </div>
         </Slider>
-      </section>
+      </section> */}
 
       <section id="info">
         <div className="design-lines d-none d-sm-block">

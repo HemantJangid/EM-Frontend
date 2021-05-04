@@ -1,102 +1,150 @@
 @import url("https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.css");
 
 /* HERO */
-#hero {
-  padding: 0;
-  margin: 0;
+.home-hero-1 {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+    url("../img/backgrounds/home-min.jpeg") center / cover no-repeat;
 }
 
-#hero .first-page,
-#hero .second-page,
-#hero .third-page {
-  background-position: center;
-  background-size: cover;
-  min-height: 100vh;
-  background-repeat: no-repeat;
+.home-hero-2 {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+    url("../img/backgrounds/home2-min.jpg") center / cover no-repeat;
 }
 
-#hero .first-page {
-  background: url("../img/backgrounds/home-min.jpeg");
+.home-hero-3 {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+    url("../img/backgrounds/home3-min.jpeg") center / cover no-repeat;
 }
 
-#hero .second-page {
-  background: url("../img/backgrounds/home2-min.jpg");
+/* #home {
+  margin-top: -84px;
+} */
+
+#home .swiper-pagination-bullet {
+  background: var(--white);
+  opacity: 1;
 }
 
-#hero .third-page {
-  background: url("../img/backgrounds/home3-min.jpeg");
+#home .swiper-pagination-bullet-active {
+  background: var(--pri);
+}
+
+#home-info1,
+#home-info2,
+#home-info3 {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#home-types {
+  background: var(--grey);
+  padding: 100px 0;
+}
+
+#home-types .home-types-box {
+  border: 2px solid #000;
+  outline: 2px solid #fff;
+  outline-offset: -2rem;
+  padding: 3rem;
+  height: 400px;
+}
+
+#home-types .swiper-wrapper {
+  padding-bottom: 50px;
+}
+
+#home-types
+  .swiper-container-horizontal
+  > #home-types
+  .swiper-pagination-bullets,
+#home-types .swiper-pagination-custom,
+#home-types .swiper-pagination-fraction {
+  bottom: 0px !important;
+}
+
+#home-types .swiper-pagination-bullet {
+  background: var(--white);
+  opacity: 1;
+}
+
+#home-types .swiper-pagination-bullet-active {
+  background: var(--pri);
 }
 
 @media screen and (max-width: 719px) {
-  #hero .first-page {
-    background: url("../img/backgrounds/homemob-min.jpg");
+  #home .home-hero-1 {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+      url("../img/backgrounds/homemob-min.jpg") center / cover no-repeat;
     background-position: center;
   }
 
-  #hero .second-page {
-    background: url("../img/backgrounds/home2mob-min.jpg");
+  #home .home-hero-2 {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+      url("../img/backgrounds/home2mob-min.jpg") center / cover no-repeat;
     background-position: center;
   }
 
-  #hero .third-page {
-    background: url("../img/backgrounds/home3mob-min.jpg");
+  #home .home-hero-3 {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)),
+      url("../img/backgrounds/home3mob-min.jpg") center / cover no-repeat;
     background-position: center;
   }
 }
 
-#hero .electric {
+#home .electric {
   width: 50vw;
 }
 
-#hero h3 {
+#home h3 {
   letter-spacing: 0.2rem;
   text-transform: uppercase;
   font-family: var(--opensans);
 }
 
-#hero h2 {
+#home h2 {
   letter-spacing: 1.4rem;
   text-transform: uppercase;
   font-size: 4rem;
   font-family: var(--opensans);
 }
 
-#hero .hero-btn {
+#home .hero-btn {
   position: absolute;
   bottom: 3rem;
 }
 
 @media screen and (max-width: 768px) {
-  #hero h2 {
+  #home h2 {
     letter-spacing: 1rem;
     font-size: 3.2rem;
   }
 
-  #hero h3 {
+  #home h3 {
     font-size: 1.7rem;
   }
 }
 
 @media screen and (max-width: 576px) {
-  #hero h2 {
+  #home h2 {
     letter-spacing: 0.6rem;
     font-size: 2.8rem;
   }
 
-  #hero h3 {
+  #home h3 {
     font-size: 1.5rem;
   }
 }
 
 @media screen and (max-width: 425px) {
-  #hero h2 {
+  #home h2 {
     letter-spacing: 0.4rem;
     font-size: 2.8rem;
   }
 }
 
 @media screen and (max-width: 375px) {
-  #hero h2 {
+  #home h2 {
     letter-spacing: normal;
   }
 }
