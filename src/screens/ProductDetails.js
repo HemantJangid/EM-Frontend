@@ -211,14 +211,15 @@ function ProductDetails(props) {
                 </div>
               </div>
             </section>
+            {console.log(productContent.video_page_video_link)}
 
-            {/* <Waypoint
+            <Waypoint
               onEnter={handleEnterViewport}
               onLeave={handleExitViewport}
             >
               <section id="video" className="video-container">
                 <iframe
-                  src={`${productContent.video_page_video_link}`}
+                  src={`https://player.vimeo.com/video/${productContent.video_page_video_link}`}
                   style={{
                     height: "100%",
                     width: "100%",
@@ -228,9 +229,9 @@ function ProductDetails(props) {
                   allowFullScreen
                 ></iframe>
               </section>
-            </Waypoint> */}
+            </Waypoint>
 
-            <Vimeo
+            {/* <Vimeo
               video={productContent.video_page_video_link}
               autoplay={true}
               responsive={true}
@@ -238,7 +239,7 @@ function ProductDetails(props) {
               showByline={false}
               color="#68db85"
               background={true}
-            />
+            /> */}
 
             <section
               id="product-text"

@@ -76,7 +76,9 @@ function AllProducts() {
               <h1 className="product-title">{product.title}</h1>
               <p>EMI starting at</p>
               <h4 className="mb-5">INR {product.emi_per_month}/Month</h4>
-              <Button text="download brochure" />
+              <a target="_blank" href={product.brochure}>
+                <Button text="Download brochure" />
+              </a>
               <div className="mt-3"></div>
               <button
                 className="bg-transparent border-0 px-0"
