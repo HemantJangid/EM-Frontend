@@ -13,6 +13,8 @@ import { auth } from "../firebase";
 import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-dark/dark.css";
 
 function ResetPassword() {
   const [loading, setLoading] = useState(false);
