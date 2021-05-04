@@ -28,6 +28,8 @@ import { addItem } from "./../redux/actions/cart";
 import { addCode } from "./../redux/actions/discount";
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../contexts/AuthContext";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-dark/dark.css";
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -815,7 +817,7 @@ const CartNext = () => {
                       },
                     })
                   );
-                  alert("You have been successfully logged out");
+                  Swal.fire({ text: "Logged Out!", icon: "success" });
                   history.push(navUrls.home);
                 }}
                 className="bg-transparent border-0 my-3"

@@ -14,6 +14,8 @@ import navUrls from "./../constant/navUrls";
 import constants from "../constant/RequestUrls";
 import { Helmet } from "react-helmet";
 import { addItem } from "./../redux/actions/cart";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-dark/dark.css";
 
 function Partner() {
   const history = useHistory();
@@ -46,7 +48,11 @@ function Partner() {
             .then((res) => {
               console.log(res);
               if (res.status === 200) {
-                alert(res.data.message);
+                Swal.fire({
+                  text: `${res.data.message}`,
+                  icon: "success",
+                });
+                // alert(res.data.message);
                 formik.resetForm();
                 setFormLoading(false);
               }
@@ -58,7 +64,11 @@ function Partner() {
         })
         .catch((err) => {
           console.log(err);
-          alert(err.response.data.message);
+          Swal.fire({
+            text: `${err.response.data.message}`,
+            icon: "error",
+          });
+          // alert(err.response.data.message);
         });
     },
   });

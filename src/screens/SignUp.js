@@ -13,6 +13,8 @@ import { addUser } from "./../redux/actions/user";
 import { Helmet } from "react-helmet";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-dark/dark.css";
 
 function SignUp() {
   const [loading, setLoading] = useState(false);
@@ -61,23 +63,40 @@ function SignUp() {
                       },
                       { headers }
                     )
-                    .then((res) => alert(res.data.message))
+                    .then((res) =>
+                      Swal.fire({
+                        text: `${res.data.message}`,
+                        icon: "success",
+                      })
+                    )
                     .catch((err) => {
                       console.log(err);
-                      alert(err.response.data.message);
+                      Swal.fire({
+                        text: `${err.response.data.message}`,
+                        icon: "error",
+                      });
+                      // alert(err.response.data.message);
                     });
                 }
               })
               .catch((err) => {
                 console.log(err);
-                alert(err.response.data.message);
+                Swal.fire({
+                  text: `${err.response.data.message}`,
+                  icon: "error",
+                });
+                // alert(err.response.data.message);
               });
           })
           .catch((err) => console.log("could not get token: ", err));
 
         history.goBack();
       } catch (err) {
-        alert(err);
+        Swal.fire({
+          text: `${err}`,
+          icon: "error",
+        });
+        // alert(err);
       }
 
       setLoading(false);

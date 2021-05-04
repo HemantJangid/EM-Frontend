@@ -13,6 +13,8 @@ import { Link, useHistory } from "react-router-dom";
 import navUrls from "./../constant/navUrls";
 import { HashLink } from "react-router-hash-link";
 import { Helmet } from "react-helmet";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-dark/dark.css";
 
 function TestRide() {
   const todays_date_obj = new Date();
@@ -50,7 +52,11 @@ function TestRide() {
       })
       .catch((err) => {
         console.log(err);
-        alert(err.response.data.message);
+        Swal.fire({
+          text: `${err.response.data.message}`,
+          icon: "error",
+        });
+        // alert(err.response.data.message);
       });
   }
 
@@ -72,13 +78,21 @@ function TestRide() {
         .post(`${constants.base_url}${constants.test_ride}`, values)
         .then((res) => {
           if (res.status === 200) {
-            alert("Congratulations your test ride is confirmed!");
+            Swal.fire({
+              text: "Congratulations your test ride is confirmed!",
+              icon: "error",
+            });
+            // alert("Congratulations your test ride is confirmed!");
             formik.handleReset();
           }
         })
         .catch((err) => {
           console.log(err);
-          alert(err.response.data.message);
+          Swal.fire({
+            text: `${err.response.data.message}`,
+            icon: "error",
+          });
+          // alert(err.response.data.message);
         });
     },
   });

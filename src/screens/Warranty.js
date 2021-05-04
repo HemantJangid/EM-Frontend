@@ -17,6 +17,8 @@ import navUrls from "./../constant/navUrls";
 import { Helmet } from "react-helmet";
 import { addWarrantyData } from "./../redux/actions/warranty";
 import { DeleteSharp } from "@material-ui/icons";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-dark/dark.css";
 
 function Warranty() {
   const todays_date_obj = new Date();
@@ -48,7 +50,11 @@ function Warranty() {
       })
       .catch((err) => {
         console.log(err);
-        alert(err.response.data.message);
+        Swal.fire({
+          text: `${err.response.data.message}`,
+          icon: "error",
+        });
+        // alert(err.response.data.message);
       });
   }
 
@@ -77,7 +83,11 @@ function Warranty() {
             .then(async (res) => {
               console.log(res);
               if (res.status === 200) {
-                alert("Warranty activated successfully");
+                Swal.fire({
+                  text: "Warranty activated successfully",
+                  icon: "success",
+                });
+                // alert("Warranty activated successfully");
                 await logout();
                 dispatch(addUser(""));
                 dispatch(addWarrantyData({}));
@@ -86,7 +96,11 @@ function Warranty() {
             })
             .catch((err) => {
               console.log(err);
-              alert(err.response.data.message);
+              Swal.fire({
+                text: `${err.response.data.message}`,
+                icon: "error",
+              });
+              // alert(err.response.data.message);
             });
         });
       } else {
@@ -125,7 +139,11 @@ function Warranty() {
                     onClick={async () => {
                       await logout();
                       dispatch(addUser(""));
-                      alert("You have been successfully logged out");
+                      Swal.fire({
+                        text: "You have been successfully logged out",
+                        icon: "success",
+                      });
+                      // alert("You have been successfully logged out");
                       history.push(navUrls.home);
                     }}
                     className="bg-transparent border-0 my-3"

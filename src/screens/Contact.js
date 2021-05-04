@@ -13,6 +13,8 @@ import constants from "../constant/RequestUrls";
 import { Helmet } from "react-helmet";
 import navUrls from "../constant/navUrls";
 import { HashLink } from "react-router-hash-link";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-dark/dark.css";
 
 function Contact() {
   const [formLoading, setFormLoading] = useState(false);
@@ -44,7 +46,11 @@ function Contact() {
             .then((res) => {
               console.log(res);
               if (res.status === 200) {
-                alert(res.data.message);
+                Swal.fire({
+                  text: `${res.data.message}`,
+                  icon: "success",
+                });
+                // alert(res.data.message);
                 formik.resetForm();
                 setFormLoading(false);
               }
@@ -57,7 +63,11 @@ function Contact() {
         })
         .catch((err) => {
           console.log(err);
-          alert(err.response.data.message);
+          Swal.fire({
+            text: `${err.response.data.message}`,
+            icon: "error",
+          });
+          // alert(err.response.data.message);
         });
     },
   });

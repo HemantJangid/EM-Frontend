@@ -13,6 +13,8 @@ import { auth } from "../firebase";
 import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-dark/dark.css";
 
 function SignIn() {
   const [loading, setLoading] = useState(false);
@@ -73,9 +75,10 @@ function SignIn() {
         console.log(error);
         switch (error.code) {
           case "auth/user-not-found":
-            alert(
-              "There is no user account with this email. Please SignUp first."
-            );
+            Swal.fire({ text: "Incorrect Username/Password", icon: "error" });
+            // alert(
+            //   "There is no user account with this email. Please SignUp first."
+            // );
             break;
           case "auth/wrong-password":
             alert("Please check your password again.");

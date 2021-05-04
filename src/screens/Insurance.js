@@ -22,6 +22,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "./../redux/actions/user";
 import { useHistory } from "react-router-dom";
 import { addWarrantyData } from "./../redux/actions/warranty";
+import Swal from "sweetalert2";
+import "@sweetalert2/theme-dark/dark.css";
 
 function Insurance() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -84,7 +86,11 @@ function Insurance() {
       })
       .catch((err) => {
         console.log(err);
-        alert(err.response.data.message);
+        Swal.fire({
+          text: `${err.response.data.message}`,
+          icon: "error",
+        });
+        // alert(err.response.data.message);
       });
   }
 
@@ -104,14 +110,22 @@ function Insurance() {
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
-            alert("Insurance request created successfully.");
+            Swal.fire({
+              text: "Insurance request created successfully!",
+              icon: "success",
+            })
+            // alert("Insurance request created successfully.");
             formik.resetForm();
             closeModal();
           }
         })
         .catch((err) => {
           console.log(err);
-          alert(err.response.data.message);
+          Swal.fire({
+            text: `${err.response.data.message}`,
+            icon: "error",
+          });
+          // alert(err.response.data.message);
         });
     },
   });
