@@ -27,11 +27,20 @@ function ResetPassword() {
       try {
         setLoading(true);
         let response = await resetPassword(values.email);
-        alert(
-          "Please follow the instructions in your mail to reset your password."
-        );
+        Swal.fire({
+          text:
+            "Please follow the instructions in your mail to reset your password",
+          icon: "success",
+        });
+        // alert(
+        //   "Please follow the instructions in your mail to reset your password."
+        // );
       } catch (error) {
         console.log(error);
+        Swal.fire({
+          text: `${error.message}`,
+          icon: "error",
+        });
         alert(error.message);
       }
 

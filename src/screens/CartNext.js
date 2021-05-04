@@ -134,7 +134,11 @@ const CartNext = () => {
         })
         .catch((err) => {
           console.log(err);
-          alert(err.response.data.message);
+          Swal.fire({
+            text: `${err.response.data.message}`,
+            icon: "error",
+          });
+          // alert(err.response.data.message);
         });
     });
   }
@@ -152,7 +156,11 @@ const CartNext = () => {
           { headers }
         )
         .then(async (res) => {
-          alert(res.data.message);
+          Swal.fire({
+            text: `${res.data.message}`,
+            icon: "success",
+          });
+          // alert(res.data.message);
           console.log(res);
           if (res.status === 200) {
             if (activeStep < 2)
@@ -162,7 +170,11 @@ const CartNext = () => {
         })
         .catch((err) => {
           console.log(err);
-          alert(err.response.data.message);
+          Swal.fire({
+            text: `${err.response.data.message}`,
+            icon: "error",
+          });
+          // alert(err.response.data.message);
         });
     });
   };
@@ -186,7 +198,11 @@ const CartNext = () => {
       "https://checkout.razorpay.com/v1/checkout.js"
     );
     if (!res) {
-      alert("Razorpay SDK failed to load. Are you online?");
+      Swal.fire({
+        text: "Razorpay SDK failed to load. Are you online?",
+        icon: "error",
+      });
+      // alert("Razorpay SDK failed to load. Are you online?");
       return;
     }
     const options = {
@@ -250,7 +266,11 @@ const CartNext = () => {
         })
         .catch((err) => {
           console.log(err);
-          alert(err.response.data.message);
+          Swal.fire({
+            text: `${err.response.data.message}`,
+            icon: "error",
+          });
+          // alert(err.response.data.message);
         });
     });
   }
@@ -333,7 +353,11 @@ const CartNext = () => {
           })
           .then((res) => {
             // console.log(res);
-            alert(res.data.message);
+            Swal.fire({
+              text: `${res.data.message}`,
+              icon: "success",
+            });
+            // alert(res.data.message);
             // history.push(navUrls.selectAddress);
             getAddress();
             setReRender(!reRender);
@@ -341,7 +365,11 @@ const CartNext = () => {
           })
           .catch((err) => {
             console.log(err);
-            alert(err.response.data.message);
+            Swal.fire({
+              text: `${err.response.data.message}`,
+              icon: "error",
+            });
+            // alert(err.response.data.message);
           });
       });
     },
@@ -401,6 +429,7 @@ const CartNext = () => {
                   className="custom-control-input"
                   onClick={() => setSelectedAddress(address.uuid)}
                   value={address.uuid}
+                  required
                 />
                 <label
                   className="custom-control-label"
