@@ -39,6 +39,7 @@ function Footer() {
                   <i className="fab fa-twitter-square"></i>
                 </a>
                 <a
+                  target="_blank"
                   href="https://www.linkedin.com/company/motorad-electro/"
                   className="mr-3"
                 >

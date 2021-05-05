@@ -49,7 +49,7 @@ function BuySmart() {
     var petrolCost = Math.trunc(
       365 * years * km * petrol * (cars / 15 + scooter / 50)
     );
-    var maintCost = Math.trunc(km * petrol * (cars * 121.66 + scooter * 182.5));
+    var maintCost = Math.trunc(years * km * (cars * 121.66 + scooter * 182.5));
     var electCost = Math.trunc((km * years * 365) / 10);
     var carbon = Math.trunc(21 * 365 * km * years * (scooter + 10 * cars));
     var tot = Math.trunc(petrolCost + maintCost - electCost);

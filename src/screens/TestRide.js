@@ -80,7 +80,7 @@ function TestRide() {
           if (res.status === 200) {
             Swal.fire({
               text: "Congratulations your test ride is confirmed!",
-              icon: "error",
+              icon: "success",
             });
             // alert("Congratulations your test ride is confirmed!");
             formik.handleReset();
