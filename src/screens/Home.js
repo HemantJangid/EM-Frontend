@@ -775,6 +775,95 @@ function Home() {
                 ></iframe>
               </div>
             </div>
+
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/0PIk7S7nUtk"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/U7-R3pMWVuQ"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/NzPnYA4qURE"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/yBc8i8rJ5X4"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/_qyjngYWRXY"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/v5if9dSZO6o"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/gyNff1DvcqM"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+            <div className="px-3">
+              <div className="d-flex align-items-center justify-content-center h-100 video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/qKq5IcfSTvk"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
           </Slider>
         </div>
       </section>
