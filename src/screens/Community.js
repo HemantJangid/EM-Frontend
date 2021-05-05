@@ -31,61 +31,39 @@ function Community() {
           //   console.log(res);
           if (res.status === 200) {
             alert(res.data.message);
-            formik.handleReset();
+            // formik.handleReset();
             let email_values = {
               email: `${values.email}`,
               subject: "Welcome to the Emotorad Community",
               // message: `<h2>A new user has been registered for community ${values.email}, ${todays_date}, accesss available, event invitation eligible`,
               meta: {},
               message: `
-    <style>
-        @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
-    </style>
-    <img src="./doodletride.png" alt="Doodle" style="width: 100%;">
+              <img src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/doodletride.png" alt="Doodle" style="width: 100%;">
     <div style=" display: flex; align-items: center; justify-content: center;">
         <div style="max-width: 600px;">
-            <h2 class="italic center"><i>Thank you for booking a test-ride with Emotorad</i>
+            <h2 style="font-family: serif; text-align: center; color: #757575;"><i>We Welcome You as a part of</i>
             </h2>
-            <h1 style="text-align: center">Your Test Ride is Confirmed!</h1>
-            <h3 style="text-align: center">Test Ride details</h3>
-            <p style="text-align: center">Here are your test ride details</p>
+            <h1 style="text-align: center; font-family: serif;"><i>EM's EBike Community</i></h1>
+            <h2 style="text-align: center; color: #757575;"><i>Lets make this earth awesome together</i></h2>
+            <h3>Details :</h3>
             <ul>
-                <li><b>Customer Name:</b> Purshottam</li>
-                <li><b>Customer Mobile:</b> Purshottam</li>
-                <li><b>Customer Email:</b> Purshottam</li>
-                <li><b>Model:</b> Purshottam</li>
-                <li><b>Booking Date:</b> Purshottam</li>
-                <li><b>Booking Time:</b> Purshottam</li>
-                <li><b>Dealer Details:</b> Purshottam</li>
-                <li><b>Test Ride Location:</b> Purshottam</li>
+                <li style="margin-bottom: 5px; color: #757575;">Your login credentials: ${values.email}</li>
+                <li style="margin-bottom: 5px; color: #757575;">Joining date: ${todays_date}</li>
+                <li style="margin-bottom: 5px; color: #757575;">Forum Access: Available</li>
+                <li style="margin-bottom: 5px; color: #757575;">Event Invitation: Eligible</li>
             </ul>
-            <h3 style="text-align: center">In case of any queries, please reach out to us <br /> at <a
-                    href="mailto:contactus@emotorad.com">contactus@emotorad.com</a></h3>
-            <img src="doodle.jpeg" alt="Doodle" style="width: 100%;">
-            <h2 style="text-align: center;"><i>Doodle - The Fat Tyre SUV of Electric Segment</i></h2>
-            <h3>What makes Doodle the Right Choice for you?</h3>
-            <hr>
-            <p>Emotorad brings to you the power and luxury of futuristic Ebikes. We thoughtfully designed our Ebikes and
-                we
-                are
-                sure
-                you would love every minute of your ride.</p>
-            <div style=" position: relative; padding-bottom: 56.25%; height: 0;">
-                <iframe width="560" height="315" style="   position: absolute; top: 0; left: 0; height: 100%;"
-                    src="https://www.youtube.com/embed/5_orIQReJfY" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-            <hr style="margin-top: 30px;">
-            <p style="text-align: center">Emotorad brings to you the power and luxury of futuristic Ebikes. We
-                thoughtfully designed
-                our Ebikes and
-                we are sure
-                you would love every minute of your ride.</p>
-            <div style="text-align: center" style="margin-bottom: 70px; margin-top: 50px;">
-                <button
-                    style="  padding: 15px 18px; border: none; background-color: #89D085; font-weight: 700; font-size: 20px; color: #fff; border-radius: 10px;">Explore
-                    More</button>
+            <p style="text-align: center">You can contact us on, at <a
+                    href="mailto:contactus@emotorad.com">contactus@emotorad.com</a><br />or Call us directly at +91
+                8686050590
+            </p>
+            <img src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/doodle.jpeg" alt="Doodle" style="width: 100%;">
+            <div style="text-align: center; margin-bottom: 70px; margin-top: 50px;">
+                <a href="https://www.emotorad.com/">
+                    <button
+                        style="padding: 15px 18px; border: none; background-color: #89D085; font-weight: 700; font-size: 20px; color: #fff; border-radius: 10px;">Find
+                        Out
+                        More</button>
+                </a>
             </div>
         </div>
     </div>
@@ -93,25 +71,30 @@ function Community() {
         <div style=" display: flex; align-items: center;  justify-content: center;">
             <div style="max-width: 600px; text-align: center;">
                 <div style="display: inline-flex; flex-direction: row;">
-                    <a href="" style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><i
-                            class="fab fa-facebook"></i></a>
-                    <a href="" style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><i
-                            class="fab fa-linkedin"></i></a>
-                    <a href="" style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><i
-                            class="fab fa-instagram"></i></a>
-                    <a href="" style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><i
-                            class="fas fa-link"></i></a>
+                    <a href="https://www.facebook.com/EMotorad"
+                        style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><img
+                            src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/facebook.png" alt="Logo" style="height: 24px"></a>
+                    <a href="https://www.linkedin.com/company/emotorad/"
+                        style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><img
+                            src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/linkedin.png" alt="Logo" style="height: 24px"></a>
+                    <a href="https://www.instagram.com/e_motorad/"
+                        style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><img
+                            src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/instagram.png" alt="Logo" style="height: 24px"></a>
+                    <a href="https://www.emotorad.com/"
+                        style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px; "><img
+                            src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/website.png" alt="Link" style="height: 24px"></a>
                 </div>
                 <hr style="margin-top: 20px; margin-bottom: 30px;">
                 <p><i>Copyright © 2021 EMotorad, All rights reserved.</i></p>
-                <a href="www.emotorad.com">www.emotorad.com</a>
+                <a style="color: #fff;" href="www.emotorad.com">www.emotorad.com</a>
                 <p><b>Our mailing address is:</b></p>
                 <p>EMotorad Head Office, At post Jambe, taluka Mulshi, 169/2 Sangawade Road, Pune 411033, Maharashtra
                 </p>
             </div>
         </div>
     </div>
-`,
+
+              `,
             };
 
             axios
@@ -119,7 +102,7 @@ function Community() {
               .then((res) => {
                 console.log(res);
                 if (res.status === 200) {
-                  formik.resetForm();
+                  // formik.resetForm();
                   setFormLoading(false);
                 }
               })
