@@ -37,10 +37,69 @@ function Partner() {
         .post(`${constants.base_url}${constants.partner}`, values)
         .then((res) => {
           let email_values = {
-            email: "info@emotorad.com",
-            subject: "A new Partner request is recieved.",
-            message: `<h2>A new Partner request has been recieved from ${values.name} at Emotorad Website</h2><h2>Order Details</h2><table><tbody><tr><td>Name</td><td>${values.name}</td></tr><tr><td>Organisation Name</td><td>${values.organisation_name}</td></tr><tr><td>Email</td><td>${values.email}</td></tr><tr><td>Address</td><td>${values.address}</td</tr><tr><td>Phone Number</td><td>${values.phone}</td></tr><tr><td>Interested In</td><td>${values.interested_in}</td></tr></tbody></table>`,
+            email: `${values.email},dhanashree.nikhare@emotorad.com,renuka.kumbhar@emotorad.com,Contactus@emotorad.com`,
+            subject: "Your Insurance Request has been recieved",
+            // message: `<h2>A new user has been registered for community ${values.email}, ${todays_date}, accesss available, event invitation eligible`,
             meta: {},
+            message: `
+            <img src="https://cdn.discordapp.com/attachments/839438656644055040/839454312303427614/partner_with_us.png" alt="Doodle" style="width: 100%;">
+    <div style=" display: flex; align-items: center; justify-content: center;">
+        <div style="max-width: 600px;">
+            <h2 style="font-family: serif; text-align: center; color: #949494;"><i>We appreciate your interest in
+                    partnering with us to
+                    bring the best of electric segment to the world.</i>
+            </h2>
+            <h1 style="text-align: center; font-family: serif;"><i>Thank You Writing to Us</i></h1>
+            <h3 style="text-align: center">We are excited to speak to you further,</h3>
+            <p style="text-align: center">Our team will get in touch with you in 24 hrs.</p>
+            <p style="text-align: center">You can contact us on, at <a
+                    href="mailto:contactus@emotorad.com">contactus@emotorad.com</a><br />or Call us directly at +91
+                8686050590
+            </p>
+            <img src="https://cdn.discordapp.com/attachments/839438656644055040/839454311883735040/pARTNER_WITH_uS_2.png" alt="Doodle" style="width: 100%; margin-bottom: 30px;">
+            <hr>
+            <p style="text-align: center; color: #757575;">EM brings in a range of best electric bikes that are
+                affordable, futuristic, and challenge the status
+                quo. The e-bikes
+                come with disc brakes and an alloy frame. The electric cycles by EM run on a combination of manual
+                pedaling with battery
+                assist and throttle.</p>
+            <div style="text-align: center; margin-bottom: 70px; margin-top: 50px;">
+                <a href="https://www.emotorad.com/">
+                    <button
+                        style="padding: 15px 18px; border: none; background-color: #89D085; font-weight: 700; font-size: 20px; color: #fff; border-radius: 10px;">Find
+                        Out
+                        More</button>
+                </a>
+            </div>
+        </div>
+    </div>
+<div style="background-color: #333; padding-top: 70px; padding-bottom: 70px; color: #fff;">
+  <div style=" display: flex; align-items: center;  justify-content: center;">
+      <div style="max-width: 600px; text-align: center;">
+      <div style="display: inline-flex; flex-direction: row;">
+      <a href="https://www.facebook.com/EMotorad"
+          style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><img
+              src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/facebook.png" alt="Logo" style="height: 24px"></a>
+      <a href="https://www.linkedin.com/company/emotorad/"
+          style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><img
+              src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/linkedin.png" alt="Logo" style="height: 24px"></a>
+      <a href="https://www.instagram.com/e_motorad/"
+          style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><img
+              src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/instagram.png" alt="Logo" style="height: 24px"></a>
+      <a href="https://www.emotorad.com/"
+          style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px; "><img
+              src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/website.png" alt="Link" style="height: 24px"></a>
+  </div>
+          <hr style="margin-top: 20px; margin-bottom: 30px;">
+          <p><i>Copyright © 2021 EMotorad, All rights reserved.</i></p>
+          <a style="color: #fff;" href="www.emotorad.com">www.emotorad.com</a>
+          <p><b>Our mailing address is:</b></p>
+          <p>EMotorad Head Office, At post Jambe, taluka Mulshi, 169/2 Sangawade Road, Pune 411033, Maharashtra
+          </p>
+      </div>
+  </div>
+</div>`,
           };
 
           axios
