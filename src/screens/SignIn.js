@@ -81,10 +81,15 @@ function SignIn() {
             // );
             break;
           case "auth/wrong-password":
-            alert("Please check your password again.");
+            Swal.fire({ text: "Incorrect Username/Password", icon: "error" });
+            // alert("Please check your password again.");
             break;
           default:
-            alert(error.message);
+            Swal.fire({
+              text: `${error.message}`,
+              icon: "error",
+            });
+          // alert(error.message);
         }
       }
 

@@ -266,8 +266,12 @@ const CartNext = () => {
         })
         .catch((err) => {
           console.log(err);
+          // Swal.fire({
+          //   text: `${err.response.data.message}`,
+          //   icon: "error",
+          // });
           Swal.fire({
-            text: `${err.response.data.message}`,
+            text: "Please Select an Address",
             icon: "error",
           });
           // alert(err.response.data.message);
