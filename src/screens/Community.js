@@ -33,13 +33,13 @@ function Community() {
             alert(res.data.message);
             // formik.handleReset();
             let email_values = {
-              email: `${values.email}`,
+              email: `${values.email},Contactus@emotorad.com,apurva.rajuriya@emotorad.com,renuka.kumbhar@emotorad.com`,
               subject: "Welcome to the Emotorad Community",
               // message: `<h2>A new user has been registered for community ${values.email}, ${todays_date}, accesss available, event invitation eligible`,
               meta: {},
               message: `
-              <img src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/doodletride.png" alt="Doodle" style="width: 100%;">
-    <div style=" display: flex; align-items: center; justify-content: center;">
+              <img src="https://cdn.discordapp.com/attachments/839438656644055040/839439032673107998/community.png" alt="Doodle" style="width: 100%;">
+    <div style="display:flex;width:100%;align-items: center;justify-content: center;">
         <div style="max-width: 600px;">
             <h2 style="font-family: serif; text-align: center; color: #757575;"><i>We Welcome You as a part of</i>
             </h2>
@@ -56,7 +56,7 @@ function Community() {
                     href="mailto:contactus@emotorad.com">contactus@emotorad.com</a><br />or Call us directly at +91
                 8686050590
             </p>
-            <img src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/doodle.jpeg" alt="Doodle" style="width: 100%;">
+            <img src="https://cdn.discordapp.com/attachments/839438656644055040/839438879617843210/community_bottom.png" alt="Doodle" style="width: 100%;">
             <div style="text-align: center; margin-bottom: 70px; margin-top: 50px;">
                 <a href="https://www.emotorad.com/">
                     <button
@@ -68,7 +68,7 @@ function Community() {
         </div>
     </div>
     <div style="background-color: #333; padding-top: 70px; padding-bottom: 70px; color: #fff;">
-        <div style=" display: flex; align-items: center;  justify-content: center;">
+        <div style="display:flex;width:100%;align-items: center;justify-content: center;">
             <div style="max-width: 600px; text-align: center;">
                 <div style="display: inline-flex; flex-direction: row;">
                     <a href="https://www.facebook.com/EMotorad"
@@ -102,7 +102,7 @@ function Community() {
               .then((res) => {
                 console.log(res);
                 if (res.status === 200) {
-                  // formik.resetForm();
+                  formik.resetForm();
                   setFormLoading(false);
                 }
               })

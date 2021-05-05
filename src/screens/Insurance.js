@@ -27,6 +27,21 @@ import "@sweetalert2/theme-dark/dark.css";
 
 function Insurance() {
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [images, setImages] = React.useState([]);
+
+  const doodle_images = [
+    "https://cdn.discordapp.com/attachments/839438656644055040/839448615453851688/insurance_of_doodle.png",
+    "https://cdn.discordapp.com/attachments/839438656644055040/839448613414895616/doodleinsuranceBottom.png",
+  ];
+  const emx_images = [
+    "https://cdn.discordapp.com/attachments/839438656644055040/839453477763547166/warranty_emx_2.png",
+    "https://cdn.discordapp.com/attachments/839438656644055040/839453480338587658/EMX_Warrenty.png",
+  ];
+  const trex_images = [
+    "https://cdn.discordapp.com/attachments/839438656644055040/839453027538960404/insurance_of_trex.png",
+    "https://cdn.discordapp.com/attachments/839438656644055040/839452960534429706/T-Rex_Insuarance_1.png",
+  ];
+
   function openModal() {
     setIsOpen(true);
   }
@@ -66,6 +81,8 @@ function Insurance() {
   const [reRender, setReRender] = useState(true);
   const history = useHistory();
   const [dealers, setDealers] = useState([]);
+  const [email, setEmail] = useState("");
+
   // console.log(dealers);
   // console.log(user);
 
@@ -113,10 +130,102 @@ function Insurance() {
             Swal.fire({
               text: "Insurance request created successfully!",
               icon: "success",
-            })
+            });
             // alert("Insurance request created successfully.");
             formik.resetForm();
             closeModal();
+
+            let email_values = {
+              email: `${email}`,
+              subject: "Your Insurance Request has been recieved",
+              // message: `<h2>A new user has been registered for community ${values.email}, ${todays_date}, accesss available, event invitation eligible`,
+              meta: {},
+              message: `
+              <img src=${images[0]} alt="Doodle" style="width: 100%;">
+    <div style=" display: flex; align-items: center; justify-content: center;">
+        <div style="max-width: 600px;">
+            <h1 style="text-align: center; font-family: serif;"><i>Congratulation!</i></h1>
+            <h2 style="font-family: serif; text-align: center; color: #757575;"><i>Your Application for Insurance has been submitted</i>
+            </h2>
+            <h3>Information :</h3>
+            <ul>
+            <li style="margin-bottom: 5px; color: #757575;"><b>Name:</b> ${values.name}</li>
+            <li style="margin-bottom: 5px; color: #757575;"><b>Contact No:</b> ${values.phone}</li>
+            <li style="margin-bottom: 5px; color: #757575;"><b>Frame No:</b> ${values.frame_number}</li>
+            <li style="margin-bottom: 5px; color: #757575;"><b>Purchase Date:</b> ${values.purchase_date}</li>
+            <!-- <li style="margin-bottom: 5px; color: #757575;"><b>Insurance Amount:</b> Purshottam</li> -->
+            </ul>
+
+            <img src=${images[1]} alt="Doodle" style="width: 100%;">
+            <h2 style="text-align: center; color: #757575;">Doodle - The Fat Tyre SUV of Electric Segment</h2>
+            <hr>
+            <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                <iframe width="100%" height="100%" style="position: absolute; top: 0; left: 0; height: 100%;"
+                    src="https://www.youtube.com/embed/5_orIQReJfY" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+            <h3>Details :</h3>
+            <ul>
+                <li style="margin-bottom: 5px; color: #757575;">The team will request you for the payment through a
+                    payment link</li>
+                <li style="margin-bottom: 5px; color: #757575;">Your insurance certificate will be shared with you in a
+                    seperate email.</li>
+            </ul>
+            <p style="text-align: center">You can contact us on, at <a
+                    href="mailto:contactus@emotorad.com">contactus@emotorad.com</a><br />or Call us directly at +91
+                8686050590
+            </p>
+            <div style="text-align: center; margin-bottom: 70px; margin-top: 50px;">
+                <a href="https://www.emotorad.com/">
+                    <button
+                        style="padding: 15px 18px; border: none; background-color: #89D085; font-weight: 700; font-size: 20px; color: #fff; border-radius: 10px;">Find
+                        Out
+                        More</button>
+                </a>
+            </div>
+        </div>
+    </div>
+<div style="background-color: #333; padding-top: 70px; padding-bottom: 70px; color: #fff;">
+    <div style=" display: flex; align-items: center;  justify-content: center;">
+        <div style="max-width: 600px; text-align: center;">
+        <div style="display: inline-flex; flex-direction: row;">
+        <a href="https://www.facebook.com/EMotorad"
+            style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><img
+                src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/facebook.png" alt="Logo" style="height: 24px"></a>
+        <a href="https://www.linkedin.com/company/emotorad/"
+            style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><img
+                src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/linkedin.png" alt="Logo" style="height: 24px"></a>
+        <a href="https://www.instagram.com/e_motorad/"
+            style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px;"><img
+                src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/instagram.png" alt="Logo" style="height: 24px"></a>
+        <a href="https://www.emotorad.com/"
+            style="margin-left: 20px; margin-right: 20px; color: #fff; font-size: 25px; "><img
+                src="https://s3.us-east-2.amazonaws.com/com.emotorad.website-assets/email+images/website.png" alt="Link" style="height: 24px"></a>
+    </div>
+            <hr style="margin-top: 20px; margin-bottom: 30px;">
+            <p><i>Copyright © 2021 EMotorad, All rights reserved.</i></p>
+            <a style="color: #fff;" href="www.emotorad.com">www.emotorad.com</a>
+            <p><b>Our mailing address is:</b></p>
+            <p>EMotorad Head Office, At post Jambe, taluka Mulshi, 169/2 Sangawade Road, Pune 411033, Maharashtra
+            </p>
+        </div>
+    </div>
+</div>`,
+            };
+
+            axios
+              .post(`${constants.base_url}${constants.email}`, email_values)
+              .then((res) => {
+                // console.log(res);
+                if (res.status === 200) {
+                  // formik.resetForm();
+                  // setFormLoading(false);
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }
         })
         .catch((err) => {
@@ -188,7 +297,10 @@ function Insurance() {
               <img src={trex} alt="card" className="img-fluid my-4" />
               <button
                 className="bg-transparent border-0 px-0 mx-2"
-                onClick={openModal}
+                onClick={() => {
+                  setImages(trex_images);
+                  openModal();
+                }}
               >
                 <Button text="Get T-Rex Insured" />
               </button>
@@ -197,7 +309,10 @@ function Insurance() {
               <img src={doodle} alt="card" className="img-fluid my-4" />
               <button
                 className="bg-transparent border-0 px-0 mx-2"
-                onClick={openModal}
+                onClick={() => {
+                  setImages(doodle_images);
+                  openModal();
+                }}
               >
                 <Button text="Get Doodle Insured" />
               </button>
@@ -206,7 +321,10 @@ function Insurance() {
               <img src={emx} alt="card" className="img-fluid my-4" />
               <button
                 className="bg-transparent border-0 px-0 mx-2"
-                onClick={openModal}
+                onClick={() => {
+                  setImages(emx_images);
+                  openModal();
+                }}
               >
                 <Button text="Get EMX Insured" />
               </button>
@@ -232,6 +350,18 @@ function Insurance() {
                 placeholder="Name"
                 onChange={formik.handleChange}
                 value={formik.values.name}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                required
+                name="email"
+                id="email"
+                type="text"
+                className="mb-4"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
             </div>
             <div className="form-group">
