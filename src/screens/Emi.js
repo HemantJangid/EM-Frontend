@@ -13,9 +13,39 @@ import navUrls from "../constant/navUrls";
 const SliderWithTooltip = createSliderWithTooltip(Slider);
 
 function Emi() {
-  const [loan, setLoan] = useState(0);
+  const [model, setmodel] = useState("trex");
+  const [scheme, setscheme] = useState("eight");
   const [tenure, setTenure] = useState(0);
   const [interest, setInterest] = useState(0);
+  const [dp, setdp] = useState("");
+  const [emi, setemi] = useState("");
+  const emiData = {
+    trex: {
+      eight: ["13,290.49", "3,249.17"],
+      twelve: ["9,923.32", "4873.75"],
+    },
+    emx: {
+      eight: ["18,623.82", "4,582.50"],
+      twelve: ["13,923.32", "6,873.75"],
+    },
+    doodle: {
+      eight: ["18,623.82", "4,582.50"],
+      twelve: ["13,923.32", "6,873.75"],
+    },
+  };
+
+  function handleModel(e) {
+    setmodel(e.target.value)
+  }
+
+  function handleScheme(e) {
+    setscheme(e.target.value)
+  }
+
+  function checkEMI() {
+    setdp(`Down Payment INR ${emiData[model][scheme][0]}`);
+    setemi(`Emi from next month for ${scheme} months INR ${emiData[model][scheme][1]}`);
+  }
 
   return (
     <div>
@@ -46,93 +76,30 @@ function Emi() {
             EMI <span className="pri">Plans</span>
           </h2>
           <p className="mb-5">There is a plan for everyone.</p>
-          <h4 className="text-capitalize">Loan Amount (Rupees)</h4>
-          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-5">
-            <SliderWithTooltip
-              min={0}
-              max={55000}
-              railStyle={{
-                height: 2,
-              }}
-              handleStyle={{
-                height: 20,
-                width: 20,
-                marginLeft: 0,
-                marginTop: -10,
-                backgroundColor: "#68db85",
-                border: 0,
-              }}
-              trackStyle={{
-                background: "#68db85",
-              }}
-              onChange={(e) => setLoan(e)}
-            />
-            <div className="d-block ml-md-5 ml-0 text-center mt-3 mt-md-0">
-              <h4 className="mb-2 text-nowrap text-capitalize font-weight-bold">
-                Rs {loan}
-              </h4>
-              <p className="mb-0 text-nowrap">Loan EMI</p>
+          <div className="emi-form">
+            <div className="form-row">
+              <div className="col-lg-12">
+                <label htmlFor="name">Select Model</label>
+                <select required id="state" name="state" className="form-control" onChange={handleModel}>
+                  <option value="trex">T-Rex</option>
+                  <option value="emx">EMX</option>
+                  <option value="doodle">Doodle</option>
+                </select>
+              </div>
+              <div className="col-lg-12">
+                <label htmlFor="name" className="mt-3">Select EMI Scheme</label>
+                <select required id="state" name="state" className="form-control" onChange={handleScheme} >
+                  <option value="eight">8 Months</option>
+                  <option value="twelve">12 Months</option>
+                </select>
+              </div>
             </div>
+            <button className="bg-transparent border-0 my-5" onClick={checkEMI}>
+              <Button text="Check Loan Emi" />
+            </button>
+            <h3 className="pri">{dp}</h3>
+            <h3>{emi}</h3>
           </div>
-          <h4 className="text-capitalize">Tenure (Years)</h4>
-          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-5">
-            <SliderWithTooltip
-              min={0}
-              max={4}
-              railStyle={{
-                height: 2,
-              }}
-              handleStyle={{
-                height: 20,
-                width: 20,
-                marginLeft: 0,
-                marginTop: -10,
-                backgroundColor: "#68db85",
-                border: 0,
-              }}
-              trackStyle={{
-                background: "#68db85",
-              }}
-              onChange={(e) => setTenure(e)}
-            />
-            <div className="d-block ml-md-5 ml-0 text-center mt-3 mt-md-0">
-              <h4 className="mb-2 text-nowrap text-capitalize font-weight-bold">
-                {tenure} Years
-              </h4>
-              <p className="mb-0 text-nowrap">Loan EMI</p>
-            </div>
-          </div>
-          <h4 className="text-capitalize">Interest Rate (Percentage)</h4>
-          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-            <SliderWithTooltip
-              min={0}
-              max={15}
-              railStyle={{
-                height: 2,
-              }}
-              handleStyle={{
-                height: 20,
-                width: 20,
-                marginLeft: 0,
-                marginTop: -10,
-                backgroundColor: "#68db85",
-                border: 0,
-              }}
-              trackStyle={{
-                background: "#68db85",
-              }}
-              onChange={(e) => setInterest(e)}
-            />
-            <div className="d-block ml-md-5 ml-0 text-center mt-3 mt-md-0">
-              <h4 className="mb-2 text-nowrap text-capitalize font-weight-bold">
-                {interest}%
-              </h4>
-              <p className="mb-0 text-nowrap">Loan EMI</p>
-            </div>
-          </div>
-          <HashLink smooth to={`${navUrls.emi}#coming-soon`}>
-            <Button text="Check Loan Emi" />
-          </HashLink>
         </div>
       </section>
 
