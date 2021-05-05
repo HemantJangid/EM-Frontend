@@ -17,6 +17,7 @@ import navUrls from "./../constant/navUrls";
 import { Helmet } from "react-helmet";
 import cycle from "../temp/cycle.png";
 import { cleanData } from "jquery";
+import Swal from "sweetalert2";
 
 const NewCart = () => {
   const [reRender, setReRender] = useState(true);
@@ -35,7 +36,7 @@ const NewCart = () => {
   const dispatch = useDispatch();
 
   // console.log("items: ", items);
-  console.log(discount);
+  // console.log(discount);
 
   useEffect(() => {
     getCart();
@@ -128,8 +129,18 @@ const NewCart = () => {
   function changeQuantity(i, change) {
     if (change === "increase") items[i].quantity += 1;
     else if (change === "decrease") {
-      if (items[i].quantity === 1) items.splice(i, 1);
-      else items[i].quantity -= 1;
+      if (items[i].quantity === 1) {
+        items.splice(i, 1);
+        dispatch(
+          addCode({
+            discount: {
+              discountApplied: false,
+              discount_code: "NO-PROMO-CODE",
+              percent: 0,
+            },
+          })
+        );
+      } else items[i].quantity -= 1;
     }
   }
 
@@ -196,8 +207,11 @@ const NewCart = () => {
       })
       .then((res) => {
         // console.log(res);
-        if (res.status === 200) {
-          alert(res.data.message);
+        Swal.fire({
+          text: `${res.data.message}`,
+          icon: "success",
+        });
+        if (res.data.message === "Promocode Applied") {
           setPromocodeApplied(true);
           setDiscountPercent(res.data.payload.discount_percent);
           dispatch(
@@ -213,7 +227,7 @@ const NewCart = () => {
       })
       .catch((err) => {
         console.log(err);
-        alert(err.response.data.message);
+        // alert(err.response.data.message);
       });
   }
 
@@ -239,6 +253,15 @@ const NewCart = () => {
                   await logout();
                   dispatch(addUser(""));
                   dispatch(addItem([]));
+                  dispatch(
+                    addCode({
+                      discount: {
+                        discountApplied: false,
+                        discount_code: "NO-PROMO-CODE",
+                        percent: 0,
+                      },
+                    })
+                  );
                   alert("You have been successfully logged out");
                   history.push(navUrls.home);
                 }}
@@ -366,7 +389,6 @@ const NewCart = () => {
                           <strike>{totalAmount()} INR</strike>
                         </h5>
                       )}
-                      {console.log(discount.percent, discountPercent)}
                       <h4>{totalAmount() * (1 - discountPercent / 100)} INR</h4>
                     </div>
                   </div>
