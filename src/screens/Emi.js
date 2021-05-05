@@ -21,16 +21,16 @@ function Emi() {
   const [emi, setemi] = useState("");
   const emiData = {
     trex: {
-      eight: ["13,290.49", "3,249.17"],
-      twelve: ["9,923.32", "4873.75"],
+      twelve: ["13,290.49", "3,249.17", "8"],
+      eight: ["9,923.32", "4873.75", "6"],
     },
     emx: {
-      eight: ["18,623.82", "4,582.50"],
-      twelve: ["13,923.32", "6,873.75"],
+      twelve: ["18,623.82", "4,582.50", "8"],
+      eight: ["13,923.32", "6,873.75", "6"],
     },
     doodle: {
-      eight: ["18,623.82", "4,582.50"],
-      twelve: ["13,923.32", "6,873.75"],
+      twelve: ["18,623.82", "4,582.50", "8"],
+      eight: ["13,923.32", "6,873.75", "6"],
     },
   };
 
@@ -44,7 +44,7 @@ function Emi() {
 
   function checkEMI() {
     setdp(`Down Payment INR ${emiData[model][scheme][0]}`);
-    setemi(`Emi from next month for ${scheme} months INR ${emiData[model][scheme][1]}`);
+    setemi(`Emi from next month for ${emiData[model][scheme][2]} months INR ${emiData[model][scheme][1]}`);
   }
 
   return (

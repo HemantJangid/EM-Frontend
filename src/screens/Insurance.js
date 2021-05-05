@@ -57,7 +57,9 @@ function Insurance() {
       left: 0,
       right: 0,
       bottom: 0,
-      zIndex: "1000",
+      zIndex: 1050,
+      height: '100vh',
+
       backgroundColor: "rgba(0, 0, 0, 0.9)",
     },
     content: {
@@ -68,6 +70,8 @@ function Insurance() {
       width: "80%",
       maxWidth: "540px",
       height: "fit-content",
+      maxHeight: '100vh',
+      overFlowY: 'auto',
       transform: "translate(-50%, -50%)",
     },
   };
