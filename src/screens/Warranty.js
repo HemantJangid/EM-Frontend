@@ -279,6 +279,8 @@ function Warranty() {
                         required
                         name="phone"
                         id="phone"
+                        pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$"
+                        title="Phone Number should be 10 digits"
                         type="number"
                         className="mb-4"
                         placeholder="Contact Number"

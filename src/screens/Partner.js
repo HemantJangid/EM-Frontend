@@ -226,6 +226,8 @@ function Partner() {
                     type="text"
                     name="phone"
                     id="phone"
+                    pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$"
+                    title="Phone Number should be 10 digits"
                     placeholder="Contact Number"
                     onChange={formik.handleChange}
                     value={formik.values.phone}

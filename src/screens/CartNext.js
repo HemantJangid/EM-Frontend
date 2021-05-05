@@ -477,6 +477,8 @@ const CartNext = () => {
                   className="form-control"
                   required
                   type="text"
+                  pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$"
+                  title="Phone Number should be 10 digits"
                   name="phone_number"
                   id="phone_number"
                   //   placeholder="Phone Number"

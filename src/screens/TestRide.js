@@ -177,6 +177,8 @@ function TestRide() {
                     type="number"
                     name="phone_number"
                     id="phone_number"
+                    pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$"
+                    title="Phone Number should be 10 digits"
                     placeholder="Contact Number"
                     onChange={formik.handleChange}
                     value={formik.values.phone_number}

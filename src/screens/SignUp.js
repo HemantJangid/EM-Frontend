@@ -152,6 +152,8 @@ function SignUp() {
                       type="text"
                       name="phone"
                       id="phone"
+                      pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$"
+                      title="Phone Number should be 10 digits"
                       placeholder="Phone Number"
                       className="form-control"
                       onChange={formik.handleChange}
