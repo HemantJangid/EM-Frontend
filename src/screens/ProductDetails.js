@@ -368,7 +368,13 @@ function ProductDetails(props) {
                   </div>
                   <div className="col-lg-7 my-5">
                     <div className="content-2">
-                      <h4>Shimano tourney dual derailleurs</h4>
+                      <h4>
+                        {productContent.stats_page_metrics != undefined &&
+                          productContent.stats_page_metrics != null &&
+                          productContent.stats_page_metrics["derailleur"].split(
+                            "-"
+                          )[1]}
+                      </h4>
                       <h1>
                         {productContent.stats_page_metrics != undefined &&
                           productContent.stats_page_metrics != null &&
@@ -512,25 +518,19 @@ function ProductDetails(props) {
                   <div className="col-lg-4 col-md-4 col-sm-6 my-3">
                     <div className="done-box">
                       <img src={neco} alt="Neco" className="img-fluid" />
-                      <h4>Neco with Sealed Bearing and Black Alloy</h4>
+                      <h4>{productContent.features_page_metrics_2[0]}</h4>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-4 col-sm-6 my-3">
                     <div className="done-box">
                       <img src={tyres} alt="Neco" className="img-fluid" />
-                      <h4>
-                        <span className="pri">26 inch</span> diameter and
-                        <span className="pri"> 2 inch</span> wide heavy duty
-                        Tyres
-                      </h4>
+                      <h4>{productContent.features_page_metrics_2[1]}</h4>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-4 col-sm-6 my-3">
                     <div className="done-box">
                       <img src={light} alt="Neco" className="img-fluid" />
-                      <h4>
-                        Front Mount <span className="pri">LED</span> Headlight
-                      </h4>
+                      <h4>{productContent.features_page_metrics_2[2]}</h4>
                     </div>
                   </div>
                 </div>
