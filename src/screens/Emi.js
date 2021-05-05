@@ -102,14 +102,14 @@ function Emi() {
           </div>
         </div>
       </section>
-
+      {/* 
       <section id="coming-soon">
         <div className="contianer">
           <h2 className="text-center">
             Coming <span className="pri">Soon</span>!
           </h2>
         </div>
-      </section>
+      </section> */}
       <Footer />
     </div>
   );
