@@ -83,6 +83,12 @@
   border-bottom: 1px solid #000;
   padding-bottom: 10px;
   outline: none;
+  color: #000;
+}
+
+#book-testride select option {
+  background-color: var(--white);
+  color: #000;
 }
 
 #book-testride textarea {
