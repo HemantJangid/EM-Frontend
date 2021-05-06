@@ -101,3 +101,7 @@
   font-size: 0.875rem;
   margin-bottom: 100px;
 }
+
+#book-testride label {
+  color: #000;
+}
