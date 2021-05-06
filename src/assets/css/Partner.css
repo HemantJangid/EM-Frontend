@@ -84,3 +84,13 @@ input[type="email"]::placeholder {
   font-size: 0.875rem;
   margin-bottom: 100px;
 }
+
+.partner select {
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.partner select option {
+  color: #000;
+  background-color: var(--white);
+}

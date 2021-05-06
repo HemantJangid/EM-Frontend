@@ -22,6 +22,7 @@ function TestRide() {
   const [dealers, setDealers] = useState([]);
   const [reRender, setReRender] = useState(true);
   const [cities, setCities] = useState([]);
+  const [address, setaddress] = useState("")
   const history = useHistory();
 
   useEffect(() => {
@@ -96,6 +97,10 @@ function TestRide() {
         });
     },
   });
+
+  function onDealerChange(e) {
+    setaddress("something will come here")
+  }
 
   return (
     <div>
@@ -174,7 +179,7 @@ function TestRide() {
                   <input
                     required
                     className="mb-4"
-                    type="number"
+                    type="text"
                     name="phone_number"
                     id="phone_number"
                     pattern="^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$"
@@ -211,7 +216,7 @@ function TestRide() {
                   </select>
                 </div>
                 <div className="col-lg-6 col-md-6">
-                  <label for="bike_name">Available Dealers(Choose one):</label>
+                  <label for="bike_name">Available Dealers <span className="d-none d-md-inline-block">(Choose one):</span></label>
                   <select
                     required
                     id="dealer"
@@ -240,6 +245,9 @@ function TestRide() {
                     })}
                   </select>
                 </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="address">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, ipsum?</label>
               </div>
               <div className="form-row form-group">
                 <div className="col-lg-6 col-md-6">

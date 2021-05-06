@@ -160,7 +160,7 @@ function Partner() {
         </div>
       </section>
 
-      <section id="form">
+      <section id="form" className="partner">
         <div className="row justify-content-center no-gutters">
           <div className="col-lg-6 col-md-6 form-img">
             <img src={partnerSide} alt="Cycle" />
