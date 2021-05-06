@@ -20,9 +20,12 @@ function TestRide() {
   const todays_date_obj = new Date();
   const todays_date = moment(todays_date_obj).format("YYYY-MM-DD");
   const [dealers, setDealers] = useState([]);
+  const [selectedDealerAddress, setSelectedDealerAddress] = useState(
+    "Select a dealer"
+  );
   const [reRender, setReRender] = useState(true);
   const [cities, setCities] = useState([]);
-  const [address, setaddress] = useState("")
+  const [address, setaddress] = useState("");
   const history = useHistory();
 
   useEffect(() => {
@@ -85,6 +88,7 @@ function TestRide() {
             });
             // alert("Congratulations your test ride is confirmed!");
             formik.handleReset();
+            setSelectedDealerAddress("Select a Dealer");
           }
         })
         .catch((err) => {
@@ -99,7 +103,7 @@ function TestRide() {
   });
 
   function onDealerChange(e) {
-    setaddress("something will come here")
+    setaddress("something will come here");
   }
 
   return (
@@ -134,7 +138,6 @@ function TestRide() {
           </div>
           <div className="col-lg-6 col-md-6 align-content-center">
             <form onSubmit={formik.handleSubmit}>
-              {console.log(formik.values.preferred_time)}
               <h3 className="mb-5">Book a test ride!</h3>
               <div className="form-row form-group">
                 <div className="col-lg-12 col-md-12">
@@ -198,7 +201,10 @@ function TestRide() {
                     required
                     id="city"
                     name="city"
-                    onChange={formik.handleChange}
+                    onChange={(e) => {
+                      setSelectedDealerAddress("Select a dealer");
+                      formik.setFieldValue("city", e.target.value);
+                    }}
                     value={formik.values.city}
                     style={{ textTransform: "capitalize" }}
                   >
@@ -216,12 +222,26 @@ function TestRide() {
                   </select>
                 </div>
                 <div className="col-lg-6 col-md-6">
-                  <label for="bike_name">Available Dealers <span className="d-none d-md-inline-block">(Choose one):</span></label>
+                  <label for="bike_name">
+                    Available Dealers{" "}
+                    <span className="d-none d-md-inline-block">
+                      (Choose one):
+                    </span>
+                  </label>
+                  {/* {console.log(formik.values)} */}
                   <select
                     required
                     id="dealer"
                     name="dealer_id"
-                    onChange={formik.handleChange}
+                    onChange={(e) => {
+                      let temp = e.target.value;
+                      for (let index in dealers) {
+                        if (dealers[index].id === parseInt(temp)) {
+                          setSelectedDealerAddress(dealers[index].address);
+                        }
+                      }
+                      formik.setFieldValue("dealer_id", temp);
+                    }}
                     value={formik.values.dealer_id}
                     style={{ textTransform: "capitalize" }}
                     disabled={formik.values.city === "select"}
@@ -232,7 +252,6 @@ function TestRide() {
                         (dealer.city !== null) & (dealer.city !== undefined) &&
                         dealer.city.toLowerCase() === formik.values.city
                       ) {
-                        // console.log(dealer.city);
                         return (
                           <option
                             style={{ textTransform: "capitalize" }}
@@ -247,7 +266,12 @@ function TestRide() {
                 </div>
               </div>
               <div className="form-group">
-                <label htmlFor="address">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, ipsum?</label>
+                <input
+                  disabled
+                  className="mb-4"
+                  type="text"
+                  value={selectedDealerAddress}
+                />
               </div>
               <div className="form-row form-group">
                 <div className="col-lg-6 col-md-6">
