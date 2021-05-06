@@ -58,7 +58,7 @@ function Insurance() {
       right: 0,
       bottom: 0,
       zIndex: 1050,
-      height: '100vh',
+      height: "100vh",
 
       backgroundColor: "rgba(0, 0, 0, 0.9)",
     },
@@ -70,14 +70,17 @@ function Insurance() {
       width: "80%",
       maxWidth: "540px",
       height: "fit-content",
-      maxHeight: '100vh',
-      overFlowY: 'auto',
+      maxHeight: "100vh",
+      overFlowY: "auto",
       transform: "translate(-50%, -50%)",
     },
   };
 
   const todays_date_obj = new Date();
+  const date_past_7_days_obj = new Date();
+  date_past_7_days_obj.setDate(date_past_7_days_obj.getDate() - 7);
   const todays_date = moment(todays_date_obj).format("YYYY-MM-DD");
+  const date_past_7_days = moment(date_past_7_days_obj).format("YYYY-MM-DD");
   const dispatch = useDispatch();
   const { logout } = useAuth();
   const user = useSelector((state) => state.userReducer);
@@ -403,6 +406,7 @@ function Insurance() {
                 name="purchase_date"
                 id="purchase_date"
                 style={{ textTransform: "uppercase" }}
+                min={date_past_7_days}
                 max={todays_date}
                 onChange={formik.handleChange}
                 value={formik.values.purchase_date}

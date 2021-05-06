@@ -1,6 +1,7 @@
 const navUrls = {
   home: "/",
   about: "/about-us",
+  auth: "/auth",
   contact: "/contact-us",
   checkout: "/checkout",
   careers: "/careers",

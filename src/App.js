@@ -37,6 +37,7 @@ import NewCart from "./screens/newCart";
 import CartNext from "./screens/CartNext";
 import ReactGA from "react-ga";
 import ResetPassword from "./screens/ResetPassword";
+import AuthScreen from "./screens/Auth";
 
 const TRACKING_ID = "UA-180929846-1";
 ReactGA.initialize(TRACKING_ID);
@@ -67,16 +68,17 @@ function App() {
               <Route path={`${navUrls.insurance}`} component={Insurance} />
               <Route path={`${navUrls.buySmart}`} component={BuySmart} />
               <Route path={`${navUrls.community}`} component={Community} />
-              <Route path={`${navUrls.signIn}`} component={SignIn} />
-              <Route path={`${navUrls.signUp}`} component={SignUp} />
+              {/* <Route path={`${navUrls.signIn}`} component={SignIn} /> */}
+              <Route path={`${navUrls.auth}`} component={AuthScreen} />
+              {/* <Route path={`${navUrls.signUp}`} component={SignUp} /> */}
               <Route path={`${navUrls.blog}`} component={Blog} />
               <Route path={`${navUrls.blogpost}`} component={BlogPost} />
               <Route path={`${navUrls.warranty}`} component={Warranty} />
               <Route path={`${navUrls.cart}`} component={NewCart} />
-              <Route
+              {/* <Route
                 path={`${navUrls.resetPassword}`}
                 component={ResetPassword}
-              />
+              /> */}
               <PrivateRoute
                 path={`${navUrls.selectAddress}`}
                 component={SelectAddress}
