@@ -198,7 +198,7 @@ function Warranty() {
         });
       } else {
         dispatch(addWarrantyData({ ...values, email: email }));
-        history.push(navUrls.signIn);
+        history.push(navUrls.auth);
       }
     },
   });

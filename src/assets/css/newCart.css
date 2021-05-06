@@ -86,7 +86,8 @@
   padding: 0;
 }
 
-#cart .promo-code input[type="text"] {
+#cart .promo-code input[type="text"],
+select {
   background: transparent;
   border: 1px solid white;
   border-radius: 0;
@@ -99,6 +100,12 @@
   border-radius: 0;
   color: var(--white);
   max-width: 100px;
+}
+
+#cart select:focus {
+  border-bottom: 1px solid var(--pri);
+  background-color: #000;
+  color: var(--white);
 }
 
 #cart a {

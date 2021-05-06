@@ -169,7 +169,7 @@ const NewCart = () => {
         pathname: navUrls.cartNext,
       });
     } else {
-      history.push(navUrls.signIn);
+      history.push(navUrls.auth);
     }
   }
 
@@ -262,7 +262,10 @@ const NewCart = () => {
                       },
                     })
                   );
-                  alert("You have been successfully logged out");
+                  Swal.fire({
+                    text: `You have been successfully logged out`,
+                    icon: "error",
+                  });
                   history.push(navUrls.home);
                 }}
                 className="bg-transparent border-0 my-3"
