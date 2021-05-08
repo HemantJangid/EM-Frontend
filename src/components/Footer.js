@@ -57,10 +57,17 @@ function Footer() {
             <div className="col-lg-3 col-md-6 mt-5">
               <h5>Find us here</h5>
               <p>
-                EMotorad Head Office, At post Jambe, taluka Mulshi, 169/2
-                Sangawade Road, <br />
+                EMotorad Head Office,
+                <br />
+                At post Jambe, taluka Mulshi, 169/2 Sangawade Road, <br />
                 Pune - 411033, <br />
                 Maharashtra
+              </p>
+              <h5 style={{ marginTop: "20px" }}>Em International Office</h5>
+              <p>
+                The Business Centre, Al Shmookh <br />
+                Building, UMM Al Quwain FTZ <br />
+                UMM Al Quwain, UAE
               </p>
             </div>
             <div className="col-lg-6 col-md-12">
