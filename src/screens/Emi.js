@@ -14,37 +14,39 @@ const SliderWithTooltip = createSliderWithTooltip(Slider);
 
 function Emi() {
   const [model, setmodel] = useState("trex");
-  const [scheme, setscheme] = useState("eight");
+  const [scheme, setscheme] = useState("six");
   const [tenure, setTenure] = useState(0);
   const [interest, setInterest] = useState(0);
   const [dp, setdp] = useState("");
   const [emi, setemi] = useState("");
   const emiData = {
     trex: {
-      twelve: ["13,290.49", "3,249.17", "8"],
-      eight: ["9,923.32", "4873.75", "6"],
+      eight: ["13,290.49", "3,249.17", "8"],
+      six: ["9,923.32", "4873.75", "6"],
     },
     emx: {
-      twelve: ["18,623.82", "4,582.50", "8"],
-      eight: ["13,923.32", "6,873.75", "6"],
+      eight: ["18,623.82", "4,582.50", "8"],
+      six: ["13,923.32", "6,873.75", "6"],
     },
     doodle: {
-      twelve: ["18,623.82", "4,582.50", "8"],
-      eight: ["13,923.32", "6,873.75", "6"],
+      eight: ["18,623.82", "4,582.50", "8"],
+      six: ["13,923.32", "6,873.75", "6"],
     },
   };
 
   function handleModel(e) {
-    setmodel(e.target.value)
+    setmodel(e.target.value);
   }
 
   function handleScheme(e) {
-    setscheme(e.target.value)
+    setscheme(e.target.value);
   }
 
   function checkEMI() {
     setdp(`Down Payment INR ${emiData[model][scheme][0]}`);
-    setemi(`Emi from next month for ${emiData[model][scheme][2]} months INR ${emiData[model][scheme][1]}`);
+    setemi(
+      `Emi from next month for ${emiData[model][scheme][2]} months INR ${emiData[model][scheme][1]}`
+    );
   }
 
   return (
@@ -80,17 +82,31 @@ function Emi() {
             <div className="form-row">
               <div className="col-lg-12">
                 <label htmlFor="name">Select Model</label>
-                <select required id="state" name="state" className="form-control" onChange={handleModel}>
+                <select
+                  required
+                  id="state"
+                  name="state"
+                  className="form-control"
+                  onChange={handleModel}
+                >
                   <option value="trex">T-Rex</option>
                   <option value="emx">EMX</option>
                   <option value="doodle">Doodle</option>
                 </select>
               </div>
               <div className="col-lg-12">
-                <label htmlFor="name" className="mt-3">Select EMI Scheme</label>
-                <select required id="state" name="state" className="form-control" onChange={handleScheme} >
+                <label htmlFor="name" className="mt-3">
+                  Select EMI Scheme
+                </label>
+                <select
+                  required
+                  id="state"
+                  name="state"
+                  className="form-control"
+                  onChange={handleScheme}
+                >
+                  <option value="six">6 Months</option>
                   <option value="eight">8 Months</option>
-                  <option value="twelve">12 Months</option>
                 </select>
               </div>
             </div>
