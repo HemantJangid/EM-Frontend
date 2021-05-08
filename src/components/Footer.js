@@ -19,7 +19,7 @@ function Footer() {
           <div className="row justify-content-center">
             <div className="col-lg-3 col-md-6 mt-5">
               <h5>Email us at</h5>
-              <a href="mailto:info@emotorad.com">info@emotorad.com</a>
+              <a href="mailto:contactus@emotorad.com">contactus@emotorad.com</a>
               <h5 className="mt-5">Call us on</h5>
               <a href="tel:+918686050590">+91-8686050590</a>
               <h5 className="mt-5">Social Media</h5>
