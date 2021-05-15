@@ -38,7 +38,7 @@ function Partner() {
         .then((res) => {
           let email_values = {
             email: `${values.email},dhanashree.nikhare@emotorad.com,renuka.kumbhar@emotorad.com,Contactus@emotorad.com`,
-            subject: "Your Insurance Request has been recieved",
+            subject: "Your partner request is submitted successfully",
             // message: `<h2>A new user has been registered for community ${values.email}, ${todays_date}, accesss available, event invitation eligible`,
             meta: {},
             message: `
